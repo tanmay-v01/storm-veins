@@ -960,7 +960,7 @@ html, body, #root, .page-frame, .site-main {
 @media (max-width: 768px) {
   .hero-luxury.hero-cinematic-loop {
     min-height: auto;
-    padding: 30px 0 34px !important;
+    padding: 104px 0 34px !important;
   }
 
   .hero-cinematic-loop .hero-shadow-overlay {
@@ -1828,7 +1828,7 @@ html, body, #root, .page-frame, .site-main {
   }
 
   .hero-luxury {
-    padding: 28px 0 32px !important;
+    padding: 104px 0 32px !important;
     min-height: auto !important;
   }
 

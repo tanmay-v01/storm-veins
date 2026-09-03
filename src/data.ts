@@ -20,10 +20,10 @@ export const navItems = [
   { label: "About", to: "/about" },
   { label: "Services", to: "/services" },
   { label: "Selected Work", to: "/work" },
-  { label: "Portfolio", to: "/portfolio" },
   { label: "Methodology", to: "/approach" },
   { label: "Insights", to: "/insights" },
   { label: "Careers", to: "/careers" },
+  { label: "Contact Us", to: "/contact" },
 ];
 
 export const clientLogos = [
