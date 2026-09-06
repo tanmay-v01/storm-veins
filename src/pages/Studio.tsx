@@ -32,8 +32,17 @@ import {
   Wand2,
 } from "lucide-react";
 import { Eyebrow, Logo } from "../components/Site";
+import OutreachStudioSuite from "../components/studio/OutreachStudioSuite";
 
-type StudioMode = "pipeline" | "outreach" | "invoice" | "letter" | "document";
+type StudioMode =
+  | "pipeline"
+  | "outreach"
+  | "outreach-pool"
+  | "outreach-cadence"
+  | "outreach-telemetry"
+  | "invoice"
+  | "letter"
+  | "document";
 type InvoiceItem = { id: number; description: string; qty: number; price: number };
 
 export interface CrmDeal {
@@ -317,7 +326,7 @@ const industryPresets = [
 ];
 
 function StudioWorkspace({ onLock }: { onLock: () => void }) {
-  const [mode, setMode] = useState<StudioMode>("pipeline");
+  const [mode, setMode] = useState<StudioMode>("outreach-pool");
   const [deals, setDeals] = useState<CrmDeal[]>(defaultDeals);
   const [dealFilter, setDealFilter] = useState<string>("all");
   const [domainFilter, setDomainFilter] = useState<string>("all");
@@ -532,7 +541,7 @@ Mumbai & Thane · stormveins.com`,
 Following up on my note from Tuesday.
 
 I recorded a quick 2-minute Loom walkthrough showing the exact architectural bottleneck on ${prospect.company}'s current setup, and how our senior engineering pod would deploy a streamlined ${prospect.offering.toLowerCase()}:
-https://stormveins.com/portfolio
+https://stormveins.com/work
 
 Unlike traditional software houses with junior handoffs, our founding principals sit directly in your weekly sprints until target commercial metrics are achieved.
 
@@ -595,7 +604,7 @@ Storm Veins Media House`,
 I haven't heard back, so I assume addressing ${prospect.pain.split(",")[0]} isn't an active priority for ${prospect.company} this quarter. Completely understand.
 
 I will close your file on our end so I don't crowd your inbox. If you ever decide to rebuild your internal systems or need a dedicated senior engineering pod, you can explore our portfolio anytime:
-https://stormveins.com/portfolio
+https://stormveins.com/work
 
 Wishing you and the operations team continued momentum.
 
@@ -683,8 +692,54 @@ Mumbai HQ · +91 96998 31323`,
             </button>
           </div>
 
+          {/* LIVE MASTER SECTION: SOVEREIGN EMAIL OUTREACH WITH 3 SUB-VIEWS */}
           <div className="nav-category-group">
-            <span className="nav-group-title">GROWTH</span>
+            <div className="nav-group-title-row">
+              <span className="nav-group-title">EMAIL OUTREACH</span>
+              <span className="nav-live-pulse-badge">
+                <span className="pulse-dot"></span> LIVE
+              </span>
+            </div>
+
+            {/* Sub-item 1 */}
+            <button
+              role="tab"
+              aria-selected={mode === "outreach-pool"}
+              className={`studio-tool-tab sub-tab ${mode === "outreach-pool" ? "active" : ""}`}
+              onClick={() => setMode("outreach-pool")}
+            >
+              <Building2 size={13} />
+              <span>Enterprise Pool</span>
+              <span className="nav-count-badge">65</span>
+            </button>
+
+            {/* Sub-item 2 */}
+            <button
+              role="tab"
+              aria-selected={mode === "outreach-cadence"}
+              className={`studio-tool-tab sub-tab ${mode === "outreach-cadence" ? "active" : ""}`}
+              onClick={() => setMode("outreach-cadence")}
+            >
+              <Clock size={13} />
+              <span>4-Day Cadence</span>
+              <span className="nav-sub-pill">Sept 11</span>
+            </button>
+
+            {/* Sub-item 3 */}
+            <button
+              role="tab"
+              aria-selected={mode === "outreach-telemetry"}
+              className={`studio-tool-tab sub-tab ${mode === "outreach-telemetry" ? "active" : ""}`}
+              onClick={() => setMode("outreach-telemetry")}
+            >
+              <ShieldCheck size={13} />
+              <span>Quota &amp; Shield</span>
+              <span className="nav-pill-live">8/hr</span>
+            </button>
+          </div>
+
+          <div className="nav-category-group">
+            <span className="nav-group-title">AI SYNTHESIZER</span>
             <button
               role="tab"
               aria-selected={mode === "outreach"}
@@ -692,39 +747,8 @@ Mumbai HQ · +91 96998 31323`,
               onClick={() => setMode("outreach")}
             >
               <Target size={13} />
-              <span>Outreach Agent</span>
-              <span className="nav-pill-live">AI</span>
-            </button>
-          </div>
-
-          <div className="nav-category-group">
-            <span className="nav-group-title">OPERATIONS</span>
-            <button
-              role="tab"
-              aria-selected={mode === "invoice"}
-              className={`studio-tool-tab ${mode === "invoice" ? "active" : ""}`}
-              onClick={() => setMode("invoice")}
-            >
-              <ReceiptText size={13} />
-              <span>Invoicing</span>
-            </button>
-            <button
-              role="tab"
-              aria-selected={mode === "letter"}
-              className={`studio-tool-tab ${mode === "letter" ? "active" : ""}`}
-              onClick={() => setMode("letter")}
-            >
-              <PenLine size={13} />
-              <span>Agreements</span>
-            </button>
-            <button
-              role="tab"
-              aria-selected={mode === "document"}
-              className={`studio-tool-tab ${mode === "document" ? "active" : ""}`}
-              onClick={() => setMode("document")}
-            >
-              <FileText size={13} />
-              <span>Scope SOW</span>
+              <span>Outreach Copy AI</span>
+              <span className="nav-pill-live">GPT</span>
             </button>
           </div>
         </nav>
@@ -745,6 +769,12 @@ Mumbai HQ · +91 96998 31323`,
                 ? "AGENCY PIPELINE"
                 : mode === "outreach"
                 ? "ACQUISITION ARCHITECTURE"
+                : mode === "outreach-pool"
+                ? "SOVEREIGN EMAIL OUTREACH · ENTERPRISE DIRECTORY"
+                : mode === "outreach-cadence"
+                ? "SOVEREIGN EMAIL OUTREACH · 4-DAY CADENCE RE-APPROACH"
+                : mode === "outreach-telemetry"
+                ? "SOVEREIGN EMAIL OUTREACH · HOSTINGER SMTP TELEMETRY"
                 : "COMMERCIAL SUITE"}
             </span>
             <h1 className="studio-page-title">
@@ -752,6 +782,12 @@ Mumbai HQ · +91 96998 31323`,
                 ? "Enterprise Deals CRM"
                 : mode === "outreach"
                 ? "Commercial Outreach Agent"
+                : mode === "outreach-pool"
+                ? "Enterprise Directory & Sectors"
+                : mode === "outreach-cadence"
+                ? "4-Day Cadence & Follow-Up Pipeline"
+                : mode === "outreach-telemetry"
+                ? "Hostinger Quota & Bounce Shield"
                 : mode === "invoice"
                 ? "Commercial Invoicing Generator"
                 : mode === "letter"
@@ -781,6 +817,15 @@ Mumbai HQ · +91 96998 31323`,
                   <span>Send via Mail Client</span>
                   <ArrowUpRight size={12} />
                 </a>
+              </div>
+            ) : mode === "outreach-pool" ||
+              mode === "outreach-cadence" ||
+              mode === "outreach-telemetry" ? (
+              <div className="outreach-top-actions">
+                <span className="outreach-badge badge-delivered">
+                  <span className="badge-dot dot-delivered"></span>
+                  Daemon Engine: 8 sends/hr
+                </span>
               </div>
             ) : (
               <button
@@ -936,6 +981,26 @@ Mumbai HQ · +91 96998 31323`,
               ))}
             </div>
           </div>
+        )}
+
+        {/* SOVEREIGN EMAIL OUTREACH SUITE (PRIVATE, LIGHT THEME, 3 SUB-VIEWS) */}
+        {(mode === "outreach-pool" ||
+          mode === "outreach-cadence" ||
+          mode === "outreach-telemetry") && (
+          <OutreachStudioSuite
+            subMode={
+              mode === "outreach-cadence"
+                ? "cadence"
+                : mode === "outreach-telemetry"
+                ? "telemetry"
+                : "pool"
+            }
+            onSelectSubMode={(sub) => {
+              if (sub === "cadence") setMode("outreach-cadence");
+              else if (sub === "telemetry") setMode("outreach-telemetry");
+              else setMode("outreach-pool");
+            }}
+          />
         )}
 
         {/* MODE 2: COMMERCIAL OUTREACH AGENT (REFINED EXECUTIVE LUXURY) */}
@@ -1183,7 +1248,21 @@ Mumbai HQ · +91 96998 31323`,
           </div>
         )}
 
-        {/* MODE 3: INVOICE GENERATOR */}
+        {/* LIVE SOVEREIGN EMAIL OUTREACH SUITE (3 SUB-VIEWS) */}
+        {(mode === "outreach-pool" ||
+          mode === "outreach-cadence" ||
+          mode === "outreach-telemetry") && (
+          <OutreachStudioSuite
+            subMode={
+              mode === "outreach-cadence"
+                ? "cadence"
+                : mode === "outreach-telemetry"
+                ? "telemetry"
+                : "pool"
+            }
+            onSelectSubMode={(tab) => setMode(`outreach-${tab}` as StudioMode)}
+          />
+        )}
         {mode === "invoice" && (
           <div className="studio-workspace-grid">
             <div className="studio-form-col">

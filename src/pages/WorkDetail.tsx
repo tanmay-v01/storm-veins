@@ -47,13 +47,9 @@ export default function WorkDetail() {
         <div className="container">
           <div className="case-hero-nav">
             <div className="case-nav-breadcrumbs">
-              <Link className="back-link-luxury" to="/portfolio">
+              <Link className="back-link-luxury" to="/work">
                 <ArrowLeft size={16} />
-                <span>Portfolio</span>
-              </Link>
-              <span className="crumb-sep">/</span>
-              <Link className="back-link-luxury sub" to="/work">
-                <span>Selected Work</span>
+                <span>Work</span>
               </Link>
             </div>
             <div className="case-hero-tag">

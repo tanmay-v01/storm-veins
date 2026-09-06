@@ -6,7 +6,13 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "outreach:test": "python outreach/dispatcher.py --test",
+    "outreach:preview": "python outreach/dispatcher.py --preview",
+    "outreach:send": "python outreach/dispatcher.py --send",
+    "outreach:enterprise:preview": "python outreach/enterprise_dispatcher.py --preview",
+    "outreach:enterprise:test": "python outreach/enterprise_dispatcher.py --test",
+    "outreach:enterprise:send": "python outreach/enterprise_dispatcher.py --send"
   },
   "dependencies": {
     "lucide-react": "^0.468.0",

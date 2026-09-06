@@ -229,12 +229,13 @@ export function Footer() {
 
           <div className="footer-nav-col">
             <span className="footer-col-title">Navigation</span>
-            <Link to="/about">About Studio</Link>
-            <Link to="/services">Capabilities</Link>
-            <Link to="/work">Selected Work</Link>
+            <Link to="/about">About</Link>
+            <Link to="/services">Services</Link>
+            <Link to="/work">Work</Link>
             <Link to="/approach">Methodology</Link>
-            <Link to="/insights">Executive Insights</Link>
-            <Link to="/careers">Careers & Fellowships</Link>
+            <Link to="/insights">Insights</Link>
+            <Link to="/careers">Careers</Link>
+            <Link to="/contact">Contact</Link>
           </div>
 
           <div className="footer-nav-col">

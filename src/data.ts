@@ -19,11 +19,11 @@ export const images = {
 export const navItems = [
   { label: "About", to: "/about" },
   { label: "Services", to: "/services" },
-  { label: "Selected Work", to: "/work" },
+  { label: "Work", to: "/work" },
   { label: "Methodology", to: "/approach" },
   { label: "Insights", to: "/insights" },
   { label: "Careers", to: "/careers" },
-  { label: "Contact Us", to: "/contact" },
+  { label: "Contact", to: "/contact" },
 ];
 
 export const clientLogos = [

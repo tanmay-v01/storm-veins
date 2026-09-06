@@ -204,6 +204,7 @@ export function Careers() {
 
 export function Contact() {
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -213,9 +214,21 @@ export function Contact() {
     message: "",
   });
 
-  const submit = (e: FormEvent<HTMLFormElement>) => {
+  const submit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSent(true);
+    setLoading(true);
+    try {
+      await fetch("/api/contact.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+    } catch (err) {
+      console.warn("Contact form dispatch notice:", err);
+    } finally {
+      setLoading(false);
+      setSent(true);
+    }
   };
 
   return (
@@ -395,8 +408,8 @@ export function Contact() {
                       />
                     </label>
 
-                    <button type="submit" className="btn-luxury btn-emerald form-submit-btn">
-                      <span>Initiate Confidential Brief</span>
+                    <button type="submit" className="btn-luxury btn-emerald form-submit-btn" disabled={loading}>
+                      <span>{loading ? "Transmitting Brief..." : "Initiate Confidential Brief"}</span>
                       <ArrowUpRight size={16} />
                     </button>
                   </form>
