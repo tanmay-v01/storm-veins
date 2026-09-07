@@ -399,6 +399,7 @@ export default function OutreachStudioSuite({
       {subMode === "analytics" && (
         <div className="suite-view-container">
           <EmailAnalyticsDashboard
+            theme="light"
             onFilterBySender={(sender) => {
               setMailboxFilter(sender);
               onSelectSubMode("pool");

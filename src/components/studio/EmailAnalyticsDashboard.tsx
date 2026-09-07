@@ -24,6 +24,7 @@ import {
 import { CRMLead, crmLeadsData } from "../../data/crmLeads";
 
 interface EmailAnalyticsDashboardProps {
+  theme?: "light" | "dark";
   onFilterBySender?: (sender: string) => void;
   onFilterByScope?: (scope: string) => void;
   onFilterBySector?: (sector: string) => void;
@@ -31,6 +32,7 @@ interface EmailAnalyticsDashboardProps {
 }
 
 export default function EmailAnalyticsDashboard({
+  theme = "light",
   onFilterBySender,
   onFilterByScope,
   onFilterBySector,
@@ -153,7 +155,7 @@ export default function EmailAnalyticsDashboard({
   }, []);
 
   return (
-    <div className="email-dashboard-container">
+    <div className={`email-dashboard-container theme-${theme}`}>
       {/* HEADER HERO STRIP */}
       <div className="dashboard-hero-card">
         <div className="dashboard-hero-left">
@@ -328,13 +330,13 @@ export default function EmailAnalyticsDashboard({
             <div className="geo-ratio-circles">
               <div className="geo-circle overseas-circle">
                 <Globe size={20} className="text-cyan mb-1" />
-                <strong className="text-xl text-white">{analytics.overseas}</strong>
-                <span className="text-xs text-muted">Overseas ({((analytics.overseas / analytics.total) * 100).toFixed(0)}%)</span>
+                <strong className="geo-circle-val">{analytics.overseas}</strong>
+                <span className="geo-circle-lbl">Overseas ({((analytics.overseas / analytics.total) * 100).toFixed(0)}%)</span>
               </div>
               <div className="geo-circle domestic-circle">
                 <Building2 size={20} className="text-emerald mb-1" />
-                <strong className="text-xl text-white">{analytics.domestic}</strong>
-                <span className="text-xs text-muted">Domestic ({((analytics.domestic / analytics.total) * 100).toFixed(0)}%)</span>
+                <strong className="geo-circle-val">{analytics.domestic}</strong>
+                <span className="geo-circle-lbl">Domestic ({((analytics.domestic / analytics.total) * 100).toFixed(0)}%)</span>
               </div>
             </div>
 
@@ -435,7 +437,7 @@ export default function EmailAnalyticsDashboard({
                 <strong>Touchpoint #2 (Architecture Walkthrough)</strong>
                 <span>Due <strong>September 15, 2026</strong> &bull; Permanent Owner Handshake</span>
               </div>
-              <div className="ms-count text-muted">Cohort 2</div>
+              <div className="ms-count ms-cohort">Cohort 2</div>
             </div>
           </div>
         </div>

@@ -340,6 +340,7 @@ export default function CRM() {
           <div className="container">
             {heroTab === "analytics" ? (
               <EmailAnalyticsDashboard
+                theme="dark"
                 onFilterBySender={(sender) => {
                   setSelectedMailbox(sender);
                   setHeroTab("matrix");
