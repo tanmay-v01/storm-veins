@@ -30,10 +30,7 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Operations Head,",
     "email": "4sgroup2014@gmail.com",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "safety_audits",
     "industry": "Safety Systems & Statutory Compliance Audits",
     "locality": "Kopri, Thane East",
@@ -54,10 +51,7 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Executive Team,",
     "email": "info@squarefeetgroup.in",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "real_estate",
     "industry": "Commercial & Residential Real Estate Development",
     "locality": "Thane West, Maharashtra",
@@ -78,10 +72,7 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Leadership Team,",
     "email": "info@vihang.in",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "real_estate",
     "industry": "High-Rise Real Estate Development",
     "locality": "Ghodbunder Road, Thane West",
@@ -102,10 +93,7 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Commercial Directorate,",
     "email": "info@dostirealty.com",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "real_estate",
     "industry": "Integrated Township & Real Estate Development",
     "locality": "Balkum, Thane West & Mumbai",
@@ -126,10 +114,7 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Operations Directorate,",
     "email": "info@jupiterhospital.com",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "healthcare",
     "industry": "Multispecialty Healthcare & Hospital Networks",
     "locality": "Thane West, Maharashtra",
@@ -150,10 +135,7 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Medical Directorate,",
     "email": "info@horizonhospital.in",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "healthcare",
     "industry": "Surgical Centers & Multispecialty Hospitals",
     "locality": "Naupada, Thane West",
@@ -174,10 +156,7 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Operations Directorate,",
     "email": "info@meyer.co.in",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "pharma",
     "industry": "Pharmaceutical Formulations & Healthcare",
     "locality": "Wagle Industrial Estate, Thane West",
@@ -198,10 +177,7 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Executive Directorate,",
     "email": "info@blissgvs.com",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "pharma",
     "industry": "Pharmaceutical Manufacturing & Formulations",
     "locality": "Thane & Mumbai Metro",
@@ -224,10 +200,7 @@ export const crmLeadsData: CRMLead[] = [
     "cc": [
       "sales@mavitrols.com"
     ],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "manufacturing",
     "industry": "Industrial Automation & SCADA Engineering",
     "locality": "Wagle Industrial Estate, Thane West",
@@ -250,10 +223,7 @@ export const crmLeadsData: CRMLead[] = [
     "cc": [
       "sales@aurumpackaging.com"
     ],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "manufacturing",
     "industry": "Packaging Machinery & Line Automation",
     "locality": "WIFI Park, Wagle Estate, Thane West",
@@ -274,10 +244,7 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Executive Team,",
     "email": "info@goma.co.in",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "manufacturing",
     "industry": "High-Pressure Process Technology & Industrial Equipment",
     "locality": "Road No. 34, Wagle Estate, Thane West",
@@ -298,10 +265,7 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Executive Team,",
     "email": "info@hdfire.com",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "safety_audits",
     "industry": "Fire Safety Manufacturing & Industrial Protection",
     "locality": "Wagle Estate, Thane West",
@@ -324,10 +288,7 @@ export const crmLeadsData: CRMLead[] = [
     "cc": [
       "call@firescanindia.com"
     ],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "safety_audits",
     "industry": "Fire Safety Engineering & AMC Services",
     "locality": "Majiwada, Thane West",
@@ -348,10 +309,7 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Management Team,",
     "email": "omegafire9977@gmail.com",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "safety_audits",
     "industry": "Fire AMC & Field Audit Consultancies",
     "locality": "Khopat, Thane West",
@@ -374,10 +332,7 @@ export const crmLeadsData: CRMLead[] = [
     "cc": [
       "info@alphanationalfire.com"
     ],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "safety_audits",
     "industry": "Fire Protection Equipment & Turnkey Services",
     "locality": "Khopat, Thane West",
@@ -400,10 +355,7 @@ export const crmLeadsData: CRMLead[] = [
     "cc": [
       "winfireservices@yahoo.com"
     ],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "safety_audits",
     "industry": "Fire Safety Engineering & Audits",
     "locality": "Raghunath Nagar, Thane West",
@@ -424,10 +376,7 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Engineering Team,",
     "email": "kromatics.backup@gmail.com",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "safety_audits",
     "industry": "Industrial MEP & Fire Protection Engineering",
     "locality": "Wagle Estate, Thane West",
@@ -448,10 +397,7 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Executive Team,",
     "email": "sales@kanexfire.com",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "safety_audits",
     "industry": "Fire Safety Systems & Industrial Protection",
     "locality": "Thane & Mumbai",
@@ -472,10 +418,7 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Mr. Agarwal,",
     "email": "info@regencygroup.co.in",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "real_estate",
     "industry": "Integrated Township & High-Rise Real Estate",
     "locality": "Kalyan & Dombivli",
@@ -496,10 +439,7 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Mr. Tharwani,",
     "email": "info@tharwaniinfrastructures.com",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "real_estate",
     "industry": "Commercial & Residential Real Estate Infrastructure",
     "locality": "Kalyan & Central Suburbs",
@@ -520,10 +460,7 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Operations Directorate,",
     "email": "reachus@fortishealthcare.com",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "healthcare",
     "industry": "Multispecialty Healthcare & Surgical Care",
     "locality": "Kalyan, Maharashtra",
@@ -544,10 +481,7 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Operations Directorate,",
     "email": "info@gharda.com",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "manufacturing",
     "industry": "Specialty Chemical & Agrochemical Formulations",
     "locality": "Dombivli MIDC",
@@ -568,10 +502,7 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Operations Directorate,",
     "email": "customercare_mumbai@apollohospitals.com",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "healthcare",
     "industry": "Multispecialty Healthcare & Super-Specialty Surgery",
     "locality": "CBD Belapur, Navi Mumbai",
@@ -592,10 +523,7 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Medical Directorate,",
     "email": "contact@mgmhospitalvashi.net",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "healthcare",
     "industry": "Multispecialty Healthcare & Medical Research",
     "locality": "Sector 3, Vashi, Navi Mumbai",
@@ -616,10 +544,7 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Operations Directorate,",
     "email": "info@ternahospital.org",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "healthcare",
     "industry": "Tertiary Healthcare & Medical Education",
     "locality": "Nerul, Navi Mumbai",
@@ -640,10 +565,7 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Executive Directorate,",
     "email": "sales@dynalogindia.com",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "manufacturing",
     "industry": "Industrial Automation, SCADA & Defense Computing",
     "locality": "TTC Industrial Area, Mahape, Navi Mumbai",
@@ -664,10 +586,7 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Executive Team,",
     "email": "info@standardgreases.com",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "manufacturing",
     "industry": "Industrial Lubricants & Automotive Formulations",
     "locality": "Turbhe MIDC, Navi Mumbai",
@@ -688,10 +607,7 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Executive Directorate,",
     "email": "info@snowman.in",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "logistics",
     "industry": "Temperature-Controlled Logistics & Cold Chain Infrastructure",
     "locality": "Turbhe, Navi Mumbai",
@@ -712,10 +628,7 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Logistics Directorate,",
     "email": "info@allcargologistics.com",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "logistics",
     "industry": "Global Freight Forwarding & Multimodal Supply Chain",
     "locality": "CBD Belapur, Navi Mumbai",
@@ -736,10 +649,7 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Mr. Chaturvedi,",
     "email": "chaturvedi.rk@balmerlawrie.com",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "logistics",
     "industry": "Cold Storage & Industrial Packaging Logistics",
     "locality": "Navi Mumbai Logistics Corridor",
@@ -760,10 +670,7 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Operations Directorate,",
     "email": "info@aarti-industries.com",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "manufacturing",
     "industry": "Specialty Chemicals & Pharmaceutical Intermediates",
     "locality": "Turbhe / TTC MIDC, Navi Mumbai",
@@ -784,10 +691,7 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Executive Team,",
     "email": "galaxy@galaxysurfactants.com",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "manufacturing",
     "industry": "Specialty Ingredients & Industrial Chemical Manufacturing",
     "locality": "Turbhe, Navi Mumbai",
@@ -808,10 +712,7 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Operations Directorate,",
     "email": "corporate@nocil.com",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "manufacturing",
     "industry": "Rubber Chemicals & Industrial Polymer Manufacturing",
     "locality": "TTC Industrial Area, Navi Mumbai",
@@ -832,10 +733,7 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Commercial Directorate,",
     "email": "info@thephoenixmills.com",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "real_estate",
     "industry": "Commercial Retail Infrastructure & Integrated Parks",
     "locality": "LBS Marg, Kurla West, Mumbai",
@@ -856,10 +754,7 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Executive Directorate,",
     "email": "info@kohinoorgroup.co.in",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "real_estate",
     "industry": "Integrated Township & Commercial Business Parks",
     "locality": "Kirol Road, Kurla West, Mumbai",
@@ -880,10 +775,7 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Medical Directorate,",
     "email": "somaiyahospital@somaiya.edu",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "healthcare",
     "industry": "Multispecialty Healthcare & Academic Medical Center",
     "locality": "Vidyavihar / Ghatkopar East, Mumbai",
@@ -904,10 +796,7 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Commercial Directorate,",
     "email": "infodesk@kalpataru.com",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "real_estate",
     "industry": "High-Rise Real Estate & Infrastructure Development",
     "locality": "Central Mumbai / Kurla Corridor",
@@ -928,21 +817,18 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Executive Team,",
     "email": "info@runwal.com",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "real_estate",
     "industry": "Township & Commercial Real Estate Development",
     "locality": "LBS Marg, Ghatkopar West, Mumbai",
     "region": "Kurla-Ghatkopar",
     "country": "India",
-    "status": "FAILED",
-    "sentTimestamp": "2026-09-07 00:37:33",
+    "status": "SENT",
+    "sentTimestamp": "2026-09-07 01:46:17",
     "followUpDate": "2026-09-11",
     "followUpCount": 0,
     "operationalFocus": "Live multi-tower unit inventory sync, broker registration portal, WhatsApp payment reminders, and automated billing reconciliations",
-    "notes": "(451, b'4.7.1 Ratelimit \"hostinger_out_ratelimit\" exceeded for key \"RL868tx84i959osqea84gtob3e\"')"
+    "notes": "Retry delivered successfully. Next update due 11th Sept."
   },
   {
     "id": "the-wadhwa-group",
@@ -952,21 +838,18 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Leadership Team,",
     "email": "corporate@wadhwagroup.com",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "real_estate",
     "industry": "Commercial & Residential Real Estate Landmarks",
     "locality": "Ghatkopar / Central Mumbai Corridor",
     "region": "Kurla-Ghatkopar",
     "country": "India",
-    "status": "FAILED",
-    "sentTimestamp": "2026-09-07 00:37:48",
+    "status": "SENT",
+    "sentTimestamp": "2026-09-07 02:46:15",
     "followUpDate": "2026-09-11",
     "followUpCount": 0,
     "operationalFocus": "Integrated CRM pipeline, channel partner transparency portal, construction milestone demand letters, and RERA compliance vault",
-    "notes": "(451, b'4.7.1 Ratelimit \"hostinger_out_ratelimit\" exceeded for key \"RL868tx84i959osqea84gtob3e\"')"
+    "notes": "Retry delivered successfully. Next update due 11th Sept."
   },
   {
     "id": "prestige-group",
@@ -976,21 +859,18 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Executive Directorate,",
     "email": "properties@prestigeconstructions.com",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "real_estate",
     "industry": "Commercial & Residential Real Estate Conglomerate",
     "locality": "Bengaluru, Karnataka, India",
     "region": "South India",
     "country": "India",
-    "status": "QUEUED",
-    "sentTimestamp": "",
+    "status": "SENT",
+    "sentTimestamp": "2026-09-07 03:46:15",
     "followUpDate": "2026-09-11",
     "followUpCount": 0,
     "operationalFocus": "Live multi-city inventory command mesh, channel partner transparency engine, automated construction milestone demand billing, and institutional RERA compliance vaults",
-    "notes": "Queued for hourly automated dispatch."
+    "notes": "Retry delivered successfully. Next update due 11th Sept."
   },
   {
     "id": "sobha-limited",
@@ -1000,21 +880,18 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Operations Directorate,",
     "email": "marketing@sobha.com",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "real_estate",
     "industry": "High-Rise Real Estate & Backward Integration Manufacturing",
     "locality": "Bengaluru, Karnataka, India",
     "region": "South India",
     "country": "India",
-    "status": "QUEUED",
-    "sentTimestamp": "",
+    "status": "SENT",
+    "sentTimestamp": "2026-09-07 04:46:15",
     "followUpDate": "2026-09-11",
     "followUpCount": 0,
     "operationalFocus": "Integrated sales command portal, dynamic floor-rise quotation engine, backward integration supply tracking, and automated buyer payment reconciliations",
-    "notes": "Queued for hourly automated dispatch."
+    "notes": "Retry delivered successfully. Next update due 11th Sept."
   },
   {
     "id": "manipal-hospitals-network",
@@ -1024,21 +901,18 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Operations Directorate,",
     "email": "info@manipalhospitals.com",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "healthcare",
     "industry": "Multi-Hospital Healthcare Network",
     "locality": "Bengaluru, Karnataka, India",
     "region": "South India",
     "country": "India",
-    "status": "QUEUED",
-    "sentTimestamp": "",
+    "status": "SENT",
+    "sentTimestamp": "2026-09-07 05:46:16",
     "followUpDate": "2026-09-11",
     "followUpCount": 0,
     "operationalFocus": "Doctor clinical workstations, cross-hospital bed telemetry, real-time discharge billing engine, and automated TPA insurance claim reconciliation",
-    "notes": "Queued for hourly automated dispatch."
+    "notes": "Retry delivered successfully. Next update due 11th Sept."
   },
   {
     "id": "biocon-limited",
@@ -1048,21 +922,18 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Operations Directorate,",
     "email": "corporate.communications@biocon.com",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "pharma",
     "industry": "Biopharmaceuticals & Biosimilar Manufacturing",
     "locality": "Bengaluru, Karnataka, India",
     "region": "South India",
     "country": "India",
-    "status": "QUEUED",
-    "sentTimestamp": "",
+    "status": "SENT",
+    "sentTimestamp": "2026-09-07 06:46:16",
     "followUpDate": "2026-09-11",
     "followUpCount": 0,
     "operationalFocus": "21 CFR Part 11 compliant digital audit vaults, automated batch deviation state machines, sensor telemetry, and global distributor order portals",
-    "notes": "Queued for hourly automated dispatch."
+    "notes": "Retry delivered successfully. Next update due 11th Sept."
   },
   {
     "id": "dr.-reddy's-laboratories",
@@ -1072,21 +943,18 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Executive Directorate,",
     "email": "shares@drreddys.com",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "pharma",
     "industry": "Pharmaceutical Formulations & Active Ingredients",
     "locality": "Hyderabad, Telangana, India",
     "region": "South India",
     "country": "India",
-    "status": "QUEUED",
-    "sentTimestamp": "",
+    "status": "SENT",
+    "sentTimestamp": "2026-09-07 10:33:58",
     "followUpDate": "2026-09-11",
     "followUpCount": 0,
     "operationalFocus": "Shop-floor tablet eBR consoles, automated deviation & CAPA state machines, raw material dispensing telemetry, and bidirectional SAP ERP sync",
-    "notes": "Queued for hourly automated dispatch."
+    "notes": "Delivered successfully. Next update due 11th Sept."
   },
   {
     "id": "aparna-enterprises-and-constructions",
@@ -1096,10 +964,7 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Commercial Directorate,",
     "email": "info@aparnaenterprisesltd.com",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "real_estate",
     "industry": "Integrated Real Estate & Building Material Manufacturing",
     "locality": "Hyderabad, Telangana, India",
@@ -1120,10 +985,7 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Operations Directorate,",
     "email": "contact@heterodrugs.com",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "pharma",
     "industry": "Active Pharmaceutical Ingredients & Generic Manufacturing",
     "locality": "Hyderabad, Telangana, India",
@@ -1144,10 +1006,7 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Medical Directorate,",
     "email": "query@yashodamail.com",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "healthcare",
     "industry": "Multispecialty Quaternary Care & Hospital Networks",
     "locality": "Hyderabad, Telangana, India",
@@ -1168,10 +1027,7 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Commercial Directorate,",
     "email": "customercare@dlf.in",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "real_estate",
     "industry": "Luxury Real Estate & Commercial Cyber Cities",
     "locality": "Gurugram, Haryana / Delhi NCR, India",
@@ -1192,10 +1048,7 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Operations Directorate,",
     "email": "contactus@maxhealthcare.com",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "healthcare",
     "industry": "Multispecialty Hospital Networks",
     "locality": "New Delhi / NCR, India",
@@ -1216,10 +1069,7 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Operations Directorate,",
     "email": "contact@mankindpharma.com",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "pharma",
     "industry": "Pharmaceutical Formulations & Consumer Health",
     "locality": "New Delhi, India",
@@ -1240,10 +1090,7 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Executive Directorate,",
     "email": "marketing@havells.com",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "manufacturing",
     "industry": "Fast Moving Electrical Goods & Industrial Power Equipment",
     "locality": "Noida, Uttar Pradesh / Delhi NCR, India",
@@ -1264,10 +1111,7 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Technical Directorate,",
     "email": "contact@torrentpharma.com",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "pharma",
     "industry": "Cardiovascular & CNS Pharmaceutical Formulations",
     "locality": "Ahmedabad, Gujarat, India",
@@ -1288,10 +1132,7 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Commercial Directorate,",
     "email": "info@adanirealty.com",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "real_estate",
     "industry": "Mega Integrated Townships & Commercial Hubs",
     "locality": "Ahmedabad, Gujarat, India",
@@ -1312,10 +1153,7 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Leadership Team,",
     "email": "info@casagrand.co.in",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "real_estate",
     "industry": "Residential Communities & Commercial Parks",
     "locality": "Chennai, Tamil Nadu, India",
@@ -1336,10 +1174,7 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Executive Directorate,",
     "email": "reachus@corp.murugappa.com",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "manufacturing",
     "industry": "Diversified Engineering, Abrasives & Agri-Solutions",
     "locality": "Chennai, Tamil Nadu, India",
@@ -1360,10 +1195,7 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Executive Directorate,",
     "email": "customercare@emaar.ae",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "real_estate",
     "industry": "Global Master-Planned Communities & High-Rise Infrastructure",
     "locality": "Dubai, United Arab Emirates",
@@ -1384,10 +1216,7 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Commercial Directorate,",
     "email": "customer-relations@damacgroup.com",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "real_estate",
     "industry": "Luxury Real Estate & Hospitality Developments",
     "locality": "Dubai, United Arab Emirates",
@@ -1408,10 +1237,7 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Operations Directorate,",
     "email": "customercare@asterdmhealthcare.com",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "healthcare",
     "industry": "Multispecialty Hospital & Clinic Networks (GCC & India)",
     "locality": "Dubai, United Arab Emirates",
@@ -1432,10 +1258,7 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Executive Leadership,",
     "email": "sales@sobharealty.com",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "real_estate",
     "industry": "Luxury Waterfront Real Estate & Backward Integration",
     "locality": "Dubai, United Arab Emirates",
@@ -1456,10 +1279,7 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Commercial Directorate,",
     "email": "ask-us@capitaland.com",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "real_estate",
     "industry": "Global Real Estate Investment & Commercial Asset Management",
     "locality": "Singapore",
@@ -1480,10 +1300,7 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Executive Directorate,",
     "email": "info@berkeleygroup.co.uk",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "real_estate",
     "industry": "Regeneration & Residential Real Estate Development",
     "locality": "London, United Kingdom",
@@ -1504,10 +1321,7 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Operations Directorate,",
     "email": "csu@spirehealthcare.com",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "healthcare",
     "industry": "Private Hospital & Clinical Networks",
     "locality": "London, United Kingdom",
@@ -1528,10 +1342,7 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Commercial Directorate,",
     "email": "customerservice@pulte.com",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "real_estate",
     "industry": "National Homebuilding & Residential Construction",
     "locality": "Atlanta, Georgia, United States",
@@ -1552,10 +1363,7 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Executive Directorate,",
     "email": "contact@lennar.com",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "real_estate",
     "industry": "Homebuilding, Real Estate & Financial Services",
     "locality": "Miami, Florida, United States",
@@ -1576,10 +1384,7 @@ export const crmLeadsData: CRMLead[] = [
     "salutation": "Dear Operations Directorate,",
     "email": "communications@tenethealth.com",
     "cc": [],
-    "bcc": [
-      "tanmayv86@gmail.com",
-      "shrushvaity@gmail.com"
-    ],
+    "bcc": [],
     "sector": "healthcare",
     "industry": "Diversified Healthcare Services & Hospital Networks",
     "locality": "Dallas, Texas, United States",

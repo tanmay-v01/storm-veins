@@ -228,8 +228,7 @@ export default function OutreachStudioSuite({
       "Sent_Timestamp",
       "FollowUp_Date",
       "Operational_Focus",
-      "Dual_BCC_1",
-      "Dual_BCC_2",
+      "BCC",
     ];
 
     const rows = filteredLeads.map((l) => [
@@ -247,7 +246,6 @@ export default function OutreachStudioSuite({
       `"${l.followUpDate || ""}"`,
       `"${l.operationalFocus.replace(/"/g, '""')}"`,
       `"${(l.bcc && l.bcc[0]) || "tanmayv86@gmail.com"}"`,
-      `"${(l.bcc && l.bcc[1]) || "shrushvaity@gmail.com"}"`,
     ]);
 
     const csvContent =
@@ -902,43 +900,43 @@ export default function OutreachStudioSuite({
               <h3>Sovereign Rate Limit &amp; Envelope Quota Telemetry</h3>
               <p>
                 Calculated to mathematically prevent <code>hostinger_out_ratelimit</code>.
-                Every outreach email burns 3 envelopes (1 Primary Recipient + 2 Dual
-                BCCs to <code>tanmayv86@gmail.com</code> &amp; <code>shrushvaity@gmail.com</code>).
+                Every outreach email burns 2 envelopes (1 Primary Recipient + 1
+                BCC to <code>tanmayv86@gmail.com</code>).
               </p>
             </div>
 
             <div className="bounds-metrics-strip">
               <div className="bound-gauge-box">
                 <span className="gauge-label">HOURLY DISPATCH TARGET</span>
-                <strong className="gauge-value text-emerald">8 Targets/hr</strong>
-                <span className="gauge-sub">Hard limit: 30 sends/hr</span>
+                <strong className="gauge-value text-emerald">2 Targets/hr</strong>
+                <span className="gauge-sub">Hard limit: 10 sends/hr</span>
                 <div className="gauge-bar">
-                  <div className="gauge-fill bg-emerald" style={{ width: "27%" }}></div>
+                  <div className="gauge-fill bg-emerald" style={{ width: "20%" }}></div>
                 </div>
               </div>
 
               <div className="bound-gauge-box">
                 <span className="gauge-label">ENVELOPE BURN RATE</span>
-                <strong className="gauge-value text-indigo">24 Envelopes/hr</strong>
-                <span className="gauge-sub">8 sends &times; 3 envelopes (Safe cap: 60)</span>
+                <strong className="gauge-value text-indigo">4 Envelopes/hr</strong>
+                <span className="gauge-sub">2 sends &times; 2 envelopes (Safe cap: 70/day)</span>
                 <div className="gauge-bar">
-                  <div className="gauge-fill bg-indigo" style={{ width: "40%" }}></div>
+                  <div className="gauge-fill bg-indigo" style={{ width: "35%" }}></div>
                 </div>
               </div>
 
               <div className="bound-gauge-box">
                 <span className="gauge-label">DAILY RUN RATE</span>
-                <strong className="gauge-value text-blue">192 Accounts/day</strong>
-                <span className="gauge-sub">24/7 autonomous Windows execution</span>
+                <strong className="gauge-value text-blue">35 Accounts/day</strong>
+                <span className="gauge-sub">Strictly under Hostinger 100/day limit</span>
                 <div className="gauge-bar">
-                  <div className="gauge-fill bg-blue" style={{ width: "100%" }}></div>
+                  <div className="gauge-fill bg-blue" style={{ width: "70%" }}></div>
                 </div>
               </div>
 
               <div className="bound-gauge-box">
                 <span className="gauge-label">PACING JITTER</span>
-                <strong className="gauge-value text-amber">25–30s Delay</strong>
-                <span className="gauge-sub">Randomized humanized gap</span>
+                <strong className="gauge-value text-amber">30s Delay</strong>
+                <span className="gauge-sub">Humanized safe gap</span>
                 <div className="gauge-bar">
                   <div className="gauge-fill bg-amber" style={{ width: "100%" }}></div>
                 </div>
@@ -1067,21 +1065,18 @@ export default function OutreachStudioSuite({
                   </div>
                 </div>
 
-                {/* Dual BCC Compliance Check */}
+                {/* BCC Compliance Check */}
                 <div className="dual-bcc-compliance-box">
                   <div className="bcc-check-title">
                     <CheckCircle2 size={16} className="text-emerald" />
-                    <strong>Dual-BCC Audit Compliance: 100%</strong>
+                    <strong>BCC Audit Compliance: 100%</strong>
                   </div>
                   <p className="bcc-check-text">
-                    All dispatches automatically append both executive addresses:
+                    All dispatches automatically append executive monitor:
                   </p>
                   <div className="bcc-pills-row">
                     <span className="bcc-pill">
-                      BCC 1: <code>tanmayv86@gmail.com</code>
-                    </span>
-                    <span className="bcc-pill">
-                      BCC 2: <code>shrushvaity@gmail.com</code>
+                      BCC: <code>tanmayv86@gmail.com</code>
                     </span>
                   </div>
                 </div>
@@ -1218,16 +1213,12 @@ export default function OutreachStudioSuite({
 
                   <div className="dossier-section-box">
                     <span className="section-title">
-                      DUAL-BCC RECIPIENTS &amp; AUDIT TRAIL
+                      BCC RECIPIENT &amp; AUDIT TRAIL
                     </span>
                     <div className="dossier-bcc-list">
                       <div className="bcc-item">
                         <CheckCircle2 size={13} className="text-emerald" />
-                        <span>BCC 1: <code>tanmayv86@gmail.com</code> (Primary Monitor)</span>
-                      </div>
-                      <div className="bcc-item">
-                        <CheckCircle2 size={13} className="text-emerald" />
-                        <span>BCC 2: <code>shrushvaity@gmail.com</code> (Audit Monitor)</span>
+                        <span>BCC: <code>tanmayv86@gmail.com</code> (Executive Monitor)</span>
                       </div>
                     </div>
                   </div>
@@ -1260,7 +1251,7 @@ export default function OutreachStudioSuite({
                     <div className="meta-row">
                       <span className="lbl">BCC:</span>
                       <span className="val text-mono">
-                        tanmayv86@gmail.com, shrushvaity@gmail.com
+                        tanmayv86@gmail.com
                       </span>
                     </div>
                     <div className="meta-row subject-row">

@@ -470,7 +470,7 @@ export default function CRM() {
                       <th>Sector &amp; Specialization</th>
                       <th>Delivery Status</th>
                       <th>Next 4-Day Update</th>
-                      <th>Dual BCC Audit</th>
+                      <th>Delivery Mode</th>
                       <th className="text-right">Actions</th>
                     </tr>
                   </thead>
@@ -488,13 +488,11 @@ export default function CRM() {
                             <div className="company-name">{lead.company}</div>
                             <div className="company-sub">
                               <MapPin size={11} className="inline-icon" />
-                              <span>{lead.locality}</span>
-                              <span className="sep">&bull;</span>
-                              <span className="country-tag">{lead.country}</span>
+                              <span>{lead.locality} &bull; {lead.region}</span>
                             </div>
                           </td>
 
-                          {/* Primary Contact */}
+                          {/* Decision Maker */}
                           <td className="cell-contact">
                             <div className="contact-name">{lead.recipientName}</div>
                             <div className="contact-title">{lead.title}</div>
@@ -523,48 +521,43 @@ export default function CRM() {
                             {isDelivered && (
                               <span className="status-pill status-sent">
                                 <span className="status-dot green" />
-                                Delivered (Active)
+                                <span>Delivered</span>
+                              </span>
+                            )}
+                            {isBounced && (
+                              <span className="status-pill status-bounced" title={lead.notes}>
+                                <span className="status-dot red" />
+                                <span>Bounced</span>
                               </span>
                             )}
                             {isQueued && (
                               <span className="status-pill status-queued">
-                                <span className="status-dot blue" />
-                                Hourly Queue
+                                <span className="status-dot yellow" />
+                                <span>Queued</span>
                               </span>
                             )}
                             {isFailed && (
-                              <span className="status-pill status-failed">
-                                <span className="status-dot amber" />
-                                Rate Throttled (Retry)
-                              </span>
-                            )}
-                            {isBounced && (
-                              <span className="status-pill status-bounced">
+                              <span className="status-pill status-failed" title={lead.notes}>
                                 <span className="status-dot red" />
-                                Bounced / Shielded
+                                <span>Rate-Limited</span>
                               </span>
                             )}
                           </td>
 
-                          {/* Next Update */}
+                          {/* 4-Day Cadence */}
                           <td className="cell-cadence">
-                            {lead.followUpDate === "N/A" ? (
-                              <span className="text-muted text-xs">Exempt (Bounced)</span>
-                            ) : (
-                              <div className="cadence-pill">
-                                <Calendar size={12} className="text-emerald" />
-                                <span>{lead.followUpDate}</span>
-                              </div>
-                            )}
-                            <div className="cadence-sub">
+                            <div className="cadence-date">
+                              <Calendar size={12} className="inline-icon" />
+                              <span>{lead.followUpDate}</span>
+                            </div>
+                            <div className="cadence-tag">
                               {lead.followUpCount > 0 ? `Touchpoint #${lead.followUpCount}` : "Round 1 Pending"}
                             </div>
                           </td>
 
-                          {/* Dual BCC */}
+                          {/* Delivery Mode */}
                           <td className="cell-bcc">
-                            <div className="bcc-tag">tanmayv86@gmail.com</div>
-                            <div className="bcc-tag">shrushvaity@gmail.com</div>
+                            <span className="text-xs text-muted font-mono">Direct (Zero BCC)</span>
                           </td>
 
                           {/* Actions */}
@@ -756,8 +749,8 @@ export default function CRM() {
                           </div>
                         )}
                         <div className="profile-row">
-                          <span className="p-lbl">Dual BCC:</span>
-                          <span className="text-xs text-muted">tanmayv86@gmail.com, shrushvaity@gmail.com</span>
+                          <span className="p-lbl">Delivery Protocol:</span>
+                          <span className="text-xs text-muted">Direct (Zero BCC · 1 Envelope)</span>
                         </div>
                       </div>
 
@@ -828,7 +821,7 @@ export default function CRM() {
                     <div className="email-meta-bar">
                       <div><strong>From:</strong> Storm Veins Media House &lt;contact@stormveins.com&gt;</div>
                       <div><strong>To:</strong> {activeModalLead.recipientName} &lt;{activeModalLead.email}&gt;</div>
-                      <div><strong>BCC:</strong> tanmayv86@gmail.com, shrushvaity@gmail.com</div>
+                      <div><strong>BCC:</strong> None (Direct 1-to-1 Dispatch)</div>
                       <div><strong>Subject:</strong> Private Operating Systems &amp; Dedicated Digital Infrastructure - {activeModalLead.company}</div>
                     </div>
 
