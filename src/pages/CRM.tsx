@@ -37,11 +37,30 @@ export default function CRM() {
   const [selectedRegion, setSelectedRegion] = useState("all");
   const [selectedStatus, setSelectedStatus] = useState("all");
   const [selectedCadence, setSelectedCadence] = useState("all");
+  const [selectedMailbox, setSelectedMailbox] = useState("all");
+  const [selectedScope, setSelectedScope] = useState("all");
   const [sortBy, setSortBy] = useState<"company" | "status" | "followUpDate" | "region">("company");
   const [viewMode, setViewMode] = useState<"table" | "grid">("table");
   const [activeModalLead, setActiveModalLead] = useState<CRMLead | null>(null);
   const [modalTab, setModalTab] = useState<"dossier" | "email">("dossier");
   const [copiedId, setCopiedId] = useState<string | null>(null);
+
+  // Mailbox Definitions
+  const mailboxes = [
+    { id: "all", label: "All Senders (5 Mailboxes)" },
+    { id: "tanmay@stormveins.com", label: "tanmay@stormveins.com (Tanmay V.)" },
+    { id: "sales@stormveins.com", label: "sales@stormveins.com (Enterprise Practice)" },
+    { id: "solutions@stormveins.com", label: "solutions@stormveins.com (Systems Arch.)" },
+    { id: "srushti@stormveins.com", label: "srushti@stormveins.com (Srushti)" },
+    { id: "contact@stormveins.com", label: "contact@stormveins.com (Storm Veins Media)" },
+  ];
+
+  // Geography Scope Definitions
+  const scopes = [
+    { id: "all", label: "All Geographies" },
+    { id: "overseas", label: "🌐 Overseas Only (UAE, US, UK, SG, AU)" },
+    { id: "regional", label: "📍 Regional & Pan-India" },
+  ];
 
   // Sector Definitions
   const sectors = [
@@ -69,6 +88,7 @@ export default function CRM() {
     { id: "Southeast Asia", label: "Singapore" },
     { id: "Europe", label: "London, United Kingdom" },
     { id: "North America", label: "United States" },
+    { id: "Australia", label: "Sydney & Australia" },
   ];
 
   // KPI Calculations
@@ -77,9 +97,10 @@ export default function CRM() {
     const sent = crmLeadsData.filter((l) => l.status === "SENT").length;
     const queued = crmLeadsData.filter((l) => l.status === "QUEUED").length;
     const bounced = crmLeadsData.filter((l) => l.status === "BOUNCED").length;
+    const overseas = crmLeadsData.filter((l) => l.isOverseas).length;
     const due11th = crmLeadsData.filter((l) => l.followUpDate === "2026-09-11" && l.status === "SENT").length;
     const deliveryRate = total > 0 ? Math.round((sent / (sent + bounced)) * 100) : 100;
-    return { total, sent, queued, bounced, due11th, deliveryRate };
+    return { total, sent, queued, bounced, overseas, due11th, deliveryRate };
   }, []);
 
   // Filtered & Sorted Leads
@@ -96,6 +117,11 @@ export default function CRM() {
         if (selectedCadence === "due_11th" && lead.followUpDate !== "2026-09-11") return false;
         if (selectedCadence === "due_15th" && lead.followUpDate !== "2026-09-15") return false;
         if (selectedCadence === "bounced" && lead.status !== "BOUNCED") return false;
+        // Mailbox Filter
+        if (selectedMailbox !== "all" && lead.assignedMailbox !== selectedMailbox) return false;
+        // Scope Filter
+        if (selectedScope === "overseas" && !lead.isOverseas) return false;
+        if (selectedScope === "regional" && lead.isOverseas) return false;
 
         // Search Query
         if (searchQuery.trim() !== "") {
@@ -106,6 +132,7 @@ export default function CRM() {
             lead.email.toLowerCase().includes(q) ||
             lead.locality.toLowerCase().includes(q) ||
             lead.country.toLowerCase().includes(q) ||
+            (lead.assignedMailbox && lead.assignedMailbox.toLowerCase().includes(q)) ||
             lead.industry.toLowerCase().includes(q);
           if (!match) return false;
         }
@@ -119,7 +146,7 @@ export default function CRM() {
         if (sortBy === "followUpDate") return a.followUpDate.localeCompare(b.followUpDate);
         return 0;
       });
-  }, [searchQuery, selectedSector, selectedRegion, selectedStatus, selectedCadence, sortBy]);
+  }, [searchQuery, selectedSector, selectedRegion, selectedStatus, selectedCadence, selectedMailbox, selectedScope, sortBy]);
 
   // Copy Email Handler
   const handleCopy = (text: string, id: string) => {
@@ -353,6 +380,38 @@ export default function CRM() {
                   </select>
                 </div>
 
+                {/* Assigned Sender Mailbox Selector */}
+                <div className="crm-select-wrap">
+                  <Mail size={13} className="select-icon" />
+                  <select
+                    value={selectedMailbox}
+                    onChange={(e) => setSelectedMailbox(e.target.value)}
+                    className="crm-select"
+                  >
+                    {mailboxes.map((m) => (
+                      <option key={m.id} value={m.id}>
+                        {m.label}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Target Scope Selector */}
+                <div className="crm-select-wrap">
+                  <Globe size={13} className="select-icon" />
+                  <select
+                    value={selectedScope}
+                    onChange={(e) => setSelectedScope(e.target.value)}
+                    className="crm-select"
+                  >
+                    {scopes.map((s) => (
+                      <option key={s.id} value={s.id}>
+                        {s.label}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
                 {/* Cadence Selector */}
                 <div className="crm-select-wrap">
                   <Calendar size={13} className="select-icon" />
@@ -423,6 +482,18 @@ export default function CRM() {
                 Showing <strong>{filteredLeads.length}</strong> of <strong>{crmLeadsData.length}</strong> enterprise targets
               </span>
               <div className="active-filters-badges">
+                {selectedMailbox !== "all" && (
+                  <span className="filter-pill">
+                    Sender: {selectedMailbox.split("@")[0]}@
+                    <X size={11} onClick={() => setSelectedMailbox("all")} />
+                  </span>
+                )}
+                {selectedScope !== "all" && (
+                  <span className="filter-pill">
+                    Scope: {selectedScope === "overseas" ? "🌐 Overseas" : "📍 Domestic"}
+                    <X size={11} onClick={() => setSelectedScope("all")} />
+                  </span>
+                )}
                 {selectedSector !== "all" && (
                   <span className="filter-pill">
                     Sector: {sectors.find((s) => s.id === selectedSector)?.label}
@@ -465,8 +536,9 @@ export default function CRM() {
                 <table className="crm-table">
                   <thead>
                     <tr>
-                      <th>Company &amp; Region</th>
+                      <th>Company &amp; Target Scope</th>
                       <th>Primary Decision Maker</th>
+                      <th>Assigned Sender (Mailbox)</th>
                       <th>Sector &amp; Specialization</th>
                       <th>Delivery Status</th>
                       <th>Next 4-Day Update</th>
@@ -485,7 +557,14 @@ export default function CRM() {
                         <tr key={lead.id} className={`crm-table-row ${isBounced ? "row-bounced" : ""}`}>
                           {/* Company & Region */}
                           <td className="cell-company">
-                            <div className="company-name">{lead.company}</div>
+                            <div className="company-name">
+                              <span>{lead.company}</span>
+                              {lead.isOverseas && (
+                                <span className="overseas-tag">
+                                  🌐 {lead.country}
+                                </span>
+                              )}
+                            </div>
                             <div className="company-sub">
                               <MapPin size={11} className="inline-icon" />
                               <span>{lead.locality} &bull; {lead.region}</span>
@@ -506,6 +585,14 @@ export default function CRM() {
                                 {copiedId === lead.id ? <Check size={11} className="text-emerald" /> : <Copy size={11} />}
                               </button>
                             </div>
+                          </td>
+
+                          {/* Assigned Sender */}
+                          <td className="cell-sender">
+                            <span className={`sender-pill sender-${lead.assignedMailbox ? lead.assignedMailbox.split('@')[0] : 'contact'}`}>
+                              <Mail size={11} />
+                              <span>{lead.assignedMailbox ? lead.assignedMailbox.split('@')[0] + '@' : 'contact@'}</span>
+                            </span>
                           </td>
 
                           {/* Sector */}
@@ -593,6 +680,11 @@ export default function CRM() {
                         <span className={`sector-badge sector-${lead.sector}`}>
                           {lead.sector.replace("_", " ").toUpperCase()}
                         </span>
+                        {lead.isOverseas && (
+                          <span className="overseas-tag">
+                            🌐 {lead.country}
+                          </span>
+                        )}
                         {isDelivered && <span className="status-badge-dot green" title="Delivered & In Active Cadence" />}
                         {isQueued && <span className="status-badge-dot blue" title="Queued in Hourly Scheduler" />}
                         {isBounced && <span className="status-badge-dot red" title="Bounced" />}
@@ -602,6 +694,13 @@ export default function CRM() {
                       <div className="card-location">
                         <MapPin size={12} className="text-emerald" />
                         <span>{lead.locality} ({lead.country})</span>
+                      </div>
+
+                      <div className="card-sender-row mb-2">
+                        <span className={`sender-pill sender-${lead.assignedMailbox ? lead.assignedMailbox.split('@')[0] : 'contact'}`}>
+                          <Mail size={11} />
+                          <span>Sender: {lead.assignedMailbox || "contact@stormveins.com"}</span>
+                        </span>
                       </div>
 
                       <div className="card-contact-box">
@@ -749,6 +848,17 @@ export default function CRM() {
                           </div>
                         )}
                         <div className="profile-row">
+                          <span className="p-lbl">Assigned Sender:</span>
+                          <span className={`sender-pill sender-${activeModalLead.assignedMailbox ? activeModalLead.assignedMailbox.split('@')[0] : 'contact'}`}>
+                            <Mail size={11} />
+                            <span>{activeModalLead.assignedMailbox || "contact@stormveins.com"}</span>
+                          </span>
+                        </div>
+                        <div className="profile-row">
+                          <span className="p-lbl">Ownership Rule:</span>
+                          <span className="text-xs text-emerald font-semibold">Strict Single-Owner (No cross-account overlap)</span>
+                        </div>
+                        <div className="profile-row">
                           <span className="p-lbl">Delivery Protocol:</span>
                           <span className="text-xs text-muted">Direct (Zero BCC · 1 Envelope)</span>
                         </div>
@@ -819,7 +929,7 @@ export default function CRM() {
                   /* LIVE EMAIL PREVIEW */
                   <div className="modal-email-preview">
                     <div className="email-meta-bar">
-                      <div><strong>From:</strong> Storm Veins Media House &lt;contact@stormveins.com&gt;</div>
+                      <div><strong>From:</strong> {activeModalLead.assignedMailbox ? `${activeModalLead.assignedMailbox.split('@')[0].toUpperCase()} | Storm Veins <${activeModalLead.assignedMailbox}>` : "Storm Veins Media House <contact@stormveins.com>"}</div>
                       <div><strong>To:</strong> {activeModalLead.recipientName} &lt;{activeModalLead.email}&gt;</div>
                       <div><strong>BCC:</strong> None (Direct 1-to-1 Dispatch)</div>
                       <div><strong>Subject:</strong> Private Operating Systems &amp; Dedicated Digital Infrastructure - {activeModalLead.company}</div>
