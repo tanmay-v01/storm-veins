@@ -1591,12 +1591,12 @@ export const crmLeadsData: CRMLead[] = [
     "country": "United Arab Emirates",
     "isOverseas": true,
     "assignedMailbox": "solutions@stormveins.com",
-    "status": "QUEUED",
-    "sentTimestamp": "",
+    "status": "SENT",
+    "sentTimestamp": "2026-09-07 14:42:21",
     "followUpDate": "2026-09-11",
     "followUpCount": 0,
     "operationalFocus": "Automated contractor progress payouts, fast-track tower inventory allocation, and brand partner integration portals",
-    "notes": "Queued for hourly automated dispatch."
+    "notes": "Delivered without PDF via solutions@stormveins.com. Next update due 11th Sept."
   },
   {
     "id": "aramex-international",
@@ -1614,12 +1614,12 @@ export const crmLeadsData: CRMLead[] = [
     "country": "United Arab Emirates",
     "isOverseas": true,
     "assignedMailbox": "srushti@stormveins.com",
-    "status": "QUEUED",
-    "sentTimestamp": "",
+    "status": "SENT",
+    "sentTimestamp": "2026-09-07 14:42:55",
     "followUpDate": "2026-09-11",
     "followUpCount": 0,
     "operationalFocus": "Cross-border customs API mesh, real-time fleet route optimization telemetry, and driver milestone verification portals",
-    "notes": "Queued for hourly automated dispatch."
+    "notes": "Delivered without PDF via srushti@stormveins.com. Next update due 11th Sept."
   },
   {
     "id": "azizi-developments",
@@ -1637,12 +1637,12 @@ export const crmLeadsData: CRMLead[] = [
     "country": "United Arab Emirates",
     "isOverseas": true,
     "assignedMailbox": "contact@stormveins.com",
-    "status": "QUEUED",
-    "sentTimestamp": "",
+    "status": "SENT",
+    "sentTimestamp": "2026-09-07 14:43:28",
     "followUpDate": "2026-09-11",
     "followUpCount": 0,
     "operationalFocus": "Direct broker lead registration, construction milestone certification vaults, and automated buyer handover portals",
-    "notes": "Queued for hourly automated dispatch."
+    "notes": "Delivered without PDF via contact@stormveins.com. Next update due 11th Sept."
   },
   {
     "id": "gmg-(gulf-marketing-group)",
@@ -1660,12 +1660,12 @@ export const crmLeadsData: CRMLead[] = [
     "country": "United Arab Emirates",
     "isOverseas": true,
     "assignedMailbox": "tanmay@stormveins.com",
-    "status": "QUEUED",
-    "sentTimestamp": "",
+    "status": "SENT",
+    "sentTimestamp": "2026-09-07 14:44:01",
     "followUpDate": "2026-09-11",
     "followUpCount": 0,
     "operationalFocus": "Multi-region supply chain visibility, omni-channel stock allocation pipelines, and automated warehouse fulfillment orchestration",
-    "notes": "Queued for hourly automated dispatch."
+    "notes": "Delivered without PDF via tanmay@stormveins.com. Next update due 11th Sept."
   },
   {
     "id": "redrow-homes",
@@ -1683,12 +1683,12 @@ export const crmLeadsData: CRMLead[] = [
     "country": "United Kingdom",
     "isOverseas": true,
     "assignedMailbox": "sales@stormveins.com",
-    "status": "QUEUED",
-    "sentTimestamp": "",
+    "status": "SENT",
+    "sentTimestamp": "2026-09-07 14:44:34",
     "followUpDate": "2026-09-11",
     "followUpCount": 0,
     "operationalFocus": "Subcontractor site inspection logs, automated NHBC warranty compliance vaults, and regional division milestone payout controls",
-    "notes": "Queued for hourly automated dispatch."
+    "notes": "Delivered without PDF via sales@stormveins.com. Next update due 11th Sept."
   },
   {
     "id": "bellway-homes",
@@ -1706,12 +1706,12 @@ export const crmLeadsData: CRMLead[] = [
     "country": "United Kingdom",
     "isOverseas": true,
     "assignedMailbox": "solutions@stormveins.com",
-    "status": "QUEUED",
-    "sentTimestamp": "",
+    "status": "SENT",
+    "sentTimestamp": "2026-09-07 14:45:07",
     "followUpDate": "2026-09-11",
     "followUpCount": 0,
     "operationalFocus": "Multi-site build stage sign-off portals, material supplier requisition workflows, and digital home buyer handover portals",
-    "notes": "Queued for hourly automated dispatch."
+    "notes": "Delivered without PDF via solutions@stormveins.com. Next update due 11th Sept."
   },
   {
     "id": "crest-nicholson",
@@ -1729,12 +1729,12 @@ export const crmLeadsData: CRMLead[] = [
     "country": "United Kingdom",
     "isOverseas": true,
     "assignedMailbox": "srushti@stormveins.com",
-    "status": "QUEUED",
-    "sentTimestamp": "",
+    "status": "SENT",
+    "sentTimestamp": "2026-09-07 14:45:39",
     "followUpDate": "2026-09-11",
     "followUpCount": 0,
     "operationalFocus": "Site defect-to-quotation engines, subcontractor payment certificates, and central planning permission tracker vaults",
-    "notes": "Queued for hourly automated dispatch."
+    "notes": "Delivered without PDF via srushti@stormveins.com. Next update due 11th Sept."
   },
   {
     "id": "morgan-sindall-group",
@@ -1752,12 +1752,12 @@ export const crmLeadsData: CRMLead[] = [
     "country": "United Kingdom",
     "isOverseas": true,
     "assignedMailbox": "contact@stormveins.com",
-    "status": "QUEUED",
-    "sentTimestamp": "",
+    "status": "SENT",
+    "sentTimestamp": "2026-09-07 14:46:13",
     "followUpDate": "2026-09-11",
     "followUpCount": 0,
     "operationalFocus": "Project margin telemetry, subcontractor safety audit mobile workflows, and ERP bidirectional ledger synchronizers",
-    "notes": "Queued for hourly automated dispatch."
+    "notes": "Delivered without PDF via contact@stormveins.com. Next update due 11th Sept."
   },
   {
     "id": "kier-group",
@@ -1775,12 +1775,12 @@ export const crmLeadsData: CRMLead[] = [
     "country": "United Kingdom",
     "isOverseas": true,
     "assignedMailbox": "tanmay@stormveins.com",
-    "status": "QUEUED",
-    "sentTimestamp": "",
+    "status": "SENT",
+    "sentTimestamp": "2026-09-07 14:46:20",
     "followUpDate": "2026-09-11",
     "followUpCount": 0,
     "operationalFocus": "Highways asset inspection telemetry, field incident escalation pipelines, and statutory safety certificate tracking",
-    "notes": "Queued for hourly automated dispatch."
+    "notes": "Delivered without PDF via tanmay@stormveins.com. Next update due 11th Sept."
   },
   {
     "id": "meritage-homes",

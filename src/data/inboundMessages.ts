@@ -302,6 +302,33 @@ export const INBOUND_MESSAGES_DATA: InboundMessage[] = [
     }
   },
   {
+    "id": "real-solutions-5",
+    "leadId": "lead-5",
+    "senderName": "Enquiries",
+    "senderEmail": "enquiries@cdl.com.sg",
+    "senderTitle": "Direct Contact",
+    "senderCompany": "Enquiries",
+    "senderCountry": "India",
+    "countryFlag": "\ud83c\udf10",
+    "isOverseas": false,
+    "recipientMailbox": "solutions@stormveins.com",
+    "mailboxOwnerName": "Solutions Architecture Team",
+    "subject": "Automatic reply: Private Operating Systems & Dedicated Digital\r\n Infrastructure - City Developments Limited (CDL)",
+    "receivedTimestamp": "Mon, 7 Sep 2026 09:11:27 +0000",
+    "relativeTime": "Today",
+    "intent": "general",
+    "intentLabel": "General Inbound",
+    "priority": "medium",
+    "status": "unread",
+    "snippet": "Dear Sir/Madam, Thank you for contacting City Developments Limited. We are closed on Saturdays, Sundays and Public Holidays. Our office hour...",
+    "body": "Dear Sir/Madam,\nThank you for contacting City Developments Limited.\nWe are closed on Saturdays, Sundays and Public Holidays.\nOur office hours are from 8:45am to 6:00pm, Mondays to Fridays. We will respond to your email on the next working day.\nCity Developments Limited I (Regn. No. 196300316Z)\nTel: (65) 6877 1818 I Fax: (65) 6223 2746 I www.cdl.com.sg<http://www.cdl.com.sg>\nConfidentiality caution & disclaimer. This message, together with any attachment, is intended only for the use of the individual or entity to which it is addressed, and may contain information\nthat is legally privileged and confidential.  If you are not the intended recipient, please be informed that any dissemination, distribution or copying of this message, or any attachment is strictly\nprohibited. Kindly note that e-mail communications are not secured, and therefore are susceptible to alteration. City Developments Limited will not accept legal responsibility for the contents of\nthis message. If you have received this message in error, please advise the sender by reply e-mail, and delete the message. Thank you for your co-operation.",
+    "originalOutboundSnippet": "Interaction sent from solutions@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "Re: Automatic reply: Private Operating Systems & Dedicated Digital\r\n Infrastructure - City Developments Limited (CDL)",
+      "body": "Hi Enquiries,\n\nThank you for connecting with us. We have received your email and will follow up shortly.\n\nBest regards,\nSolutions Architecture Team\nStorm Veins Media House\nsolutions@stormveins.com"
+    }
+  },
+  {
     "id": "real-srushti-3",
     "leadId": "lead-3",
     "senderName": "Shrushti Vaity",
@@ -1163,6 +1190,60 @@ export const INBOUND_MESSAGES_DATA: InboundMessage[] = [
     "suggestedReplyDraft": {
       "subject": "[Internal] Delivery Log: [Postmaster] Email Delivery Failure",
       "body": "Internal Note: Deliverability notice logged for berkeleygroupemailgatewayalerts@berkeleygroup.co.uk. Recipient firewall details updated in master tracker. No direct outbound reply required."
+    }
+  },
+  {
+    "id": "real-sales-11",
+    "leadId": "lead-11",
+    "senderName": "Mail Delivery System",
+    "senderEmail": "MAILER-DAEMON@mailchannels.net",
+    "senderTitle": "Email Gateway / Security Filter",
+    "senderCompany": "Enterprise Gateway",
+    "senderCountry": "India",
+    "countryFlag": "\ud83c\udf10",
+    "isOverseas": false,
+    "recipientMailbox": "sales@stormveins.com",
+    "mailboxOwnerName": "Enterprise Sales Desk",
+    "subject": "Undelivered Mail Returned to Sender",
+    "receivedTimestamp": "Mon, 07 Sep 2026 09:11:56 +0000 (UTC)",
+    "relativeTime": "Today",
+    "intent": "general",
+    "intentLabel": "General Inbound",
+    "priority": "low",
+    "status": "replied",
+    "snippet": "This is the mail system at host relay.mailchannels.net. I'm sorry to have to inform you that your message could not be delivered to one or m...",
+    "body": "This is the mail system at host relay.mailchannels.net.\nI'm sorry to have to inform you that your message could not\nbe delivered to one or more recipients. It's attached below.\nFor further assistance, please send mail to postmaster.\nIf you do so, please include this problem report. You can\ndelete your own text from the attached returned message.\nThe mail system\n<rizwan.sajan@danubegroup.com>: host mx01.ionos.co.uk[212.227.15.188] said:\n550-Requested action not taken: mailbox unavailable 550 For explanation\nvisit\nhttps://postmaster.1und1.de/en/case?c=r1601&i=ip&v=23.83.209.55&r=1MOkwr-1xD1kq48YZ-00XA8E\n(in reply to RCPT TO command)\nHi Rizwan,\nI noticed the scale of Danube Group's operations across Dubai, United Arab Emirates.\nMost leadership teams in Building Materials & Real Estate Development we work with are tired of paying compounding per-user SaaS license fees (Salesforce, Zoho, ERP add-ons) while still wrestling with disconnected spreadsheets for field tracking and dispatch.\nWe engineer custom, sovereign operating systems and internal portals tailored to your exact workflows\u2014where you retain 100% intellectual property and source code ownership, hosted securely inside your own cloud tenant (zero recurring per-seat SaaS taxes).\nA few live architecture teardowns are available at https://stormveins.com.\nWould you be open to a 10-minute introductory call this week, or would you prefer I send over a quick 2-page architecture brief first?\nBest regards,\nStorm Veins Enterprise Desk\nStorm Veins Media House \u2022 Enterprise Practice Lead\nDirect: +91 96998 31323 | sales@stormveins.com\nWeb: https://stormveins.com",
+    "originalOutboundSnippet": "Interaction sent from sales@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "[Internal] Delivery Log: Undelivered Mail Returned to Sender",
+      "body": "Internal Note: Deliverability notice logged for MAILER-DAEMON@mailchannels.net. Recipient firewall details updated in master tracker. No direct outbound reply required."
+    }
+  },
+  {
+    "id": "real-solutions-4",
+    "leadId": "lead-4",
+    "senderName": "Mail Delivery System",
+    "senderEmail": "MAILER-DAEMON@mailchannels.net",
+    "senderTitle": "Email Gateway / Security Filter",
+    "senderCompany": "Enterprise Gateway",
+    "senderCountry": "India",
+    "countryFlag": "\ud83c\udf10",
+    "isOverseas": false,
+    "recipientMailbox": "solutions@stormveins.com",
+    "mailboxOwnerName": "Solutions Architecture Team",
+    "subject": "Undelivered Mail Returned to Sender",
+    "receivedTimestamp": "Mon, 07 Sep 2026 08:35:10 +0000 (UTC)",
+    "relativeTime": "Today",
+    "intent": "general",
+    "intentLabel": "General Inbound",
+    "priority": "low",
+    "status": "replied",
+    "snippet": "This is the mail system at host relay.mailchannels.net. I'm sorry to have to inform you that your message could not be delivered to one or m...",
+    "body": "This is the mail system at host relay.mailchannels.net.\nI'm sorry to have to inform you that your message could not\nbe delivered to one or more recipients. It's attached below.\nFor further assistance, please send mail to postmaster.\nIf you do so, please include this problem report. You can\ndelete your own text from the attached returned message.\nThe mail system\n<customercare@dlf.in>: host dlf-in.mail.protection.outlook.com[52.101.145.0]\nsaid: 550 5.4.1 Recipient address rejected: Access denied. For more\ninformation see https://aka.ms/EXOSmtpErrors\n[PN1PEPF000062B9.INDPRD01.PROD.OUTLOOK.COM 2026-09-07T08:35:09.663Z\n08DF0AFE96DAD1DB] (in reply to RCPT TO command)\nDear Commercial Directorate,\nI am reaching out from Storm Veins Media House. We engineer custom enterprise operating systems, private CRMs, and dedicated digital infrastructure for ambitious industry leaders across Gurugram, Haryana / Delhi NCR, India.\nMost executives in Luxury Real Estate & Commercial Cyber Cities navigate a persistent operational dilemma: off-the-shelf software (Salesforce, Zoho, SAP) forces teams into rigid, generic templates while accumulating compounding per-user licensing overhead, while fragmented spreadsheets and decentralized communication lead to administrative lag and operational leakage.\nWe design purpose-built operating systems that resolve this:\n\u2022 100% Source Code Ownership & Zero SaaS Seat-Tax: Deployed exclusively inside your dedicated AWS/GCP cloud tenant under your domain and branding, with complete intellectual property ownership and zero recurring user licensing penalties.\n\u2022 Engineered for Your Exact Operating Model: Commercial tenant leasing lifecycle, facilities predictive maintenance mesh, footfall & energy telemetry, and automated institutional invoicing \u2014 codifying your native business workflows rather than forcing you into a standard generic box.\n\u2022 End-to-End Engineering & Complete IP Handover: Built with modern high-velocity web and mobile architectures, complete with automated quotation engines, role-based RBAC security, and real-time executive telemetry.\n\u2022 Full Enterprise Integrations: Direct bi-directional integration with your existing ERP/accounting software, automated notification webhooks, cloud storage, and client self-service portals.\nYou can review our live architecture and past enterprise deployments at stormveins.com.\nWould you be open to a brief 10-minute executive briefing next week to explore an architectural blueprint tailored for DLF Limited?\nRespectfully,\nStorm Veins Media House\nSystems Architecture & Enterprise Practice\nMumbai & Thane, Maharashtra (Deploying Globally)\nDirect Line: +91 96998 31323\nEmail: contact@stormveins.com\nWeb: stormveins.com",
+    "originalOutboundSnippet": "Interaction sent from solutions@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "[Internal] Delivery Log: Undelivered Mail Returned to Sender",
+      "body": "Internal Note: Deliverability notice logged for MAILER-DAEMON@mailchannels.net. Recipient firewall details updated in master tracker. No direct outbound reply required."
     }
   },
   {
