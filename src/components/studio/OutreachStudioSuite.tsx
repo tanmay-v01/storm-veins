@@ -563,6 +563,7 @@ export default function OutreachStudioSuite({
                   <tr>
                     <th>COMPANY &amp; SECTOR</th>
                     <th>KEY EXECUTIVE</th>
+                    <th>ASSIGNED SENDER</th>
                     <th>EMAIL &amp; LOCALITY</th>
                     <th>OUTREACH STATUS</th>
                     <th>NEXT CADENCE</th>
@@ -580,6 +581,11 @@ export default function OutreachStudioSuite({
                         <div className="cell-company-block">
                           <strong className="company-title">
                             {lead.company}
+                            {lead.isOverseas && (
+                              <span className="ml-1 text-xs px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 font-semibold border border-emerald-200">
+                                🌐 {lead.country}
+                              </span>
+                            )}
                           </strong>
                           <span className="industry-caption">
                             {lead.industry}
@@ -592,6 +598,13 @@ export default function OutreachStudioSuite({
                             {lead.recipientName}
                           </span>
                           <span className="contact-title">{lead.title}</span>
+                        </div>
+                      </td>
+                      <td>
+                        <div className="cell-sender-block">
+                          <span className="lead-email-mono text-emerald font-semibold">
+                            {lead.assignedMailbox ? lead.assignedMailbox.split("@")[0] + "@" : "contact@"}
+                          </span>
                         </div>
                       </td>
                       <td>

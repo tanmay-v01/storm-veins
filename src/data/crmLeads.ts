@@ -1085,12 +1085,12 @@ export const crmLeadsData: CRMLead[] = [
     "country": "India",
     "isOverseas": false,
     "assignedMailbox": "contact@stormveins.com",
-    "status": "FAILED",
-    "sentTimestamp": "2026-09-07 11:46:14",
+    "status": "SENT",
+    "sentTimestamp": "2026-09-07 12:34:25",
     "followUpDate": "2026-09-11",
     "followUpCount": 0,
     "operationalFocus": "Shop-floor eBR recipe execution engine, machine predictive maintenance telemetry, barcode inventory reconciliation, and global regulatory compliance",
-    "notes": "(451, b'4.7.1 Ratelimit \"hostinger_out_ratelimit\" exceeded for key \"RL868tx84i959osqea84gtob3e\"')"
+    "notes": "Retry delivered successfully via contact@stormveins.com. Next update due 11th Sept."
   },
   {
     "id": "yashoda-hospitals-network",
@@ -1314,13 +1314,13 @@ export const crmLeadsData: CRMLead[] = [
     "region": "Middle East",
     "country": "United Arab Emirates",
     "isOverseas": true,
-    "assignedMailbox": "tanmay@stormveins.com",
-    "status": "QUEUED",
-    "sentTimestamp": "",
+    "assignedMailbox": "sales@stormveins.com",
+    "status": "SENT",
+    "sentTimestamp": "2026-09-07 12:34:58",
     "followUpDate": "2026-09-11",
     "followUpCount": 0,
     "operationalFocus": "Global investor inventory allocation command center, automated international payment reconciliations, facility management IoT telemetry, and VIP client portals",
-    "notes": "Queued for hourly automated dispatch."
+    "notes": "Delivered without PDF via sales@stormveins.com. Next update due 11th Sept."
   },
   {
     "id": "damac-properties",
@@ -1337,13 +1337,13 @@ export const crmLeadsData: CRMLead[] = [
     "region": "Middle East",
     "country": "United Arab Emirates",
     "isOverseas": true,
-    "assignedMailbox": "sales@stormveins.com",
-    "status": "QUEUED",
-    "sentTimestamp": "",
+    "assignedMailbox": "solutions@stormveins.com",
+    "status": "SENT",
+    "sentTimestamp": "2026-09-07 12:35:31",
     "followUpDate": "2026-09-11",
     "followUpCount": 0,
     "operationalFocus": "Cross-border broker commission transparency mesh, dynamic multi-currency quotation engine, escrow compliance tracking, and automated client onboarding",
-    "notes": "Queued for hourly automated dispatch."
+    "notes": "Delivered without PDF via solutions@stormveins.com. Next update due 11th Sept."
   },
   {
     "id": "aster-dm-healthcare",
@@ -1360,13 +1360,13 @@ export const crmLeadsData: CRMLead[] = [
     "region": "Middle East",
     "country": "United Arab Emirates",
     "isOverseas": true,
-    "assignedMailbox": "solutions@stormveins.com",
-    "status": "QUEUED",
-    "sentTimestamp": "",
+    "assignedMailbox": "srushti@stormveins.com",
+    "status": "SENT",
+    "sentTimestamp": "2026-09-07 12:36:05",
     "followUpDate": "2026-09-11",
     "followUpCount": 0,
     "operationalFocus": "Cross-border doctor clinical workstations, unified patient telemetry, automated insurance approval pipelines, and multi-currency billing reconciliation",
-    "notes": "Queued for hourly automated dispatch."
+    "notes": "Delivered without PDF via srushti@stormveins.com. Next update due 11th Sept."
   },
   {
     "id": "sobha-realty-dubai",
@@ -1383,13 +1383,13 @@ export const crmLeadsData: CRMLead[] = [
     "region": "Middle East",
     "country": "United Arab Emirates",
     "isOverseas": true,
-    "assignedMailbox": "srushti@stormveins.com",
-    "status": "QUEUED",
-    "sentTimestamp": "",
+    "assignedMailbox": "contact@stormveins.com",
+    "status": "SENT",
+    "sentTimestamp": "2026-09-07 12:36:40",
     "followUpDate": "2026-09-11",
     "followUpCount": 0,
     "operationalFocus": "Live multi-phase unit inventory sync, broker lead registration portal, WhatsApp payment reminders, and bidirectional SAP accounting integration",
-    "notes": "Queued for hourly automated dispatch."
+    "notes": "Delivered without PDF via contact@stormveins.com. Next update due 11th Sept."
   },
   {
     "id": "capitaland-group",
@@ -1406,13 +1406,13 @@ export const crmLeadsData: CRMLead[] = [
     "region": "Southeast Asia",
     "country": "Singapore",
     "isOverseas": true,
-    "assignedMailbox": "contact@stormveins.com",
-    "status": "QUEUED",
-    "sentTimestamp": "",
+    "assignedMailbox": "tanmay@stormveins.com",
+    "status": "SENT",
+    "sentTimestamp": "2026-09-07 12:37:14",
     "followUpDate": "2026-09-11",
     "followUpCount": 0,
     "operationalFocus": "Multi-asset class portfolio telemetry, automated commercial tenant lease compliance, smart building energy monitoring, and automated investor reporting",
-    "notes": "Queued for hourly automated dispatch."
+    "notes": "Delivered without PDF via tanmay@stormveins.com. Next update due 11th Sept."
   },
   {
     "id": "berkeley-group-holdings",
@@ -1429,13 +1429,13 @@ export const crmLeadsData: CRMLead[] = [
     "region": "Europe",
     "country": "United Kingdom",
     "isOverseas": true,
-    "assignedMailbox": "tanmay@stormveins.com",
-    "status": "QUEUED",
-    "sentTimestamp": "",
+    "assignedMailbox": "sales@stormveins.com",
+    "status": "SENT",
+    "sentTimestamp": "2026-09-07 12:37:47",
     "followUpDate": "2026-09-11",
     "followUpCount": 0,
     "operationalFocus": "End-to-end residential development tracking, automated subcontractor milestone verification, buyer customization engine, and UK compliance audit vaults",
-    "notes": "Queued for hourly automated dispatch."
+    "notes": "Delivered without PDF via sales@stormveins.com. Next update due 11th Sept."
   },
   {
     "id": "spire-healthcare-group",
@@ -1452,13 +1452,13 @@ export const crmLeadsData: CRMLead[] = [
     "region": "Europe",
     "country": "United Kingdom",
     "isOverseas": true,
-    "assignedMailbox": "sales@stormveins.com",
-    "status": "QUEUED",
-    "sentTimestamp": "",
+    "assignedMailbox": "solutions@stormveins.com",
+    "status": "SENT",
+    "sentTimestamp": "2026-09-07 12:38:21",
     "followUpDate": "2026-09-11",
     "followUpCount": 0,
     "operationalFocus": "Private patient clinical pathway tracking, theater scheduling coordination mesh, private insurance claim settlement engine, and CQC compliance vaults",
-    "notes": "Queued for hourly automated dispatch."
+    "notes": "Delivered without PDF via solutions@stormveins.com. Next update due 11th Sept."
   },
   {
     "id": "pultegroup-inc",
@@ -1475,13 +1475,13 @@ export const crmLeadsData: CRMLead[] = [
     "region": "North America",
     "country": "United States",
     "isOverseas": true,
-    "assignedMailbox": "solutions@stormveins.com",
-    "status": "QUEUED",
-    "sentTimestamp": "",
+    "assignedMailbox": "srushti@stormveins.com",
+    "status": "SENT",
+    "sentTimestamp": "2026-09-07 12:38:54",
     "followUpDate": "2026-09-11",
     "followUpCount": 0,
     "operationalFocus": "Multi-state subdivision inventory sync, subcontractor dispatch telemetry, dynamic lot quotation engine, and automated closing milestone tracking",
-    "notes": "Queued for hourly automated dispatch."
+    "notes": "Delivered without PDF via srushti@stormveins.com. Next update due 11th Sept."
   },
   {
     "id": "lennar-corporation",
@@ -1498,13 +1498,13 @@ export const crmLeadsData: CRMLead[] = [
     "region": "North America",
     "country": "United States",
     "isOverseas": true,
-    "assignedMailbox": "srushti@stormveins.com",
-    "status": "QUEUED",
-    "sentTimestamp": "",
+    "assignedMailbox": "contact@stormveins.com",
+    "status": "SENT",
+    "sentTimestamp": "2026-09-07 12:39:28",
     "followUpDate": "2026-09-11",
     "followUpCount": 0,
     "operationalFocus": "Enterprise sales workflow automation, title & mortgage telemetry integration, real-time home construction tracking, and client portal orchestration",
-    "notes": "Queued for hourly automated dispatch."
+    "notes": "Delivered without PDF via contact@stormveins.com. Next update due 11th Sept."
   },
   {
     "id": "tenet-healthcare",
