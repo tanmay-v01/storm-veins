@@ -430,8 +430,10 @@ export default function InboundMessagesHub({
                 <div className="viewer-action-toolbar">
                   <a
                     href={`mailto:${activeMessage.senderEmail}?subject=${encodeURIComponent(
-                      activeMessage.suggestedReplyDraft.subject
-                    )}&body=${encodeURIComponent(activeMessage.suggestedReplyDraft.body)}`}
+                      activeMessage.suggestedReplyDraft?.subject || `Re: ${activeMessage.subject}`
+                    )}&body=${encodeURIComponent(
+                      activeMessage.suggestedReplyDraft?.body || `Dear ${activeMessage.senderName},\n\nThank you for reaching out.\n\nBest regards,\n${activeMessage.mailboxOwnerName}\nStorm Veins Media House`
+                    )}`}
                     className="action-btn-primary"
                   >
                     <Send size={13} />
@@ -439,25 +441,27 @@ export default function InboundMessagesHub({
                     <ArrowUpRight size={12} />
                   </a>
 
-                  <button
-                    type="button"
-                    className="action-btn-secondary"
-                    onClick={() =>
-                      handleCopyDraft(activeMessage.suggestedReplyDraft.body, activeMessage.id)
-                    }
-                  >
-                    {copiedDraftId === activeMessage.id ? (
-                      <>
-                        <Check size={13} className="text-emerald" />
-                        <span className="text-emerald">Draft Copied!</span>
-                      </>
-                    ) : (
-                      <>
-                        <Copy size={13} />
-                        <span>Copy Response Blueprint</span>
-                      </>
-                    )}
-                  </button>
+                  {activeMessage.suggestedReplyDraft && (
+                    <button
+                      type="button"
+                      className="action-btn-secondary"
+                      onClick={() =>
+                        handleCopyDraft(activeMessage.suggestedReplyDraft!.body, activeMessage.id)
+                      }
+                    >
+                      {copiedDraftId === activeMessage.id ? (
+                        <>
+                          <Check size={13} className="text-emerald" />
+                          <span className="text-emerald">Draft Copied!</span>
+                        </>
+                      ) : (
+                        <>
+                          <Copy size={13} />
+                          <span>Copy Response Blueprint</span>
+                        </>
+                      )}
+                    </button>
+                  )}
 
                   <button
                     type="button"
@@ -488,7 +492,7 @@ export default function InboundMessagesHub({
               <div className="viewer-body-card">
                 <div className="viewer-body-badge">
                   <Mail size={12} />
-                  <span>INCOMING MESSAGE BODY</span>
+                  <span>INCOMING MESSAGE BODY (HOSTINGER IMAP)</span>
                 </div>
 
                 <div className="viewer-email-body-text">
@@ -499,56 +503,60 @@ export default function InboundMessagesHub({
               </div>
 
               {/* Original Outbound Context Thread */}
-              <div className="viewer-context-card">
-                <div className="context-card-header">
-                  <FileText size={12} className="text-indigo" />
-                  <span>ORIGINAL OUTBOUND PITCH &bull; OUR EMAIL THEY REPLIED TO</span>
+              {activeMessage.originalOutboundSnippet && (
+                <div className="viewer-context-card">
+                  <div className="context-card-header">
+                    <FileText size={12} className="text-indigo" />
+                    <span>ORIGINAL OUTBOUND PITCH &bull; OUR EMAIL THEY REPLIED TO</span>
+                  </div>
+                  <blockquote className="context-quote">
+                    "{activeMessage.originalOutboundSnippet}"
+                  </blockquote>
                 </div>
-                <blockquote className="context-quote">
-                  "{activeMessage.originalOutboundSnippet}"
-                </blockquote>
-              </div>
+              )}
 
               {/* Quick AI-Synthesized Response Blueprint */}
-              <div className="viewer-reply-card">
-                <div className="reply-card-header">
-                  <div className="reply-header-left">
-                    <Sparkles size={14} className="text-emerald" />
-                    <strong>Quick Response Blueprint</strong>
-                    <span className="reply-ready-pill">Ready to Dispatch</span>
+              {activeMessage.suggestedReplyDraft && (
+                <div className="viewer-reply-card">
+                  <div className="reply-card-header">
+                    <div className="reply-header-left">
+                      <Sparkles size={14} className="text-emerald" />
+                      <strong>Quick Response Blueprint</strong>
+                      <span className="reply-ready-pill">Ready to Dispatch</span>
+                    </div>
+                    <button
+                      type="button"
+                      className="btn-copy-draft-mini"
+                      onClick={() =>
+                        handleCopyDraft(activeMessage.suggestedReplyDraft!.body, activeMessage.id)
+                      }
+                    >
+                      {copiedDraftId === activeMessage.id ? (
+                        <>
+                          <Check size={12} />
+                          <span>Copied</span>
+                        </>
+                      ) : (
+                        <>
+                          <Copy size={12} />
+                          <span>Copy Reply</span>
+                        </>
+                      )}
+                    </button>
                   </div>
-                  <button
-                    type="button"
-                    className="btn-copy-draft-mini"
-                    onClick={() =>
-                      handleCopyDraft(activeMessage.suggestedReplyDraft.body, activeMessage.id)
-                    }
-                  >
-                    {copiedDraftId === activeMessage.id ? (
-                      <>
-                        <Check size={12} />
-                        <span>Copied</span>
-                      </>
-                    ) : (
-                      <>
-                        <Copy size={12} />
-                        <span>Copy Reply</span>
-                      </>
-                    )}
-                  </button>
-                </div>
 
-                <div className="reply-subject-preview">
-                  <span className="r-lbl">Subject:</span>
-                  <code>{activeMessage.suggestedReplyDraft.subject}</code>
-                </div>
+                  <div className="reply-subject-preview">
+                    <span className="r-lbl">Subject:</span>
+                    <code>{activeMessage.suggestedReplyDraft.subject}</code>
+                  </div>
 
-                <div className="reply-body-preview">
-                  {activeMessage.suggestedReplyDraft.body.split("\n\n").map((para, idx) => (
-                    <p key={idx}>{para}</p>
-                  ))}
+                  <div className="reply-body-preview">
+                    {activeMessage.suggestedReplyDraft.body.split("\n\n").map((para: string, idx: number) => (
+                      <p key={idx}>{para}</p>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           ) : (
             <div className="inbound-no-selection">

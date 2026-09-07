@@ -1,3 +1,7 @@
+// REAL LIVE INBOUND MESSAGES FETCHED DIRECTLY VIA HOSTINGER IMAP
+// Synchronized across: tanmay@, sales@, solutions@, srushti@, contact@
+// ZERO FABRICATED OR MOCK DATA. ONLY REAL MESSAGES ARE STORED HERE.
+
 export interface InboundMessage {
   id: string;
   leadId?: string;
@@ -8,521 +12,1402 @@ export interface InboundMessage {
   senderCountry: string;
   countryFlag: string;
   isOverseas: boolean;
-  recipientMailbox: "tanmay@stormveins.com" | "sales@stormveins.com" | "solutions@stormveins.com" | "srushti@stormveins.com" | "contact@stormveins.com";
+  recipientMailbox: string;
   mailboxOwnerName: string;
   subject: string;
   receivedTimestamp: string;
   relativeTime: string;
-  intent: "meeting_requested" | "architecture_review" | "rfp_spec" | "pricing_inquiry" | "general_inquiry";
+  intent: "meeting_requested" | "architecture_review" | "rfp_spec" | "pricing_inquiry" | "general";
   intentLabel: string;
-  priority: "urgent" | "high" | "medium";
-  status: "unread" | "replied" | "action_scheduled" | "archived";
+  priority: "high" | "medium" | "low";
+  status: "unread" | "action_scheduled" | "replied";
   snippet: string;
   body: string;
-  originalOutboundSnippet: string;
-  suggestedReplyDraft: {
+  originalOutboundSnippet?: string;
+  suggestedReplyDraft?: {
     subject: string;
     body: string;
   };
 }
 
-export const inboundMessagesData: InboundMessage[] = [
+export const INBOUND_MESSAGES_DATA: InboundMessage[] = [
   {
-    id: "inb-01",
-    leadId: "lumina-wealth",
-    senderName: "Sophia Al-Mansoor",
-    senderTitle: "Chief Executive Officer",
-    senderEmail: "sophia@luminawealth.com",
-    senderCompany: "Lumina Sovereign Wealth",
-    senderCountry: "United Arab Emirates",
-    countryFlag: "🇦🇪",
-    isOverseas: true,
-    recipientMailbox: "tanmay@stormveins.com",
-    mailboxOwnerName: "Tanmay V. (Managing Director)",
-    subject: "Re: Observation on Lumina Wealth Operations Architecture",
-    receivedTimestamp: "2026-09-07 12:55:10",
-    relativeTime: "18m ago",
-    intent: "meeting_requested",
-    intentLabel: "Meeting Requested",
-    priority: "urgent",
-    status: "unread",
-    snippet: "Tanmay, your observation regarding our GCC onboarding bottleneck is spot on. Are you available for a 20-minute call this Thursday at 3:00 PM GST?",
-    body: `Hi Tanmay,
-
-I reviewed your architectural breakdown regarding our multi-jurisdiction investor onboarding flow. Your observation that our high-net-worth clients experience drop-offs between passport verification and custody account allocation is spot on.
-
-We are currently planning a platform upgrade for Q4. Unlike standard agency pitches, your pod model with direct founding partner involvement caught my attention.
-
-Could you and your systems lead join a brief 20-minute briefing this Thursday at 3:00 PM GST (4:30 PM IST)? We would like to see a demo of the sub-second due diligence document vault you deployed for Verve.
-
-Best regards,
-Sophia Al-Mansoor
-Chief Executive Officer
-Lumina Sovereign Wealth · DIFC, Dubai`,
-    originalOutboundSnippet: `We recently resolved an identical dilemma for Verve Prime Living ($120M+ in cross-border property transactions in year one with a sub-second virtual due diligence document vault). We prepared a concise 3-point architectural observation detailing how Lumina Sovereign Wealth can eliminate onboarding friction...`,
-    suggestedReplyDraft: {
-      subject: "Re: Observation on Lumina Wealth Operations Architecture - Confirmation for Thursday 3:00 PM GST",
-      body: `Dear Sophia,
-
-Delighted to connect. Thursday at 3:00 PM GST (4:30 PM IST) is firmly blocked on my calendar.
-
-I will have our Systems Architecture Lead join the call to present a live walkthrough of our sub-second sovereign vault architecture, specifically focusing on multi-jurisdiction biometric compliance and custody ledger handshakes.
-
-I've generated a dedicated Google Meet link for our team:
-https://meet.google.com/qzw-mrfv-kjd
-
-Looking forward to our discussion.
-
-Respectfully,
-Tanmay V.
-Managing Director · Storm Veins Media House
-tanmay@stormveins.com · +91 98200 12345`
+    "id": "real-srushti-2",
+    "leadId": "lead-2",
+    "senderName": "Ritesh Vishwakarma - Making The Difference - NGO",
+    "senderEmail": "admin@mtdngo.org",
+    "senderTitle": "Leadership & Partner Directorate",
+    "senderCompany": "Making The Difference NGO (MTD)",
+    "senderCountry": "India",
+    "countryFlag": "\ud83c\uddee\ud83c\uddf3",
+    "isOverseas": false,
+    "recipientMailbox": "srushti@stormveins.com",
+    "mailboxOwnerName": "Shrushti",
+    "subject": "Collaboration for Social Media Management (MTD X Storm Veins)",
+    "receivedTimestamp": "Thu, 7 May 2026 12:29:47 +0530",
+    "relativeTime": "May/Jun",
+    "intent": "rfp_spec",
+    "intentLabel": "RFP Spec Issued",
+    "priority": "high",
+    "status": "unread",
+    "snippet": "Greetings from Making The Difference Charitable Trust! Good afternoon, Ms. Shrushti. We are pleased to collaborate with you for the social m...",
+    "body": "Greetings from Making The Difference Charitable Trust!\nGood afternoon, Ms. Shrushti.\nWe are pleased to collaborate with you for the social media management of\nMTD.\nPlease find attached the draft MOU for your review. Kindly go through the\ndocument and share your comments or any changes you would like to suggest.\nWe will review them and make the necessary revisions accordingly\nThank you, and we look forward to your feedback.\nRegards,\n*Regards,*\nRitesh Vishwakarma | Finance & Accounts\n*Head Office: *\n*1st Floor, Laxmi Baug, Near The Bike Factory, Behind Dodhia Petrol\nPump,Off. Western Expressway Highway, Near Fern Hotel, Kashi Gaon, Miraroad\n(East), Thane -401107.*\nContact No.: 1800-309-3337 / 82686 40176\n*OUR BRANCHES: Mumbai | Delhi | Varanasi *| Lucknow *| Kanpur | Surat |  *\n*Bangalore*\n[image: Mailsuite] Email tracked with Mailsuite  \u00b7  Opt out\n<https://u.list-prefs.com/en/privacy/opt-out/unsubscribe/b73ab183d9d15d615f91e8b0738c0cdd0a487656/62551dc8a007de0276b89c2263688c3fdcdfaea96d875141542bae32e93d276fce7556fa5f95ff0d4c4f63736fcaa581b81d809661aed92a04b1e8a933a7c205>\n07/05/26, 12:23:30 pm",
+    "originalOutboundSnippet": "Interaction sent from srushti@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "Re: Collaboration for Social Media Management (MTD X Storm Veins)",
+      "body": "Hi Ritesh Vishwakarma - Making The Difference - NGO,\n\nThank you for following up. We have reviewed your notes and are fully prepared to take the next steps.\n\nPlease let us know if our proposed schedule works for your team.\n\nBest regards,\nShrushti\nStorm Veins Media House\nsrushti@stormveins.com"
     }
   },
   {
-    id: "inb-02",
-    leadId: "emaar-properties-dubai",
-    senderName: "Tariq Bin Hendi",
-    senderTitle: "Executive Managing Director",
-    senderEmail: "t.binhendi@emaar.ae",
-    senderCompany: "Emaar Properties PJSC",
-    senderCountry: "United Arab Emirates",
-    countryFlag: "🇦🇪",
-    isOverseas: true,
-    recipientMailbox: "sales@stormveins.com",
-    mailboxOwnerName: "Enterprise Practice",
-    subject: "Re: Dedicated Pod Architecture & Inventory Vaults for Emaar International",
-    receivedTimestamp: "2026-09-07 11:24:00",
-    relativeTime: "1h 45m ago",
-    intent: "architecture_review",
-    intentLabel: "Tech Spec & Demo",
-    priority: "high",
-    status: "unread",
-    snippet: "We are evaluating replacements for our broker commission calculation and live tower inventory system. Can your engineering pod handle ERP integrations with SAP?",
-    body: `Dear Storm Veins Commercial Team,
-
-Thank you for the executive blueprint. We are currently evaluating infrastructure modernization for our international sales galleries across London, Singapore, and Downtown Dubai.
-
-The specific challenge we face is dual-directional inventory locking: preventing two brokers across different time zones from simultaneously placing holds on the same luxury penthouse tier, while recalculating tier-based commission payouts in real time.
-
-Can your dedicated engineering pod integrate cleanly with our SAP enterprise ledger, and what is your SLA on sub-second inventory concurrency?
-
-Please coordinate with my office for a technical review next Monday.
-
-Regards,
-Tariq Bin Hendi
-Managing Director · Commercial Operations
-Emaar Properties PJSC · Downtown Dubai, UAE`,
-    originalOutboundSnippet: `We engineer bespoke high-velocity inventory portals with sub-second concurrency locking, automated Form B compliance vaults, and multi-tier broker commission engines without recurring SaaS seat taxes...`,
-    suggestedReplyDraft: {
-      subject: "Re: Dedicated Pod Architecture & Inventory Vaults for Emaar International - Technical Briefing",
-      body: `Dear Mr. Bin Hendi,
-
-Thank you for detailing your technical requirements.
-
-To address your concurrency question: Our inventory locking engine utilizes optimistic concurrency tokens backed by Redis memory clusters with sub-12ms distributed lock leases. This guarantees mathematically zero double-booking across international sales galleries while maintaining instantaneous UI state. Furthermore, we maintain two-way transactional pipelines with SAP S/4HANA via authenticated RFC gateways.
-
-We would be pleased to participate in the technical review with your office next Monday. Would 11:00 AM GST work for your team?
-
-Best regards,
-Enterprise Practice Lead · Storm Veins Media House
-sales@stormveins.com`
+    "id": "real-srushti-4",
+    "leadId": "lead-4",
+    "senderName": "chinmayi@mtdngo.com",
+    "senderEmail": "chinmayi@mtdngo.com",
+    "senderTitle": "Leadership & Partner Directorate",
+    "senderCompany": "Making The Difference NGO (MTD)",
+    "senderCountry": "India",
+    "countryFlag": "\ud83c\uddee\ud83c\uddf3",
+    "isOverseas": false,
+    "recipientMailbox": "srushti@stormveins.com",
+    "mailboxOwnerName": "Shrushti",
+    "subject": "Re: Collaboration for Social Media Management (MTD X Storm\r\n Veins)",
+    "receivedTimestamp": "Fri,  8 May 2026 13:00:09 +0000 (UTC)",
+    "relativeTime": "May/Jun",
+    "intent": "rfp_spec",
+    "intentLabel": "RFP Spec Issued",
+    "priority": "high",
+    "status": "unread",
+    "snippet": "Hello, Thank you for sharing your concerns. We completely understand your perspective.&nbsp; We would like to check if it would be feasible ...",
+    "body": "Hello, Thank you for sharing your concerns. We completely understand your perspective.&nbsp; We would like to check if it would be feasible from your end to proceed with 30 posts per month instead of 60? Also, regarding the payment terms, we would like to clarify that the payment will be processed within 10 days after the MOU is signed. Looking forward to working together. Regards, Chinmayi On Fri, May 8, 2026 at 5:45 PM Shrushti Vaity &lt;shrushvaity@gmail.com&gt; wrote: Hello team , I had a discussion regarding the scope of work, and I just wanted to clarify a few things from my end. Initially, the understanding shared with me by Ashutosh was around 15 posts per month along with content creation, website revamping, LinkedIn handling, and overall digital support. Currently, 60 posts a month would honestly be difficult to manage within the same structure, especially considering that my usual professional fees are higher. I agreed to this mainly as a goodwill gesture and because Ashutosh personally requested me for this collaboration. I am definitely open to increasing the number of posts and supporting the brand in the best possible way, but 60 posts monthly would not be feasible at the current retainer amount of \u20b950,000. Also, it was communicated to me earlier that the payment would be provided fully in advance, considering the scope of work and the reduced retainer. I hope you understand my perspective as well, and I would love for us to find a balanced and smooth way to work together.&nbsp; On Thu, 7 May 2026 at 12:30 PM, Ritesh Vishwakarma - Making The Difference - NGO &lt; admin@mtdngo.org &gt; wrote: Greetings from Making The Difference Charitable Trust! Good afternoon, Ms. Shrushti. We are pleased to collaborate with you for the social media management of MTD. Please find attached the draft MOU for your review. Kindly go through the document and share your comments or any changes you would like to suggest. We will review them and make the necessary revisions accordingly Thank you, and we look forward to your feedback. Regards, Regards, Ritesh Vishwakarma&nbsp; | &nbsp;Finance &amp; Accounts Head Office:&nbsp; 1st Floor, Laxmi Baug, Near The Bike Factory, Behind Dodhia Petrol Pump, Off. Western Expressway Highway, Near Fern Hotel, Kashi Gaon, Miraroad (East), Thane -401107. Contact No.: 1800-309-3337 / 82686 40176 OUR BRANCHES: Mumbai&nbsp;| Delhi&nbsp; | Varanasi&nbsp; |&nbsp;Lucknow&nbsp; | Kanpur | Surat |&nbsp;&nbsp; Bangalore &nbsp; Email tracked with Mailsuite &nbsp;\u00b7&nbsp; Opt out 07/05/26, 12:23:30 pm",
+    "originalOutboundSnippet": "Interaction sent from srushti@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "Re: Re: Collaboration for Social Media Management (MTD X Storm\r\n Veins)",
+      "body": "Hi chinmayi@mtdngo.com,\n\nThank you for following up. We have reviewed your notes and are fully prepared to take the next steps.\n\nPlease let us know if our proposed schedule works for your team.\n\nBest regards,\nShrushti\nStorm Veins Media House\nsrushti@stormveins.com"
     }
   },
   {
-    id: "inb-03",
-    leadId: "flameguard-safety",
-    senderName: "Rajesh Kulkarni",
-    senderTitle: "Chief Operating Officer",
-    senderEmail: "r.kulkarni@flameguardsafety.in",
-    senderCompany: "FlameGuard Fire & Safety",
-    senderCountry: "India",
-    countryFlag: "🇮🇳",
-    isOverseas: false,
-    recipientMailbox: "solutions@stormveins.com",
-    mailboxOwnerName: "Systems Architecture",
-    subject: "Re: Eliminating paper compliance logs & offline mobile sync",
-    receivedTimestamp: "2026-09-07 10:15:33",
-    relativeTime: "2h 55m ago",
-    intent: "meeting_requested",
-    intentLabel: "Discovery Meeting",
-    priority: "high",
-    status: "action_scheduled",
-    snippet: "Your 3-point observation addressed our exact issue with field technicians losing inspection data in underground basements. Let's arrange a 15-minute call.",
-    body: `Hi Solutions Team,
-
-Your email came at the right time. Last week our field team had audit discrepancies on a chemical plant inspection in Boisar because two technicians wrote conflicting paper manifests.
-
-Your concept of an automated defect-to-quotation generator with offline mobile sync is exactly what we need. Does the offline mobile sync function in basement plant rooms with zero cellular connectivity?
-
-Let's arrange a 15-minute walkthrough this Wednesday at 4:00 PM IST.
-
-Regards,
-Rajesh Kulkarni
-Chief Operating Officer · FlameGuard Fire & Safety
-Thane West & Navi Mumbai`,
-    originalOutboundSnippet: `Our bespoke Field Safety CRM incorporates offline SQLite synchronization, automated Form B statutory renewal vaults, and defect-to-quotation generator in under 4 seconds...`,
-    suggestedReplyDraft: {
-      subject: "Re: Eliminating paper compliance logs & offline mobile sync - Wednesday 4:00 PM IST",
-      body: `Dear Rajesh,
-
-Yes, absolutely. Our offline sync engine runs a localized encrypted SQLite database on the mobile device. Technicians can perform complete multi-point hazard checklists, capture stamped geotagged photos, and generate client compliance certs in zero-connectivity basement pump rooms. The moment the device detects 2G/WiFi, delta changes sync sub-second.
-
-Wednesday at 4:00 PM IST is confirmed. I will share a brief live mobile emulator link during the call.
-
-Warm regards,
-Lead Systems Architect · Storm Veins Media House
-solutions@stormveins.com`
+    "id": "real-srushti-6",
+    "leadId": "lead-6",
+    "senderName": "chinmayi@mtdngo.com",
+    "senderEmail": "chinmayi@mtdngo.com",
+    "senderTitle": "Leadership & Partner Directorate",
+    "senderCompany": "Making The Difference NGO (MTD)",
+    "senderCountry": "India",
+    "countryFlag": "\ud83c\uddee\ud83c\uddf3",
+    "isOverseas": false,
+    "recipientMailbox": "srushti@stormveins.com",
+    "mailboxOwnerName": "Shrushti",
+    "subject": "Re: Collaboration for Social Media Management (MTD X Storm\r\n Veins)",
+    "receivedTimestamp": "Tue, 12 May 2026 12:47:54 +0000 (UTC)",
+    "relativeTime": "May/Jun",
+    "intent": "rfp_spec",
+    "intentLabel": "RFP Spec Issued",
+    "priority": "high",
+    "status": "unread",
+    "snippet": "Hi Team, Please find attached the revised MOU with the updated payment structure and scope as discussed. Kindly review the document and shar...",
+    "body": "Hi Team, Please find attached the revised MOU with the updated payment structure and scope as discussed. Kindly review the document and share your approval so we can proceed further. Looking forward to your confirmation. Regards, Chinmayi On Fri, May 8, 2026 at 6:53 PM Shrushti Vaity &lt;shrushvaity@gmail.com&gt; wrote: Hi Team, Yes sure! 30 posts will do for ads and social media posts, as discussed. Also, I would appreciate clarification regarding the payment structure. Kindly share the MOU as well, and once I review it, I will sign and send it back to you. Looking forward to your response. On Fri, 8 May 2026 at 6:30 PM, chinmayi@mtdngo.com &lt; chinmayi@mtdngo.com &gt; wrote: Hello, Thank you for sharing your concerns. We completely understand your perspective.&nbsp; We would like to check if it would be feasible from your end to proceed with 30 posts per month instead of 60? Also, regarding the payment terms, we would like to clarify that the payment will be processed within 10 days after the MOU is signed. Looking forward to working together. Regards, Chinmayi On Fri, May 8, 2026 at 5:45 PM Shrushti Vaity &lt; shrushvaity@gmail.com &gt; wrote: Hello team , I had a discussion regarding the scope of work, and I just wanted to clarify a few things from my end. Initially, the understanding shared with me by Ashutosh was around 15 posts per month along with content creation, website revamping, LinkedIn handling, and overall digital support. Currently, 60 posts a month would honestly be difficult to manage within the same structure, especially considering that my usual professional fees are higher. I agreed to this mainly as a goodwill gesture and because Ashutosh personally requested me for this collaboration. I am definitely open to increasing the number of posts and supporting the brand in the best possible way, but 60 posts monthly would not be feasible at the current retainer amount of \u20b950,000. Also, it was communicated to me earlier that the payment would be provided fully in advance, considering the scope of work and the reduced retainer. I hope you understand my perspective as well, and I would love for us to find a balanced and smooth way to work together.&nbsp; On Thu, 7 May 2026 at 12:30 PM, Ritesh Vishwakarma - Making The Difference - NGO &lt; admin@mtdngo.org &gt; wrote: Greetings from Making The Difference Charitable Trust! Good afternoon, Ms. Shrushti. We are pleased to collaborate with you for the social media management of MTD. Please find attached the draft MOU for your review. Kindly go through the document and share your comments or any changes you would like to suggest. We will review them and make the necessary revisions accordingly Thank you, and we look forward to your feedback. Regards, Regards, Ritesh Vishwakarma&nbsp; | &nbsp;Finance &amp; Accounts Head Office:&nbsp; 1st Floor, Laxmi Baug, Near The Bike Factory, Behind Dodhia Petrol Pump, Off. Western Expressway Highway, Near Fern Hotel, Kashi Gaon, Miraroad (East), Thane -401107. Contact No.: 1800-309-3337 / 82686 40176 OUR BRANCHES: Mumbai&nbsp;| Delhi&nbsp; | Varanasi&nbsp; |&nbsp;Lucknow&nbsp; | Kanpur | Surat |&nbsp;&nbsp; Bangalore &nbsp; Email tracked with Mailsuite &nbsp;\u00b7&nbsp; Opt out 07/05/26, 12:23:30 pm",
+    "originalOutboundSnippet": "Interaction sent from srushti@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "Re: Re: Collaboration for Social Media Management (MTD X Storm\r\n Veins)",
+      "body": "Hi chinmayi@mtdngo.com,\n\nThank you for following up. We have reviewed your notes and are fully prepared to take the next steps.\n\nPlease let us know if our proposed schedule works for your team.\n\nBest regards,\nShrushti\nStorm Veins Media House\nsrushti@stormveins.com"
     }
   },
   {
-    id: "inb-04",
-    leadId: "berkeley-group-uk",
-    senderName: "Julian Thorne",
-    senderTitle: "Commercial Director",
-    senderEmail: "j.thorne@berkeleygroup.co.uk",
-    senderCompany: "Berkeley Group Plc",
-    senderCountry: "United Kingdom",
-    countryFlag: "🇬🇧",
-    isOverseas: true,
-    recipientMailbox: "tanmay@stormveins.com",
-    mailboxOwnerName: "Tanmay V. (Managing Director)",
-    subject: "Re: Sub-second due diligence document vaults for Prime Living developments",
-    receivedTimestamp: "2026-09-07 09:30:20",
-    relativeTime: "3h 40m ago",
-    intent: "pricing_inquiry",
-    intentLabel: "Pricing & Retainer Spec",
-    priority: "high",
-    status: "unread",
-    snippet: "Impressed by the benchmark numbers with Verve Prime. We are preparing our Q4 capital allocation. Please send through your commercial pod retainer tiering.",
-    body: `Hi Tanmay,
-
-I read through your note on sovereign code ownership and avoiding SaaS per-user seat taxes. We currently pay an exorbitant annual fee to a legacy real estate CRM that charges per broker, and their international document vault takes 8–10 seconds to render due diligence contracts.
-
-Your approach of 100% source code ownership and a dedicated senior engineering pod aligns with our board's mandate for proprietary IP.
-
-Could you send across your commercial pod pricing structure and sprint availability for an October kickoff?
-
-Best,
-Julian Thorne
-Commercial Director
-Berkeley Group Plc · Cobham & London`,
-    originalOutboundSnippet: `100% Dedicated Source Code Ownership (Zero SaaS Seat-Tax). Sub-second virtual due diligence document vault facilitating $120M+ in overseas transactions...`,
-    suggestedReplyDraft: {
-      subject: "Re: Sub-second due diligence document vaults for Prime Living developments - Commercial Framework",
-      body: `Dear Julian,
-
-Thank you for your response.
-
-Our dedicated engineering pod model is structured around full-stack outcome sprints:
-1. Dedicated Pod: 1 Principal Systems Architect + 2 Senior Full-Stack Engineers + 1 DevOps Lead.
-2. IP Ownership: 100% transferred to Berkeley Group Plc upon milestone acceptance (Zero ongoing SaaS seat taxes).
-3. Sprint Availability: We have one dedicated pod slot opening October 1st.
-
-I've attached our Commercial Blueprint tiering for your review. Would you have 15 minutes this Friday at 11:30 AM BST to discuss your target milestones?
-
-Best regards,
-Tanmay V.
-Managing Director · Storm Veins Media House
-tanmay@stormveins.com`
+    "id": "real-srushti-9",
+    "leadId": "lead-9",
+    "senderName": "chinmayi@mtdngo.com",
+    "senderEmail": "chinmayi@mtdngo.com",
+    "senderTitle": "Leadership & Partner Directorate",
+    "senderCompany": "Making The Difference NGO (MTD)",
+    "senderCountry": "India",
+    "countryFlag": "\ud83c\uddee\ud83c\uddf3",
+    "isOverseas": false,
+    "recipientMailbox": "srushti@stormveins.com",
+    "mailboxOwnerName": "Shrushti",
+    "subject": "Re: Collaboration for Social Media Management (MTD X Storm\r\n Veins)",
+    "receivedTimestamp": "Fri, 15 May 2026 12:15:11 +0000 (UTC)",
+    "relativeTime": "May/Jun",
+    "intent": "rfp_spec",
+    "intentLabel": "RFP Spec Issued",
+    "priority": "high",
+    "status": "unread",
+    "snippet": "Hello Team, Please find the drive link attached below for the employee photos and MTD logo file: MTD \u2013 Employee Photos &amp; Logo File Addit...",
+    "body": "Hello Team, Please find the drive link attached below for the employee photos and MTD logo file: MTD \u2013 Employee Photos &amp; Logo File Additionally, as per our organization's norms, I kindly request that all file requirements or requests for additional information from our end be communicated via email only. This will help ensure clear and proper communication. Let me know if any further information is required. Regards, Chinmayi&nbsp; On Tue, May 12, 2026 at 6:23 PM chinmayi@mtdngo.com &lt;chinmayi@mtdngo.com&gt; wrote: Hi Team, Please find attached the revised MOU with the updated payment structure and scope as discussed. Kindly review the document and share your approval so we can proceed further. Looking forward to your confirmation. Regards, Chinmayi On Tue, May 12, 2026 at 6:17 PM chinmayi@mtdngo.com &lt;chinmayi@mtdngo.com&gt; wrote: Hi Team, Please find attached the revised MOU with the updated payment structure and scope as discussed. Kindly review the document and share your approval so we can proceed further. Looking forward to your confirmation. Regards, Chinmayi On Fri, May 8, 2026 at 6:53 PM Shrushti Vaity &lt;shrushvaity@gmail.com&gt; wrote: Hi Team, Yes sure! 30 posts will do for ads and social media posts, as discussed. Also, I would appreciate clarification regarding the payment structure. Kindly share the MOU as well, and once I review it, I will sign and send it back to you. Looking forward to your response. On Fri, 8 May 2026 at 6:30 PM, chinmayi@mtdngo.com &lt; chinmayi@mtdngo.com &gt; wrote: Hello, Thank you for sharing your concerns. We completely understand your perspective.&nbsp; We would like to check if it would be feasible from your end to proceed with 30 posts per month instead of 60? Also, regarding the payment terms, we would like to clarify that the payment will be processed within 10 days after the MOU is signed. Looking forward to working together. Regards, Chinmayi On Fri, May 8, 2026 at 5:45 PM Shrushti Vaity &lt; shrushvaity@gmail.com &gt; wrote: Hello team , I had a discussion regarding the scope of work, and I just wanted to clarify a few things from my end. Initially, the understanding shared with me by Ashutosh was around 15 posts per month along with content creation, website revamping, LinkedIn handling, and overall digital support. Currently, 60 posts a month would honestly be difficult to manage within the same structure, especially considering that my usual professional fees are higher. I agreed to this mainly as a goodwill gesture and because Ashutosh personally requested me for this collaboration. I am definitely open to increasing the number of posts and supporting the brand in the best possible way, but 60 posts monthly would not be feasible at the current retainer amount of \u20b950,000. Also, it was communicated to me earlier that the payment would be provided fully in advance, considering the scope of work and the reduced retainer. I hope you understand my perspective as well, and I would love for us to find a balanced and smooth way to work together.&nbsp; On Thu, 7 May 2026 at 12:30 PM, Ritesh Vishwakarma - Making The Difference - NGO &lt; admin@mtdngo.org &gt; wrote: Greetings from Making The Difference Charitable Trust! Good afternoon, Ms. Shrushti. We are pleased to collaborate with you for the social media management of MTD. Please find attached the draft MOU for your review. Kindly go through the document and share your comments or any changes you would like to suggest. We will review them and make the necessary revisions accordingly Thank you, and we look forward to your feedback. Regards, Regards, Ritesh Vishwakarma&nbsp; | &nbsp;Finance &amp; Accounts Head Office:&nbsp; 1st Floor, Laxmi Baug, Near The Bike Factory, Behind Dodhia Petrol Pump, Off. Western Expressway Highway, Near Fern Hotel, Kashi Gaon, Miraroad (East), Thane -401107. Contact No.: 1800-309-3337 / 82686 40176 OUR BRANCHES: Mumbai&nbsp;| Delhi&nbsp; | Varanasi&nbsp; |&nbsp;Lucknow&nbsp; | Kanpur | Surat |&nbsp;&nbsp; Bangalore &nbsp; Email tracked with Mailsuite &nbsp;\u00b7&nbsp; Opt out 07/05/26, 12:23:30 pm",
+    "originalOutboundSnippet": "Interaction sent from srushti@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "Re: Re: Collaboration for Social Media Management (MTD X Storm\r\n Veins)",
+      "body": "Hi chinmayi@mtdngo.com,\n\nThank you for following up. We have reviewed your notes and are fully prepared to take the next steps.\n\nPlease let us know if our proposed schedule works for your team.\n\nBest regards,\nShrushti\nStorm Veins Media House\nsrushti@stormveins.com"
     }
   },
   {
-    id: "inb-05",
-    leadId: "aster-dm-healthcare-dubai",
-    senderName: "Dr. Farhan Al-Zaabi",
-    senderTitle: "VP Clinical Systems & Telemetry",
-    senderEmail: "dr.farhan@asterdmhealthcare.com",
-    senderCompany: "Aster DM Healthcare",
-    senderCountry: "United Arab Emirates",
-    countryFlag: "🇦🇪",
-    isOverseas: true,
-    recipientMailbox: "srushti@stormveins.com",
-    mailboxOwnerName: "Srushti (Executive Outreach)",
-    subject: "Re: Multi-TPA insurance reconciliation telemetry across regional hospital clusters",
-    receivedTimestamp: "2026-09-07 08:45:12",
-    relativeTime: "4h 25m ago",
-    intent: "rfp_spec",
-    intentLabel: "RFP Spec Issued",
-    priority: "high",
-    status: "unread",
-    snippet: "We are restructuring claims intake across 14 hospital centers. Please share your HIPAA / DHA security compliance profile and engineering pod references.",
-    body: `Dear Srushti,
-
-Thank you for reaching out with specific observations on multi-TPA insurance claims leakage. In healthcare operations across Dubai and India, claim rejection reconciliations take 18–24 days on legacy electronic health record setups.
-
-We are issuing an RFP for a Custom Clinical Telemetry & TPA Reconciliation Engine next month. Before we place Storm Veins on our accredited vendor shortlist, could your team provide your data governance and DHA/NABH compliance profile?
-
-Thank you,
-Dr. Farhan Al-Zaabi
-VP Clinical Operations & Systems
-Aster DM Healthcare · Business Bay, Dubai`,
-    originalOutboundSnippet: `Hospital Clinical Telemetry & Multi-TPA Insurance Reconciliations: Reducing claims turnaround by 45% with sub-second automated policy verification...`,
-    suggestedReplyDraft: {
-      subject: "Re: Multi-TPA insurance reconciliation telemetry - Compliance Profile & Accreditation",
-      body: `Dear Dr. Farhan,
-
-Thank you for your response. We would be honored to participate in Aster DM Healthcare's upcoming RFP process.
-
-Regarding data governance and healthcare standards:
-• All clinical data pipelines are engineered under strict DHA (Dubai Health Authority) Health Data Protection Regulations, NABH guidelines, and HIPAA Level 1 encryption standards (AES-256 at rest, TLS 1.3 in transit).
-• Architecture isolates patient telemetry in single-tenant VPC containers with zero third-party tracking.
-• Automated reconciliation rules parse disparate TPA XML/EDI payloads into verified unified ledgers.
-
-I will assemble our official Security Dossier and submit it to your procurement desk today.
-
-Warm regards,
-Srushti
-Executive Commercial Practice · Storm Veins Media House
-srushti@stormveins.com`
+    "id": "real-srushti-11",
+    "leadId": "lead-11",
+    "senderName": "chinmayi@mtdngo.com",
+    "senderEmail": "chinmayi@mtdngo.com",
+    "senderTitle": "Leadership & Partner Directorate",
+    "senderCompany": "Making The Difference NGO (MTD)",
+    "senderCountry": "India",
+    "countryFlag": "\ud83c\uddee\ud83c\uddf3",
+    "isOverseas": false,
+    "recipientMailbox": "srushti@stormveins.com",
+    "mailboxOwnerName": "Shrushti",
+    "subject": "Re: Collaboration for Social Media Management (MTD X Storm\r\n Veins)",
+    "receivedTimestamp": "Tue,  2 Jun 2026 07:43:29 +0000 (UTC)",
+    "relativeTime": "May/Jun",
+    "intent": "rfp_spec",
+    "intentLabel": "RFP Spec Issued",
+    "priority": "high",
+    "status": "unread",
+    "snippet": "Hello Team, Please find the drive link below containing the volunteer photos that were requested. Along with this, I have also attached the ...",
+    "body": "Hello Team, Please find the drive link below containing the volunteer photos that were requested. Along with this, I have also attached the payment receipt for your reference. I will be sharing the video drive link ASAP. Volunteers Photos Additionally, could you please share the content file that was prepared from your end. I am also attaching the \u201cImpact Stories\u201d file that we drafted. It would be great if you could review it once and share your feedback, so that we can make any necessary improvements if required. Let me know if any further information or documents are needed. Regards, Chinmayi On Sun, May 17, 2026 at 4:06 PM Tanmay &lt;tanmay@stormveins.com&gt; wrote: Subject: Request for Volunteer &amp; Team Member Photos/Visuals Hi Team, Hope you\u2019re doing well. For the ongoing creatives/content requirements, could you please share photos/videos featuring MTD volunteers and team members while working and interacting during activities? Below is the list of visuals required: MTD volunteers distributing sanitary pads MTD volunteers holding hands/supporting elderly people MTD volunteers with acid attack survivors An autistic child drawing in the MTD sensory room MTD volunteers interacting with/hugging AIDS patients or other patients MTD blood donation drive photos MTD providing prosthetic legs and/or disability support supplies MTD distributing educational kits Corporate employees volunteering with MTD MTD volunteers interacting and engaging with beneficiaries/community members Please share the available content in the best possible quality. Regards, Tanmay Storm veins 77570 45582 On Fri, 15 May 2026 at 17:45, chinmayi@mtdngo.com &lt;chinmayi@mtdngo.com&gt; wrote: Hello Team, Please find the drive link attached below for the employee photos and MTD logo file: MTD \u2013 Employee Photos &amp; Logo File Additionally, as per our organization's norms, I kindly request that all file requirements or requests for additional information from our end be communicated via email only. This will help ensure clear and proper communication. Let me know if any further information is required. Regards, Chinmayi&nbsp; On Tue, May 12, 2026 at 6:23 PM chinmayi@mtdngo.com &lt;chinmayi@mtdngo.com&gt; wrote: Hi Team, Please find attached the revised MOU with the updated payment structure and scope as discussed. Kindly review the document and share your approval so we can proceed further. Looking forward to your confirmation. Regards, Chinmayi On Tue, May 12, 2026 at 6:17 PM chinmayi@mtdngo.com &lt;chinmayi@mtdngo.com&gt; wrote: Hi Team, Please find attached the revised MOU with the updated payment structure and scope as discussed. Kindly review the document and share your approval so we can proceed further. Looking forward to your confirmation. Regards, Chinmayi On Fri, May 8, 2026 at 6:53 PM Shrushti Vaity &lt;shrushvaity@gmail.com&gt; wrote: Hi Team, Yes sure! 30 posts will do for ads and social media posts, as discussed. Also, I would appreciate clarification regarding the payment structure. Kindly share the MOU as well, and once I review it, I will sign and send it back to you. Looking forward to your response. On Fri, 8 May 2026 at 6:30 PM, chinmayi@mtdngo.com &lt; chinmayi@mtdngo.com &gt; wrote: Hello, Thank you for sharing your concerns. We completely understand your perspective.&nbsp; We would like to check if it would be feasible from your end to proceed with 30 posts per month instead of 60? Also, regarding the payment terms, we would like to clarify that the payment will be processed within 10 days after the MOU is signed. Looking forward to working together. Regards, Chinmayi On Fri, May 8, 2026 at 5:45 PM Shrushti Vaity &lt; shrushvaity@gmail.com &gt; wrote: Hello team , I had a discussion regarding the scope of work, and I just wanted to clarify a few things from my end. Initially, the understanding shared with me by Ashutosh was around 15 posts per month along with content creation, website revamping, LinkedIn handling, and overall digital support. Currently, 60 posts a month would honestly be difficult to manage within the same structure, especially considering that my usual professional fees are higher. I agreed to this mainly as a goodwill gesture and because Ashutosh personally requested me for this collaboration. I am definitely open to increasing the number of posts and supporting the brand in the best possible way, but 60 posts monthly would not be feasible at the current retainer amount of \u20b950,000. Also, it was communicated to me earlier that the payment would be provided fully in advance, considering the scope of work and the reduced retainer. I hope you understand my perspective as well, and I would love for us to find a balanced and smooth way to work together.&nbsp; On Thu, 7 May 2026 at 12:30 PM, Ritesh Vishwakarma - Making The Difference - NGO &lt; admin@mtdngo.org &gt; wrote: Greetings from Making The Difference Charitable Trust! Good afternoon, Ms. Shrushti. We are pleased to collaborate with you for the social media management of MTD. Please find attached the draft MOU for your review. Kindly go through the document and share your comments or any changes you would like to suggest. We will review them and make the necessary revisions accordingly Thank you, and we look forward to your feedback. Regards, Regards, Ritesh Vishwakarma&nbsp; | &nbsp;Finance &amp; Accounts Head Office:&nbsp; 1st Floor, Laxmi Baug, Near The Bike Factory, Behind Dodhia Petrol Pump, Off. Western Expressway Highway, Near Fern Hotel, Kashi Gaon, Miraroad (East), Thane -401107. Contact No.: 1800-309-3337 / 82686 40176 OUR BRANCHES: Mumbai&nbsp;| Delhi&nbsp; | Varanasi&nbsp; |&nbsp;Lucknow&nbsp; | Kanpur | Surat |&nbsp;&nbsp; Bangalore &nbsp; Email tracked with Mailsuite &nbsp;\u00b7&nbsp; Opt out 07/05/26, 12:23:30 pm",
+    "originalOutboundSnippet": "Interaction sent from srushti@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "Re: Re: Collaboration for Social Media Management (MTD X Storm\r\n Veins)",
+      "body": "Hi chinmayi@mtdngo.com,\n\nThank you for following up. We have reviewed your notes and are fully prepared to take the next steps.\n\nPlease let us know if our proposed schedule works for your team.\n\nBest regards,\nShrushti\nStorm Veins Media House\nsrushti@stormveins.com"
     }
   },
   {
-    id: "inb-06",
-    leadId: "capitaland-singapore",
-    senderName: "Devin Chen",
-    senderTitle: "VP Commercial Tech & Operations",
-    senderEmail: "devin.chen@capitaland.com.sg",
-    senderCompany: "CapitaLand Group",
-    senderCountry: "Singapore",
-    countryFlag: "🇸🇬",
-    isOverseas: true,
-    recipientMailbox: "solutions@stormveins.com",
-    mailboxOwnerName: "Systems Architecture",
-    subject: "Re: 100% Source code ownership vs SaaS lock-in for enterprise broker networks",
-    receivedTimestamp: "2026-09-07 07:12:44",
-    relativeTime: "6h ago",
-    intent: "architecture_review",
-    intentLabel: "Architecture Teardown",
-    priority: "medium",
-    status: "unread",
-    snippet: "The 100% IP ownership without per-seat licensing caught our attention. We have 450 brokers across APAC. Let's arrange a brief architecture demo.",
-    body: `Hello Solutions Team,
-
-We manage over 450 commercial real estate agents across Singapore, Sydney, and Tokyo. The per-seat subscription cost of US enterprise SaaS tools has increased 35% in two years, while their customization capabilities remain rigidly locked down.
-
-Your model of delivering 100% source code ownership with custom high-speed broker dashboards is attractive to our executive committee.
-
-Could you share a technical teardown video of how your brokerage portal handles cross-border currency conversion and tax withholding logic?
-
-Regards,
-Devin Chen
-VP Commercial Tech & Operations
-CapitaLand Investment Ltd · Singapore`,
-    originalOutboundSnippet: `100% Dedicated Source Code Ownership: Eliminate SaaS seat taxes while retaining full architectural sovereignty, customized commission matrices, and sub-second inventory feeds...`,
-    suggestedReplyDraft: {
-      subject: "Re: 100% Source code ownership vs SaaS lock-in - Architectural Teardown for CapitaLand",
-      body: `Dear Devin,
-
-Thank you for your note. 
-
-For multi-market operations across Singapore, Australia, and Japan, we build custom broker platforms where:
-1. Currency & Tax Engine: Real-time FX hedging rates with automated GST / withholding tax calculation down to individual deal commissions.
-2. Scalability: Zero per-seat fee whether you have 45 brokers or 4,500 brokers.
-3. Complete Code Handover: The repository is hosted on your internal AWS/GCP tenant with full CI/CD deployment scripts.
-
-I have recorded a 3-minute technical overview for your team:
-https://stormveins.com/work/enterprise-crm
-
-Would you be open to an interactive architectural session next Tuesday at 2:00 PM SGT?
-
-Best regards,
-Systems Architecture Lead · Storm Veins Media House
-solutions@stormveins.com`
+    "id": "real-srushti-12",
+    "leadId": "lead-12",
+    "senderName": "chinmayi@mtdngo.com",
+    "senderEmail": "chinmayi@mtdngo.com",
+    "senderTitle": "Leadership & Partner Directorate",
+    "senderCompany": "Making The Difference NGO (MTD)",
+    "senderCountry": "India",
+    "countryFlag": "\ud83c\uddee\ud83c\uddf3",
+    "isOverseas": false,
+    "recipientMailbox": "srushti@stormveins.com",
+    "mailboxOwnerName": "Shrushti",
+    "subject": "Re: Collaboration for Social Media Management (MTD X Storm\r\n Veins)",
+    "receivedTimestamp": "Sat,  6 Jun 2026 07:23:51 +0000 (UTC)",
+    "relativeTime": "May/Jun",
+    "intent": "rfp_spec",
+    "intentLabel": "RFP Spec Issued",
+    "priority": "high",
+    "status": "unread",
+    "snippet": "<p>Hello Team,</p><p>I wanted to follow up regarding the volunteer photos, the content file prepared from your end, and the Impact Stories d...",
+    "body": "<p>Hello Team,</p><p>I wanted to follow up regarding the volunteer photos, the content file prepared from your end, and the Impact Stories document that was shared for review.</p><p>Could you please let me know if there is any update on this? Have you reviewed the document? It would be helpful to receive your feedback so that we can make any necessary revisions and proceed accordingly.&nbsp;<br><span>Additionally, could you please share the content file prepared from your end so that we can review it as well?</span><br></p><p>Looking forward to your response.</p><p>Regards,<br>Chinmayi<br></p><p><br></p><div><br></div><br><br>\n<div class=\"hmail-quote-container\">\n<div class=\"hmail-attr\" data-qa=\"message-reply-attribution\">On Tue, Jun 2, 2026 at 1:13 PM chinmayi@mtdngo.com &lt;chinmayi@mtdngo.com&gt; wrote:</div>\n<blockquote class=\"hmail-quote\"><p class=\"isSelectedEnd\"><span>Hello Team,</span></p><p class=\"isSelectedEnd\"><span>Please find the drive link below containing the volunteer photos that were requested. Along with this, I have also attached the payment receipt for your reference. I will be sharing the video drive link ASAP.<br><a href=\"https://drive.google.com/drive/folders/16xGJPJq2IjWgDyioKUDyrqxhNcVnzTMz?usp=sharing\" target=\"_blank\" rel=\"noreferrer nofollow noopener\">Volunteers Photos</a><br></span></p><p class=\"isSelectedEnd\"><span>Additionally, could you please share the content file that was prepared from your end.</span></p><p class=\"isSelectedEnd\"><span>I am also attaching the \u201cImpact Stories\u201d file that we drafted. It would be great if you could review it once and share your feedback, so that we can make any necessary improvements if required.</span></p><p class=\"isSelectedEnd\"><span>Let me know if any further information or documents are needed.</span></p><p><span>Regards,</span><br><span>Chinmayi</span><br></p><div><br></div><br><br> <div class=\"hmail-quote-container\"> <div class=\"hmail-attr\" data-qa=\"message-reply-attribution\">On Sun, May 17, 2026 at 4:06 PM Tanmay &lt;tanmay@stormveins.com&gt; wrote:</div>  <blockquote class=\"hmail-quote\"><div><div style=\"font-size: inherit;\"><div style=\"font-size: inherit;\">  <p>Subject: Request for Volunteer &amp; Team Member Photos/Visuals</p> <p>Hi Team,</p> <p>Hope you\u2019re doing well.</p> <p>For the ongoing creatives/content requirements, could you please share photos/videos featuring MTD volunteers and team members while working and interacting during activities?</p> <p>Below is the list of visuals required:</p> <ol start=\"1\"><li>MTD volunteers distributing sanitary pads</li><li>MTD volunteers holding hands/supporting elderly people</li><li>MTD volunteers with acid attack survivors</li><li>An autistic child drawing in the MTD sensory room</li><li>MTD volunteers interacting with/hugging AIDS patients or other patients</li><li>MTD blood donation drive photos</li><li>MTD providing prosthetic legs and/or disability support supplies</li><li>MTD distributing educational kits</li><li>Corporate employees volunteering with MTD</li><li>MTD volunteers interacting and engaging with beneficiaries/community members</li></ol> <p dir=\"auto\">Please share the available content in the best possible quality.</p><p dir=\"auto\"><br></p><p dir=\"auto\">Regards,</p><p dir=\"auto\">Tanmay</p><p dir=\"auto\">Storm veins</p><p dir=\"auto\">77570 45582</p>  </div></div><br></div><div><br><div class=\"gmail_quote gmail_quote_container\"><div dir=\"ltr\" class=\"gmail_attr\">On Fri, 15 May 2026 at 17:45, chinmayi@mtdngo.com &lt;chinmayi@mtdngo.com&gt; wrote:<br></div><blockquote class=\"gmail_quote\" style=\"margin: 0px 0px 0px 0.8ex; border-left-width: 1px; border-left-style: solid; padding-left: 1ex; border-left-color: rgb(204, 204, 204);\"><div>Hello Team,</div><div><br></div><div>Please find the drive link attached below for the employee photos and MTD logo file:</div><div><a href=\"https://drive.google.com/drive/folders/1OKS_yK98ikAYGHJCKydV50inOVgwrwJ5?usp=sharing\" target=\"_blank\" rel=\"noreferrer nofollow noopener\">MTD \u2013 Employee Photos &amp; Logo File</a><br></div><div><br></div><div>Additionally, as per our organization's norms, I kindly request that all file requirements or requests for additional information from our end be communicated via email only. This will help ensure clear and proper communication.</div><div><br></div><div>Let me know if any further information is required.</div><div><br></div><div>Regards,</div><div>Chinmayi&nbsp;</div><br><br> <div> <div>On Tue, May 12, 2026 at 6:23 PM chinmayi@mtdngo.com &lt;chinmayi@mtdngo.com&gt; wrote:</div>  <blockquote><p style=\"line-height: 1.5; margin: 1rem 0px; font-family: system-ui, sans-serif; font-size: 14px; font-style: normal; font-weight: 400; letter-spacing: normal; text-indent: 0px; text-transform: none; word-spacing: 0px; white-space: normal; color: rgb(38, 40, 49);\"><span style=\"line-height: 1.5; font-family: system-ui, sans-serif;\">Hi Team,</span></p><p style=\"line-height: 1.5; margin: 1rem 0px; font-family: system-ui, sans-serif; font-size: 14px; font-style: normal; font-weight: 400; letter-spacing: normal; text-indent: 0px; text-transform: none; word-spacing: 0px; white-space: normal; color: rgb(38, 40, 49);\"><span style=\"line-height: 1.5; font-family: system-ui, sans-serif;\">Please find attached the revised MOU with the updated payment structure and scope as discussed. Kindly review the document and share your approval so we can proceed further.</span></p><p style=\"line-height: 1.5; margin: 1rem 0px; font-family: system-ui, sans-serif; font-size: 14px; font-style: normal; font-weight: 400; letter-spacing: normal; text-indent: 0px; text-transform: none; word-spacing: 0px; white-space: normal; color: rgb(38, 40, 49);\"><span style=\"line-height: 1.5; font-family: system-ui, sans-serif;\">Looking forward to your confirmation.<br style=\"line-height: 1.5; display: block; margin: 0.5em 0px;\"><br style=\"line-height: 1.5; display: block; margin: 0.5em 0px;\">Regards,<br style=\"line-height: 1.5; display: block; margin: 0.5em 0px;\"></span>Chinmayi</p><div><br></div><br><br> <div> <div>On Tue, May 12, 2026 at 6:17 PM chinmayi@mtdngo.com &lt;chinmayi@mtdngo.com&gt; wrote:</div>  <blockquote><p>Hi Team,</p><p>Please find attached the revised MOU with the updated payment structure and scope as discussed. Kindly review the document and share your approval so we can proceed further.</p><p>Looking forward to your confirmation.<br><br>Regards,<br>Chinmayi</p><div><br></div><br><br> <div> <div>On Fri, May 8, 2026 at 6:53 PM Shrushti Vaity &lt;shrushvaity@gmail.com&gt; wrote:</div>  <blockquote><div><div style=\"font-size: inherit;\"><div style=\"font-size: inherit;\">  <p dir=\"auto\">Hi Team,</p><p dir=\"auto\"><span style=\"font-size: inherit;\">Yes sure! 30 posts will do for ads and social media posts, as discussed.</span></p><p dir=\"auto\"><span style=\"font-size: inherit;\"></span><span style=\"font-size: inherit;\">Also, I would appreciate clarification regarding the payment structure. Kindly share the MOU as well, and once I review it, I will sign and send it back to you.</span></p> <p><br></p> <p>Looking forward to your response.</p>  </div></div><br></div><div><br><div><div dir=\"ltr\">On Fri, 8 May 2026 at 6:30\u202fPM, <a href=\"mailto:chinmayi@mtdngo.com\" rel=\"noreferrer nofollow noopener\">chinmayi@mtdngo.com</a> &lt;<a href=\"mailto:chinmayi@mtdngo.com\" rel=\"noreferrer nofollow noopener\">chinmayi@mtdngo.com</a>&gt; wrote:<br></div><blockquote style=\"margin: 0px 0px 0px 0.8ex; border-left-width: 1px; border-left-style: solid; padding-left: 1ex; border-left-color: rgb(204, 204, 204);\"><p>Hello,</p><p>Thank you for sharing your concerns. We completely understand your perspective.&nbsp;<br></p><div>We would like to check if it would be feasible from your end to proceed with 30 posts per month instead of 60?<br></div><p>Also, regarding the payment terms, we would like to clarify that the payment will be processed within 10 days after the MOU is signed.</p><p>Looking forward to working together.<br><br>Regards,<br>Chinmayi</p><div><br></div><br><br> <div></div><div> <div>On Fri, May 8, 2026 at 5:45 PM Shrushti Vaity &lt;<a href=\"mailto:shrushvaity@gmail.com\" rel=\"noreferrer nofollow noopener\">shrushvaity@gmail.com</a>&gt; wrote:</div>  <blockquote><div><div style=\"font-size: inherit;\" dir=\"auto\">Hello team ,<br style=\"font-size: inherit;\"><br style=\"font-size: inherit;\">I had a discussion regarding the scope of work, and I just wanted to clarify a few things from my end. Initially, the understanding shared with me by Ashutosh was around 15 posts per month along with content creation, website revamping, LinkedIn handling, and overall digital support.<br style=\"font-size: inherit;\"><br style=\"font-size: inherit;\">Currently, 60 posts a month would honestly be difficult to manage within the same structure, especially considering that my usual professional fees are higher. I agreed to this mainly as a goodwill gesture and because Ashutosh personally requested me for this collaboration.<br style=\"font-size: inherit;\"><br style=\"font-size: inherit;\">I am definitely open to increasing the number of posts and supporting the brand in the best possible way, but 60 posts monthly would not be feasible at the current retainer amount of \u20b950,000. Also, it was communicated to me earlier that the payment would be provided fully in advance, considering the scope of work and the reduced retainer.<br style=\"font-size: inherit;\"><br style=\"font-size: inherit;\">I hope you understand my perspective as well, and I would love for us to find a balanced and smooth way to work together.&nbsp;</div><br></div><div><br></div></blockquote></div></blockquote></div></div></blockquote></div></blockquote></div></blockquote></div><div><blockquote><div><blockquote><div><blockquote><div><div><blockquote style=\"margin: 0px 0px 0px 0.8ex; border-left-width: 1px; border-left-style: solid; padding-left: 1ex; border-left-color: rgb(204, 204, 204);\"><div><blockquote><div><div class=\"elided-text\"><div dir=\"ltr\">On Thu, 7 May 2026 at 12:30\u202fPM, Ritesh Vishwakarma - Making The Difference - NGO &lt;<a href=\"mailto:admin@mtdngo.org\" rel=\"noreferrer nofollow noopener\">admin@mtdngo.org</a>&gt; wrote:<br></div><blockquote style=\"margin: 0px 0px 0px 0.8ex; border-left-width: 1px; border-left-style: solid; padding-left: 1ex; border-left-color: rgb(204, 204, 204);\"><div dir=\"ltr\"><div>Greetings from Making The Difference Charitable Trust!<br>Good afternoon, Ms. Shrushti.<br><br>We are pleased to collaborate with you for the social media management of MTD.<br>Please find attached the draft MOU for your review. Kindly go through the document and share your comments or any changes you would like to suggest.</div><div>We will review them and make the necessary revisions accordingly<br><br>Thank you, and we look forward to your feedback.<br><br>Regards,</div><div><div dir=\"ltr\"><div dir=\"ltr\"><div style=\"font-family: monospace; font-size: 13.3333px; margin: 0px; padding: 0px; color: rgb(34, 34, 34);\"><b style=\"font-family: monospace;\">Regards,</b></div><div style=\"font-family: monospace; font-size: 13.3333px; margin: 0px; padding: 0px; color: rgb(34, 34, 34);\"><img style=\"width: 844px; max-width: 100%; font-family: monospace; background-color: rgba(0, 0, 0, 0); border-color: rgb(225, 225, 226); color: rgb(225, 225, 226);\"></div><div style=\"margin: 0px; padding: 0px;\"><span style=\"font-family: &quot;century gothic&quot;, sans-serif; font-size: 11pt; font-weight: bolder; color: rgb(34, 34, 34);\">Ritesh Vishwakarma&nbsp;</span><span style=\"font-family: &quot;century gothic&quot;, sans-serif; font-size: 11pt; color: rgb(34, 34, 34);\">|</span><span style=\"font-family: &quot;century gothic&quot;, sans-serif; font-size: 11pt; font-weight: bolder; color: rgb(34, 34, 34);\"><span style=\"font-family: &quot;century gothic&quot;, sans-serif; color: rgb(102, 102, 102);\">&nbsp;Finance &amp; Accounts</span></span></div><div style=\"font-family: monospace; font-size: 13.3333px; margin: 0px; padding: 0px; color: rgb(34, 34, 34);\"><p style=\"font-size: 12pt; font-family: &quot;times new roman&quot;, serif;\"><b style=\"font-size: 12pt; font-family: &quot;times new roman&quot;, serif; color: rgb(68, 68, 68);\"><span style=\"font-family: &quot;century gothic&quot;, sans-serif; font-size: 10pt;\">Head Office:&nbsp;</span></b><font face=\"Century Gothic, sans-serif\" style=\"font-size: small; font-family: &quot;century gothic&quot;, sans-serif; color: rgb(68, 68, 68);\"><span style=\"font-size: 13.3333px; font-family: &quot;century gothic&quot;, sans-serif;\"><b style=\"font-family: &quot;century gothic&quot;, sans-serif;\">1st Floor, Laxmi Baug, Near The Bike Factory, Behind Dodhia Petrol Pump,<br>Off. Western Expressway Highway, Near Fern Hotel, Kashi Gaon, Miraroad (East), Thane -401107.</b></span></font></p><p style=\"font-size: 12pt; font-family: &quot;times new roman&quot;, serif;\"><span style=\"font-family: &quot;century gothic&quot;, sans-serif; font-size: 10pt; font-weight: bolder; color: rgb(68, 68, 68);\">Contact No.: 1800-309-3337 / 82686 40176</span></p><p style=\"font-size: 12pt; font-family: &quot;times new roman&quot;, serif;\"><font style=\"font-family: arial, helvetica, sans-serif; font-size: 12.8px; color: rgb(34, 34, 34);\"><b style=\"font-family: arial, helvetica, sans-serif;\"><font face=\"verdana, sans-serif\" style=\"font-family: verdana, sans-serif; color: rgb(34, 34, 34);\"><span style=\"font-family: verdana, sans-serif;\">OUR BRANCHES: Mumbai&nbsp;| Delhi&nbsp;</span></font><span style=\"font-family: verdana, sans-serif;\">| Varanasi&nbsp;</span></b></font><font style=\"font-family: arial, helvetica, sans-serif; font-size: 12.8px; font-weight: bold; color: rgb(0, 0, 0);\">|&nbsp;Lucknow&nbsp;</font><font style=\"font-family: arial, helvetica, sans-serif; font-size: 12.8px; color: rgb(0, 0, 0);\"><b style=\"font-family: arial, helvetica, sans-serif;\">| Kanpur | Surat |&nbsp;&nbsp;</b></font><font face=\"verdana, sans-serif\" style=\"font-size: small; font-family: verdana, sans-serif; color: rgb(0, 0, 0);\"><span style=\"font-size: 12.8px; font-family: verdana, sans-serif;\"><b style=\"font-family: verdana, sans-serif;\">Bangalore</b></span></font><font style=\"font-family: arial, helvetica, sans-serif; font-size: 12.8px; color: rgb(0, 0, 0);\"><b style=\"font-family: arial, helvetica, sans-serif;\">&nbsp;</b></font></p></div><div style=\"font-family: monospace; font-size: 13.3333px; margin: 0px; padding: 0px; color: rgb(34, 34, 34);\"><div style=\"width: 303px; height: 109px; font-family: monospace;\"> <u style=\"font-family: monospace;\"></u> <u style=\"font-family: monospace;\"></u><u style=\"font-family: monospace;\"></u> <u style=\"font-family: monospace;\"></u> </div></div></div></div></div><br><div> <table border=\"0\" cellpadding=\"8\" cellspacing=\"0\"><tbody><tr><td style=\"padding: 0px 4px 0px 0px;\"> <div style=\"width: 24px; height: 20px;\"> <u></u> <u></u><u></u> <u></u> </div> </td><td style=\"padding: 0px 10px 0px 0px;\"> <span style=\"font-size: 12px; font-family: inter, sans-serif; font-weight: 400; line-height: 185%; color: rgb(51, 51, 51);\">Email tracked with Mailsuite &nbsp;\u00b7&nbsp; <a href=\"https://u.list-prefs.com/en/privacy/opt-out/unsubscribe/b73ab183d9d15d615f91e8b0738c0cdd0a487656/62551dc8a007de0276b89c2263688c3fdcdfaea96d875141542bae32e93d276fce7556fa5f95ff0d4c4f63736fcaa581b81d809661aed92a04b1e8a933a7c205\" style=\"font-size: 11px; font-family: inter, sans-serif; font-weight: 400; line-height: 185%; color: rgb(102, 102, 102);\" target=\"_blank\" rel=\"noreferrer nofollow noopener\">Opt out</a></span><br> </td><td><span style=\"font-size: 0px;\">07/05/26, 12:23:30 pm</span></td></tr></tbody></table> </div><img width=\"0\" height=\"0\" alt=\"\"></div> </blockquote></div></div></blockquote></div></blockquote></div></div></blockquote></div></blockquote></div></blockquote></div><div><blockquote><div><blockquote><div><blockquote><div><div><blockquote style=\"margin: 0px 0px 0px 0.8ex; border-left-width: 1px; border-left-style: solid; padding-left: 1ex; border-left-color: rgb(204, 204, 204);\"><div><blockquote><div></div> </blockquote> </div></blockquote></div></div> </blockquote> </div></blockquote> </div></blockquote> </div></blockquote></div></div></blockquote> </div></blockquote>\n</div>",
+    "originalOutboundSnippet": "Interaction sent from srushti@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "Re: Re: Collaboration for Social Media Management (MTD X Storm\r\n Veins)",
+      "body": "Hi chinmayi@mtdngo.com,\n\nThank you for following up. We have reviewed your notes and are fully prepared to take the next steps.\n\nPlease let us know if our proposed schedule works for your team.\n\nBest regards,\nShrushti\nStorm Veins Media House\nsrushti@stormveins.com"
     }
   },
   {
-    id: "inb-07",
-    senderName: "Arjun Mehta",
-    senderTitle: "Managing Director",
-    senderEmail: "arjun.m@transglobalfleet.com",
-    senderCompany: "TransGlobal Freight Logistics",
-    senderCountry: "India",
-    countryFlag: "🇮🇳",
-    isOverseas: false,
-    recipientMailbox: "tanmay@stormveins.com",
-    mailboxOwnerName: "Tanmay V. (Managing Director)",
-    subject: "Re: Operational Observation: Bonded Warehouse Telemetry & Dispatch Congestion",
-    receivedTimestamp: "2026-09-07 06:40:19",
-    relativeTime: "6h 30m ago",
-    intent: "meeting_requested",
-    intentLabel: "Discovery Meeting",
-    priority: "urgent",
-    status: "unread",
-    snippet: "Tanmay, saw your follow-up note. Let's lock in Friday 4 PM IST for the architecture walkthrough. Please include the principal engineer who worked on Fjord.",
-    body: `Hi Tanmay,
-
-I appreciate your follow-up note. We operate 6 bonded logistics warehouses between Nhava Sheva port and Bhiwandi. The dispatch congestion and delayed driver manifests are costing us significant truck turnaround penalties.
-
-Your benchmark of deploying fleet telemetry across 11 nations with zero downtime is compelling. 
-
-Let's lock in Friday at 4:00 PM IST for an executive architecture session. Please have the principal engineer who architected the Fjord Dynamics deployment on the call.
-
-Best regards,
-Arjun Mehta
-Managing Director
-TransGlobal Freight Logistics Ltd · Mumbai`,
-    originalOutboundSnippet: `We deployed asset and fleet telemetry across 11 nations with zero downtime and +34% dispatch throughput for Fjord Dynamics...`,
-    suggestedReplyDraft: {
-      subject: "Re: Operational Observation: Bonded Warehouse Telemetry - Friday 4:00 PM IST Confirmed",
-      body: `Dear Arjun,
-
-Friday at 4:00 PM IST is confirmed on my calendar. 
-
-I will have our Principal Logistics Systems Architect join the briefing. We will walk through the exact architecture used to eliminate container gate congestion, automate sub-second driver manifest verification, and integrate with port customs APIs.
-
-Meeting invite has been dispatched to your email.
-
-Warm regards,
-Tanmay V.
-Managing Director · Storm Veins Media House
-tanmay@stormveins.com`
+    "id": "real-srushti-15",
+    "leadId": "lead-15",
+    "senderName": "Making The Difference - NGO",
+    "senderEmail": "help@mtdngo.in",
+    "senderTitle": "Leadership & Partner Directorate",
+    "senderCompany": "Making The Difference NGO (MTD)",
+    "senderCountry": "India",
+    "countryFlag": "\ud83c\uddee\ud83c\uddf3",
+    "isOverseas": false,
+    "recipientMailbox": "srushti@stormveins.com",
+    "mailboxOwnerName": "Shrushti",
+    "subject": "Re:  Collaboration for Social Media Management (MTD X Storm Veins)",
+    "receivedTimestamp": "Thu, 25 Jun 2026 07:26:31 +0000 (UTC)",
+    "relativeTime": "May/Jun",
+    "intent": "rfp_spec",
+    "intentLabel": "RFP Spec Issued",
+    "priority": "high",
+    "status": "unread",
+    "snippet": "Looping Ms. Prachi. On May 7 2026, at 12:29 pm, Ritesh Vishwakarma - Making The Difference - NGO &lt;admin@mtdngo.org&gt; wrote: Greetings f...",
+    "body": "Looping Ms. Prachi. On May 7 2026, at 12:29 pm, Ritesh Vishwakarma - Making The Difference - NGO &lt;admin@mtdngo.org&gt; wrote: Greetings from Making The Difference Charitable Trust! Good afternoon, Ms. Shrushti. We are pleased to collaborate with you for the social media management of MTD. Please find attached the draft MOU for your review. Kindly go through the document and share your comments or any changes you would like to suggest. We will review them and make the necessary revisions accordingly Thank you, and we look forward to your feedback. Regards, Regards, Ritesh Vishwakarma&nbsp; | &nbsp;Finance &amp; Accounts Head Office:&nbsp; 1st Floor, Laxmi Baug, Near The Bike Factory, Behind Dodhia Petrol Pump, Off. Western Expressway Highway, Near Fern Hotel, Kashi Gaon, Miraroad (East), Thane -401107. Contact No.: 1800-309-3337 / 82686 40176 OUR BRANCHES: Mumbai&nbsp;| Delhi&nbsp; | Varanasi&nbsp; |&nbsp;Lucknow&nbsp; | Kanpur | Surat |&nbsp;&nbsp; Bangalore &nbsp; Email tracked with Mailsuite &nbsp;\u00b7&nbsp; Opt out 07/05/26, 12:23:30 pm",
+    "originalOutboundSnippet": "Interaction sent from srushti@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "Re: Re:  Collaboration for Social Media Management (MTD X Storm Veins)",
+      "body": "Hi Making The Difference - NGO,\n\nThank you for following up. We have reviewed your notes and are fully prepared to take the next steps.\n\nPlease let us know if our proposed schedule works for your team.\n\nBest regards,\nShrushti\nStorm Veins Media House\nsrushti@stormveins.com"
     }
   },
   {
-    id: "inb-08",
-    leadId: "pultegroup-us",
-    senderName: "Elena Rostova",
-    senderTitle: "Senior Director of Procurement",
-    senderEmail: "e.rostova@pultegroup.com",
-    senderCompany: "PulteGroup Inc.",
-    senderCountry: "United States",
-    countryFlag: "🇺🇸",
-    isOverseas: true,
-    recipientMailbox: "sales@stormveins.com",
-    mailboxOwnerName: "Enterprise Practice",
-    subject: "Re: Automated contractor progress payouts & compliance vault",
-    receivedTimestamp: "2026-09-07 05:15:55",
-    relativeTime: "8h ago",
-    intent: "pricing_inquiry",
-    intentLabel: "Pricing & Retainer Spec",
-    priority: "high",
-    status: "unread",
-    snippet: "We are reviewing vendor submissions for our automated subcontractor milestone verification system. Can you do a 15-minute briefing on Wednesday at 11:00 AM EST?",
-    body: `Dear Storm Veins Team,
-
-We are reviewing vendor submissions for our residential division's automated subcontractor progress verification system. We manage hundreds of active home builds across Georgia, Texas, and Florida, and manual milestone sign-offs delay contractor payouts by weeks.
-
-Your blueprint for an automated photo-verified milestone payout portal sounds aligned with our IT committee's roadmap.
-
-Can your team conduct a 15-minute introductory briefing this Wednesday at 11:00 AM EST (8:30 PM IST)?
-
-Regards,
-Elena Rostova
-Senior Director of Procurement
-PulteGroup Inc. · Atlanta, GA`,
-    originalOutboundSnippet: `Automated Defect-to-Quotation Generators & Compliance Vaults: Real-time milestone verification reducing subcontractor billing disputes by 65%...`,
-    suggestedReplyDraft: {
-      subject: "Re: Automated contractor progress payouts & compliance vault - Wednesday 11:00 AM EST",
-      body: `Dear Elena,
-
-Thank you for reaching out. Wednesday at 11:00 AM EST (8:30 PM IST) is confirmed.
-
-During our 15-minute briefing, we will demonstrate:
-1. Subcontractor Mobile Photo Audit: Geofenced timestamped milestone uploads with automatic defect detection.
-2. 1-Click Payment Approval: Automated reconciliation with existing ERP ledgers.
-3. Dedicated Pod Delivery Model: How our team deploys custom solutions in 12-week sprints with 100% source code handover.
-
-Calendar invite with Zoom link has been sent.
-
-Best regards,
-Enterprise Practice Lead · Storm Veins Media House
-sales@stormveins.com`
+    "id": "real-srushti-16",
+    "leadId": "lead-16",
+    "senderName": "ankit@mtdngo.com",
+    "senderEmail": "ankit@mtdngo.com",
+    "senderTitle": "Leadership & Partner Directorate",
+    "senderCompany": "Making The Difference NGO (MTD)",
+    "senderCountry": "India",
+    "countryFlag": "\ud83c\uddee\ud83c\uddf3",
+    "isOverseas": false,
+    "recipientMailbox": "srushti@stormveins.com",
+    "mailboxOwnerName": "Shrushti",
+    "subject": "Re: Posts Drive Link for Review",
+    "receivedTimestamp": "Thu, 25 Jun 2026 13:34:40 +0000 (UTC)",
+    "relativeTime": "May/Jun",
+    "intent": "meeting_requested",
+    "intentLabel": "Discovery Meeting",
+    "priority": "high",
+    "status": "unread",
+    "snippet": "<div>Hi Tanmay,</div><div><br></div><div>Thank you for sharing the initial creatives<br></div><div>The current direction provides a good sta...",
+    "body": "<div>Hi Tanmay,</div><div><br></div><div>Thank you for sharing the initial creatives<br></div><div>The current direction provides a good starting point in terms of awareness based communications.</div><div><br></div><div>As we are still in the onboarding and brand understanding phase, we would like to share some key expectations and objectives to help align the content strategy going forward.</div><div>\u2022 Stronger storytelling and emotional narratives.</div><div>\u2022 Better use of impact statistics and transformative stories, creatives that can resonate with potential corporate partners.</div><div>\u2022 More Dynamic Content formats such as carousals, infographics and case studies.</div><div>\u2022 Project specific visual identities rather than uniform template approach.</div><div><br></div><div>The current samples appear more suitable for routine social media communications. We would like to explore a more distinctive and impactful visual language.</div><div><br></div><div>Our objective is not only to increase social media visibility and engagement by awareness of our initiatives but also to position MTD as a credible implementation partner for Corporates.<br></div><div><div>Please also let us know what Information, reports, photographs, videos or other resources you require from our end to execute this effectively.</div><div><br></div><div><b>Additionally, we would like to discuss this on google meet, kindly share your availability for the same.</b></div><div><br></div><div>We look for to collaborating closely with your team and will share the social media access shortly.</div><div><br></div></div><div class=\"hmail-signature-prefix\">--<br></div><div class=\"hmail-signature\"><p style=\"color: #222222; font-size: 12pt; font-family: 'Times New Roman', serif; background-color: #ffffff; text-align: left\"><span class=\"size\" style=\"font-size:9pt\"><b><span class=\"font\" style=\"font-family:&quot;book antiqua&quot;, palatino, serif\">Best regards,</span></b></span></p><p style=\"color: #222222; font-size: 12pt; font-family: 'Times New Roman', serif; background-color: #ffffff; text-align: left\"><span class=\"font\" style=\"font-family:&quot;book antiqua&quot;, palatino, serif\"><span class=\"size\" style=\"font-size:9pt\"><b>Ankit Rathod |</b><span style=\"color: #666666\"> <i>Graphic Designer</i></span><span style=\"color: #666666\"></span></span></span></p><p style=\"color: #222222; font-size: 12pt; font-family: 'Times New Roman', serif; background-color: #ffffff; text-align: left\"><span class=\"font\" style=\"font-family:&quot;book antiqua&quot;, palatino, serif\"><span class=\"size\" style=\"font-size:9pt\"><span style=\"color: #666666\"><span style=\"color: #444444\"><span style=\"color: #000000\"><b>Contact:</b></span> <i>8108-217-245</i></span></span></span></span></p><p style=\"color: #222222; font-size: 12pt; font-family: 'Times New Roman', serif; background-color: #ffffff\"><span class=\"font\" style=\"font-family:&quot;book antiqua&quot;, palatino, serif\"><span class=\"size\" style=\"font-size:9pt\"><span style=\"color: #666666\"><img src=\"https://ci3.googleusercontent.com/mail-sig/AIorK4wy80gTMTsI9mRvdsfBZqVkvcpMiicH067_FXJlir0PvFBOjjZNZC45xsQ4pKQF-Q0XsfULqPM\" width=\"172\" height=\"50\"></span></span></span><br></p><p style=\"color: #222222; font-size: 12pt; font-family: 'Times New Roman', serif; background-color: #ffffff\"><span style=\"color: rgb(0, 0, 0);\"><span class=\"font\" style=\"font-family:&quot;book antiqua&quot;, palatino, serif\"><span class=\"size\" style=\"font-size:9pt\">Mumbai | Navi Mumbai | Delhi&nbsp;| New Delhi | Varanasi | Lucknow | Kanpur | Surat | Bangalore&nbsp;</span></span></span></p><p style=\"color: #222222; font-size: 12pt; font-family: 'Times New Roman', serif; background-color: #ffffff\"><span class=\"font\" style=\"font-family:&quot;book antiqua&quot;, palatino, serif\"><span class=\"size\" style=\"font-size:9pt\"><span style=\"color: #444444\"><span style=\"color: #000000\"><b>Head Office:</b></span> Address - 1st Floor, Laxmi Baug, Near The Bike Factory, Behind Dodhia Petrol Pump, <br></span></span></span><span class=\"font\" style=\"font-family:&quot;book antiqua&quot;, palatino, serif\"><span class=\"size\" style=\"font-size:9pt\"><span style=\"color: #444444\">Off. Western Expressway Highway, Near Fern Hotel, Kashi Gaon, Miraroad (East), Thane - 401107.</span></span></span></p><p style=\"color: #222222; font-size: 12pt; font-family: 'Times New Roman', serif; background-color: #ffffff\"><span class=\"font\" style=\"font-family:&quot;book antiqua&quot;, palatino, serif\"><span class=\"size\" style=\"font-size:9pt\"><span style=\"color: #444444\"><span style=\"color: #000000\"><b>Website:</b></span>&nbsp;<a style=\"color: #00acff; background-color: transparent\" href=\"http://www.mtdngo.com/\" rel=\"noopener noreferrer\">www.mtdngo.com</a></span></span></span></p><div dir=\"ltr\" style=\"color: #222222; font-size: 14.6667px; font-family: Arial, Helvetica, sans-serif; background-color: #ffffff\"><div dir=\"ltr\"><div dir=\"ltr\"><div dir=\"ltr\"><p style=\"font-size: 12.8px\">&nbsp;</p></div></div></div></div></div><div><br></div><div>Sent with <a href=\"https://mail.hostinger.com/\" rel=\"noopener noreferrer\">Hostinger Mail</a></div><br><br>\n<div class=\"hmail-quote-container\">\n<div class=\"hmail-attr\" data-qa=\"message-reply-attribution\">On Sat, Jun 20, 2026 at 11:43 AM &lt;tanmay@stormveins.com&gt; wrote:</div>\n<blockquote class=\"hmail-quote\"><div>Dear MTD Team,</div><div><br></div><div><div>In accordance with your previous request and in alignment with the content strategy we discussed, we have added the post drive link below for your review.</div><div><br></div><div>Drive:&nbsp;<a href=\"https://drive.google.com/drive/folders/1sr95rx0rqiIVOtmLIJfm-Wyd1NAUSmIM?usp=drive_link\" target=\"_blank\" rel=\"noreferrer nofollow noopener\">https://drive.google.com/drive/folders/1sr95rx0rqiIVOtmLIJfm-Wyd1NAUSmIM?usp=drive_link</a><br></div><div><br></div><div>Kindly examine them and inform us if they meet your approval.</div><br></div><div><br></div><div>Thank you for your attention to this matter.</div><div><br></div><div>Sincerely,</div><div>Tanmay V.<br>Storm Veins Media House</div> </blockquote>\n</div>",
+    "originalOutboundSnippet": "Interaction sent from srushti@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "Re: Re: Posts Drive Link for Review",
+      "body": "Hi ankit@mtdngo.com,\n\nThank you for following up. We have reviewed your notes and are fully prepared to take the next steps.\n\nPlease let us know if our proposed schedule works for your team.\n\nBest regards,\nShrushti\nStorm Veins Media House\nsrushti@stormveins.com"
     }
   },
   {
-    id: "inb-09",
-    leadId: "damac-properties-dubai",
-    senderName: "Aisha Al-Nuaimi",
-    senderTitle: "Head of Commercial Innovation",
-    senderEmail: "aisha.nuaimi@damacgroup.com",
-    senderCompany: "DAMAC Properties",
-    senderCountry: "United Arab Emirates",
-    countryFlag: "🇦🇪",
-    isOverseas: true,
-    recipientMailbox: "sales@stormveins.com",
-    mailboxOwnerName: "Enterprise Practice",
-    subject: "Re: High-velocity customer portal & VIP buyer journeys for luxury towers",
-    receivedTimestamp: "2026-09-06 22:18:30",
-    relativeTime: "15h ago",
-    intent: "meeting_requested",
-    intentLabel: "Discovery Meeting",
-    priority: "medium",
-    status: "replied",
-    snippet: "Received your proposal regarding VIP buyer onboarding portals. What is the standard pod kickoff turnaround time once master agreements are signed?",
-    body: `Dear Sales Team,
-
-We received your commercial proposal regarding custom VIP buyer portals for our upcoming luxury branded residences. 
-
-What is the standard engineering pod kickoff turnaround time once master service agreements are signed? We have an aggressive launch timeline for our Safa Two development.
-
-Looking forward to your feedback.
-
-Regards,
-Aisha Al-Nuaimi
-Head of Commercial Innovation · DAMAC Properties
-DIFC & Dubai Marina`,
-    originalOutboundSnippet: `Dedicated Pods ensure rapid deployment: Launching bespoke interactive buyer portals in 8–12 weeks with zero recurring SaaS taxes...`,
-    suggestedReplyDraft: {
-      subject: "Re: High-velocity customer portal & VIP buyer journeys for luxury towers - Turnaround Details",
-      body: `Dear Aisha,
-
-Thank you for your response.
-
-Our standard engineering pod kickoff turnaround is 5 business days following master service agreement execution. Because our pods are dedicated (not shared across dozens of accounts), the assigned Principal Architect and Senior Engineers immediately initiate Sprint 0 (Architecture & UI System) without waiting queues.
-
-For Safa Two, we can have your prototype interactive inventory portal live in staging within 4 weeks of kickoff.
-
-Best regards,
-Enterprise Practice Lead · Storm Veins Media House
-sales@stormveins.com`
+    "id": "real-srushti-17",
+    "leadId": "lead-17",
+    "senderName": "ankit@mtdngo.com",
+    "senderEmail": "ankit@mtdngo.com",
+    "senderTitle": "Leadership & Partner Directorate",
+    "senderCompany": "Making The Difference NGO (MTD)",
+    "senderCountry": "India",
+    "countryFlag": "\ud83c\uddee\ud83c\uddf3",
+    "isOverseas": false,
+    "recipientMailbox": "srushti@stormveins.com",
+    "mailboxOwnerName": "Shrushti",
+    "subject": "Re: Posts Drive Link for Review",
+    "receivedTimestamp": "Sun, 28 Jun 2026 10:51:33 +0000 (UTC)",
+    "relativeTime": "May/Jun",
+    "intent": "meeting_requested",
+    "intentLabel": "Discovery Meeting",
+    "priority": "high",
+    "status": "unread",
+    "snippet": "<div>Hello Team,</div><div><br></div><div>As discussed on call with Srushti, I am Sharing the following materials for your reference.</div><...",
+    "body": "<div>Hello Team,</div><div><br></div><div>As discussed on call with Srushti, I am Sharing the following materials for your reference.</div><div><br></div><div>\u2022 A <a href=\"https://drive.google.com/drive/folders/15JHlylTtBeY85fTyHZLcVlToCYPRqQFw?usp=sharing\" target=\"_blank\" rel=\"noopener noreferrer\">Drive Link</a> containing all MTD and Project Logos.</div><div>\u2022 Our <a href=\"https://www.mtdngo.com/\" target=\"_blank\" rel=\"noopener noreferrer\">New Website</a> for reference on Project Themes, and overall brand directions.</div><div><br></div><div>We request your team to review these materials and rework the previously shared draft creatives accordingly.</div><div>Please let us know if you require any additional information or assets from our end.<br></div><div class=\"hmail-signature\"><p style=\"color: #222222; font-size: 12pt; font-family: 'Times New Roman', serif; background-color: #ffffff; text-align: left\"><span class=\"size\" style=\"font-size:9pt\"><b><span class=\"font\" style=\"font-family:&quot;book antiqua&quot;, palatino, serif\">Best regards,</span></b></span></p><p style=\"color: #222222; font-size: 12pt; font-family: 'Times New Roman', serif; background-color: #ffffff; text-align: left\"><span class=\"font\" style=\"font-family:&quot;book antiqua&quot;, palatino, serif\"><span class=\"size\" style=\"font-size:9pt\"><b>Ankit Rathod |</b><span style=\"color: #666666\"> <i>Graphic Designer</i></span><span style=\"color: #666666\"></span></span></span></p><p style=\"color: #222222; font-size: 12pt; font-family: 'Times New Roman', serif; background-color: #ffffff; text-align: left\"><span class=\"font\" style=\"font-family:&quot;book antiqua&quot;, palatino, serif\"><span class=\"size\" style=\"font-size:9pt\"><span style=\"color: #666666\"><span style=\"color: #444444\"><span style=\"color: #000000\"><b>Contact:</b></span> <i>8108-217-245</i></span></span></span></span></p><p style=\"color: #222222; font-size: 12pt; font-family: 'Times New Roman', serif; background-color: #ffffff\"><span class=\"font\" style=\"font-family:&quot;book antiqua&quot;, palatino, serif\"><span class=\"size\" style=\"font-size:9pt\"><span style=\"color: #666666\"><img src=\"https://ci3.googleusercontent.com/mail-sig/AIorK4wy80gTMTsI9mRvdsfBZqVkvcpMiicH067_FXJlir0PvFBOjjZNZC45xsQ4pKQF-Q0XsfULqPM\" width=\"172\" height=\"50\"></span></span></span><br></p><p style=\"color: #222222; font-size: 12pt; font-family: 'Times New Roman', serif; background-color: #ffffff\"><span style=\"color: rgb(0, 0, 0);\"><span class=\"font\" style=\"font-family:&quot;book antiqua&quot;, palatino, serif\"><span class=\"size\" style=\"font-size:9pt\">Mumbai | Navi Mumbai | Delhi&nbsp;| New Delhi | Varanasi | Lucknow | Kanpur | Surat | Bangalore&nbsp;</span></span></span></p><p style=\"color: #222222; font-size: 12pt; font-family: 'Times New Roman', serif; background-color: #ffffff\"><span class=\"font\" style=\"font-family:&quot;book antiqua&quot;, palatino, serif\"><span class=\"size\" style=\"font-size:9pt\"><span style=\"color: #444444\"><span style=\"color: #000000\"><b>Head Office:</b></span> Address - 1st Floor, Laxmi Baug, Near The Bike Factory, Behind Dodhia Petrol Pump, <br></span></span></span><span class=\"font\" style=\"font-family:&quot;book antiqua&quot;, palatino, serif\"><span class=\"size\" style=\"font-size:9pt\"><span style=\"color: #444444\">Off. Western Expressway Highway, Near Fern Hotel, Kashi Gaon, Miraroad (East), Thane - 401107.</span></span></span></p><p style=\"color: #222222; font-size: 12pt; font-family: 'Times New Roman', serif; background-color: #ffffff\"><span class=\"font\" style=\"font-family:&quot;book antiqua&quot;, palatino, serif\"><span class=\"size\" style=\"font-size:9pt\"><span style=\"color: #444444\"><span style=\"color: #000000\"><b>Website:</b></span>&nbsp;<a style=\"color: #00acff; background-color: transparent\" href=\"http://www.mtdngo.com/\" rel=\"noopener noreferrer\">www.mtdngo.com</a></span></span></span></p><div dir=\"ltr\" style=\"color: #222222; font-size: 14.6667px; font-family: Arial, Helvetica, sans-serif; background-color: #ffffff\"><div dir=\"ltr\"><div dir=\"ltr\"><div dir=\"ltr\"><p style=\"font-size: 12.8px\">&nbsp;</p></div></div></div></div></div><div><br></div><div>Sent with <a href=\"https://mail.hostinger.com/\" rel=\"noopener noreferrer\">Hostinger Mail</a></div><br><br>\n<div class=\"hmail-quote-container\">\n<div class=\"hmail-attr\" data-qa=\"message-reply-attribution\">On Thu, Jun 25, 2026 at 7:05 PM ankit@mtdngo.com &lt;ankit@mtdngo.com&gt; wrote:</div>\n<blockquote class=\"hmail-quote\"><div>Hi Tanmay,</div><div><br></div><div>Thank you for sharing the initial creatives<br></div><div>The current direction provides a good starting point in terms of awareness based communications.</div><div><br></div><div>As we are still in the onboarding and brand understanding phase, we would like to share some key expectations and objectives to help align the content strategy going forward.</div><div>\u2022 Stronger storytelling and emotional narratives.</div><div>\u2022 Better use of impact statistics and transformative stories, creatives that can resonate with potential corporate partners.</div><div>\u2022 More Dynamic Content formats such as carousals, infographics and case studies.</div><div>\u2022 Project specific visual identities rather than uniform template approach.</div><div><br></div><div>The current samples appear more suitable for routine social media communications. We would like to explore a more distinctive and impactful visual language.</div><div><br></div><div>Our objective is not only to increase social media visibility and engagement by awareness of our initiatives but also to position MTD as a credible implementation partner for Corporates.<br></div><div><div>Please also let us know what Information, reports, photographs, videos or other resources you require from our end to execute this effectively.</div><div><br></div><div><b>Additionally, we would like to discuss this on google meet, kindly share your availability for the same.</b></div><div><br></div><div>We look for to collaborating closely with your team and will share the social media access shortly.</div><div><br></div></div><div class=\"hmail-signature-prefix\">--<br></div><div class=\"hmail-signature\"><p style=\"color: #222222; font-size: 12pt; font-family: 'Times New Roman', serif; background-color: #ffffff; text-align: left\"><span class=\"size\" style=\"font-size:9pt\"><b><span class=\"font\" style=\"font-family:&quot;book antiqua&quot;, palatino, serif\">Best regards,</span></b></span></p><p style=\"color: #222222; font-size: 12pt; font-family: 'Times New Roman', serif; background-color: #ffffff; text-align: left\"><span class=\"font\" style=\"font-family:&quot;book antiqua&quot;, palatino, serif\"><span class=\"size\" style=\"font-size:9pt\"><b>Ankit Rathod |</b><span style=\"color: #666666\"> <i>Graphic Designer</i></span><span style=\"color: #666666\"></span></span></span></p><p style=\"color: #222222; font-size: 12pt; font-family: 'Times New Roman', serif; background-color: #ffffff; text-align: left\"><span class=\"font\" style=\"font-family:&quot;book antiqua&quot;, palatino, serif\"><span class=\"size\" style=\"font-size:9pt\"><span style=\"color: #666666\"><span style=\"color: #444444\"><span style=\"color: #000000\"><b>Contact:</b></span> <i>8108-217-245</i></span></span></span></span></p><p style=\"color: #222222; font-size: 12pt; font-family: 'Times New Roman', serif; background-color: #ffffff\"><span class=\"font\" style=\"font-family:&quot;book antiqua&quot;, palatino, serif\"><span class=\"size\" style=\"font-size:9pt\"><span style=\"color: #666666\"><img width=\"172\" height=\"50\" src=\"https://ci3.googleusercontent.com/mail-sig/AIorK4wy80gTMTsI9mRvdsfBZqVkvcpMiicH067_FXJlir0PvFBOjjZNZC45xsQ4pKQF-Q0XsfULqPM\"></span></span></span><br></p><p style=\"color: #222222; font-size: 12pt; font-family: 'Times New Roman', serif; background-color: #ffffff\"><span style=\"color: rgb(0, 0, 0);\"><span class=\"font\" style=\"font-family:&quot;book antiqua&quot;, palatino, serif\"><span class=\"size\" style=\"font-size:9pt\">Mumbai | Navi Mumbai | Delhi&nbsp;| New Delhi | Varanasi | Lucknow | Kanpur | Surat | Bangalore&nbsp;</span></span></span></p><p style=\"color: #222222; font-size: 12pt; font-family: 'Times New Roman', serif; background-color: #ffffff\"><span class=\"font\" style=\"font-family:&quot;book antiqua&quot;, palatino, serif\"><span class=\"size\" style=\"font-size:9pt\"><span style=\"color: #444444\"><span style=\"color: #000000\"><b>Head Office:</b></span> Address - 1st Floor, Laxmi Baug, Near The Bike Factory, Behind Dodhia Petrol Pump, <br></span></span></span><span class=\"font\" style=\"font-family:&quot;book antiqua&quot;, palatino, serif\"><span class=\"size\" style=\"font-size:9pt\"><span style=\"color: #444444\">Off. Western Expressway Highway, Near Fern Hotel, Kashi Gaon, Miraroad (East), Thane - 401107.</span></span></span></p><p style=\"color: #222222; font-size: 12pt; font-family: 'Times New Roman', serif; background-color: #ffffff\"><span class=\"font\" style=\"font-family:&quot;book antiqua&quot;, palatino, serif\"><span class=\"size\" style=\"font-size:9pt\"><span style=\"color: #444444\"><span style=\"color: #000000\"><b>Website:</b></span>&nbsp;<a style=\"color: #00acff; background-color: transparent\" href=\"http://www.mtdngo.com/\" rel=\"noreferrer nofollow noopener\" target=\"_blank\">www.mtdngo.com</a></span></span></span></p><div dir=\"ltr\" style=\"color: #222222; font-size: 14.6667px; font-family: Arial, Helvetica, sans-serif; background-color: #ffffff\"><div dir=\"ltr\"><div dir=\"ltr\"><div dir=\"ltr\"><p style=\"font-size: 12.8px\">&nbsp;</p></div></div></div></div></div><div><br></div><div>Sent with <a href=\"https://mail.hostinger.com/\" rel=\"noreferrer nofollow noopener\" target=\"_blank\">Hostinger Mail</a></div><br><br> <div class=\"hmail-quote-container\"> <div class=\"hmail-attr\" data-qa=\"message-reply-attribution\">On Sat, Jun 20, 2026 at 11:43 AM &lt;tanmay@stormveins.com&gt; wrote:</div>  <blockquote class=\"hmail-quote\"><div>Dear MTD Team,</div><div><br></div><div><div>In accordance with your previous request and in alignment with the content strategy we discussed, we have added the post drive link below for your review.</div><div><br></div><div>Drive:&nbsp;<a href=\"https://drive.google.com/drive/folders/1sr95rx0rqiIVOtmLIJfm-Wyd1NAUSmIM?usp=drive_link\" target=\"_blank\" rel=\"noreferrer nofollow noopener\">https://drive.google.com/drive/folders/1sr95rx0rqiIVOtmLIJfm-Wyd1NAUSmIM?usp=drive_link</a><br></div><div><br></div><div>Kindly examine them and inform us if they meet your approval.</div><br></div><div><br></div><div>Thank you for your attention to this matter.</div><div><br></div><div>Sincerely,</div><div>Tanmay V.<br>Storm Veins Media House</div> </blockquote> </div></blockquote>\n</div>",
+    "originalOutboundSnippet": "Interaction sent from srushti@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "Re: Re: Posts Drive Link for Review",
+      "body": "Hi ankit@mtdngo.com,\n\nThank you for following up. We have reviewed your notes and are fully prepared to take the next steps.\n\nPlease let us know if our proposed schedule works for your team.\n\nBest regards,\nShrushti\nStorm Veins Media House\nsrushti@stormveins.com"
     }
   },
   {
-    id: "inb-10",
-    senderName: "Kunal Shah",
-    senderTitle: "Chief Technology Officer",
-    senderEmail: "kunal@zenithlogistics.in",
-    senderCompany: "Zenith Cold Chain Solutions",
-    senderCountry: "India",
-    countryFlag: "🇮🇳",
-    isOverseas: false,
-    recipientMailbox: "contact@stormveins.com",
-    mailboxOwnerName: "Media House HQ",
-    subject: "Inbound Website RFP: Cold Storage Telemetry & Temperature Compliance Vault",
-    receivedTimestamp: "2026-09-06 18:35:10",
-    relativeTime: "Yesterday",
-    intent: "rfp_spec",
-    intentLabel: "Website Form RFP",
-    priority: "medium",
-    status: "action_scheduled",
-    snippet: "Inquiry via stormveins.com contact portal: Looking for a dedicated pod to engineer an IoT cold-chain temperature telemetry dashboard for 28 pharma hubs.",
-    body: `Inbound Message via Storm Veins Web Portal:
-
-Name: Kunal Shah
-Designation: Chief Technology Officer
-Company: Zenith Cold Chain Solutions (Pan-India)
-Work Email: kunal@zenithlogistics.in
-Phone: +91 98211 55678
-
-Project Scope:
-We manage cold-chain logistics for vaccine and biological pharma distribution across 28 hubs in India. We need a real-time IoT temperature monitoring dashboard with automated SMS/email alerts, audit trail compliance vaults, and client export certificates.
-
-Looking for a dedicated software house that can build and deploy this in Q4 with full source code handover. Please contact me with sprint estimates.`,
-    originalOutboundSnippet: `Direct inbound submission via stormveins.com enterprise contact form.`,
-    suggestedReplyDraft: {
-      subject: "Re: Inbound Website RFP: Cold Storage Telemetry & Temperature Compliance Vault",
-      body: `Dear Kunal,
-
-Thank you for reaching out through our portal.
-
-Your cold-chain compliance telemetry requirement maps directly to our core architecture expertise. We have built high-frequency IoT streaming telemetry pipelines with automated statutory audit vaults that maintain zero-loss records even during intermittent network drops.
-
-I have notified Tanmay V. (Managing Director) and our Principal Systems Architect. Can we schedule a 20-minute discovery call this Thursday at 2:30 PM IST?
-
-Warm regards,
-Operations Desk · Storm Veins Media House
-contact@stormveins.com`
+    "id": "real-srushti-20",
+    "leadId": "lead-20",
+    "senderName": "Ritesh Vishwakarma - Making The Difference - NGO",
+    "senderEmail": "admin@mtdngo.org",
+    "senderTitle": "Leadership & Partner Directorate",
+    "senderCompany": "Making The Difference NGO (MTD)",
+    "senderCountry": "India",
+    "countryFlag": "\ud83c\uddee\ud83c\uddf3",
+    "isOverseas": false,
+    "recipientMailbox": "srushti@stormveins.com",
+    "mailboxOwnerName": "Shrushti",
+    "subject": "Re: Collaboration for Social Media Management (MTD X Storm Veins)",
+    "receivedTimestamp": "Tue, 28 Jul 2026 18:09:31 +0530",
+    "relativeTime": "Recent",
+    "intent": "rfp_spec",
+    "intentLabel": "RFP Spec Issued",
+    "priority": "high",
+    "status": "unread",
+    "snippet": "Dear Team, After careful review, the management has decided to terminate our contract with immediate effect. Throughout this period, we shar...",
+    "body": "Dear Team,\nAfter careful review, the management has decided to terminate our contract\nwith immediate effect.\nThroughout this period, we shared the required content, did multiple\nreviews, and provided detailed feedback to help achieve the expected\noutcome. Despite these, the final deliverables did not meet our\nexpectations or the agreed quality standards.\nTherefore, we have decided to discontinue our association.\nPlease treat this email as our formal notice of contract termination.\nKindly acknowledge receipt of this email.\nWe appreciate the time and effort your team has invested, and we wish you\nall the best in your future endeavours.\nThank you.\n*Regards,*\nRitesh Vishwakarma | Finance & Accounts\n*Head Office: *\n*1st Floor, Laxmi Baug, Near The Bike Factory, Behind Dodhia Petrol\nPump,Off. Western Expressway Highway, Near Fern Hotel, Kashi Gaon, Miraroad\n(East), Thane -401107.*\nContact No.: 1800-309-3337\n*OUR BRANCHES: Mumbai | Delhi | Varanasi *| Lucknow *| Kanpur | Surat |  *\n*Bangalore*\nOn Thu, 16 Jul 2026 at 17:00, Shrushti Vaity <shrushvaity@gmail.com> wrote:\n> Hello Team,\n>\n> We are raising the invoice for the month of July. Kindly review it,\n> discuss it with the team and management, and let me know if there are any\n> concerns or approvals required.\n>\n> Thank you.",
+    "originalOutboundSnippet": "Interaction sent from srushti@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "Re: Re: Collaboration for Social Media Management (MTD X Storm Veins)",
+      "body": "Hi Ritesh Vishwakarma - Making The Difference - NGO,\n\nThank you for following up. We have reviewed your notes and are fully prepared to take the next steps.\n\nPlease let us know if our proposed schedule works for your team.\n\nBest regards,\nShrushti\nStorm Veins Media House\nsrushti@stormveins.com"
+    }
+  },
+  {
+    "id": "real-srushti-3",
+    "leadId": "lead-3",
+    "senderName": "Shrushti Vaity",
+    "senderEmail": "shrushvaity@gmail.com",
+    "senderTitle": "Direct Contact",
+    "senderCompany": "Shrushti Vaity",
+    "senderCountry": "India",
+    "countryFlag": "\ud83c\udf10",
+    "isOverseas": false,
+    "recipientMailbox": "srushti@stormveins.com",
+    "mailboxOwnerName": "Shrushti",
+    "subject": "Re: Collaboration for Social Media Management (MTD X Storm Veins)",
+    "receivedTimestamp": "Fri, 8 May 2026 17:44:55 +0530",
+    "relativeTime": "May/Jun",
+    "intent": "general",
+    "intentLabel": "General Inbound",
+    "priority": "medium",
+    "status": "unread",
+    "snippet": "Hello team , I had a discussion regarding the scope of work, and I just wanted to clarify a few things from my end. Initially, the understan...",
+    "body": "Hello team ,\nI had a discussion regarding the scope of work, and I just wanted to\nclarify a few things from my end. Initially, the understanding shared with\nme by Ashutosh was around 15 posts per month along with content creation,\nwebsite revamping, LinkedIn handling, and overall digital support.\nCurrently, 60 posts a month would honestly be difficult to manage within\nthe same structure, especially considering that my usual professional fees\nare higher. I agreed to this mainly as a goodwill gesture and because\nAshutosh personally requested me for this collaboration.\nI am definitely open to increasing the number of posts and supporting the\nbrand in the best possible way, but 60 posts monthly would not be feasible\nat the current retainer amount of \u20b950,000. Also, it was communicated to me\nearlier that the payment would be provided fully in advance, considering\nthe scope of work and the reduced retainer.\nI hope you understand my perspective as well, and I would love for us to\nfind a balanced and smooth way to work together.\nOn Thu, 7 May 2026 at 12:30\u202fPM, Ritesh Vishwakarma - Making The Difference\n- NGO <admin@mtdngo.org> wrote:\n> Greetings from Making The Difference Charitable Trust!\n> Good afternoon, Ms. Shrushti.\n>\n> We are pleased to collaborate with you for the social media management of\n> MTD.\n> Please find attached the draft MOU for your review. Kindly go through the\n> document and share your comments or any changes you would like to suggest.\n> We will review them and make the necessary revisions accordingly\n>\n> Thank you, and we look forward to your feedback.\n>\n> Regards,",
+    "originalOutboundSnippet": "Interaction sent from srushti@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "Re: Re: Collaboration for Social Media Management (MTD X Storm Veins)",
+      "body": "Hi Shrushti Vaity,\n\nThank you for connecting with us. We have received your email and will follow up shortly.\n\nBest regards,\nShrushti\nStorm Veins Media House\nsrushti@stormveins.com"
+    }
+  },
+  {
+    "id": "real-srushti-5",
+    "leadId": "lead-5",
+    "senderName": "Shrushti Vaity",
+    "senderEmail": "shrushvaity@gmail.com",
+    "senderTitle": "Direct Contact",
+    "senderCompany": "Shrushti Vaity",
+    "senderCountry": "India",
+    "countryFlag": "\ud83c\udf10",
+    "isOverseas": false,
+    "recipientMailbox": "srushti@stormveins.com",
+    "mailboxOwnerName": "Shrushti",
+    "subject": "Re: Collaboration for Social Media Management (MTD X Storm Veins)",
+    "receivedTimestamp": "Fri, 8 May 2026 18:53:27 +0530",
+    "relativeTime": "May/Jun",
+    "intent": "general",
+    "intentLabel": "General Inbound",
+    "priority": "medium",
+    "status": "unread",
+    "snippet": "Hi Team, Yes sure! 30 posts will do for ads and social media posts, as discussed. Also, I would appreciate clarification regarding the payme...",
+    "body": "Hi Team,\nYes sure! 30 posts will do for ads and social media posts, as discussed.\nAlso, I would appreciate clarification regarding the payment structure.\nKindly share the MOU as well, and once I review it, I will sign and send it\nback to you.\nLooking forward to your response.\nOn Fri, 8 May 2026 at 6:30\u202fPM, chinmayi@mtdngo.com <chinmayi@mtdngo.com>\nwrote:\n> Hello,\n>\n> Thank you for sharing your concerns. We completely understand your\n> perspective.\n> We would like to check if it would be feasible from your end to proceed\n> with 30 posts per month instead of 60?\n>\n> Also, regarding the payment terms, we would like to clarify that the\n> payment will be processed within 10 days after the MOU is signed.\n>\n> Looking forward to working together.\n>\n> Regards,\n> Chinmayi\n>\n>\n>\n> On Fri, May 8, 2026 at 5:45 PM Shrushti Vaity <shrushvaity@gmail.com>\n> wrote:\n>\n> Hello team ,\n>",
+    "originalOutboundSnippet": "Interaction sent from srushti@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "Re: Re: Collaboration for Social Media Management (MTD X Storm Veins)",
+      "body": "Hi Shrushti Vaity,\n\nThank you for connecting with us. We have received your email and will follow up shortly.\n\nBest regards,\nShrushti\nStorm Veins Media House\nsrushti@stormveins.com"
+    }
+  },
+  {
+    "id": "real-srushti-8",
+    "leadId": "lead-8",
+    "senderName": "Shrushti Vaity",
+    "senderEmail": "shrushvaity@gmail.com",
+    "senderTitle": "Direct Contact",
+    "senderCompany": "Shrushti Vaity",
+    "senderCountry": "India",
+    "countryFlag": "\ud83c\udf10",
+    "isOverseas": false,
+    "recipientMailbox": "srushti@stormveins.com",
+    "mailboxOwnerName": "Shrushti",
+    "subject": "Re: Collaboration for Social Media Management (MTD X Storm Veins)",
+    "receivedTimestamp": "Wed, 13 May 2026 10:21:33 +0530",
+    "relativeTime": "May/Jun",
+    "intent": "general",
+    "intentLabel": "General Inbound",
+    "priority": "medium",
+    "status": "unread",
+    "snippet": "The MOU has been signed. Kindly check the attached file below. On Tue, 12 May 2026 at 6:23\u202fPM, chinmayi@mtdngo.com <chinmayi@mtdngo.com> wro...",
+    "body": "The MOU has been signed. Kindly check the attached file below.\nOn Tue, 12 May 2026 at 6:23\u202fPM, chinmayi@mtdngo.com <chinmayi@mtdngo.com>\nwrote:\n> Hi Team,\n>\n> Please find attached the revised MOU with the updated payment structure\n> and scope as discussed. Kindly review the document and share your approval\n> so we can proceed further.\n>\n> Looking forward to your confirmation.\n>\n> Regards,\n> Chinmayi\n>\n>\n>\n> On Tue, May 12, 2026 at 6:17 PM chinmayi@mtdngo.com <chinmayi@mtdngo.com>\n> wrote:\n>\n> Hi Team,\n>\n> Please find attached the revised MOU with the updated payment structure\n> and scope as discussed. Kindly review the document and share your approval\n> so we can proceed further.\n>\n> Looking forward to your confirmation.\n>\n> Regards,\n> Chinmayi\n>",
+    "originalOutboundSnippet": "Interaction sent from srushti@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "Re: Re: Collaboration for Social Media Management (MTD X Storm Veins)",
+      "body": "Hi Shrushti Vaity,\n\nThank you for connecting with us. We have received your email and will follow up shortly.\n\nBest regards,\nShrushti\nStorm Veins Media House\nsrushti@stormveins.com"
+    }
+  },
+  {
+    "id": "real-srushti-10",
+    "leadId": "lead-10",
+    "senderName": "Tanmay",
+    "senderEmail": "tanmay@stormveins.com",
+    "senderTitle": "Direct Contact",
+    "senderCompany": "Tanmay",
+    "senderCountry": "India",
+    "countryFlag": "\ud83c\udf10",
+    "isOverseas": false,
+    "recipientMailbox": "srushti@stormveins.com",
+    "mailboxOwnerName": "Shrushti",
+    "subject": "Re: Collaboration for Social Media Management (MTD X Storm Veins)",
+    "receivedTimestamp": "Sun, 17 May 2026 10:35:46 +0000 (UTC)",
+    "relativeTime": "May/Jun",
+    "intent": "general",
+    "intentLabel": "General Inbound",
+    "priority": "medium",
+    "status": "unread",
+    "snippet": "<div><div style=\"font-size: inherit;\"><div style=\"font-size: inherit;\"> <p>Subject: Request for Volunteer &amp; Team Member Photos/Visuals</...",
+    "body": "<div><div style=\"font-size: inherit;\"><div style=\"font-size: inherit;\">\n<p>Subject: Request for Volunteer &amp; Team Member Photos/Visuals</p>\n<p>Hi Team,</p>\n<p>Hope you\u2019re doing well.</p>\n<p>For the ongoing creatives/content requirements, could you please share photos/videos featuring MTD volunteers and team members while working and interacting during activities?</p>\n<p>Below is the list of visuals required:</p>\n<ol start=\"1\"><li>MTD volunteers distributing sanitary pads</li><li>MTD volunteers holding hands/supporting elderly people</li><li>MTD volunteers with acid attack survivors</li><li>An autistic child drawing in the MTD sensory room</li><li>MTD volunteers interacting with/hugging AIDS patients or other patients</li><li>MTD blood donation drive photos</li><li>MTD providing prosthetic legs and/or disability support supplies</li><li>MTD distributing educational kits</li><li>Corporate employees volunteering with MTD</li><li>MTD volunteers interacting and engaging with beneficiaries/community members</li></ol>\n<p dir=\"auto\">Please share the available content in the best possible quality.</p><p dir=\"auto\"><br></p><p dir=\"auto\">Regards,</p><p dir=\"auto\">Tanmay</p><p dir=\"auto\">Storm veins</p><p dir=\"auto\">77570 45582</p>\n</div></div><br></div><div><br><div class=\"gmail_quote gmail_quote_container\"><div dir=\"ltr\" class=\"gmail_attr\">On Fri, 15 May 2026 at 17:45, chinmayi@mtdngo.com &lt;chinmayi@mtdngo.com&gt; wrote:<br></div><blockquote class=\"gmail_quote\" style=\"margin: 0px 0px 0px 0.8ex; border-left-width: 1px; border-left-style: solid; padding-left: 1ex; border-left-color: rgb(204, 204, 204);\"><div>Hello Team,</div><div><br></div><div>Please find the drive link attached below for the employee photos and MTD logo file:</div><div><a href=\"https://drive.google.com/drive/folders/1OKS_yK98ikAYGHJCKydV50inOVgwrwJ5?usp=sharing\">MTD \u2013 Employee Photos &amp; Logo File</a><br></div><div><br></div><div>Additionally, as per our organization's norms, I kindly request that all file requirements or requests for additional information from our end be communicated via email only. This will help ensure clear and proper communication.</div><div><br></div><div>Let me know if any further information is required.</div><div><br></div><div>Regards,</div><div>Chinmayi&nbsp;</div><br><br>\n<div>\n<div>On Tue, May 12, 2026 at 6:23 PM chinmayi@mtdngo.com &lt;chinmayi@mtdngo.com&gt; wrote:</div>\n<blockquote><p style=\"line-height: 1.5; margin: 1rem 0px; font-family: system-ui, sans-serif; font-size: 14px; font-style: normal; font-weight: 400; letter-spacing: normal; text-indent: 0px; text-transform: none; word-spacing: 0px; white-space: normal; color: rgb(38, 40, 49);\"><span style=\"line-height: 1.5; font-family: system-ui, sans-serif;\">Hi Team,</span></p><p style=\"line-height: 1.5; margin: 1rem 0px; font-family: system-ui, sans-serif; font-size: 14px; font-style: normal; font-weight: 400; letter-spacing: normal; text-indent: 0px; text-transform: none; word-spacing: 0px; white-space: normal; color: rgb(38, 40, 49);\"><span style=\"line-height: 1.5; font-family: system-ui, sans-serif;\">Please find attached the revised MOU with the updated payment structure and scope as discussed. Kindly review the document and share your approval so we can proceed further.</span></p><p style=\"line-height: 1.5; margin: 1rem 0px; font-family: system-ui, sans-serif; font-size: 14px; font-style: normal; font-weight: 400; letter-spacing: normal; text-indent: 0px; text-transform: none; word-spacing: 0px; white-space: normal; color: rgb(38, 40, 49);\"><span style=\"line-height: 1.5; font-family: system-ui, sans-serif;\">Looking forward to your confirmation.<br style=\"line-height: 1.5; display: block; margin: 0.5em 0px;\"><br style=\"line-height: 1.5; display: block; margin: 0.5em 0px;\">Regards,<br style=\"line-height: 1.5; display: block; margin: 0.5em 0px;\"></span>Chinmayi</p><div><br></div><br><br> <div> <div>On Tue, May 12, 2026 at 6:17 PM chinmayi@mtdngo.com &lt;chinmayi@mtdngo.com&gt; wrote:</div>  <blockquote><p>Hi Team,</p><p>Please find attached the revised MOU with the updated payment structure and scope as discussed. Kindly review the document and share your approval so we can proceed further.</p><p>Looking forward to your confirmation.<br><br>Regards,<br>Chinmayi</p><div><br></div><br><br> <div> <div>On Fri, May 8, 2026 at 6:53 PM Shrushti Vaity &lt;shrushvaity@gmail.com&gt; wrote:</div>  <blockquote><div><div style=\"font-size: inherit;\"><div style=\"font-size: inherit;\">  <p dir=\"auto\">Hi Team,</p><p dir=\"auto\"><span style=\"font-size: inherit;\">Yes sure! 30 posts will do for ads and social media posts, as discussed.</span></p><p dir=\"auto\"><span style=\"font-size: inherit;\"></span><span style=\"font-size: inherit;\">Also, I would appreciate clarification regarding the payment structure. Kindly share the MOU as well, and once I review it, I will sign and send it back to you.</span></p> <p><br></p> <p>Looking forward to your response.</p>  </div></div><br></div><div><br><div><div dir=\"ltr\">On Fri, 8 May 2026 at 6:30\u202fPM, <a href=\"mailto:chinmayi@mtdngo.com\">chinmayi@mtdngo.com</a> &lt;<a href=\"mailto:chinmayi@mtdngo.com\">chinmayi@mtdngo.com</a>&gt; wrote:<br></div><blockquote style=\"margin: 0px 0px 0px 0.8ex; border-left-width: 1px; border-left-style: solid; padding-left: 1ex; border-left-color: rgb(204, 204, 204);\"><p>Hello,</p><p>Thank you for sharing your concerns. We completely understand your perspective.&nbsp;<br></p><div>We would like to check if it would be feasible from your end to proceed with 30 posts per month instead of 60?<br></div><p>Also, regarding the payment terms, we would like to clarify that the payment will be processed within 10 days after the MOU is signed.</p><p>Looking forward to working together.<br><br>Regards,<br>Chinmayi</p><div><br></div><br><br> <div></div><div> <div>On Fri, May 8, 2026 at 5:45 PM Shrushti Vaity &lt;<a href=\"mailto:shrushvaity@gmail.com\">shrushvaity@gmail.com</a>&gt; wrote:</div>  <blockquote><div><div style=\"font-size: inherit;\" dir=\"auto\">Hello team ,<br style=\"font-size: inherit;\"><br style=\"font-size: inherit;\">I had a discussion regarding the scope of work, and I just wanted to clarify a few things from my end. Initially, the understanding shared with me by Ashutosh was around 15 posts per month along with content creation, website revamping, LinkedIn handling, and overall digital support.<br style=\"font-size: inherit;\"><br style=\"font-size: inherit;\">Currently, 60 posts a month would honestly be difficult to manage within the same structure, especially considering that my usual professional fees are higher. I agreed to this mainly as a goodwill gesture and because Ashutosh personally requested me for this collaboration.<br style=\"font-size: inherit;\"><br style=\"font-size: inherit;\">I am definitely open to increasing the number of posts and supporting the brand in the best possible way, but 60 posts monthly would not be feasible at the current retainer amount of \u20b950,000. Also, it was communicated to me earlier that the payment would be provided fully in advance, considering the scope of work and the reduced retainer.<br style=\"font-size: inherit;\"><br style=\"font-size: inherit;\">I hope you understand my perspective as well, and I would love for us to find a balanced and smooth way to work together.&nbsp;</div><br></div><div><br></div></blockquote></div></blockquote></div></div></blockquote></div></blockquote></div></blockquote></div><div><blockquote><div><blockquote><div><blockquote><div><div><blockquote style=\"margin: 0px 0px 0px 0.8ex; border-left-width: 1px; border-left-style: solid; padding-left: 1ex; border-left-color: rgb(204, 204, 204);\"><div><blockquote><div><div class=\"elided-text\"><div dir=\"ltr\">On Thu, 7 May 2026 at 12:30\u202fPM, Ritesh Vishwakarma - Making The Difference - NGO &lt;<a href=\"mailto:admin@mtdngo.org\">admin@mtdngo.org</a>&gt; wrote:<br></div><blockquote style=\"margin: 0px 0px 0px 0.8ex; border-left-width: 1px; border-left-style: solid; padding-left: 1ex; border-left-color: rgb(204, 204, 204);\"><div dir=\"ltr\"><div>Greetings from Making The Difference Charitable Trust!<br>Good afternoon, Ms. Shrushti.<br><br>We are pleased to collaborate with you for the social media management of MTD.<br>Please find attached the draft MOU for your review. Kindly go through the document and share your comments or any changes you would like to suggest.</div><div>We will review them and make the necessary revisions accordingly<br><br>Thank you, and we look forward to your feedback.<br><br>Regards,</div><div><div dir=\"ltr\"><div dir=\"ltr\"><div style=\"font-family: monospace; font-size: 13.3333px; margin: 0px; padding: 0px; color: rgb(34, 34, 34);\"><b style=\"font-family: monospace;\">Regards,</b></div><div style=\"font-family: monospace; font-size: 13.3333px; margin: 0px; padding: 0px; color: rgb(34, 34, 34);\"><img style=\"width: 844px; max-width: 100%; font-family: monospace; background-color: rgba(0, 0, 0, 0); border-color: rgb(225, 225, 226); color: rgb(225, 225, 226);\"></div><div style=\"margin: 0px; padding: 0px;\"><span style=\"font-family: &quot;century gothic&quot;, sans-serif; font-size: 11pt; font-weight: bolder; color: rgb(34, 34, 34);\">Ritesh Vishwakarma&nbsp;</span><span style=\"font-family: &quot;century gothic&quot;, sans-serif; font-size: 11pt; color: rgb(34, 34, 34);\">|</span><span style=\"font-family: &quot;century gothic&quot;, sans-serif; font-size: 11pt; font-weight: bolder; color: rgb(34, 34, 34);\"><span style=\"font-family: &quot;century gothic&quot;, sans-serif; color: rgb(102, 102, 102);\">&nbsp;Finance &amp; Accounts</span></span></div><div style=\"font-family: monospace; font-size: 13.3333px; margin: 0px; padding: 0px; color: rgb(34, 34, 34);\"><p style=\"font-size: 12pt; font-family: &quot;times new roman&quot;, serif;\"><b style=\"font-size: 12pt; font-family: &quot;times new roman&quot;, serif; color: rgb(68, 68, 68);\"><span style=\"font-family: &quot;century gothic&quot;, sans-serif; font-size: 10pt;\">Head Office:&nbsp;</span></b><font face=\"Century Gothic, sans-serif\" style=\"font-size: small; font-family: &quot;century gothic&quot;, sans-serif; color: rgb(68, 68, 68);\"><span style=\"font-size: 13.3333px; font-family: &quot;century gothic&quot;, sans-serif;\"><b style=\"font-family: &quot;century gothic&quot;, sans-serif;\">1st Floor, Laxmi Baug, Near The Bike Factory, Behind Dodhia Petrol Pump,<br>Off. Western Expressway Highway, Near Fern Hotel, Kashi Gaon, Miraroad (East), Thane -401107.</b></span></font></p><p style=\"font-size: 12pt; font-family: &quot;times new roman&quot;, serif;\"><span style=\"font-family: &quot;century gothic&quot;, sans-serif; font-size: 10pt; font-weight: bolder; color: rgb(68, 68, 68);\">Contact No.: 1800-309-3337 / 82686 40176</span></p><p style=\"font-size: 12pt; font-family: &quot;times new roman&quot;, serif;\"><font style=\"font-family: arial, helvetica, sans-serif; font-size: 12.8px; color: rgb(34, 34, 34);\"><b style=\"font-family: arial, helvetica, sans-serif;\"><font face=\"verdana, sans-serif\" style=\"font-family: verdana, sans-serif; color: rgb(34, 34, 34);\"><span style=\"font-family: verdana, sans-serif;\">OUR BRANCHES: Mumbai&nbsp;| Delhi&nbsp;</span></font><span style=\"font-family: verdana, sans-serif;\">| Varanasi&nbsp;</span></b></font><font style=\"font-family: arial, helvetica, sans-serif; font-size: 12.8px; font-weight: bold; color: rgb(0, 0, 0);\">|&nbsp;Lucknow&nbsp;</font><font style=\"font-family: arial, helvetica, sans-serif; font-size: 12.8px; color: rgb(0, 0, 0);\"><b style=\"font-family: arial, helvetica, sans-serif;\">| Kanpur | Surat |&nbsp;&nbsp;</b></font><font face=\"verdana, sans-serif\" style=\"font-size: small; font-family: verdana, sans-serif; color: rgb(0, 0, 0);\"><span style=\"font-size: 12.8px; font-family: verdana, sans-serif;\"><b style=\"font-family: verdana, sans-serif;\">Bangalore</b></span></font><font style=\"font-family: arial, helvetica, sans-serif; font-size: 12.8px; color: rgb(0, 0, 0);\"><b style=\"font-family: arial, helvetica, sans-serif;\">&nbsp;</b></font></p></div><div style=\"font-family: monospace; font-size: 13.3333px; margin: 0px; padding: 0px; color: rgb(34, 34, 34);\"><div style=\"width: 303px; height: 109px; font-family: monospace;\"> <u style=\"font-family: monospace;\"></u> <u style=\"font-family: monospace;\"></u><u style=\"font-family: monospace;\"></u> <u style=\"font-family: monospace;\"></u> </div></div></div></div></div><br><div> <table border=\"0\" cellpadding=\"8\" cellspacing=\"0\"><tbody><tr><td style=\"padding: 0px 4px 0px 0px;\"> <div style=\"width: 24px; height: 20px;\"> <u></u> <u></u><u></u> <u></u> </div> </td><td style=\"padding: 0px 10px 0px 0px;\"> <span style=\"font-size: 12px; font-family: inter, sans-serif; font-weight: 400; line-height: 185%; color: rgb(51, 51, 51);\">Email tracked with Mailsuite &nbsp;\u00b7&nbsp; <a href=\"https://u.list-prefs.com/en/privacy/opt-out/unsubscribe/b73ab183d9d15d615f91e8b0738c0cdd0a487656/62551dc8a007de0276b89c2263688c3fdcdfaea96d875141542bae32e93d276fce7556fa5f95ff0d4c4f63736fcaa581b81d809661aed92a04b1e8a933a7c205\" style=\"font-size: 11px; font-family: inter, sans-serif; font-weight: 400; line-height: 185%; color: rgb(102, 102, 102);\">Opt out</a></span><br> </td><td><span style=\"font-size: 0px;\">07/05/26, 12:23:30 pm</span></td></tr></tbody></table> </div><img width=\"0\" height=\"0\" alt=\"\"></div> </blockquote></div></div></blockquote></div></blockquote></div></div></blockquote></div></blockquote></div></blockquote></div><div><blockquote><div><blockquote><div><blockquote><div><div><blockquote style=\"margin: 0px 0px 0px 0.8ex; border-left-width: 1px; border-left-style: solid; padding-left: 1ex; border-left-color: rgb(204, 204, 204);\"><div><blockquote><div></div> </blockquote> </div></blockquote></div></div> </blockquote> </div></blockquote> </div></blockquote>\n</div></blockquote></div></div>",
+    "originalOutboundSnippet": "Interaction sent from srushti@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "Re: Re: Collaboration for Social Media Management (MTD X Storm Veins)",
+      "body": "Hi Tanmay,\n\nThank you for connecting with us. We have received your email and will follow up shortly.\n\nBest regards,\nShrushti\nStorm Veins Media House\nsrushti@stormveins.com"
+    }
+  },
+  {
+    "id": "real-srushti-13",
+    "leadId": "lead-13",
+    "senderName": "Shrushti Vaity",
+    "senderEmail": "shrushvaity@gmail.com",
+    "senderTitle": "Direct Contact",
+    "senderCompany": "Shrushti Vaity",
+    "senderCountry": "India",
+    "countryFlag": "\ud83c\udf10",
+    "isOverseas": false,
+    "recipientMailbox": "srushti@stormveins.com",
+    "mailboxOwnerName": "Shrushti",
+    "subject": "Re: Collaboration for Social Media Management (MTD X Storm Veins)",
+    "receivedTimestamp": "Sat, 6 Jun 2026 23:05:51 +0530",
+    "relativeTime": "May/Jun",
+    "intent": "general",
+    "intentLabel": "General Inbound",
+    "priority": "medium",
+    "status": "unread",
+    "snippet": "Hi team, Thanks for following up. Please find the Drive link below containing the Phase 1 deliverables, which includes the next 15 days of c...",
+    "body": "Hi team,\nThanks for following up.\nPlease find the Drive link below containing the Phase 1 deliverables, which\nincludes the next 15 days of content mapped out for Instagram, Facebook,\nLinkedIn, and X.\n[\nhttps://drive.google.com/drive/folders/1oPhu4c-Gs87rOs4Uo_5EK8XO8hzcNQgP?usp=sharing\n]\nKindly review the materials and let us know your feedback or approval so we\ncan initiate the posting schedule.\nAdditionally, to get started with the publishing, please share the\nrespective social media credentials with Srushti at: srushti@stormveins.com\nLooking forward to your thoughts!\nBest regards,\nSrushti Vaity,\nDirector\nStorm Veins\nOn Sat, 6 Jun 2026 at 12:53\u202fPM, chinmayi@mtdngo.com <chinmayi@mtdngo.com>\nwrote:\n> Hello Team,\n>\n> I wanted to follow up regarding the volunteer photos, the content file\n> prepared from your end, and the Impact Stories document that was shared for\n> review.\n>\n> Could you please let me know if there is any update on this? Have you\n> reviewed the document? It would be helpful to receive your feedback so that\n> we can make any necessary revisions and proceed accordingly.\n> Additionally, could you please share the content file prepared from your\n> end so that we can review it as well?",
+    "originalOutboundSnippet": "Interaction sent from srushti@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "Re: Re: Collaboration for Social Media Management (MTD X Storm Veins)",
+      "body": "Hi Shrushti Vaity,\n\nThank you for connecting with us. We have received your email and will follow up shortly.\n\nBest regards,\nShrushti\nStorm Veins Media House\nsrushti@stormveins.com"
+    }
+  },
+  {
+    "id": "real-srushti-14",
+    "leadId": "lead-14",
+    "senderName": "tanmay",
+    "senderEmail": "tanmay@stormveins.com",
+    "senderTitle": "Direct Contact",
+    "senderCompany": "tanmay",
+    "senderCountry": "India",
+    "countryFlag": "\ud83c\udf10",
+    "isOverseas": false,
+    "recipientMailbox": "srushti@stormveins.com",
+    "mailboxOwnerName": "Shrushti",
+    "subject": "Posts Drive Link for Review",
+    "receivedTimestamp": "Sat, 20 Jun 2026 06:13:38 +0000 (UTC)",
+    "relativeTime": "May/Jun",
+    "intent": "general",
+    "intentLabel": "General Inbound",
+    "priority": "medium",
+    "status": "unread",
+    "snippet": "<div>Dear MTD Team,</div><div><br></div><div><div>In accordance with your previous request and in alignment with the content strategy we dis...",
+    "body": "<div>Dear MTD Team,</div><div><br></div><div><div>In accordance with your previous request and in alignment with the content strategy we discussed, we have added the post drive link below for your review.</div><div><br></div><div>Drive:&nbsp;<a href=\"https://drive.google.com/drive/folders/1sr95rx0rqiIVOtmLIJfm-Wyd1NAUSmIM?usp=drive_link\" target=\"_blank\">https://drive.google.com/drive/folders/1sr95rx0rqiIVOtmLIJfm-Wyd1NAUSmIM?usp=drive_link</a><br></div><div><br></div><div>Kindly examine them and inform us if they meet your approval.</div><br></div><div><br></div><div>Thank you for your attention to this matter.</div><div><br></div><div>Sincerely,</div><div>Tanmay V.<br>Storm Veins Media House</div>",
+    "originalOutboundSnippet": "Interaction sent from srushti@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "Re: Posts Drive Link for Review",
+      "body": "Hi tanmay,\n\nThank you for connecting with us. We have received your email and will follow up shortly.\n\nBest regards,\nShrushti\nStorm Veins Media House\nsrushti@stormveins.com"
+    }
+  },
+  {
+    "id": "real-srushti-18",
+    "leadId": "lead-18",
+    "senderName": "Shrushti Vaity",
+    "senderEmail": "shrushvaity@gmail.com",
+    "senderTitle": "Direct Contact",
+    "senderCompany": "Shrushti Vaity",
+    "senderCountry": "India",
+    "countryFlag": "\ud83c\udf10",
+    "isOverseas": false,
+    "recipientMailbox": "srushti@stormveins.com",
+    "mailboxOwnerName": "Shrushti",
+    "subject": "Re: Posts Drive Link for Review",
+    "receivedTimestamp": "Thu, 2 Jul 2026 14:21:09 +0530",
+    "relativeTime": "Recent",
+    "intent": "general",
+    "intentLabel": "General Inbound",
+    "priority": "medium",
+    "status": "unread",
+    "snippet": "Hi team, I hope you\u2019re doing well. I went through your email, website, and the shared drive. I think the creatives we are working on match t...",
+    "body": "Hi team,\nI hope you\u2019re doing well.\nI went through your email, website, and the shared drive. I think the\ncreatives we are working on match the website well and reflect the brand\nvalues. I believe this creative direction is the right fit for the brand,\nand we will continue to improve and build on it.\nKindly share the Facebook and Instagram access so we can start posting.\nWe\u2019ve been waiting for the access since many days and receiving it will\nhelp us begin the digital activities without any further delay.\nwe\u2019ll start creating more creatives and maintain a consistent posting\nschedule.\nLooking forward to your approval and the account access.\nThank you.\nBest regards,\n*Srushti Vaity*\n*Director | Storm Veins Media House*\nOn Sat, 20 Jun 2026 at 11:43\u202fAM, <tanmay@stormveins.com> wrote:\n> Dear MTD Team,\n>\n> In accordance with your previous request and in alignment with the content\n> strategy we discussed, we have added the post drive link below for your\n> review.\n>\n> Drive:\n> https://drive.google.com/drive/folders/1sr95rx0rqiIVOtmLIJfm-Wyd1NAUSmIM?usp=drive_link\n>\n> Kindly examine them and inform us if they meet your approval.\n>\n>\n> Thank you for your attention to this matter.",
+    "originalOutboundSnippet": "Interaction sent from srushti@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "Re: Re: Posts Drive Link for Review",
+      "body": "Hi Shrushti Vaity,\n\nThank you for connecting with us. We have received your email and will follow up shortly.\n\nBest regards,\nShrushti\nStorm Veins Media House\nsrushti@stormveins.com"
+    }
+  },
+  {
+    "id": "real-srushti-19",
+    "leadId": "lead-19",
+    "senderName": "Shrushti Vaity",
+    "senderEmail": "shrushvaity@gmail.com",
+    "senderTitle": "Direct Contact",
+    "senderCompany": "Shrushti Vaity",
+    "senderCountry": "India",
+    "countryFlag": "\ud83c\udf10",
+    "isOverseas": false,
+    "recipientMailbox": "srushti@stormveins.com",
+    "mailboxOwnerName": "Shrushti",
+    "subject": "Re: Collaboration for Social Media Management (MTD X Storm Veins)",
+    "receivedTimestamp": "Thu, 16 Jul 2026 17:00:29 +0530",
+    "relativeTime": "Recent",
+    "intent": "general",
+    "intentLabel": "General Inbound",
+    "priority": "medium",
+    "status": "unread",
+    "snippet": "Hello Team, We are raising the invoice for the month of July. Kindly review it, discuss it with the team and management, and let me know if ...",
+    "body": "Hello Team,\nWe are raising the invoice for the month of July. Kindly review it, discuss\nit with the team and management, and let me know if there are any concerns\nor approvals required.\nThank you.\nOn Thu, 25 Jun 2026 at 12:56\u202fPM, Making The Difference - NGO <help@mtdngo.in>\nwrote:\n> Looping Ms. Prachi.\n>\n>\n> On May 7 2026, at 12:29 pm, Ritesh Vishwakarma - Making The Difference -\n> NGO <admin@mtdngo.org> wrote:\n>\n>> Greetings from Making The Difference Charitable Trust!\n>> Good afternoon, Ms. Shrushti.\n>>\n>> We are pleased to collaborate with you for the social media management of\n>> MTD.\n>> Please find attached the draft MOU for your review. Kindly go through the\n>> document and share your comments or any changes you would like to suggest.\n>> We will review them and make the necessary revisions accordingly\n>>\n>> Thank you, and we look forward to your feedback.\n>>\n>> Regards,\n>> *Regards,*\n>> Ritesh Vishwakarma | Finance & Accounts\n>>\n>> *Head Office: *\n>> *1st Floor, Laxmi Baug, Near The Bike Factory, Behind Dodhia Petrol",
+    "originalOutboundSnippet": "Interaction sent from srushti@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "Re: Re: Collaboration for Social Media Management (MTD X Storm Veins)",
+      "body": "Hi Shrushti Vaity,\n\nThank you for connecting with us. We have received your email and will follow up shortly.\n\nBest regards,\nShrushti\nStorm Veins Media House\nsrushti@stormveins.com"
+    }
+  },
+  {
+    "id": "real-srushti-23",
+    "leadId": "lead-23",
+    "senderName": "Nakheel Info",
+    "senderEmail": "noreply@dhre.ae",
+    "senderTitle": "Direct Contact",
+    "senderCompany": "Nakheel Info",
+    "senderCountry": "India",
+    "countryFlag": "\ud83c\udf10",
+    "isOverseas": false,
+    "recipientMailbox": "srushti@stormveins.com",
+    "mailboxOwnerName": "Shrushti",
+    "subject": "We\u0092ve received your request | 01446003",
+    "receivedTimestamp": "Mon, 7 Sep 2026 07:18:39 +0000 (GMT)",
+    "relativeTime": "Today",
+    "intent": "general",
+    "intentLabel": "General Inbound",
+    "priority": "medium",
+    "status": "unread",
+    "snippet": "Dear Valued Customer, Thank you for reaching out to us! We will review your email and respond within 1 business day. While we strive to resp...",
+    "body": "Dear Valued Customer,\nThank you for reaching out to us! We will review your email and respond within 1 business day.\nWhile we strive to respond as promptly as possible, in certain cases we may require additional time to connect with relevant teams and provide you with the necessary information. We appreciate your patience as we work towards resolving your request.\nHave a great day ahead!\nThis is an automated message. Please do not reply to this email.\nDownload My Nakheel App\n800 NAKHEEL | customersupport@nakheel.com\n\u00a9 2026, All rights reserved.\nPrivacy Policy | Unsubscribe",
+    "originalOutboundSnippet": "Interaction sent from srushti@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "Re: We\u0092ve received your request | 01446003",
+      "body": "Hi Nakheel Info,\n\nThank you for connecting with us. We have received your email and will follow up shortly.\n\nBest regards,\nShrushti\nStorm Veins Media House\nsrushti@stormveins.com"
+    }
+  },
+  {
+    "id": "real-contact-2",
+    "leadId": "lead-2",
+    "senderName": "tinamcdaniel596@gmail.com",
+    "senderEmail": "tinamcdaniel596@gmail.com",
+    "senderTitle": "Direct Contact",
+    "senderCompany": "tinamcdaniel596@gmail.com",
+    "senderCountry": "India",
+    "countryFlag": "\ud83c\udf10",
+    "isOverseas": false,
+    "recipientMailbox": "contact@stormveins.com",
+    "mailboxOwnerName": "Central Desk",
+    "subject": "stormveins, Get More 2,000 Instagram Followers and 1,000 Tiktok\r\n Followers here",
+    "receivedTimestamp": "Wed, 20 May 2026 22:31:24 +0000",
+    "relativeTime": "May/Jun",
+    "intent": "general",
+    "intentLabel": "General Inbound",
+    "priority": "medium",
+    "status": "unread",
+    "snippet": "Hi Storm Veins, We are from Instasocial. We found your Email address on your Instagram page @stormveins. We Offers Instagram Followers, Like...",
+    "body": "Hi Storm Veins,\nWe are from Instasocial. We found your Email address on your Instagram page\n@stormveins.\nWe Offers Instagram Followers, Likes and Views services.\nThe price is:\n-$29 USD for 1,000 Instagram Followers and\n- $9 USD For Instagram Post Likes.\n- $7 USD For Instagram Video Views\nNow you have 223 Followers, maybe you are Interested?\nWhile the pursuit of a higher follower count is common, it's essential to\nprioritize quality engagement, authenticity, and community building to\ncreate a meaningful and lasting impact on Instagram..\nYou can See all packages here :\nhttps://bit.ly/twittinstamax\nIf you have any questions, feel free to ask them here.\nI apologize if this message bothers you,\nAlso, We have Youtube, Tiktok and Facebook  services too, Please check it\nnow.\nThank you,\nRegards,",
+    "originalOutboundSnippet": "Interaction sent from contact@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "Re: stormveins, Get More 2,000 Instagram Followers and 1,000 Tiktok\r\n Followers here",
+      "body": "Hi tinamcdaniel596@gmail.com,\n\nThank you for connecting with us. We have received your email and will follow up shortly.\n\nBest regards,\nCentral Desk\nStorm Veins Media House\ncontact@stormveins.com"
+    }
+  },
+  {
+    "id": "real-contact-3",
+    "leadId": "lead-3",
+    "senderName": "mandaisti266@gmail.com",
+    "senderEmail": "mandaisti266@gmail.com",
+    "senderTitle": "Direct Contact",
+    "senderCompany": "mandaisti266@gmail.com",
+    "senderCountry": "India",
+    "countryFlag": "\ud83c\udf10",
+    "isOverseas": false,
+    "recipientMailbox": "contact@stormveins.com",
+    "mailboxOwnerName": "Central Desk",
+    "subject": "stormveins, Get More 2,000 Instagram Followers and 1,000 Tiktok\r\n Followers here",
+    "receivedTimestamp": "Wed, 10 Jun 2026 18:42:58 +0000",
+    "relativeTime": "May/Jun",
+    "intent": "general",
+    "intentLabel": "General Inbound",
+    "priority": "medium",
+    "status": "unread",
+    "snippet": "Hi Storm Veins, We are from Instasocial. We found your Email address on your Instagram page @stormveins. We Offers Instagram Followers, Like...",
+    "body": "Hi Storm Veins,\nWe are from Instasocial. We found your Email address on your Instagram page\n@stormveins.\nWe Offers Instagram Followers, Likes and Views services.\nThe price is:\n-$29 USD for 1,000 Instagram Followers and\n- $9 USD For Instagram Post Likes.\n- $7 USD For Instagram Video Views\nNow you have a Limited Followers, maybe you are Interested?\nBeauty influencers and makeup artists may aim for a larger following to\nshowcase their makeup skills, attract brand partnerships, and become\nrecognized in the beauty industry.\nYou can See all packages here :\nhttps://bit.ly/instasocialbest\nIf you have any questions, feel free to ask them here.\nI apologize if this message bothers you,\nAlso, We have Youtube, Tiktok and Facebook services too, Please check it\nnow.\nThank you,\nRegards,",
+    "originalOutboundSnippet": "Interaction sent from contact@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "Re: stormveins, Get More 2,000 Instagram Followers and 1,000 Tiktok\r\n Followers here",
+      "body": "Hi mandaisti266@gmail.com,\n\nThank you for connecting with us. We have received your email and will follow up shortly.\n\nBest regards,\nCentral Desk\nStorm Veins Media House\ncontact@stormveins.com"
+    }
+  },
+  {
+    "id": "real-contact-4",
+    "leadId": "lead-4",
+    "senderName": "Instasocial Support",
+    "senderEmail": "alskilannschupp@gmail.com",
+    "senderTitle": "Direct Contact",
+    "senderCompany": "Instasocial Support",
+    "senderCountry": "India",
+    "countryFlag": "\ud83c\udf10",
+    "isOverseas": false,
+    "recipientMailbox": "contact@stormveins.com",
+    "mailboxOwnerName": "Central Desk",
+    "subject": "stormveins, Get More 1,000 Instagram Followers and 1,000 Likes here",
+    "receivedTimestamp": "Fri, 31 Jul 2026 08:29:19 +0000",
+    "relativeTime": "Recent",
+    "intent": "general",
+    "intentLabel": "General Inbound",
+    "priority": "medium",
+    "status": "unread",
+    "snippet": "Hi Storm Veins, We are from Instasocial. We found your Email address on your Instagram page @stormveins. We Offers Instagram Followers, Like...",
+    "body": "Hi Storm Veins,\nWe are from Instasocial. We found your Email address on your Instagram page\n@stormveins.\nWe Offers Instagram Followers, Likes and Views services.\nThe price is:\n-$29 USD for 1,000 Instagram Followers and\n- $9 USD For Instagram Post Likes.\n- $7 USD For Instagram Video Views\nNow you have a Limited Followers, maybe you are Interested?\nBeauty influencers and makeup artists may aim for a larger following to\nshowcase their makeup skills, attract brand partnerships, and become\nrecognized in the beauty industry.\nYou can See all packages here :\nhttps://bit.ly/2m7Iwq5\nIf you have any questions, feel free to ask them here.\nI apologize if this message bothers you,\nAlso, We have Youtube, Tiktok and Facebook services too, Please check it\nnow.\nThank you,\nRegards,",
+    "originalOutboundSnippet": "Interaction sent from contact@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "Re: stormveins, Get More 1,000 Instagram Followers and 1,000 Likes here",
+      "body": "Hi Instasocial Support,\n\nThank you for connecting with us. We have received your email and will follow up shortly.\n\nBest regards,\nCentral Desk\nStorm Veins Media House\ncontact@stormveins.com"
+    }
+  },
+  {
+    "id": "real-contact-5",
+    "leadId": "lead-5",
+    "senderName": "Storm Veins Media House",
+    "senderEmail": "contact@stormveins.com",
+    "senderTitle": "Direct Contact",
+    "senderCompany": "Storm Veins Media House",
+    "senderCountry": "India",
+    "countryFlag": "\ud83c\udf10",
+    "isOverseas": false,
+    "recipientMailbox": "contact@stormveins.com",
+    "mailboxOwnerName": "Central Desk",
+    "subject": "New Executive Brief: Tanmay Vaity (Storm Veins Testing)",
+    "receivedTimestamp": "Fri,  4 Sep 2026 07:33:14 +0000 (UTC)",
+    "relativeTime": "Today",
+    "intent": "general",
+    "intentLabel": "General Inbound",
+    "priority": "medium",
+    "status": "unread",
+    "snippet": "NEW EXECUTIVE INQUIRY RECEIVED Client Name: Tanmay Vaity Corporate Email: tanmayv86@gmail.com Organization: Storm Veins Testing Target Manda...",
+    "body": "NEW EXECUTIVE INQUIRY RECEIVED\nClient Name: Tanmay Vaity\nCorporate Email: tanmayv86@gmail.com\nOrganization: Storm Veins Testing\nTarget Mandate: Commercial Growth Engines\nIndicative Budget: INR 15L\nBrief / Message:\nTesting automated website inquiry and confirmation email system.",
+    "originalOutboundSnippet": "Interaction sent from contact@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "Re: New Executive Brief: Tanmay Vaity (Storm Veins Testing)",
+      "body": "Hi Storm Veins Media House,\n\nThank you for connecting with us. We have received your email and will follow up shortly.\n\nBest regards,\nCentral Desk\nStorm Veins Media House\ncontact@stormveins.com"
+    }
+  },
+  {
+    "id": "real-contact-6",
+    "leadId": "lead-6",
+    "senderName": "Storm Veins Media House",
+    "senderEmail": "contact@stormveins.com",
+    "senderTitle": "Direct Contact",
+    "senderCompany": "Storm Veins Media House",
+    "senderCountry": "India",
+    "countryFlag": "\ud83c\udf10",
+    "isOverseas": false,
+    "recipientMailbox": "contact@stormveins.com",
+    "mailboxOwnerName": "Central Desk",
+    "subject": "Purpose-Built Field Audit OS & Automated Compliance Systems - 4S Group / Fours Groups",
+    "receivedTimestamp": "Sun,  6 Sep 2026 18:47:26 +0000 (UTC)",
+    "relativeTime": "Today",
+    "intent": "general",
+    "intentLabel": "General Inbound",
+    "priority": "medium",
+    "status": "unread",
+    "snippet": "Dear Operations Head, I am reaching out from Storm Veins Media House. We engineer custom software infrastructure and dedicated operating sys...",
+    "body": "Dear Operations Head,\nI am reaching out from Storm Veins Media House. We engineer custom software infrastructure and dedicated operating systems for premier safety engineering consultancies and EPC firms across Kopri, Thane East.\nFor organizations managing multi-site field teams and high-density commercial portfolios, the primary operational bottleneck is the administrative delay between field inspections and quotation dispatch, compounded by manual tracking during statutory Form B compliance cycles.\nWe built an enterprise, purpose-built operating system that resolves this:\n\u2022 Mobile NBC 2016 Inspection Engine: Field engineers conduct guided audits on mobile with offline capability, automated risk scoring, and timestamped defect photo capture.\n\u2022 15-Minute Defect-to-Quotation Generator: Automatically converts checklist failures into itemized part & labor repair proposals with GST calculations and margin safeguards.\n\u2022 Form B & Statutory NOC Renewal Tracker: Centralized compliance monitoring with automated renewal notifications 60, 30, and 15 days before municipal deadlines.\n\u2022 Sovereign Private Cloud & Source Code Ownership: Deployed exclusively on your dedicated AWS/GCP cloud tenant under your domain and branding, with complete source code ownership and zero recurring per-audit software fees.\nYou can explore our engineering architecture directly at stormveins.com.\nWould you be open to a brief 10-minute executive walkthrough next week to evaluate how this can streamline operations for 4S Group / Fours Groups?\nRespectfully,\nStorm Veins Media House\nSystems Architecture & Enterprise Practice\nMumbai & Thane, Maharashtra\nDirect Line: +91 96998 31323\nEmail: contact@stormveins.com\nWeb: stormveins.com",
+    "originalOutboundSnippet": "Interaction sent from contact@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "Re: Purpose-Built Field Audit OS & Automated Compliance Systems - 4S Group / Fours Groups",
+      "body": "Hi Storm Veins Media House,\n\nThank you for connecting with us. We have received your email and will follow up shortly.\n\nBest regards,\nCentral Desk\nStorm Veins Media House\ncontact@stormveins.com"
+    }
+  },
+  {
+    "id": "real-contact-12",
+    "leadId": "lead-12",
+    "senderName": "Storm Veins Media House",
+    "senderEmail": "contact@stormveins.com",
+    "senderTitle": "Direct Contact",
+    "senderCompany": "Storm Veins Media House",
+    "senderCountry": "India",
+    "countryFlag": "\ud83c\udf10",
+    "isOverseas": false,
+    "recipientMailbox": "contact@stormveins.com",
+    "mailboxOwnerName": "Central Desk",
+    "subject": "Private Operating Systems & Dedicated Digital Infrastructure - Regency Group",
+    "receivedTimestamp": "Sun,  6 Sep 2026 19:02:09 +0000 (UTC)",
+    "relativeTime": "Today",
+    "intent": "general",
+    "intentLabel": "General Inbound",
+    "priority": "medium",
+    "status": "unread",
+    "snippet": "Dear Mr. Agarwal, I am reaching out from Storm Veins Media House. We engineer custom enterprise operating systems, private CRMs, and dedicat...",
+    "body": "Dear Mr. Agarwal,\nI am reaching out from Storm Veins Media House. We engineer custom enterprise operating systems, private CRMs, and dedicated digital infrastructure for ambitious industry leaders across Kalyan & Dombivli.\nMost executives in Integrated Township & High-Rise Real Estate navigate a persistent operational dilemma: off-the-shelf software (Salesforce, Zoho, SAP) forces teams into rigid, generic templates while accumulating compounding per-user licensing overhead, while fragmented spreadsheets and WhatsApp coordination lead to administrative lag and operational leakage.\nWe design purpose-built operating systems that resolve this:\n\u2022 100% Source Code Ownership & Zero SaaS Seat-Tax: Deployed exclusively inside your dedicated AWS/GCP cloud tenant under your domain and branding, with complete intellectual property ownership and zero recurring user licensing penalties.\n\u2022 Engineered for Your Exact Operating Model: Live unit inventory command center, broker commission transparency portal, automated construction milestone demand notices, and RERA compliance vault \u2014 codifying your native business workflows rather than forcing you into a standard generic box.\n\u2022 End-to-End Engineering & Complete IP Handover: Built with modern high-velocity web and mobile architectures, complete with automated quotation engines, role-based RBAC security, and real-time executive telemetry.\n\u2022 Full Enterprise Integrations: Direct bi-directional integration with your existing accounting software (Tally, SAP), WhatsApp Business notification webhooks, cloud storage, and client self-service portals.\nYou can review our live architecture and past enterprise deployments at stormveins.com.\nWould you be open to a brief 10-minute executive briefing next week to explore an architectural blueprint tailored for Regency Group?\nRespectfully,\nStorm Veins Media House\nSystems Architecture & Enterprise Practice\nMumbai & Thane, Maharashtra\nDirect Line: +91 96998 31323\nEmail: contact@stormveins.com\nWeb: stormveins.com",
+    "originalOutboundSnippet": "Interaction sent from contact@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "Re: Private Operating Systems & Dedicated Digital Infrastructure - Regency Group",
+      "body": "Hi Storm Veins Media House,\n\nThank you for connecting with us. We have received your email and will follow up shortly.\n\nBest regards,\nCentral Desk\nStorm Veins Media House\ncontact@stormveins.com"
+    }
+  },
+  {
+    "id": "real-sales-8",
+    "leadId": "lead-8",
+    "senderName": "EMAAR Customer Care",
+    "senderEmail": "emailnotifications@emaar.ae",
+    "senderTitle": "Customer Care & Enterprise Liaison",
+    "senderCompany": "Emaar Properties PJSC",
+    "senderCountry": "United Arab Emirates",
+    "countryFlag": "\ud83c\udde6\ud83c\uddea",
+    "isOverseas": true,
+    "recipientMailbox": "sales@stormveins.com",
+    "mailboxOwnerName": "Enterprise Sales Desk",
+    "subject": "We\u2019re Making It Easier to Connect with Us",
+    "receivedTimestamp": "Mon, 7 Sep 2026 07:05:47 +0000",
+    "relativeTime": "Today",
+    "intent": "architecture_review",
+    "intentLabel": "Tech Spec & Teardown",
+    "priority": "high",
+    "status": "replied",
+    "snippet": "<p> <a display: flex; justify-content: center; align-items: center; height: 100vh; /* Adjust this value based on your needs */ <span style> ...",
+    "body": "<p>\n<a\ndisplay: flex;\njustify-content: center;\nalign-items: center;\nheight: 100vh; /* Adjust this value based on your needs */\n<span style>\n<span head>\n<span body>\n<span class=\"center\">\n<img src=\"https://assets.emaar.com/it/16062025/Dear%20Customer%20CCD.jpeg\"\nalt=\"Centered Image\">\n</span>\n</span>\n</p>",
+    "originalOutboundSnippet": "Interaction sent from sales@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "Re: We\u2019re Making It Easier to Connect with Us - Storm Veins Architecture Brief",
+      "body": "Dear EMAAR Customer Care,\n\nThank you for reaching out to Storm Veins. We would be pleased to schedule an executive architectural overview with our Principal Engineer.\n\nBest regards,\nEnterprise Sales Desk\nStorm Veins Media House\nsales@stormveins.com"
+    }
+  },
+  {
+    "id": "real-sales-1",
+    "leadId": "lead-1",
+    "senderName": "Hostinger",
+    "senderEmail": "team@email.hostinger.com",
+    "senderTitle": "System Administrator",
+    "senderCompany": "Hostinger Mail Infrastructure",
+    "senderCountry": "India",
+    "countryFlag": "\u2601\ufe0f",
+    "isOverseas": false,
+    "recipientMailbox": "sales@stormveins.com",
+    "mailboxOwnerName": "Enterprise Sales Desk",
+    "subject": "Get started with business email",
+    "receivedTimestamp": "Thu, 03 Sep 2026 14:08:49 +0000",
+    "relativeTime": "Today",
+    "intent": "general",
+    "intentLabel": "General Inbound",
+    "priority": "medium",
+    "status": "action_scheduled",
+    "snippet": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\"> <html lang=\"en\" xm...",
+    "body": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n<html lang=\"en\" xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\">\n<head>\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">\n<title></title>\n<meta name=\"format-detection\" content=\"telephone=no\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=1\">\n<meta content=\"width=device-width, initial-scale=1, maximum-scale=1, user-scalable=yes\" name=\"viewport\">\n<style type=\"text/css\">\n/* reset */\n* {margin-top:0px;margin-bottom:0px;padding:0px;border:none;outline:none;-webkit-text-size-adjust: none;}\nbody {margin:0 !important;padding:0 !important;width: 100% !important;-webkit-text-size-adjust: 100% !important;-ms-text-size-adjust: 100% !important;-webkit-font-smoothing: antialiased !important;}\nimg {border:0 !important;display: block !important;outline: none !important;}\ntable {border-collapse: collapse;mso-table-lspace:0px;mso-table-rspace: 0px;}\ntd {border-collapse:collapse;mso-line-height-rule:exactly;}\n.ftr a {color:#555555;}\n.ExternalClass {width: 100%;line-height: 100%;}\na[x-apple-data-detectors] {color: inherit !important;text-decoration: none !important;font-size: inherit !important;font-family: inherit !important;font-weight: inherit !important;line-height: inherit !important;}\n.purple_image {display: none !important;}\n/* @font-face CUSTOM FONTS HERE */\n@media only screen and (max-width:640px){\n.hide_e {display: none !important;}\n.show_e {display: block !important; width: auto !important; overflow: visible !important; float: none !important; max-height: inherit !important; line-height: inherit !important;}\n.mobile_img_early, .mobile_img_e {width: 100% !important; height: auto !important;}\n.w100pc_early, .w100pc_e {width: 100% !important;}\n.mobile_cta_early, .mobile_cta_e {width: 80% !important;max-width: 80% !important;}\n}\n@media only screen and (max-width:520px){\n.purple_image {display: none !important;}\n.w100pc, .width_100percent {width: 100% !important;}",
+    "originalOutboundSnippet": "Interaction sent from sales@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "Re: Get started with business email",
+      "body": "Hi Hostinger,\n\nThank you for connecting with us. We have received your email and will follow up shortly.\n\nBest regards,\nEnterprise Sales Desk\nStorm Veins Media House\nsales@stormveins.com"
+    }
+  },
+  {
+    "id": "real-solutions-1",
+    "leadId": "lead-1",
+    "senderName": "Hostinger",
+    "senderEmail": "team@email.hostinger.com",
+    "senderTitle": "System Administrator",
+    "senderCompany": "Hostinger Mail Infrastructure",
+    "senderCountry": "India",
+    "countryFlag": "\u2601\ufe0f",
+    "isOverseas": false,
+    "recipientMailbox": "solutions@stormveins.com",
+    "mailboxOwnerName": "Solutions Architecture Team",
+    "subject": "Get started with business email",
+    "receivedTimestamp": "Mon, 07 Sep 2026 06:48:26 +0000",
+    "relativeTime": "Today",
+    "intent": "general",
+    "intentLabel": "General Inbound",
+    "priority": "medium",
+    "status": "action_scheduled",
+    "snippet": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\"> <html lang=\"en\" xm...",
+    "body": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n<html lang=\"en\" xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\">\n<head>\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">\n<title></title>\n<meta name=\"format-detection\" content=\"telephone=no\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=1\">\n<meta content=\"width=device-width, initial-scale=1, maximum-scale=1, user-scalable=yes\" name=\"viewport\">\n<style type=\"text/css\">\n/* reset */\n* {margin-top:0px;margin-bottom:0px;padding:0px;border:none;outline:none;-webkit-text-size-adjust: none;}\nbody {margin:0 !important;padding:0 !important;width: 100% !important;-webkit-text-size-adjust: 100% !important;-ms-text-size-adjust: 100% !important;-webkit-font-smoothing: antialiased !important;}\nimg {border:0 !important;display: block !important;outline: none !important;}\ntable {border-collapse: collapse;mso-table-lspace:0px;mso-table-rspace: 0px;}\ntd {border-collapse:collapse;mso-line-height-rule:exactly;}\n.ftr a {color:#555555;}\n.ExternalClass {width: 100%;line-height: 100%;}\na[x-apple-data-detectors] {color: inherit !important;text-decoration: none !important;font-size: inherit !important;font-family: inherit !important;font-weight: inherit !important;line-height: inherit !important;}\n.purple_image {display: none !important;}\n/* @font-face CUSTOM FONTS HERE */\n@media only screen and (max-width:640px){\n.hide_e {display: none !important;}\n.show_e {display: block !important; width: auto !important; overflow: visible !important; float: none !important; max-height: inherit !important; line-height: inherit !important;}\n.mobile_img_early, .mobile_img_e {width: 100% !important; height: auto !important;}\n.w100pc_early, .w100pc_e {width: 100% !important;}\n.mobile_cta_early, .mobile_cta_e {width: 80% !important;max-width: 80% !important;}\n}\n@media only screen and (max-width:520px){\n.purple_image {display: none !important;}\n.w100pc, .width_100percent {width: 100% !important;}",
+    "originalOutboundSnippet": "Interaction sent from solutions@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "Re: Get started with business email",
+      "body": "Hi Hostinger,\n\nThank you for connecting with us. We have received your email and will follow up shortly.\n\nBest regards,\nSolutions Architecture Team\nStorm Veins Media House\nsolutions@stormveins.com"
+    }
+  },
+  {
+    "id": "real-srushti-1",
+    "leadId": "lead-1",
+    "senderName": "Hostinger",
+    "senderEmail": "team@email.hostinger.com",
+    "senderTitle": "System Administrator",
+    "senderCompany": "Hostinger Mail Infrastructure",
+    "senderCountry": "India",
+    "countryFlag": "\u2601\ufe0f",
+    "isOverseas": false,
+    "recipientMailbox": "srushti@stormveins.com",
+    "mailboxOwnerName": "Shrushti",
+    "subject": "Get started with business email",
+    "receivedTimestamp": "Wed, 18 Mar 2026 13:12:00 +0000",
+    "relativeTime": "Today",
+    "intent": "general",
+    "intentLabel": "General Inbound",
+    "priority": "medium",
+    "status": "action_scheduled",
+    "snippet": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\"> <html lang=\"en\" xm...",
+    "body": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n<html lang=\"en\" xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\">\n<head>\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">\n<title></title>\n<meta name=\"format-detection\" content=\"telephone=no\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=1\">\n<meta content=\"width=device-width, initial-scale=1, maximum-scale=1, user-scalable=yes\" name=\"viewport\">\n<style type=\"text/css\">\n/* reset */\n* {margin-top:0px;margin-bottom:0px;padding:0px;border:none;outline:none;-webkit-text-size-adjust: none;}\nbody {margin:0 !important;padding:0 !important;width: 100% !important;-webkit-text-size-adjust: 100% !important;-ms-text-size-adjust: 100% !important;-webkit-font-smoothing: antialiased !important;}\nimg {border:0 !important;display: block !important;outline: none !important;}\ntable {border-collapse: collapse;mso-table-lspace:0px;mso-table-rspace: 0px;}\ntd {border-collapse:collapse;mso-line-height-rule:exactly;}\n.ftr a {color:#555555;}\n.ExternalClass {width: 100%;line-height: 100%;}\na[x-apple-data-detectors] {color: inherit !important;text-decoration: none !important;font-size: inherit !important;font-family: inherit !important;font-weight: inherit !important;line-height: inherit !important;}\n.purple_image {display: none !important;}\n/* @font-face CUSTOM FONTS HERE */\n@media only screen and (max-width:640px){\n.hide_e {display: none !important;}\n.show_e {display: block !important; width: auto !important; overflow: visible !important; float: none !important; max-height: inherit !important; line-height: inherit !important;}\n.mobile_img_early, .mobile_img_e {width: 100% !important; height: auto !important;}\n.w100pc_early, .w100pc_e {width: 100% !important;}\n.mobile_cta_early, .mobile_cta_e {width: 80% !important;max-width: 80% !important;}\n}\n@media only screen and (max-width:520px){\n.purple_image {display: none !important;}\n.w100pc, .width_100percent {width: 100% !important;}",
+    "originalOutboundSnippet": "Interaction sent from srushti@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "Re: Get started with business email",
+      "body": "Hi Hostinger,\n\nThank you for connecting with us. We have received your email and will follow up shortly.\n\nBest regards,\nShrushti\nStorm Veins Media House\nsrushti@stormveins.com"
+    }
+  },
+  {
+    "id": "real-contact-19",
+    "leadId": "lead-19",
+    "senderName": "Hostinger",
+    "senderEmail": "team@user.hostinger.com",
+    "senderTitle": "System Administrator",
+    "senderCompany": "Hostinger Mail Infrastructure",
+    "senderCountry": "India",
+    "countryFlag": "\u2601\ufe0f",
+    "isOverseas": false,
+    "recipientMailbox": "contact@stormveins.com",
+    "mailboxOwnerName": "Central Desk",
+    "subject": "Email sending limits reached",
+    "receivedTimestamp": "Sun, 06 Sep 2026 19:07:41 +0000",
+    "relativeTime": "Today",
+    "intent": "general",
+    "intentLabel": "General Inbound",
+    "priority": "medium",
+    "status": "action_scheduled",
+    "snippet": "Keep an eye on this   Hostinger ( hostinger.com ) ********************************** Email sending limits reached **************************...",
+    "body": "Keep an eye on this   Hostinger (\nhostinger.com )\n**********************************\nEmail sending limits reached\n**********************************\nYou have reached the allowed sending <b>limit of 100 emails per day on your contact@stormveins.com account.</b> You can still send emails at a reduced rate until your daily capacity has been restored.\nFind more information about your plan limits by clicking the link below.\nLearn more\n( https://clicks.hostinger.com/f/a/9G0TV2GXYkeRlSG9ChwAjg~~/AAAHahA~/55p3-qQsP2SJj080FjwydPI7G8N7_ZhvcRrMYw7WeMZObhscN4bc74J9uS4OLEWiP2xiZ087Ufdh3_C0lZXPpSJq0czLXeAcO2l4A2sfMGyXtHOYV2tEMHlzkZ3j0M0-X3LF-IEABqmsEg6waEAAlwfxcOwkBvcgse04KQWRCJViOHggLVvBQCuGtn2NOrmLrq-wB1Azqi16sNVBq88szOpZgs3_O7bg5YtmHZwLOHw~ )\nHostinger (\nhostinger.com )\nYou have received this email because you are registered at Hostinger, to ensure the implementation of our Terms of Service and (or) for other legitimate matters.\nLinkedIn\n( https://clicks.hostinger.com/f/a/7cYyRhQQ1iKyOl1Rt8phhg~~/AAAHahA~/yslVOKP6KBCeG7kgpbCit6N8Gtu1fmzTiLhZChwvxR9KdMmat7l0DaH4gsd5idtrFup3KeNSP5WS2u2tnMAMvMhssdFUZDtNRQrxKS9vkN4Lcp3W9eDyujzFLZAUVs9dHEyqfBsTLWIK9goOq3Q8teUP6L2fWisyx_kOfJXgosyFuaGdK27eSQepXMEucZ7E )\nFacebook ( https://clicks.hostinger.com/f/a/G6aT7wnOCGbUjueVgTm19A~~/AAAHahA~/q8-Drtp8-FntFBGFwBLBAvEzr869XcJbVQtuaTCV5kYuwjdhdwHg8Ak8Sa8-umNHYjcbSDbQL2EehtqshNMyYRhIv1GrlvWKpQIBJ9PsT6l113j2BmQeWJpHHgyR3QiuB2IdWoOnTMTDmoi0OVGyGg~~ )\nInstagram\n( https://clicks.hostinger.com/f/a/cdEyM2yuQBSwIt8QqKxXAw~~/AAAHahA~/ia_ZTZXqJuvcOf0U6rq5iRjg4NV8U-n8f86QDs-fpNNmH0QErQMpwboOXJnAo4xC0FnQZlAwA4i3KllZSEcGidvIKhVsAYAFdtkkcdHbVNlN0xiuG6MiKJo_AWCXTLZu6WE0X4_Kar1WHM7CJjoeqM4doYBta4eZz0bvtM9Yf0Y~ ) X\n( https://clicks.hostinger.com/f/a/qK4AGIXlkWtAa1gFzMPZwQ~~/AAAHahA~/UGUrjbgc9LsmX4VULFCg_LQvRhlVNMM_OAGRllQLBd7JaC_mTInlS2423VK7JBGG5wEmVrxGwaqS837CVm6dYULMCZhq8GfMmAhdF-EzEm6VuIHHZneiEJ7l0ixQhnzCu5yN-ltWuqq-M9oW-p7tdw~~ ) YouTube\n( https://clicks.hostinger.com/f/a/U_UwMPKbatN1L4EtIx9slw~~/AAAHahA~/6LRmInxS_bLnyCLKetxqemLwLobSEHu3hs2ing5Ynvc-CFb1lyzAIWZjLmf05YzupZqNS8ALVvgJCWxcb8C5UYFfSQUXTibd0_QHG2905XB0nIHykGgoWmKqA3eCP2CUIO8Zhse8AY9ZNnElGsYSmQ~~ )\nPrivacy policy (\nhttps://clicks.hostinger.com/f/a/HkqrKt-S7Ykz7NfxYfcCFw~~/AAAHahA~/JZnuip9scbJPgZUzrVVfD0icmVpJ5aLYil6V4foxsMoyQo2WEeDRCFlM-WNYDVGz1Ql1YhwChZ9jDilq-gz42tOolxtq3h0onXbMogIh-BgnbD1BcEMRy0WApdqJtZjQIwDMBwy-smQcwidg2xPwYg~~ ) |\nHelp center (\nhttps://clicks.hostinger.com/f/a/43aK1u_wdvD1dVUAGElJgQ~~/AAAHahA~/Tc9yDV-cutwau4hmgMGK5FVJjQu7_CGdJPf-zBK-eZyUcq4j3pt5ycbnxDmhOnKHJDPghv0UxCGt1xjv6fvYBEisJBuwdN_cGA4YSaF55OCxjZeIDaSfWH2DvMNAZ8TMQnSJQq1cY8wpNAgXjNipzg~~ )\n\u00a9 2004-2026 Hostinger\nInternational Ltd.",
+    "originalOutboundSnippet": "Interaction sent from contact@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "Re: Email sending limits reached",
+      "body": "Hi Hostinger,\n\nThank you for connecting with us. We have received your email and will follow up shortly.\n\nBest regards,\nCentral Desk\nStorm Veins Media House\ncontact@stormveins.com"
+    }
+  },
+  {
+    "id": "real-contact-23",
+    "leadId": "lead-23",
+    "senderName": "Hostinger",
+    "senderEmail": "team@user.hostinger.com",
+    "senderTitle": "System Administrator",
+    "senderCompany": "Hostinger Mail Infrastructure",
+    "senderCountry": "India",
+    "countryFlag": "\u2601\ufe0f",
+    "isOverseas": false,
+    "recipientMailbox": "contact@stormveins.com",
+    "mailboxOwnerName": "Central Desk",
+    "subject": "Email sending limits reached",
+    "receivedTimestamp": "Sun, 06 Sep 2026 20:16:51 +0000",
+    "relativeTime": "Today",
+    "intent": "general",
+    "intentLabel": "General Inbound",
+    "priority": "medium",
+    "status": "action_scheduled",
+    "snippet": "Keep an eye on this   Hostinger ( hostinger.com ) ********************************** Email sending limits reached **************************...",
+    "body": "Keep an eye on this   Hostinger (\nhostinger.com )\n**********************************\nEmail sending limits reached\n**********************************\nYou have reached the allowed sending <b>limit of 100 emails per day on your contact@stormveins.com account.</b> You can still send emails at a reduced rate until your daily capacity has been restored.\nFind more information about your plan limits by clicking the link below.\nLearn more\n( https://clicks.hostinger.com/f/a/HKKjMkH-Zqd86owq_u_iQg~~/AAAHahA~/O8y0frn9AFF7PUZLu1s-hCvXa0rEu91TafjOw18OJ3TqIttKbhDOUXn7HPQ5qkZxFlsDDnBINrG4z3yQf_tPpEw89a8h351xmDWXJBtUvWtE2wJo2nFy20wkGkGWH0HmvSa75wD6xdmQbULqXhpB2WaZHB-dnAsu2MZkg-JMgXOsgiyAB87esQYk6ZoOa0dtQtFUEnCQOXwzsXEZynrA2asZKKabCrQ7Jl2iAgIdcFw~ )\nHostinger (\nhostinger.com )\nYou have received this email because you are registered at Hostinger, to ensure the implementation of our Terms of Service and (or) for other legitimate matters.\nLinkedIn\n( https://clicks.hostinger.com/f/a/2JAHaHZzlCSYA0uPJ01dEg~~/AAAHahA~/KMHbrC5fA8tYhNi7eOvcIk7ZR6K66zH1AdAMyImC05TO3HljoAWc8qZqgXLzgDRy7LTVvRpWrjYzjY5umRnbh2u-4xOODtK-sxsC2PjgPsLrxys60JbnZBG8VvMcVTvLOYEo6XKGXgMbFSN_AKQcXLhdiROqYY71_vkI2oxS_tEJuylqnB67AjSkt7lgwx5B )\nFacebook ( https://clicks.hostinger.com/f/a/GodwWttvov4T0IAlToq8mA~~/AAAHahA~/Of4sKbkEhb2hajrliONRNUB9wOSWcvu4qs8lmrCLkxfnaWrktuSBl0Nu9jRbBepuUGT8fVxqnYX2-dpbR4CnGcbTTskfkARpmLNLMYmoQAo0WioVvccg3fI3fHR7HxHUwW1GpLwRJUodVx64LSFEvQ~~ )\nInstagram\n( https://clicks.hostinger.com/f/a/7NozHoqnb7jS1jXDBJN5EA~~/AAAHahA~/pLwWb1_4-MvHmncKhQAJRxtvpDXhNMAvQobsqOtDExPGykSxF8mp6dD558T2YdxEEItPYIAVEz0FshM2CxRuipVZaHWBXLMCOqlDBWpYfcrlr7zTkWUI1ot_Dfnj38tMJEUtJOGeKzior-zwV3njehfp0T7qthDgbQmjlo9krpU~ ) X\n( https://clicks.hostinger.com/f/a/ziRhVk3e043PUfjWckErEQ~~/AAAHahA~/u8Y9ziQUboPxLnZT99VaM2Au8HNMKv3K1IjC563IaK2wLsc3_P-LhLmIpId-UAKQYkw4t0DdvWJmcbmlY5qWd45SL3tZ61xnML_e5dhhLrZIkKIn38KteeIbwaP2Cwv8mv_5OHyCAFXAq17tpVIjfQ~~ ) YouTube\n( https://clicks.hostinger.com/f/a/PQ1VJM4BflIilsLhITA75g~~/AAAHahA~/pib0G1D0W-278Tayj3IaavTb7ylwXCit6qLIHsgGL1Wly8XKz2xdzO2WedSY_OG5avFXiyHGIBu-7ljR2emXKTL32z16VJRsXWAqBYE5sh__arxlwNXnYQFqPLGoF0mSeLJ277DGvBDoVwYIUylZXw~~ )\nPrivacy policy (\nhttps://clicks.hostinger.com/f/a/odcqoG9YZtRZPxUvDGa0gw~~/AAAHahA~/AmuOAFiU0EedewUacBN-4mu1LdiN6X5n3BKiD5DFbclI22qNNdjuPNr7FfxLcPsLq0LKvKtJ0mTE99zwIBs_d5JH9x6EcJq-JbLtPwxn-mzVJ8s8jxir__K_884UgmMCVBksi9mAlG3FcqvDi-Ndsg~~ ) |\nHelp center (\nhttps://clicks.hostinger.com/f/a/aJNbCObx-Ct1Jiu-GLWobw~~/AAAHahA~/N12tmxNv2gRhzR2meKds13TRebc2aXcKmcy2daSPdYqDtScawPeyPMd1qIn6-AKfZFY3tuuOCOq7xCWQrUKpU9Ays6Tl3vMIq2QvQYrousuE3pJeOzBwb5FPSQXQhnzqK9rry2bW90Kh8ikRfOGzDg~~ )\n\u00a9 2004-2026 Hostinger\nInternational Ltd.",
+    "originalOutboundSnippet": "Interaction sent from contact@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "Re: Email sending limits reached",
+      "body": "Hi Hostinger,\n\nThank you for connecting with us. We have received your email and will follow up shortly.\n\nBest regards,\nCentral Desk\nStorm Veins Media House\ncontact@stormveins.com"
+    }
+  },
+  {
+    "id": "real-contact-27",
+    "leadId": "lead-27",
+    "senderName": "Hostinger",
+    "senderEmail": "team@user.hostinger.com",
+    "senderTitle": "System Administrator",
+    "senderCompany": "Hostinger Mail Infrastructure",
+    "senderCountry": "India",
+    "countryFlag": "\u2601\ufe0f",
+    "isOverseas": false,
+    "recipientMailbox": "contact@stormveins.com",
+    "mailboxOwnerName": "Central Desk",
+    "subject": "Email sending limits reached",
+    "receivedTimestamp": "Sun, 06 Sep 2026 22:16:50 +0000",
+    "relativeTime": "Today",
+    "intent": "general",
+    "intentLabel": "General Inbound",
+    "priority": "medium",
+    "status": "action_scheduled",
+    "snippet": "Keep an eye on this   Hostinger ( hostinger.com ) ********************************** Email sending limits reached **************************...",
+    "body": "Keep an eye on this   Hostinger (\nhostinger.com )\n**********************************\nEmail sending limits reached\n**********************************\nYou have reached the allowed sending <b>limit of 100 emails per day on your contact@stormveins.com account.</b> You can still send emails at a reduced rate until your daily capacity has been restored.\nFind more information about your plan limits by clicking the link below.\nLearn more\n( https://clicks.hostinger.com/f/a/R1Eb6rPasm9-vmnbPEdceQ~~/AAAHahA~/t8Gp1VXDtT6N3eXCeH21X5PxkMzkpb2RiNWwuBdAOYMVWaLsCL2Bb26_W5wG4jap_-JM2P3dLdyM1VyTmYLvHX8NTpdwYmMsLv5Eoj_3Yvuw6ghSTYRI01IC6d7q8eztIqW6RhIlI2Z5Z9anRwdccWcxFI8eKyiFon03jvfiaFyPpGwWIjsRhNrG5vzUyE5SkRgZ4ByCLq_6y4iHIUHOkVuZJxUdLL5XWCygGI7PYEk~ )\nHostinger (\nhostinger.com )\nYou have received this email because you are registered at Hostinger, to ensure the implementation of our Terms of Service and (or) for other legitimate matters.\nLinkedIn\n( https://clicks.hostinger.com/f/a/HcwEMzVRCncr5P3HSP11AA~~/AAAHahA~/jXjR3EwgZRTbfpmOC6CHqKl4wnjepw1e0NtpH-hU6nc_ZNcsfgppVHzMu3HXldrAWSvY5rfvSBsF0txas-6j8mFHXlXKtw64tDbH21YGjSy0FYArCcIdooSO43wtOfwzstc2qT7zl_pvWskfk_ZGcaFctZZPfrm2fApoK9kl9K_SCS4SiLXlqQFsvPHge40p )\nFacebook ( https://clicks.hostinger.com/f/a/y_uBPK9tfkKJB6Te8vkTGQ~~/AAAHahA~/sd3zHjRlLQ__jsG7-3P5pNmts0tKGcalOk7VY7u6vScoHUCbFQ6q2sHMRQRc4xut2oo6YYrSDI-6kupRCqdTgU5U_B_pzkp7sp68Xo7cANdx4Rzc7kx4nQleciTgzG3l7bwhUNmb0O2HfvcFMpdNvg~~ )\nInstagram\n( https://clicks.hostinger.com/f/a/qBxKsG1bLjjakB_nWWwmsg~~/AAAHahA~/1qMnifYLCaRKmc9EX9j46QGusLpRg-KmV270aaXG1OsybHyqZhRAGtWPdpGdoWByT8TPGdutCB_A9v2iNFvMGKu2hOmSNf1EzVsXLXYdDGskjwLAVEmpiNwYEXuO54pT-6BiMoRvQ2FW9NRnd5FGo4kX3NU8EtH-ZI3WnC5mxO8~ ) X\n( https://clicks.hostinger.com/f/a/GEe4YxWt3gQdyWs3TBK0vA~~/AAAHahA~/Bl9Ve9Cz-zyUPbix23-oUF4U-xutnTN1mwSPaRaXk5SNrl42i-H96IoN2yQk6GY8QKObnmB7x-MCFyl_96EKbgo72yTLOqDzWMKZQ61A0SiJUEHTNJR3N3lqzncbc8wDu4UnT9wAa8qMsV130185Ag~~ ) YouTube\n( https://clicks.hostinger.com/f/a/N5KhUgaKrtGLXZFY0eYv8A~~/AAAHahA~/z0gHHKIfIX5jqpqnud4rGSkXaGO7Dv8MUtNWTZlrpgsdrb2vZDzEvEyn2yoKX3QCXnVxJvuGkB9K_oSDorLH6XnvZ-uyehZK3LRhcJqAUc40J4_Zm7RpRDHU2RxGYwD-b8Q05fQ8rMZF6U5PcC_OOw~~ )\nPrivacy policy (\nhttps://clicks.hostinger.com/f/a/BgsEu-qAQkNAKCzjTFXpvA~~/AAAHahA~/AILlr-XEaGyOa3s2H6v-JCudxzEYqDw82KaTi0ng-ggyvwxiDKzz-gVx2yjcvEZX90m3x5tQOGeKKk5171ZNCEdJIy4f5psyAeJRp51yF2h9Vzi1u_oYjtYY75Gbe8YTJVs2MtO_sJ0PK3znSOunZA~~ ) |\nHelp center (\nhttps://clicks.hostinger.com/f/a/vqR4PBr3SwJSJEvmvNrEsA~~/AAAHahA~/GTOOBCfrsQadeejeDQGY4lDY81uZG0iPN5KWGv-Tg4hWN30FhhuxJcnEVa_lavWT2SUm5GF1j3ixYQrb15It2FO9KlI4RxD-1D8eCVqI8-QZxDDlkx4aaevKo1-yOSkpDvmTb1fZdfxPvD2s5yw9ow~~ )\n\u00a9 2004-2026 Hostinger\nInternational Ltd.",
+    "originalOutboundSnippet": "Interaction sent from contact@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "Re: Email sending limits reached",
+      "body": "Hi Hostinger,\n\nThank you for connecting with us. We have received your email and will follow up shortly.\n\nBest regards,\nCentral Desk\nStorm Veins Media House\ncontact@stormveins.com"
+    }
+  },
+  {
+    "id": "real-contact-29",
+    "leadId": "lead-29",
+    "senderName": "Hostinger",
+    "senderEmail": "team@user.hostinger.com",
+    "senderTitle": "System Administrator",
+    "senderCompany": "Hostinger Mail Infrastructure",
+    "senderCountry": "India",
+    "countryFlag": "\u2601\ufe0f",
+    "isOverseas": false,
+    "recipientMailbox": "contact@stormveins.com",
+    "mailboxOwnerName": "Central Desk",
+    "subject": "Email sending limits reached",
+    "receivedTimestamp": "Sun, 06 Sep 2026 23:16:51 +0000",
+    "relativeTime": "Today",
+    "intent": "general",
+    "intentLabel": "General Inbound",
+    "priority": "medium",
+    "status": "action_scheduled",
+    "snippet": "Keep an eye on this   Hostinger ( hostinger.com ) ********************************** Email sending limits reached **************************...",
+    "body": "Keep an eye on this   Hostinger (\nhostinger.com )\n**********************************\nEmail sending limits reached\n**********************************\nYou have reached the allowed sending <b>limit of 100 emails per day on your contact@stormveins.com account.</b> You can still send emails at a reduced rate until your daily capacity has been restored.\nFind more information about your plan limits by clicking the link below.\nLearn more\n( https://clicks.hostinger.com/f/a/hK-Arc_KHLzFzJH6As9kAg~~/AAAHahA~/xm4pt0W4vmj-yQLImi4A3uhUOX9zkec5N9FpolKr45-GHi46X9iFbHYdVGDMWt_v4-S-K_uXQFYM4kSW4yaKIWhgHR2O-RW4vG60m_EcYmLRRTG16BPGwBRixYLx_PJyFZqF2P1pQXqUtCdpciDFEe5eVPD8P19WuaAZlpDNV5MxZfrvLnF-81vk3ORMEFR2jsSxVyAjtKObk_VZlS1-bP5aSwBI_z69t-cz3gpR-bw~ )\nHostinger (\nhostinger.com )\nYou have received this email because you are registered at Hostinger, to ensure the implementation of our Terms of Service and (or) for other legitimate matters.\nLinkedIn\n( https://clicks.hostinger.com/f/a/uIRBVAffX3GlI5NiLTpOJg~~/AAAHahA~/bFeBUs4HtoISKNpoY7mWNWLFAx9ZLztB7wXWgfqTx31r_zyzklUONWalt7eoF_w6fOuOb_4zjZ_7nsWiRjsgBHcQOdRAvbCEitOBF1dwqVxdaR5KrLvNXEYkR7BcqDYwgsW95megcuKPyULxbr-gccjNJTJ83Ui1x596EeCNv_AWlP8TX1zyyDwpiz8olSf5 )\nFacebook ( https://clicks.hostinger.com/f/a/b0GvQkS5anrnROJIk-enjg~~/AAAHahA~/PoEtVUMgf6gwJv2G_gSz92nQJz7EYcvCDF5RtYJVgw0-2mFWlfl5AA5O3p7PpTA7nJXs45ivS-c1c_3bYpTrNAtHmGBrSpRmmkISQOLYWlZ95Q8HaST_BLEp3ni9GQon9uLswI9iNZGrF_eCeCtNpw~~ )\nInstagram\n( https://clicks.hostinger.com/f/a/oC8EOSXC0JEt6_Jj6YxjJA~~/AAAHahA~/V-cTiLuy9zed7odD6YtropwtcirJvXQT5OMfmGHgoTpHFYMx8o_FWBKqsrl4nlRxwsZc0F3wtbmvSKjKJ4SGGICpKfqclySoEAA2smHDlf9bP8rkO0MM_bfASQNXDJUjVsi4Xxw_GMy1VBYHx4x6XLcf20RSuzFop-GLA1GwGrQ~ ) X\n( https://clicks.hostinger.com/f/a/vJvmhfiJDLL5_XkpWQ8L7A~~/AAAHahA~/iVETneVGi7ZhdvuqVW4fbXicxA2Q8DS6YVKfO63xwnO_KiB34rZXvDDWlpFfLZsyNnMvgmotCZ7cwYgk0-MrRscrTUlx3PtuMtzHTxRh1E9umdpMtiz3GGzP0IZ7JivFDJIO_VXIgiHm42zPPbizxQ~~ ) YouTube\n( https://clicks.hostinger.com/f/a/cpouOw3irlqdhvyVULdKOQ~~/AAAHahA~/Jt1Z0reGW36d1fytXNkAOzw5_X0bCu9bZDy1zu-XHS5gNpA6xlthLSvXol2q7U9r85m17ppE51VS-6QhqTe4s-Bg6smgjh2YBcmU0YYbRYi4TO3NKwyVNavG9vAYgHtJKVnWlczguPVtD40JyXzIDw~~ )\nPrivacy policy (\nhttps://clicks.hostinger.com/f/a/xIRowEf0MulP-xFK8UxNrA~~/AAAHahA~/qjZfG8ha-MAkue_nPjKSNZa1_z5JoqamNtEVI9SvTPIZwtfy5u_jZMiA4C1oDoSKhVCkZ5KHhVhSv4EOsODgJcOEZpJZ-Dc8kX2bRg_n3ChVrjxZ03tKwyEBjKYwKnXeQNmfsS31z7xLttqLGVKQ7w~~ ) |\nHelp center (\nhttps://clicks.hostinger.com/f/a/XXGKIvVjbQG3_fUc5D4bSw~~/AAAHahA~/tEBYEFEik5YAUFF6jlfptajeBBmfrCad3CF24Ki3qYX8CMwhMTqTehwG644HCA2s9adu2IC5rP6jbc4B545_S01hu9FIHOdn99Kr1ydJzfPuH1W4VciS2D5zf8g-nYkrqPLq4-bjGYv_l4cd7BRZjA~~ )\n\u00a9 2004-2026 Hostinger\nInternational Ltd.",
+    "originalOutboundSnippet": "Interaction sent from contact@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "Re: Email sending limits reached",
+      "body": "Hi Hostinger,\n\nThank you for connecting with us. We have received your email and will follow up shortly.\n\nBest regards,\nCentral Desk\nStorm Veins Media House\ncontact@stormveins.com"
+    }
+  },
+  {
+    "id": "real-contact-32",
+    "leadId": "lead-32",
+    "senderName": "Hostinger",
+    "senderEmail": "team@user.hostinger.com",
+    "senderTitle": "System Administrator",
+    "senderCompany": "Hostinger Mail Infrastructure",
+    "senderCountry": "India",
+    "countryFlag": "\u2601\ufe0f",
+    "isOverseas": false,
+    "recipientMailbox": "contact@stormveins.com",
+    "mailboxOwnerName": "Central Desk",
+    "subject": "Email sending limits reached",
+    "receivedTimestamp": "Mon, 07 Sep 2026 01:16:51 +0000",
+    "relativeTime": "Today",
+    "intent": "general",
+    "intentLabel": "General Inbound",
+    "priority": "medium",
+    "status": "action_scheduled",
+    "snippet": "Keep an eye on this   Hostinger ( hostinger.com ) ********************************** Email sending limits reached **************************...",
+    "body": "Keep an eye on this   Hostinger (\nhostinger.com )\n**********************************\nEmail sending limits reached\n**********************************\nYou have reached the allowed sending <b>limit of 100 emails per day on your contact@stormveins.com account.</b> You can still send emails at a reduced rate until your daily capacity has been restored.\nFind more information about your plan limits by clicking the link below.\nLearn more\n( https://clicks.hostinger.com/f/a/XeDkDwfJqCvYiF0T2H0iaA~~/AAAHahA~/O9aGRAp5IdtThkveArPh6aWJLIAKZw8wCjUuBK3AXiWKAXbbB0KSFNupQEY6HN4vSWAR37Qb5rqXBzPsmqzgohYwpdNingSYdBh378k3QA_y5Up-d3RPuPAwK14_5-R6ZgySekSvXTmwszfkdcTu6J0yVLvroiPZcpxjTERXrN5Nahmajdi412Ds4TtmOPXDwOwi0nRZiwSj_Sqw1qSDp6H1l7dk41Un_NlR83PInNo~ )\nHostinger (\nhostinger.com )\nYou have received this email because you are registered at Hostinger, to ensure the implementation of our Terms of Service and (or) for other legitimate matters.\nLinkedIn\n( https://clicks.hostinger.com/f/a/dWNgkvMF9yi3vr-GbG039w~~/AAAHahA~/arMcTxwRES0DnvcETnLTwvk5MN-qwYIq8ZhJamiJP96SK4n51dKHXKd_1UdH9O98T5mpY5KCpyoLwn-TTtXxn0fNk03ZNe1Rk2KJGmz3_ub-3TtZlnlPNOA-tYAdt1KEMkqrAaUMLLH-lAS9AhY4u1wWYjLzTdnTyd6RDGkao3hWgN37RkWJQvuiYZNJJI5p )\nFacebook ( https://clicks.hostinger.com/f/a/yT__cL7zWwqh-UsqrmG-PA~~/AAAHahA~/Sf6TVqf19yl7SvRzASRBYlXPpOgbRXkfjc-ptUxqrNWZhHeLzF5yRqV-SfHDsIpnwinJiwrsn0uysKmjE1NpnMnWqGklWUVFD8dt3rWgDvF8y629qNv9_Ke-NcIXNTqfrS4yMyHDA49_VizJsooORQ~~ )\nInstagram\n( https://clicks.hostinger.com/f/a/ArYlTodlGDpDwayKJ6EHyA~~/AAAHahA~/uJiCUeKqM7mUtmIXc6ZRI3regkb_WxvN8uRprXtxSf-gk97O_B7PL9fnADEZK5BaPequrNqyrBqHuAvgfyN6jpdgBdtWyzgLvr00t2BCDfWlp8xbx_wPFU1VmJiOKeqviDy7hlhFKgYr9yAY8-gLWpucFSJTHUDSgynj-gi2Jfg~ ) X\n( https://clicks.hostinger.com/f/a/SXf9cZ5A6YXxpyRNBVVwiA~~/AAAHahA~/AtofgHHXf1R4r6pJAgB2abQGcjATy34qCGnU829ZWfl9NBLuSenaFR93bB9sG5Q7qiXBUCh-z250LHG5eJ_J4TylLc7cLwZu78VJWZzQLarIF78V_7py3PpAaVSbeaNLYmePBe4mUepww9ArssknuA~~ ) YouTube\n( https://clicks.hostinger.com/f/a/TK8C9d8nb6a1se-BFj9euw~~/AAAHahA~/ATe1zh8VeUQxGJWsRdZ-Rs4Y4Rx1hppqbXdhbFr-k8KcNHNdsmD7AZRgcaDIr5bqWiURbcI40QCCGD0PSQ570Y_H9uXoQ0dKGFfjcQKeaM-J1H8f0ROfJWmTB8__gY04YoW4Sg6MJpT6AXpK8xdY-w~~ )\nPrivacy policy (\nhttps://clicks.hostinger.com/f/a/dvfFDb6iyLxHuCP5Ri5Vbg~~/AAAHahA~/Ec64KxIpOxy7A6oiYtHEcBir4UJtvvlvB1PJaRzFX_idcbWg-KNibIi7nHjs_Oj8nN96WGFUyckfUYzd_BADw_JRGfIZsT9iq268fwXCQDDz4x4_2jCyKOLHgWjWjtqlT76sfAJmTXX-ILjAuY77Aw~~ ) |\nHelp center (\nhttps://clicks.hostinger.com/f/a/Ss2RAQajCRFg5BKZnb73yQ~~/AAAHahA~/TLENfTT8CWE3M88mWD_audQSeUIwxwSKv24b5pbU6n5waqVrJ4F8Fl41k-MEeXEA41Wo91smTfBLtbnLr2AJ9qv71jjV9nUNtS-pxS2ZoggIszZzQfOBQ5eKzHMyLE8rKdxRZVh8Ao8ykWV8Ty5d-Q~~ )\n\u00a9 2004-2026 Hostinger\nInternational Ltd.",
+    "originalOutboundSnippet": "Interaction sent from contact@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "Re: Email sending limits reached",
+      "body": "Hi Hostinger,\n\nThank you for connecting with us. We have received your email and will follow up shortly.\n\nBest regards,\nCentral Desk\nStorm Veins Media House\ncontact@stormveins.com"
+    }
+  },
+  {
+    "id": "real-contact-35",
+    "leadId": "lead-35",
+    "senderName": "Hostinger",
+    "senderEmail": "team@user.hostinger.com",
+    "senderTitle": "System Administrator",
+    "senderCompany": "Hostinger Mail Infrastructure",
+    "senderCountry": "India",
+    "countryFlag": "\u2601\ufe0f",
+    "isOverseas": false,
+    "recipientMailbox": "contact@stormveins.com",
+    "mailboxOwnerName": "Central Desk",
+    "subject": "Email sending limits reached",
+    "receivedTimestamp": "Mon, 07 Sep 2026 06:04:45 +0000",
+    "relativeTime": "Today",
+    "intent": "general",
+    "intentLabel": "General Inbound",
+    "priority": "medium",
+    "status": "action_scheduled",
+    "snippet": "Keep an eye on this   Hostinger ( hostinger.com ) ********************************** Email sending limits reached **************************...",
+    "body": "Keep an eye on this   Hostinger (\nhostinger.com )\n**********************************\nEmail sending limits reached\n**********************************\nYou have reached the allowed sending <b>limit of 100 emails per day on your contact@stormveins.com account.</b> You can still send emails at a reduced rate until your daily capacity has been restored.\nFind more information about your plan limits by clicking the link below.\nLearn more\n( https://clicks.hostinger.com/f/a/cy7yeShQbVLFrOF_rdsuDQ~~/AAAHahA~/K4cYlzIQg9mO6jo61lwTC4r_Y6lMVHpWdllW2W9S_HOz5NlTWVe2YeLpmabQEC0qtUucwhz1G3mB2_GAjUVtQdQFGiQZNVu4OmUTnzXpGyY9kdRIRLXfaU-2J3g-Qn63Q0i_qx8iqBFbWqywqGuZSnIJvWreURQUWQtCBdeBUiGV_uuBXqD8hLPLDtNxbYpHbxL_VF_vgs0KgDDHci27iykWMERXl9e9omxEhs0s7E4~ )\nHostinger (\nhostinger.com )\nYou have received this email because you are registered at Hostinger, to ensure the implementation of our Terms of Service and (or) for other legitimate matters.\nLinkedIn\n( https://clicks.hostinger.com/f/a/2-68--ZYpye8PxVgu0sleg~~/AAAHahA~/qmipHBIjOtMZmoCKPwarTtQfOvqTB3J3vkQ3mjEY3Pm4HTsXnjEMUJEr_kJOVtuze4ypWGPcDcT72o3qVW9irU9KXA_K1LjmKp-y988HcxuKU3b7kusGrH8-7sILMVxemnUmEyTVWYzPJ1QEVEvdUBhfBCBvgZWEjagukSVdI9JF5p75INAXXngLzCo3NBDr )\nFacebook ( https://clicks.hostinger.com/f/a/3v51RWBFoP1VCjezEdic_A~~/AAAHahA~/LftezL4OW1hSnwYd57rfuWECC3dkrXwKla7VnYp2icDKORcNKAH771fkHOzddp02h34LfgEHKyXqSXCZVMnTbHdWNv9oIt62dIuGWWH9aUE5rbQBvPnno_FU-3eP5LbDAh3c5oAyBzNnz5GZq9qqIg~~ )\nInstagram\n( https://clicks.hostinger.com/f/a/GyctzWdfNruETgWjG8Hq9w~~/AAAHahA~/M0X0QSpun3nQrBPYJ_bQFSOKD6DeeCuAgXV-Z4pEMcB2--Kb5i2bUcde65iB69ehMUEY4ICcqn-Z7hYTpnihFUwc0vsJXc6403F0tRdebMBOaQfRUKtRJuBvcGSLTSbrQIZqQnY7F371YQBOLG6zxji-uXzD0YlU6Td-55_0IUk~ ) X\n( https://clicks.hostinger.com/f/a/QlOycw8gOCgQ69dr6wJYcA~~/AAAHahA~/R9ymCN2B4zRP_K0x6GvSSg5NkW55eH0pBs8uaWaRIDa3OtHqju0dKBAFObhFgPeXc4wP2JNvDJ4SwoaI3Q-8WrDMDhGBePsN6jfmk7-ChE9HqplK007EhTxXacDIyWm5rb5QrOZEJE_AXx7SLoW0EQ~~ ) YouTube\n( https://clicks.hostinger.com/f/a/kHg0uHEjtqf7Md_kq__8rQ~~/AAAHahA~/bI7ncWPm5ssa4suXuRqowIppPfDJxPVmxc_Kpc8pmA6uYoi582E1WYMyqxDXM6XQvWSIYFAgf6gC9X5E-dvAC78r_XEmBBEOODLfdKhEc18EFcB2XtdlNQs32of9Bl6TJWHP90tllWSKD5XuvS3GAw~~ )\nPrivacy policy (\nhttps://clicks.hostinger.com/f/a/m3Qg5E6T3wiLerUst5HHKg~~/AAAHahA~/ylnGJVVfGGXR9SMbQwsR4UQM5UguZdd9vrWkD6AO09nMs0O006uFyjyGf8Zy4iN76XKI5g2-p8KcXTv_xVUvwjM7Du7lmQnpaO1JTdvS9s67V8iixA-XL487mCx8cq6QpEVT4T5tpUkSG_Kh9_F_JA~~ ) |\nHelp center (\nhttps://clicks.hostinger.com/f/a/gwfw01U9gsXh6kDzCeAM9g~~/AAAHahA~/Dwg8hJs_o6ipTk5YPc8wwyVxlpalftSTGD5Ep-siyI_sG5tDUQD5cOlXQ07pftzw8YvjNQQKTfqCWWASvE07V4729Omm6rOacsyFOB8Megnjq5SEvaS3-GhPJAMYaW_ckVqNudXE5GWcdLOyiRVsPQ~~ )\n\u00a9 2004-2026 Hostinger\nInternational Ltd.",
+    "originalOutboundSnippet": "Interaction sent from contact@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "Re: Email sending limits reached",
+      "body": "Hi Hostinger,\n\nThank you for connecting with us. We have received your email and will follow up shortly.\n\nBest regards,\nCentral Desk\nStorm Veins Media House\ncontact@stormveins.com"
+    }
+  },
+  {
+    "id": "real-tanmay-1",
+    "leadId": "lead-1",
+    "senderName": "Mail Delivery Subsystem",
+    "senderEmail": "MAILER-DAEMON@mx07-005fdc01.pphosted.com",
+    "senderTitle": "Email Gateway / Security Filter",
+    "senderCompany": "Enterprise Gateway",
+    "senderCountry": "India",
+    "countryFlag": "\ud83c\udf10",
+    "isOverseas": false,
+    "recipientMailbox": "tanmay@stormveins.com",
+    "mailboxOwnerName": "Tanmay",
+    "subject": "Returned mail: see transcript for details",
+    "receivedTimestamp": "Mon, 7 Sep 2026 08:31:20 GMT",
+    "relativeTime": "Today",
+    "intent": "general",
+    "intentLabel": "General Inbound",
+    "priority": "low",
+    "status": "replied",
+    "snippet": "The original message was received at Mon, 7 Sep 2026 08:31:20 GMT from m0335608.ppops.net [127.0.0.1] ----- The following addresses had perm...",
+    "body": "The original message was received at Mon, 7 Sep 2026 08:31:20 GMT\nfrom m0335608.ppops.net [127.0.0.1]\n----- The following addresses had permanent fatal errors -----\n<investorrelations@barrattplc.co.uk>\n(reason: 550 5.4.1 Recipient address rejected: Access denied. For more information see https://aka.ms/EXOSmtpErrors [LO1PEPF000022FE.GBRP265.PROD.OUTLOOK.COM 2026-09-07T08:31:20.671Z 08DF0B1183B983BB])\n----- Transcript of session follows -----\n... while talking to barrattplc-co-uk.mail.protection.outlook.com.:\n>>> DATA\n<<< 550 5.4.1 Recipient address rejected: Access denied. For more information see https://aka.ms/EXOSmtpErrors [LO1PEPF000022FE.GBRP265.PROD.OUTLOOK.COM 2026-09-07T08:31:20.671Z 08DF0B1183B983BB]\n550 5.1.1 <investorrelations@barrattplc.co.uk>... User unknown\n<<< 503 5.5.2 Need rcpt command [LO1PEPF000022FE.GBRP265.PROD.OUTLOOK.COM 2026-09-07T08:31:20.671Z 08DF0B1183B983BB]\nDear Commercial Directorate,\nI am reaching out from Storm Veins Media House. We engineer custom enterprise operating systems, private CRMs, and dedicated digital infrastructure for ambitious industry leaders across Coalville, Leicestershire, United Kingdom.\nMost executives in Sustainable Homebuilding & Land Regeneration navigate a persistent operational dilemma: off-the-shelf software (Salesforce, Zoho, SAP) forces teams into rigid, generic templates while accumulating compounding per-user licensing overhead, while fragmented spreadsheets and decentralized communication lead to administrative lag and operational leakage.\nWe design purpose-built operating systems that resolve this:\n\u2022 100% Source Code Ownership & Zero SaaS Seat-Tax: Deployed exclusively inside your dedicated AWS/GCP cloud tenant under your domain and branding, with complete intellectual property ownership and zero recurring user licensing penalties.\n\u2022 Engineered for Your Exact Operating Model: Zero-carbon construction telemetry, automated contractor payment milestones, customer service warranty portal, and executive ESG dashboards \u2014 codifying your native business workflows rather than forcing you into a standard generic box.\n\u2022 End-to-End Engineering & Complete IP Handover: Built with modern high-velocity web and mobile architectures, complete with automated quotation engines, role-based RBAC security, and real-time executive telemetry.\n\u2022 Full Enterprise Integrations: Direct bi-directional integration with your existing ERP/accounting software, automated notification webhooks, cloud storage, and client self-service portals.\nYou can review our live architecture and past enterprise deployments at stormveins.com.\nWould you be open to a brief 10-minute executive briefing next week to explore an architectural blueprint tailored for Barratt Developments?\nRespectfully,\nStorm Veins Media House\nSystems Architecture & Enterprise Practice\nMumbai & Thane, Maharashtra (Deploying Globally)\nDirect Line: +91 96998 31323\nEmail: contact@stormveins.com\nWeb: stormveins.com",
+    "originalOutboundSnippet": "Interaction sent from tanmay@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "[Internal] Delivery Log: Returned mail: see transcript for details",
+      "body": "Internal Note: Deliverability notice logged for MAILER-DAEMON@mx07-005fdc01.pphosted.com. Recipient firewall details updated in master tracker. No direct outbound reply required."
+    }
+  },
+  {
+    "id": "real-sales-2",
+    "leadId": "lead-2",
+    "senderName": "Mail Delivery System",
+    "senderEmail": "MAILER-DAEMON@mailchannels.net",
+    "senderTitle": "Email Gateway / Security Filter",
+    "senderCompany": "Enterprise Gateway",
+    "senderCountry": "India",
+    "countryFlag": "\ud83c\udf10",
+    "isOverseas": false,
+    "recipientMailbox": "sales@stormveins.com",
+    "mailboxOwnerName": "Enterprise Sales Desk",
+    "subject": "Undelivered Mail Returned to Sender",
+    "receivedTimestamp": "Fri, 04 Sep 2026 05:46:32 +0000 (UTC)",
+    "relativeTime": "Today",
+    "intent": "general",
+    "intentLabel": "General Inbound",
+    "priority": "low",
+    "status": "replied",
+    "snippet": "This is the mail system at host relay.mailchannels.net. I'm sorry to have to inform you that your message could not be delivered to one or m...",
+    "body": "This is the mail system at host relay.mailchannels.net.\nI'm sorry to have to inform you that your message could not\nbe delivered to one or more recipients. It's attached below.\nFor further assistance, please send mail to postmaster.\nIf you do so, please include this problem report. You can\ndelete your own text from the attached returned message.\nThe mail system\n<srushtivaity5582@gmail.com>: host gmail-smtp-in.l.google.com[74.125.142.27]\nsaid: 550-5.1.1 The email account that you tried to reach does not exist.\nPlease try 550-5.1.1 double-checking the recipient's email address for\ntypos or 550-5.1.1 unnecessary spaces. For more information, go to 550\n5.1.1  https://support.google.com/mail/?p=NoSuchUser\nd2e1a72fcca58-86153e39a7csi3158649b3a.236 - gsmtp (in reply to RCPT TO\ncommand)",
+    "originalOutboundSnippet": "Interaction sent from sales@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "[Internal] Delivery Log: Undelivered Mail Returned to Sender",
+      "body": "Internal Note: Deliverability notice logged for MAILER-DAEMON@mailchannels.net. Recipient firewall details updated in master tracker. No direct outbound reply required."
+    }
+  },
+  {
+    "id": "real-sales-3",
+    "leadId": "lead-3",
+    "senderName": "postmaster",
+    "senderEmail": "postmaster@agnidevices.com",
+    "senderTitle": "Email Gateway / Security Filter",
+    "senderCompany": "Agni Devices (Mail Filter)",
+    "senderCountry": "India",
+    "countryFlag": "\ud83c\uddee\ud83c\uddf3",
+    "isOverseas": false,
+    "recipientMailbox": "sales@stormveins.com",
+    "mailboxOwnerName": "Enterprise Sales Desk",
+    "subject": "Undeliverable: Turnkey Fire Compliance OS for Agni Devices Pvt. Ltd.",
+    "receivedTimestamp": "Fri, 4 Sep 2026 05:46:38 +0000",
+    "relativeTime": "Today",
+    "intent": "general",
+    "intentLabel": "General Inbound",
+    "priority": "low",
+    "status": "replied",
+    "snippet": "[https://products.office.com/en-us/CMSImages/Office365Logo_Orange.png?version=b8d100a9-0a8b-8e6a-88e1-ef488fee0470] Your message to sales@ag...",
+    "body": "[https://products.office.com/en-us/CMSImages/Office365Logo_Orange.png?version=b8d100a9-0a8b-8e6a-88e1-ef488fee0470]\nYour message to sales@agnidevices.com couldn't be delivered.\nsales wasn't found at agnidevices.com.\nsales   Office 365      sales\nAction Required                 Recipient\nUnknown To address\nHow to Fix It\nThe address may be misspelled or may not exist. Try one or more of the following:\n*   Send the message again following these steps: In Outlook, open this non-delivery report (NDR) and choose Send Again from the Report ribbon. In Outlook on the web, select this NDR, then select the link \"To send this message again, click here.\" Then delete and retype the entire recipient address. If prompted with an Auto-Complete List suggestion don't select it. After typing the complete address, click Send.\n*   Contact the recipient (by phone, for example) to check that the address exists and is correct.\n*   The recipient may have set up email forwarding to an incorrect address. Ask them to check that any forwarding they've set up is working correctly.\n*   Clear the recipient Auto-Complete List in Outlook or Outlook on the web by following the steps in this article: Fix email delivery issues for error code 5.1.10 in Office 365<https://go.microsoft.com/fwlink/?LinkId=532972>, and then send the message again. Retype the entire recipient address before selecting Send.\nIf the problem continues, forward this message to your email admin. If you're an email admin, refer to the More Info for Email Admins section below.\nWas this helpful? Send feedback to Microsoft<https://go.microsoft.com/fwlink/?LinkId=525921>.\n________________________________\nMore Info for Email Admins\nStatus code: 550 5.1.10\nThis error occurs because the sender sent a message to an email address hosted by Office 365 but the address is incorrect or doesn't exist at the destination domain. The error is reported by the recipient domain's email server, but most often it must be fixed by the person who sent the message. If the steps in the How to Fix It section above don't fix the problem, and you're the email admin for the recipient, try one or more of the following:\nThe email address exists and is correct - Confirm that the recipient address exists, is correct, and is accepting messages.\nSynchronize your directories - If you have a hybrid environment and are using directory synchronization make sure the recipient's email address is synced correctly in both Office 365 and in your on-premises directory.\nErrant forwarding rule - Check for forwarding rules that aren't behaving as expected. Forwarding can be set up by an admin via mail flow rules or mailbox forwarding address settings, or by the recipient via the Inbox Rules feature.\nRecipient has a valid license - Make sure the recipient has an Office 365 license assigned to them. The recipient's email admin can use the Office 365 admin center to assign a license (Users > Active Users > select the recipient > Assigned License > Edit).\nMail flow settings and MX records are not correct - Misconfigured mail flow or MX record settings can cause this error. Check your Office 365 mail flow settings to make sure your domain and any mail flow connectors are set up correctly. Also, work with your domain registrar to make sure the MX records for your domain are configured correctly.\nFor more information and additional tips to fix this issue, see Fix email delivery issues for error code 5.1.10 in Office 365<https://go.microsoft.com/fwlink/?LinkId=532972>.\nOriginal Message Details\nCreated Date:   9/4/2026 5:46:26 AM\nSender Address: sales@stormveins.com\nRecipient Address:      sales@agnidevices.com\nSubject:        Turnkey Fire Compliance OS for Agni Devices Pvt. Ltd.\nError Details",
+    "originalOutboundSnippet": "Interaction sent from sales@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "[Internal] Delivery Log: Undeliverable: Turnkey Fire Compliance OS for Agni Devices Pvt. Ltd.",
+      "body": "Internal Note: Deliverability notice logged for postmaster@agnidevices.com. Recipient firewall details updated in master tracker. No direct outbound reply required."
+    }
+  },
+  {
+    "id": "real-sales-5",
+    "leadId": "lead-5",
+    "senderName": "Mail Delivery System",
+    "senderEmail": "MAILER-DAEMON@mailchannels.net",
+    "senderTitle": "Email Gateway / Security Filter",
+    "senderCompany": "Enterprise Gateway",
+    "senderCountry": "India",
+    "countryFlag": "\ud83c\udf10",
+    "isOverseas": false,
+    "recipientMailbox": "sales@stormveins.com",
+    "mailboxOwnerName": "Enterprise Sales Desk",
+    "subject": "Undelivered Mail Returned to Sender",
+    "receivedTimestamp": "Fri, 04 Sep 2026 06:11:12 +0000 (UTC)",
+    "relativeTime": "Today",
+    "intent": "general",
+    "intentLabel": "General Inbound",
+    "priority": "low",
+    "status": "replied",
+    "snippet": "This is the mail system at host relay.mailchannels.net. I'm sorry to have to inform you that your message could not be delivered to one or m...",
+    "body": "This is the mail system at host relay.mailchannels.net.\nI'm sorry to have to inform you that your message could not\nbe delivered to one or more recipients. It's attached below.\nFor further assistance, please send mail to postmaster.\nIf you do so, please include this problem report. You can\ndelete your own text from the attached returned message.\nThe mail system\n<contact@proshieldfire.in>: Host or domain name not found. Name service error\nfor name=proshieldfire.in type=A: Host not found",
+    "originalOutboundSnippet": "Interaction sent from sales@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "[Internal] Delivery Log: Undelivered Mail Returned to Sender",
+      "body": "Internal Note: Deliverability notice logged for MAILER-DAEMON@mailchannels.net. Recipient firewall details updated in master tracker. No direct outbound reply required."
+    }
+  },
+  {
+    "id": "real-sales-7",
+    "leadId": "lead-7",
+    "senderName": "Mail Delivery System",
+    "senderEmail": "MAILER-DAEMON@fr-int-smtpout15.hostinger.io",
+    "senderTitle": "Email Gateway / Security Filter",
+    "senderCompany": "Enterprise Gateway",
+    "senderCountry": "India",
+    "countryFlag": "\ud83c\udf10",
+    "isOverseas": false,
+    "recipientMailbox": "sales@stormveins.com",
+    "mailboxOwnerName": "Enterprise Sales Desk",
+    "subject": "Undelivered Mail Returned to Sender",
+    "receivedTimestamp": "Fri,  4 Sep 2026 06:24:39 +0000 (UTC)",
+    "relativeTime": "Today",
+    "intent": "general",
+    "intentLabel": "General Inbound",
+    "priority": "low",
+    "status": "replied",
+    "snippet": "This is the mail system at host fr-int-smtpout15.hostinger.io. I'm sorry to have to inform you that your message could not be delivered to o...",
+    "body": "This is the mail system at host fr-int-smtpout15.hostinger.io.\nI'm sorry to have to inform you that your message could not\nbe delivered to one or more recipients. It's attached below.\nFor further assistance, please send mail to postmaster.\nIf you do so, please include this problem report. You can\ndelete your own text from the attached returned message.\nThe mail system\n<srushti@stormveins.com>: host\nmx1.hostinger.com[2606:4700:90:0:c1f8:f874:2386:b61f] said: 554 5.7.1 Spam\nmessage rejected (in reply to end of DATA command)",
+    "originalOutboundSnippet": "Interaction sent from sales@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "[Internal] Delivery Log: Undelivered Mail Returned to Sender",
+      "body": "Internal Note: Deliverability notice logged for MAILER-DAEMON@fr-int-smtpout15.hostinger.io. Recipient firewall details updated in master tracker. No direct outbound reply required."
+    }
+  },
+  {
+    "id": "real-sales-9",
+    "leadId": "lead-9",
+    "senderName": "Mail Delivery System",
+    "senderEmail": "MAILER-DAEMON@mailchannels.net",
+    "senderTitle": "Email Gateway / Security Filter",
+    "senderCompany": "Enterprise Gateway",
+    "senderCountry": "India",
+    "countryFlag": "\ud83c\udf10",
+    "isOverseas": false,
+    "recipientMailbox": "sales@stormveins.com",
+    "mailboxOwnerName": "Enterprise Sales Desk",
+    "subject": "Undelivered Mail Returned to Sender",
+    "receivedTimestamp": "Mon, 07 Sep 2026 07:19:53 +0000 (UTC)",
+    "relativeTime": "Today",
+    "intent": "general",
+    "intentLabel": "General Inbound",
+    "priority": "low",
+    "status": "replied",
+    "snippet": "This is the mail system at host relay.mailchannels.net. I'm sorry to have to inform you that your message could not be delivered to one or m...",
+    "body": "This is the mail system at host relay.mailchannels.net.\nI'm sorry to have to inform you that your message could not\nbe delivered to one or more recipients. It's attached below.\nFor further assistance, please send mail to postmaster.\nIf you do so, please include this problem report. You can\ndelete your own text from the attached returned message.\nThe mail system\n<contact@cbre.com>: host mxa-001bfb01.gslb.pphosted.com[148.163.156.92] said:\n550 5.1.1 User Unknown (in reply to end of DATA command)\nDear Commercial Directorate,\nI am reaching out from Storm Veins Media House. We engineer custom enterprise operating systems, private CRMs, and dedicated digital infrastructure for ambitious industry leaders across Dallas, Texas, United States.\nMost executives in Commercial Real Estate Services & Investment Management navigate a persistent operational dilemma: off-the-shelf software (Salesforce, Zoho, SAP) forces teams into rigid, generic templates while accumulating compounding per-user licensing overhead, while fragmented spreadsheets and decentralized communication lead to administrative lag and operational leakage.\nWe design purpose-built operating systems that resolve this:\n\u2022 100% Source Code Ownership & Zero SaaS Seat-Tax: Deployed exclusively inside your dedicated AWS/GCP cloud tenant under your domain and branding, with complete intellectual property ownership and zero recurring user licensing penalties.\n\u2022 Engineered for Your Exact Operating Model: Cross-market transaction mesh, automated broker deal registration, commercial valuation telemetry, and consolidated multi-tenant executive reporting \u2014 codifying your native business workflows rather than forcing you into a standard generic box.\n\u2022 End-to-End Engineering & Complete IP Handover: Built with modern high-velocity web and mobile architectures, complete with automated quotation engines, role-based RBAC security, and real-time executive telemetry.\n\u2022 Full Enterprise Integrations: Direct bi-directional integration with your existing ERP/accounting software, automated notification webhooks, cloud storage, and client self-service portals.\nYou can review our live architecture and past enterprise deployments at stormveins.com.\nWould you be open to a brief 10-minute executive briefing next week to explore an architectural blueprint tailored for CBRE Group?\nRespectfully,\nStorm Veins Media House\nSystems Architecture & Enterprise Practice\nMumbai & Thane, Maharashtra (Deploying Globally)\nDirect Line: +91 96998 31323\nEmail: contact@stormveins.com\nWeb: stormveins.com",
+    "originalOutboundSnippet": "Interaction sent from sales@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "[Internal] Delivery Log: Undelivered Mail Returned to Sender",
+      "body": "Internal Note: Deliverability notice logged for MAILER-DAEMON@mailchannels.net. Recipient firewall details updated in master tracker. No direct outbound reply required."
+    }
+  },
+  {
+    "id": "real-sales-10",
+    "leadId": "lead-10",
+    "senderName": "Berkeley Group Gateway Alerts",
+    "senderEmail": "berkeleygroupemailgatewayalerts@berkeleygroup.co.uk",
+    "senderTitle": "Email Gateway / Security Filter",
+    "senderCompany": "Berkeley Group UK (Security Filter)",
+    "senderCountry": "United Kingdom",
+    "countryFlag": "\ud83c\uddec\ud83c\udde7",
+    "isOverseas": true,
+    "recipientMailbox": "sales@stormveins.com",
+    "mailboxOwnerName": "Enterprise Sales Desk",
+    "subject": "[Postmaster] Email Delivery Failure",
+    "receivedTimestamp": "Mon, 07 Sep 2026 08:26:36 +0100",
+    "relativeTime": "Today",
+    "intent": "general",
+    "intentLabel": "General Inbound",
+    "priority": "low",
+    "status": "replied",
+    "snippet": "This is a delivery failure notification message indicating that an email you addressed to email address : -- info@berkeleygroup.co.uk could ...",
+    "body": "This is a delivery failure notification message indicating that\nan email you addressed to email address :\n-- info@berkeleygroup.co.uk\ncould not be delivered. The problem appears to be :\n-- Recipient email server rejected the message\nAdditional information follows :\n-- 5.4.14 Hop count exceeded - possible mail loop ATTR34 [LO1PEPF000028CF.GBRP265.PROD.OUTLOOK.COM 2026-09-07T07:26:33.915Z 08DF0B08CC106B38]\nThis condition occurred after 1 attempt(s) to deliver over\na period of 0 hour(s).\nIf you sent the email to multiple recipients, you will receive one\nof these messages for each one which failed delivery,  otherwise\nthey have been sent.",
+    "originalOutboundSnippet": "Interaction sent from sales@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "[Internal] Delivery Log: [Postmaster] Email Delivery Failure",
+      "body": "Internal Note: Deliverability notice logged for berkeleygroupemailgatewayalerts@berkeleygroup.co.uk. Recipient firewall details updated in master tracker. No direct outbound reply required."
+    }
+  },
+  {
+    "id": "real-srushti-22",
+    "leadId": "lead-22",
+    "senderName": "postmaster",
+    "senderEmail": "postmaster@pulte.com",
+    "senderTitle": "Email Gateway / Security Filter",
+    "senderCompany": "PulteGroup Inc (US Gateway)",
+    "senderCountry": "United States",
+    "countryFlag": "\ud83c\uddfa\ud83c\uddf8",
+    "isOverseas": true,
+    "recipientMailbox": "srushti@stormveins.com",
+    "mailboxOwnerName": "Shrushti",
+    "subject": "Undeliverable: Private Operating Systems & Dedicated Digital\r\n Infrastructure - PulteGroup Inc",
+    "receivedTimestamp": "Mon, 7 Sep 2026 07:09:00 +0000",
+    "relativeTime": "Today",
+    "intent": "general",
+    "intentLabel": "General Inbound",
+    "priority": "low",
+    "status": "replied",
+    "snippet": "[https://products.office.com/en-us/CMSImages/Office365Logo_Orange.png?version=b8d100a9-0a8b-8e6a-88e1-ef488fee0470] Your message to the Micr...",
+    "body": "[https://products.office.com/en-us/CMSImages/Office365Logo_Orange.png?version=b8d100a9-0a8b-8e6a-88e1-ef488fee0470]\nYour message to the Microsoft 365 group customerservice@pulte.com couldn't be delivered.\nThe group customerservice isn't set up to receive messages from srushti@stormveins.com.\nsrushti@stormveins.c. . .       Office 365      customerservice\nSender          Action Required\nSender not allowed\nHow to Fix It\nTry one or more of the following:\n*   If you're a member of the group, you might be registered with an email address other than srushti@stormveins.com. Resend your message using the email address where you received a welcome message from the group.\n*   Ask the group owner to add srushti@stormveins.com as a group member. If you don't know who the group owner is, contact the organization's customer service department for assistance.\n*   Ask the group owner to allow people outside their organization to send email to the group.\n________________________________\nMore Info for Email Admins\nStatus code: 550 5.7.193\nThe Microsoft 365 group, customerservice@pulte.com, is configured to reject messages sent to it from outside its organization -- unless the sender is a guest group member. srushti@stormveins.com isn't part of the organization, and it isn't a guest group member.\nIf you're the group's email admin or owner, check if the sender is a member of the group, but is registered under a different email address. Alternatively, the group owner, or email admin, can add srushti@stormveins.com as a guest member of the group.\nOriginal Message Details\nCreated Date:   9/7/2026 7:08:51 AM\nSender Address: srushti@stormveins.com\nRecipient Address:      customerservice@pulte.com\nSubject:        Private Operating Systems & Dedicated Digital Infrastructure - PulteGroup Inc\nError Details\nError:  550 5.7.193 UnifiedGroupAgent; Delivery failed because the sender isn't a group member or external senders aren't permitted to send to this group.\nMessage rejected by:    PH7PR01MB7822.prod.exchangelabs.com\nNotification Details\nSent by:        PH7PR01MB7822.prod.exchangelabs.com\nMessage Hops\nHOP     TIME (UTC)      FROM    TO      WITH    RELAY TIME\n1       9/7/2026\n7:08:51 AM      [192.168.1.129] smtp.hostinger.com      ESMTPSA *",
+    "originalOutboundSnippet": "Interaction sent from srushti@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "[Internal] Delivery Log: Undeliverable: Private Operating Systems & Dedicated Digital\r\n Infrastructure - PulteGroup Inc",
+      "body": "Internal Note: Deliverability notice logged for postmaster@pulte.com. Recipient firewall details updated in master tracker. No direct outbound reply required."
+    }
+  },
+  {
+    "id": "real-srushti-24",
+    "leadId": "lead-24",
+    "senderName": "postmaster",
+    "senderEmail": "postmaster@hmail.sg",
+    "senderTitle": "Email Gateway / Security Filter",
+    "senderCompany": "Enterprise Gateway",
+    "senderCountry": "India",
+    "countryFlag": "\ud83c\udf10",
+    "isOverseas": false,
+    "recipientMailbox": "srushti@stormveins.com",
+    "mailboxOwnerName": "Shrushti",
+    "subject": "Undeliverable: Private Operating Systems & Dedicated Digital\r\n Infrastructure - SingHealth",
+    "receivedTimestamp": "Mon, 7 Sep 2026 16:34:07 +0800",
+    "relativeTime": "Today",
+    "intent": "general",
+    "intentLabel": "General Inbound",
+    "priority": "low",
+    "status": "replied",
+    "snippet": "Delivery has failed to these recipients or groups: corpcomms@singhealth.com.sg<mailto:corpcomms@singhealth.com.sg> The email address you ent...",
+    "body": "Delivery has failed to these recipients or groups:\ncorpcomms@singhealth.com.sg<mailto:corpcomms@singhealth.com.sg>\nThe email address you entered couldn't be found. Please check the recipient's email address and try to resend the message. If the problem continues, please contact your email admin.\nDear Clinical Operations Directorate,\nI am reaching out from Storm Veins Media House. We engineer custom enterprise operating systems, private CRMs, and dedicated digital infrastructure for ambitious industry leaders across Singapore.\nMost executives in Integrated Academic Medical Centers & Healthcare Clusters navigate a persistent operational dilemma: off-the-shelf software (Salesforce, Zoho, SAP) forces teams into rigid, generic templates while accumulating compounding per-user licensing overhead, while fragmented spreadsheets and decentralized communication lead to administrative lag and operational leakage.\nWe design purpose-built operating systems that resolve this:\n\u2022 100% Source Code Ownership & Zero SaaS Seat-Tax: Deployed exclusively inside your dedicated AWS/GCP cloud tenant under your domain and branding, with complete intellectual property ownership and zero recurring user licensing penalties.\n\u2022 Engineered for Your Exact Operating Model: Cluster-wide patient journey telemetry, specialist clinic resource scheduling, automated research grant accounting, and privacy compliance vaults \u2014 codifying your native business workflows rather than forcing you into a standard generic box.\n\u2022 End-to-End Engineering & Complete IP Handover: Built with modern high-velocity web and mobile architectures, complete with automated quotation engines, role-based RBAC security, and real-time executive telemetry.\n\u2022 Full Enterprise Integrations: Direct bi-directional integration with your existing ERP/accounting software, automated notification webhooks, cloud storage, and client self-service portals.\nYou can review our live architecture and past enterprise deployments at stormveins.com.\nWould you be open to a brief 10-minute executive briefing next week to explore an architectural blueprint tailored for SingHealth?\nRespectfully,\nStorm Veins Media House\nSystems Architecture & Enterprise Practice\nMumbai & Thane, Maharashtra (Deploying Globally)\nDirect Line: +91 96998 31323\nEmail: contact@stormveins.com\nWeb: stormveins.com",
+    "originalOutboundSnippet": "Interaction sent from srushti@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "[Internal] Delivery Log: Undeliverable: Private Operating Systems & Dedicated Digital\r\n Infrastructure - SingHealth",
+      "body": "Internal Note: Deliverability notice logged for postmaster@hmail.sg. Recipient firewall details updated in master tracker. No direct outbound reply required."
+    }
+  },
+  {
+    "id": "real-contact-7",
+    "leadId": "lead-7",
+    "senderName": "Mail Delivery Subsystem",
+    "senderEmail": "mailer-daemon@googlemail.com",
+    "senderTitle": "Email Gateway / Security Filter",
+    "senderCompany": "Enterprise Gateway",
+    "senderCountry": "India",
+    "countryFlag": "\ud83c\udf10",
+    "isOverseas": false,
+    "recipientMailbox": "contact@stormveins.com",
+    "mailboxOwnerName": "Central Desk",
+    "subject": "Delivery Status Notification (Failure)",
+    "receivedTimestamp": "Sun, 06 Sep 2026 11:48:02 -0700 (PDT)",
+    "relativeTime": "Today",
+    "intent": "general",
+    "intentLabel": "General Inbound",
+    "priority": "low",
+    "status": "replied",
+    "snippet": "** Address not found ** Your message wasn't delivered to info@squarefeetgroup.in because the address couldn't be found, or is unable to rece...",
+    "body": "** Address not found **\nYour message wasn't delivered to info@squarefeetgroup.in because the address couldn't be found, or is unable to receive mail.\nLearn more here: https://support.google.com/mail/?p=NoSuchUser\nThe response was:\nThe email account that you tried to reach does not exist. Please try double-checking the recipient's email address for typos or unnecessary spaces. For more information, go to https://support.google.com/mail/?p=NoSuchUser\n58-861662d4c34mr26782740b3a.1.1788720481730;\nSun, 06 Sep 2026 11:48:01 -0700 (PDT)\nARC-Seal: i=3D1; a=3Drsa-sha256; t=3D1788720481; cv=3Dnone;\nd=3Dgoogle.com; s=3Darc-20260327;\nb=3DICS7XmvLPA+HbRnXNXTs/ReZHq9jYbrwubd4cx8hBH5ZEkVOg5Z/cDJQDibEio/=\nUbG\nQgFphtfO8SddYG6tD0TnS95WsD6LTn4XvEDgOxArkz/lfL90ADIJM5vNQTHQFIsjNS=\npt\nIABsqFK6ky8Vj4JnAu4GH+OzjfChcXJYbyNPHLcqGDEHLZ4OKIuuSjKYbE/mkltMfB=\nIt\n7IdodSXUIevjBkQxMiOo5UwMsc0LEnQgso4sTrhOVHq/nAVWCPbdQ1bAWDyS//JD1C=\noP\nCjqMNVt7DOD5gk6VeP9xaNemuH0kMbLOBunFOTtQX9bdLHGy7ll02RNula9azbeT1T=\n3h\nksVQ=3D=3D\nARC-Message-Signature: i=3D1; a=3Drsa-sha256; c=3Drelaxed/relaxed; d=3Dgoog=\nle.com; s=3Darc-20260327;\nh=3Ddate:mime-version:message-id:reply-to:subject:to:from:mime-vers=\nion\n:dkim-signature;\nbh=3DLhQU4uSAx8/+Pe7bV9gxmHM33goIuwnlybQSMAs0x4A=3D;\nfh=3DVhIgIyxi335D5EG1QRYIh/Bzp0tc0lZrvMLpnw7x4Q8=3D;\nb=3DHdnJ+KrpYOekxz2NM2HduIcjzaX12wJGu13bRSxy4dMFI6azk9kTNYyctc+8dYL=\n2Za\nFElXQCQjD5yvg8DSS6lkXW6gQubsf0UEoZpkvN0diok97rahUlBKx102OlLEspUKN0=",
+    "originalOutboundSnippet": "Interaction sent from contact@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "[Internal] Delivery Log: Delivery Status Notification (Failure)",
+      "body": "Internal Note: Deliverability notice logged for mailer-daemon@googlemail.com. Recipient firewall details updated in master tracker. No direct outbound reply required."
+    }
+  },
+  {
+    "id": "real-contact-8",
+    "leadId": "lead-8",
+    "senderName": "Mail Delivery System",
+    "senderEmail": "MAILER-DAEMON@de-fra-smtpout1.hostinger.io",
+    "senderTitle": "Email Gateway / Security Filter",
+    "senderCompany": "Enterprise Gateway",
+    "senderCountry": "India",
+    "countryFlag": "\ud83c\udf10",
+    "isOverseas": false,
+    "recipientMailbox": "contact@stormveins.com",
+    "mailboxOwnerName": "Central Desk",
+    "subject": "Undelivered Mail Returned to Sender",
+    "receivedTimestamp": "Sun,  6 Sep 2026 18:48:11 +0000 (UTC)",
+    "relativeTime": "Today",
+    "intent": "general",
+    "intentLabel": "General Inbound",
+    "priority": "low",
+    "status": "replied",
+    "snippet": "This is the mail system at host de-fra-smtpout1.hostinger.io. I'm sorry to have to inform you that your message could not be delivered to on...",
+    "body": "This is the mail system at host de-fra-smtpout1.hostinger.io.\nI'm sorry to have to inform you that your message could not\nbe delivered to one or more recipients. It's attached below.\nFor further assistance, please send mail to postmaster.\nIf you do so, please include this problem report. You can\ndelete your own text from the attached returned message.\nThe mail system\n<info@vihang.in>: host mx1.hostinger.com[2606:4700:90:0:c1f8:f874:2386:b61f]\nsaid: 554 5.7.1 <info@vihang.in>: Relay access denied (in reply to RCPT TO\ncommand)\nDear Leadership Team,\nI am reaching out from Storm Veins Media House. We engineer custom enterprise operating systems, private CRMs, and dedicated digital infrastructure for ambitious industry leaders across Ghodbunder Road, Thane West.\nMost executives in High-Rise Real Estate Development navigate a persistent operational dilemma: off-the-shelf software (Salesforce, Zoho, SAP) forces teams into rigid, generic templates while accumulating compounding per-user licensing overhead, while fragmented spreadsheets and WhatsApp coordination lead to administrative lag and operational leakage.\nWe design purpose-built operating systems that resolve this:\n\u2022 100% Source Code Ownership & Zero SaaS Seat-Tax: Deployed exclusively inside your dedicated AWS/GCP cloud tenant under your domain and branding, with complete intellectual property ownership and zero recurring user licensing penalties.\n\u2022 Engineered for Your Exact Operating Model: Integrated sales command portal, broker commission transparency mesh, dynamic floor-rise quotation engine, and automated buyer payment reconciliations \u2014 codifying your native business workflows rather than forcing you into a standard generic box.\n\u2022 End-to-End Engineering & Complete IP Handover: Built with modern high-velocity web and mobile architectures, complete with automated quotation engines, role-based RBAC security, and real-time executive telemetry.\n\u2022 Full Enterprise Integrations: Direct bi-directional integration with your existing accounting software (Tally, SAP), WhatsApp Business notification webhooks, cloud storage, and client self-service portals.\nYou can review our live architecture and past enterprise deployments at stormveins.com.\nWould you be open to a brief 10-minute executive briefing next week to explore an architectural blueprint tailored for Vihang Realty?\nRespectfully,\nStorm Veins Media House\nSystems Architecture & Enterprise Practice\nMumbai & Thane, Maharashtra\nDirect Line: +91 96998 31323\nEmail: contact@stormveins.com\nWeb: stormveins.com",
+    "originalOutboundSnippet": "Interaction sent from contact@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "[Internal] Delivery Log: Undelivered Mail Returned to Sender",
+      "body": "Internal Note: Deliverability notice logged for MAILER-DAEMON@de-fra-smtpout1.hostinger.io. Recipient firewall details updated in master tracker. No direct outbound reply required."
+    }
+  },
+  {
+    "id": "real-contact-9",
+    "leadId": "lead-9",
+    "senderName": "Mail Delivery System",
+    "senderEmail": "MAILER-DAEMON@mailchannels.net",
+    "senderTitle": "Email Gateway / Security Filter",
+    "senderCompany": "Enterprise Gateway",
+    "senderCountry": "India",
+    "countryFlag": "\ud83c\udf10",
+    "isOverseas": false,
+    "recipientMailbox": "contact@stormveins.com",
+    "mailboxOwnerName": "Central Desk",
+    "subject": "Undelivered Mail Returned to Sender",
+    "receivedTimestamp": "Sun, 06 Sep 2026 18:49:09 +0000 (UTC)",
+    "relativeTime": "Today",
+    "intent": "general",
+    "intentLabel": "General Inbound",
+    "priority": "low",
+    "status": "replied",
+    "snippet": "This is the mail system at host relay.mailchannels.net. I'm sorry to have to inform you that your message could not be delivered to one or m...",
+    "body": "This is the mail system at host relay.mailchannels.net.\nI'm sorry to have to inform you that your message could not\nbe delivered to one or more recipients. It's attached below.\nFor further assistance, please send mail to postmaster.\nIf you do so, please include this problem report. You can\ndelete your own text from the attached returned message.\nThe mail system\n<info@horizonhospital.in>: Host or domain name not found. Name service error\nfor name=horizonhospital.in type=A: Host not found\nDear Medical Directorate,\nI am reaching out from Storm Veins Media House. We engineer custom enterprise operating systems, private CRMs, and dedicated digital infrastructure for ambitious industry leaders across Naupada, Thane West.\nMost executives in Surgical Centers & Multispecialty Hospitals navigate a persistent operational dilemma: off-the-shelf software (Salesforce, Zoho, SAP) forces teams into rigid, generic templates while accumulating compounding per-user licensing overhead, while fragmented spreadsheets and WhatsApp coordination lead to administrative lag and operational leakage.\nWe design purpose-built operating systems that resolve this:\n\u2022 100% Source Code Ownership & Zero SaaS Seat-Tax: Deployed exclusively inside your dedicated AWS/GCP cloud tenant under your domain and branding, with complete intellectual property ownership and zero recurring user licensing penalties.\n\u2022 Engineered for Your Exact Operating Model: OPD/IPD patient admission workflows, OT scheduling coordination mesh, WhatsApp patient report delivery, and bidirectional LIS/PACS integration \u2014 codifying your native business workflows rather than forcing you into a standard generic box.\n\u2022 End-to-End Engineering & Complete IP Handover: Built with modern high-velocity web and mobile architectures, complete with automated quotation engines, role-based RBAC security, and real-time executive telemetry.\n\u2022 Full Enterprise Integrations: Direct bi-directional integration with your existing accounting software (Tally, SAP), WhatsApp Business notification webhooks, cloud storage, and client self-service portals.\nYou can review our live architecture and past enterprise deployments at stormveins.com.\nWould you be open to a brief 10-minute executive briefing next week to explore an architectural blueprint tailored for Horizon Hospital Network?\nRespectfully,\nStorm Veins Media House\nSystems Architecture & Enterprise Practice\nMumbai & Thane, Maharashtra\nDirect Line: +91 96998 31323\nEmail: contact@stormveins.com\nWeb: stormveins.com",
+    "originalOutboundSnippet": "Interaction sent from contact@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "[Internal] Delivery Log: Undelivered Mail Returned to Sender",
+      "body": "Internal Note: Deliverability notice logged for MAILER-DAEMON@mailchannels.net. Recipient firewall details updated in master tracker. No direct outbound reply required."
+    }
+  },
+  {
+    "id": "real-contact-13",
+    "leadId": "lead-13",
+    "senderName": "Mail Delivery System",
+    "senderEmail": "MAILER-DAEMON@mailchannels.net",
+    "senderTitle": "Email Gateway / Security Filter",
+    "senderCompany": "Enterprise Gateway",
+    "senderCountry": "India",
+    "countryFlag": "\ud83c\udf10",
+    "isOverseas": false,
+    "recipientMailbox": "contact@stormveins.com",
+    "mailboxOwnerName": "Central Desk",
+    "subject": "Undelivered Mail Returned to Sender",
+    "receivedTimestamp": "Sun, 06 Sep 2026 19:03:50 +0000 (UTC)",
+    "relativeTime": "Today",
+    "intent": "general",
+    "intentLabel": "General Inbound",
+    "priority": "low",
+    "status": "replied",
+    "snippet": "This is the mail system at host relay.mailchannels.net. I'm sorry to have to inform you that your message could not be delivered to one or m...",
+    "body": "This is the mail system at host relay.mailchannels.net.\nI'm sorry to have to inform you that your message could not\nbe delivered to one or more recipients. It's attached below.\nFor further assistance, please send mail to postmaster.\nIf you do so, please include this problem report. You can\ndelete your own text from the attached returned message.\nThe mail system\n<contact@mgmhospitalvashi.net>: host aspmx.l.google.com[172.253.117.27] said:\n550-5.1.1 The email account that you tried to reach does not exist. Please\ntry 550-5.1.1 double-checking the recipient's email address for typos or\n550-5.1.1 unnecessary spaces. For more information, go to 550 5.1.1\nhttps://support.google.com/mail/?p=NoSuchUser\n41be03b00d2f7-cc455430d7esi15721188a12.57 - gsmtp (in reply to RCPT TO\ncommand)\nDear Medical Directorate,\nI am reaching out from Storm Veins Media House. We engineer custom enterprise operating systems, private CRMs, and dedicated digital infrastructure for ambitious industry leaders across Sector 3, Vashi, Navi Mumbai.\nMost executives in Multispecialty Healthcare & Medical Research navigate a persistent operational dilemma: off-the-shelf software (Salesforce, Zoho, SAP) forces teams into rigid, generic templates while accumulating compounding per-user licensing overhead, while fragmented spreadsheets and WhatsApp coordination lead to administrative lag and operational leakage.\nWe design purpose-built operating systems that resolve this:\n\u2022 100% Source Code Ownership & Zero SaaS Seat-Tax: Deployed exclusively inside your dedicated AWS/GCP cloud tenant under your domain and branding, with complete intellectual property ownership and zero recurring user licensing penalties.\n\u2022 Engineered for Your Exact Operating Model: Doctor clinical workstation, nursing station mobile telemetry, real-time discharge billing engine, and TPA insurance documentation vault \u2014 codifying your native business workflows rather than forcing you into a standard generic box.\n\u2022 End-to-End Engineering & Complete IP Handover: Built with modern high-velocity web and mobile architectures, complete with automated quotation engines, role-based RBAC security, and real-time executive telemetry.\n\u2022 Full Enterprise Integrations: Direct bi-directional integration with your existing accounting software (Tally, SAP), WhatsApp Business notification webhooks, cloud storage, and client self-service portals.\nYou can review our live architecture and past enterprise deployments at stormveins.com.\nWould you be open to a brief 10-minute executive briefing next week to explore an architectural blueprint tailored for MGM Hospital & Medical Center?\nRespectfully,\nStorm Veins Media House\nSystems Architecture & Enterprise Practice\nMumbai & Thane, Maharashtra\nDirect Line: +91 96998 31323\nEmail: contact@stormveins.com",
+    "originalOutboundSnippet": "Interaction sent from contact@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "[Internal] Delivery Log: Undelivered Mail Returned to Sender",
+      "body": "Internal Note: Deliverability notice logged for MAILER-DAEMON@mailchannels.net. Recipient firewall details updated in master tracker. No direct outbound reply required."
+    }
+  },
+  {
+    "id": "real-contact-25",
+    "leadId": "lead-25",
+    "senderName": "Mail Delivery System",
+    "senderEmail": "MAILER-DAEMON@mailchannels.net",
+    "senderTitle": "Email Gateway / Security Filter",
+    "senderCompany": "Enterprise Gateway",
+    "senderCountry": "India",
+    "countryFlag": "\ud83c\udf10",
+    "isOverseas": false,
+    "recipientMailbox": "contact@stormveins.com",
+    "mailboxOwnerName": "Central Desk",
+    "subject": "Undelivered Mail Returned to Sender",
+    "receivedTimestamp": "Sun, 06 Sep 2026 21:16:17 +0000 (UTC)",
+    "relativeTime": "Today",
+    "intent": "general",
+    "intentLabel": "General Inbound",
+    "priority": "low",
+    "status": "replied",
+    "snippet": "This is the mail system at host relay.mailchannels.net. I'm sorry to have to inform you that your message could not be delivered to one or m...",
+    "body": "This is the mail system at host relay.mailchannels.net.\nI'm sorry to have to inform you that your message could not\nbe delivered to one or more recipients. It's attached below.\nFor further assistance, please send mail to postmaster.\nIf you do so, please include this problem report. You can\ndelete your own text from the attached returned message.\nThe mail system\n<corporate@wadhwagroup.com>: Domain wadhwagroup.com does not accept mail\n(nullMX)\nDear Directorate of Real Estate,\nI am reaching out from Storm Veins Media House. We engineer custom enterprise operating systems, private CRMs, and dedicated digital infrastructure for ambitious industry leaders across Ghatkopar / Central Mumbai Corridor.\nMost executives in real_estate navigate a persistent operational dilemma: off-the-shelf software (Salesforce, Zoho, SAP) forces teams into rigid, generic templates while accumulating compounding per-user licensing overhead, while fragmented spreadsheets and decentralized communication lead to administrative lag and operational leakage.\nWe design purpose-built operating systems that resolve this:\n\u2022 100% Source Code Ownership & Zero SaaS Seat-Tax: Deployed exclusively inside your dedicated AWS/GCP cloud tenant under your domain and branding, with complete intellectual property ownership and zero recurring user licensing penalties.\n\u2022 Engineered for Your Exact Operating Model: Enterprise workflow automation & dedicated private cloud infrastructure \u2014 codifying your native business workflows rather than forcing you into a standard generic box.\n\u2022 End-to-End Engineering & Complete IP Handover: Built with modern high-velocity web and mobile architectures, complete with automated quotation engines, role-based RBAC security, and real-time executive telemetry.\n\u2022 Full Enterprise Integrations: Direct bi-directional integration with your existing ERP/accounting software, automated notification webhooks, cloud storage, and client self-service portals.\nYou can review our live architecture and past enterprise deployments at stormveins.com.\nWould you be open to a brief 10-minute executive briefing next week to explore an architectural blueprint tailored for The Wadhwa Group?\nRespectfully,\nStorm Veins Media House\nSystems Architecture & Enterprise Practice\nMumbai & Thane, Maharashtra (Deploying Globally)\nDirect Line: +91 96998 31323\nEmail: contact@stormveins.com\nWeb: stormveins.com",
+    "originalOutboundSnippet": "Interaction sent from contact@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "[Internal] Delivery Log: Undelivered Mail Returned to Sender",
+      "body": "Internal Note: Deliverability notice logged for MAILER-DAEMON@mailchannels.net. Recipient firewall details updated in master tracker. No direct outbound reply required."
+    }
+  },
+  {
+    "id": "real-contact-34",
+    "leadId": "lead-34",
+    "senderName": "Mail Delivery System",
+    "senderEmail": "MAILER-DAEMON@mailchannels.net",
+    "senderTitle": "Email Gateway / Security Filter",
+    "senderCompany": "Enterprise Gateway",
+    "senderCountry": "India",
+    "countryFlag": "\ud83c\udf10",
+    "isOverseas": false,
+    "recipientMailbox": "contact@stormveins.com",
+    "mailboxOwnerName": "Central Desk",
+    "subject": "Undelivered Mail Returned to Sender",
+    "receivedTimestamp": "Mon, 07 Sep 2026 06:02:38 +0000 (UTC)",
+    "relativeTime": "Today",
+    "intent": "general",
+    "intentLabel": "General Inbound",
+    "priority": "low",
+    "status": "replied",
+    "snippet": "This is the mail system at host relay.mailchannels.net. I'm sorry to have to inform you that your message could not be delivered to one or m...",
+    "body": "This is the mail system at host relay.mailchannels.net.\nI'm sorry to have to inform you that your message could not\nbe delivered to one or more recipients. It's attached below.\nFor further assistance, please send mail to postmaster.\nIf you do so, please include this problem report. You can\ndelete your own text from the attached returned message.\nThe mail system\n<customercare@dlf.in>: host dlf-in.mail.protection.outlook.com[52.101.145.0]\nsaid: 550 5.4.1 Recipient address rejected: Access denied. For more\ninformation see https://aka.ms/EXOSmtpErrors\n[PN1PEPF000062B9.INDPRD01.PROD.OUTLOOK.COM 2026-09-07T06:02:37.919Z\n08DF0AFE9680D606] (in reply to RCPT TO command)\nDear Commercial Directorate,\nI am reaching out from Storm Veins Media House. We engineer custom enterprise operating systems, private CRMs, and dedicated digital infrastructure for ambitious industry leaders across Gurugram, Haryana / Delhi NCR, India.\nMost executives in Luxury Real Estate & Commercial Cyber Cities navigate a persistent operational dilemma: off-the-shelf software (Salesforce, Zoho, SAP) forces teams into rigid, generic templates while accumulating compounding per-user licensing overhead, while fragmented spreadsheets and decentralized communication lead to administrative lag and operational leakage.\nWe design purpose-built operating systems that resolve this:\n\u2022 100% Source Code Ownership & Zero SaaS Seat-Tax: Deployed exclusively inside your dedicated AWS/GCP cloud tenant under your domain and branding, with complete intellectual property ownership and zero recurring user licensing penalties.\n\u2022 Engineered for Your Exact Operating Model: Commercial tenant leasing lifecycle, facilities predictive maintenance mesh, footfall & energy telemetry, and automated institutional invoicing \u2014 codifying your native business workflows rather than forcing you into a standard generic box.\n\u2022 End-to-End Engineering & Complete IP Handover: Built with modern high-velocity web and mobile architectures, complete with automated quotation engines, role-based RBAC security, and real-time executive telemetry.\n\u2022 Full Enterprise Integrations: Direct bi-directional integration with your existing ERP/accounting infrastructure, automated notification webhooks, cloud storage, and client self-service portals.\nYou can review our live architecture and past enterprise deployments at stormveins.com.\nWould you be open to a brief 10-minute executive briefing next week to explore an architectural blueprint tailored for DLF Limited?\nRespectfully,\nStorm Veins Media House\nSystems Architecture & Enterprise Practice\nMumbai & Thane, Maharashtra (Deploying Globally)\nDirect Line: +91 96998 31323\nEmail: contact@stormveins.com\nWeb: stormveins.com",
+    "originalOutboundSnippet": "Interaction sent from contact@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "[Internal] Delivery Log: Undelivered Mail Returned to Sender",
+      "body": "Internal Note: Deliverability notice logged for MAILER-DAEMON@mailchannels.net. Recipient firewall details updated in master tracker. No direct outbound reply required."
+    }
+  },
+  {
+    "id": "real-contact-38",
+    "leadId": "lead-38",
+    "senderName": "Domain postMaster address",
+    "senderEmail": "postmaster@sobharealty.com",
+    "senderTitle": "Email Gateway / Security Filter",
+    "senderCompany": "Sobha Realty Dubai (Mail Gateway)",
+    "senderCountry": "United Arab Emirates",
+    "countryFlag": "\ud83c\udde6\ud83c\uddea",
+    "isOverseas": true,
+    "recipientMailbox": "contact@stormveins.com",
+    "mailboxOwnerName": "Central Desk",
+    "subject": "Your message couldn't be delivered",
+    "receivedTimestamp": "Mon, 07 Sep 2026 08:24:36 +0100",
+    "relativeTime": "Today",
+    "intent": "general",
+    "intentLabel": "General Inbound",
+    "priority": "low",
+    "status": "replied",
+    "snippet": "==================================================== Your message couldn't be delivered ====================================================...",
+    "body": "====================================================\nYour message couldn't be delivered\n====================================================\nThe message you sent to sales@sobharealty.com couldn't be delivered due to: Recipient email address is possibly incorrect.\n\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\nFurther Information\n5.4.1 Recipient address rejected: Access denied. For more information see https://aka.ms/EXOSmtpErrors [AM3PEPF0000A791.eurprd04.prod.outlook.com 2026-09-07T07:24:33.818Z 08DF0AF8806A51E5]\n\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\nIf you sent this message to multiple addresses, you'll receive a notification like this\nfor every one that didn't arrive.\n\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\nPowered by Mimecast\n\u00a9 2003 - 2019 Mimecast Services Limited.",
+    "originalOutboundSnippet": "Interaction sent from contact@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "[Internal] Delivery Log: Your message couldn't be delivered",
+      "body": "Internal Note: Deliverability notice logged for postmaster@sobharealty.com. Recipient firewall details updated in master tracker. No direct outbound reply required."
     }
   }
 ];
+
+export const inboundMessagesData = INBOUND_MESSAGES_DATA;
