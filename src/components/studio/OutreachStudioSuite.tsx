@@ -31,11 +31,13 @@ import {
   BarChart3,
   ChevronDown,
   Globe,
+  Inbox,
 } from "lucide-react";
 import { CRMLead, crmLeadsData } from "../../data/crmLeads";
 import EmailAnalyticsDashboard from "./EmailAnalyticsDashboard";
+import InboundMessagesHub from "./InboundMessagesHub";
 
-export type OutreachSubTab = "pool" | "cadence" | "telemetry" | "analytics";
+export type OutreachSubTab = "pool" | "cadence" | "telemetry" | "analytics" | "inbound";
 
 interface OutreachStudioSuiteProps {
   subMode: OutreachSubTab;
@@ -391,7 +393,34 @@ export default function OutreachStudioSuite({
           <BarChart3 size={13} />
           <span>Analytics &amp; Reports (12 Charts)</span>
         </button>
+        <button
+          type="button"
+          className={`crm-switch-tab-btn ${subMode === "inbound" ? "active" : ""}`}
+          onClick={() => onSelectSubMode("inbound")}
+        >
+          <Inbox size={13} />
+          <span>Inbound &amp; Replies</span>
+          <span className="nav-sub-pill pulse-emerald" style={{ marginLeft: "4px" }}>10 New</span>
+        </button>
       </div>
+
+      {/* =========================================================================
+          SUB-VIEW: INBOUND MESSAGES & EXECUTIVE MAILBOX FEED
+          ========================================================================= */}
+      {subMode === "inbound" && (
+        <div className="suite-view-container">
+          <InboundMessagesHub
+            theme="light"
+            onSelectLeadInCrm={(leadId) => {
+              const found = crmLeadsData.find((l) => l.id === leadId);
+              if (found) {
+                setSelectedLead(found);
+                onSelectSubMode("pool");
+              }
+            }}
+          />
+        </div>
+      )}
 
       {/* =========================================================================
           SUB-VIEW: EMAIL ANALYTICS & 12 CHARTS

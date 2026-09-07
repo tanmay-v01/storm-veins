@@ -12,6 +12,7 @@ import {
   Compass,
   Copy,
   FileText,
+  Inbox,
   KeyRound,
   Layers,
   LockKeyhole,
@@ -42,6 +43,7 @@ type StudioMode =
   | "outreach-cadence"
   | "outreach-telemetry"
   | "outreach-analytics"
+  | "outreach-inbound"
   | "invoice"
   | "letter"
   | "document";
@@ -750,6 +752,18 @@ Mumbai HQ · +91 96998 31323`,
               <span>Outreach Reports</span>
               <span className="nav-sub-pill">12 Charts</span>
             </button>
+
+            {/* Sub-item 5: Inbound Communications */}
+            <button
+              role="tab"
+              aria-selected={mode === "outreach-inbound"}
+              className={`studio-tool-tab sub-tab ${mode === "outreach-inbound" ? "active" : ""}`}
+              onClick={() => setMode("outreach-inbound")}
+            >
+              <Inbox size={13} />
+              <span>Inbound Replies</span>
+              <span className="nav-sub-pill pulse-emerald">10 New</span>
+            </button>
           </div>
 
           <div className="nav-category-group">
@@ -789,6 +803,8 @@ Mumbai HQ · +91 96998 31323`,
                 ? "SOVEREIGN EMAIL OUTREACH · 4-DAY CADENCE RE-APPROACH"
                 : mode === "outreach-telemetry"
                 ? "SOVEREIGN EMAIL OUTREACH · HOSTINGER SMTP TELEMETRY"
+                : mode === "outreach-inbound"
+                ? "SOVEREIGN EMAIL OUTREACH · INBOUND COMMUNICATIONS"
                 : "COMMERCIAL SUITE"}
             </span>
             <h1 className="studio-page-title">
@@ -802,6 +818,8 @@ Mumbai HQ · +91 96998 31323`,
                 ? "4-Day Cadence & Follow-Up Pipeline"
                 : mode === "outreach-telemetry"
                 ? "Hostinger Quota & Bounce Shield"
+                : mode === "outreach-inbound"
+                ? "Inbound Communications & Replies"
                 : mode === "invoice"
                 ? "Commercial Invoicing Generator"
                 : mode === "letter"
@@ -1263,11 +1281,12 @@ Mumbai HQ · +91 96998 31323`,
           </div>
         )}
 
-        {/* LIVE SOVEREIGN EMAIL OUTREACH SUITE (4 SUB-VIEWS) */}
+        {/* LIVE SOVEREIGN EMAIL OUTREACH SUITE (5 SUB-VIEWS) */}
         {(mode === "outreach-pool" ||
           mode === "outreach-cadence" ||
           mode === "outreach-telemetry" ||
-          mode === "outreach-analytics") && (
+          mode === "outreach-analytics" ||
+          mode === "outreach-inbound") && (
           <OutreachStudioSuite
             subMode={
               mode === "outreach-cadence"
@@ -1276,6 +1295,8 @@ Mumbai HQ · +91 96998 31323`,
                 ? "telemetry"
                 : mode === "outreach-analytics"
                 ? "analytics"
+                : mode === "outreach-inbound"
+                ? "inbound"
                 : "pool"
             }
             onSelectSubMode={(tab) => setMode(`outreach-${tab}` as StudioMode)}

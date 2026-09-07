@@ -29,10 +29,12 @@ import {
   ChevronRight,
   ChevronDown,
   BarChart3,
+  Inbox,
 } from "lucide-react";
 import { crmLeadsData, CRMLead } from "../data/crmLeads";
 import { PageFrame, Logo, Eyebrow } from "../components/Site";
 import EmailAnalyticsDashboard from "../components/studio/EmailAnalyticsDashboard";
+import InboundMessagesHub from "../components/studio/InboundMessagesHub";
 
 export default function CRM() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -47,7 +49,7 @@ export default function CRM() {
   const [activeModalLead, setActiveModalLead] = useState<CRMLead | null>(null);
   const [modalTab, setModalTab] = useState<"dossier" | "email">("dossier");
   const [copiedId, setCopiedId] = useState<string | null>(null);
-  const [heroTab, setHeroTab] = useState<"matrix" | "analytics">("matrix");
+  const [heroTab, setHeroTab] = useState<"matrix" | "analytics" | "inbound">("matrix");
   const [isFilterDrawerOpen, setIsFilterDrawerOpen] = useState(false);
 
   // Mailbox Definitions
@@ -256,7 +258,7 @@ export default function CRM() {
                 </p>
               </div>
 
-              {/* VIEW SWITCHER: DIRECTORY MATRIX VS 12-REPORT DASHBOARD */}
+              {/* VIEW SWITCHER: DIRECTORY MATRIX VS 12-REPORT DASHBOARD VS INBOUND FEED */}
               <div className="crm-view-switch-tabs">
                 <button
                   className={`crm-switch-tab-btn ${heroTab === "matrix" ? "active" : ""}`}
@@ -271,6 +273,13 @@ export default function CRM() {
                 >
                   <BarChart3 size={14} />
                   <span>Outreach Reports (12 Charts)</span>
+                </button>
+                <button
+                  className={`crm-switch-tab-btn ${heroTab === "inbound" ? "active" : ""}`}
+                  onClick={() => setHeroTab("inbound")}
+                >
+                  <Inbox size={14} />
+                  <span>Inbound Communications (10 New)</span>
                 </button>
               </div>
             </div>
@@ -338,7 +347,18 @@ export default function CRM() {
         {/* MAIN PIPELINE CONTROLS & VIEWER */}
         <section className="crm-viewer-section">
           <div className="container">
-            {heroTab === "analytics" ? (
+            {heroTab === "inbound" ? (
+              <InboundMessagesHub
+                theme="dark"
+                onSelectLeadInCrm={(leadId) => {
+                  const found = crmLeadsData.find((l) => l.id === leadId);
+                  if (found) {
+                    setActiveModalLead(found);
+                    setHeroTab("matrix");
+                  }
+                }}
+              />
+            ) : heroTab === "analytics" ? (
               <EmailAnalyticsDashboard
                 theme="dark"
                 onFilterBySender={(sender) => {
