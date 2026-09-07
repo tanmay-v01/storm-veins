@@ -28,10 +28,14 @@ import {
   Info,
   Check,
   RotateCcw,
+  BarChart3,
+  ChevronDown,
+  Globe,
 } from "lucide-react";
 import { CRMLead, crmLeadsData } from "../../data/crmLeads";
+import EmailAnalyticsDashboard from "./EmailAnalyticsDashboard";
 
-export type OutreachSubTab = "pool" | "cadence" | "telemetry";
+export type OutreachSubTab = "pool" | "cadence" | "telemetry" | "analytics";
 
 interface OutreachStudioSuiteProps {
   subMode: OutreachSubTab;
@@ -47,6 +51,9 @@ export default function OutreachStudioSuite({
   const [regionFilter, setRegionFilter] = useState<string>("all");
   const [statusFilter, setStatusFilter] = useState<string>("all");
   const [cadenceFilter, setCadenceFilter] = useState<string>("all");
+  const [mailboxFilter, setMailboxFilter] = useState<string>("all");
+  const [scopeFilter, setScopeFilter] = useState<string>("all");
+  const [isFilterDrawerOpen, setIsFilterDrawerOpen] = useState<boolean>(false);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [sortBy, setSortBy] = useState<string>("name");
   const [viewMode, setViewMode] = useState<"table" | "grid">("table");
@@ -69,6 +76,23 @@ export default function OutreachStudioSuite({
     }
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [selectedLead]);
+
+  // Mailbox Definitions
+  const mailboxes = [
+    { id: "all", label: "All Senders (5 Mailboxes)" },
+    { id: "tanmay@stormveins.com", label: "tanmay@stormveins.com (Tanmay V.)" },
+    { id: "sales@stormveins.com", label: "sales@stormveins.com (Enterprise Practice)" },
+    { id: "solutions@stormveins.com", label: "solutions@stormveins.com (Systems Arch.)" },
+    { id: "srushti@stormveins.com", label: "srushti@stormveins.com (Srushti)" },
+    { id: "contact@stormveins.com", label: "contact@stormveins.com (Storm Veins Media)" },
+  ];
+
+  // Geography Scope Definitions
+  const scopes = [
+    { id: "all", label: "All Geographies (Domestic & Global)" },
+    { id: "overseas", label: "🌐 Overseas Only (UAE, US, UK, SG, AU)" },
+    { id: "regional", label: "📍 Regional & Pan-India" },
+  ];
 
   // Sector Mapping & Counts
   const sectors = useMemo(() => {
@@ -175,11 +199,27 @@ export default function OutreachStudioSuite({
           lead.region.toLowerCase().includes(q) ||
           lead.operationalFocus.toLowerCase().includes(q);
 
+        // Mailbox Filter
+        let matchesMailbox = true;
+        if (mailboxFilter !== "all") {
+          matchesMailbox = (lead.assignedMailbox || "").toLowerCase() === mailboxFilter.toLowerCase();
+        }
+
+        // Scope Filter
+        let matchesScope = true;
+        if (scopeFilter === "overseas") {
+          matchesScope = lead.isOverseas === true;
+        } else if (scopeFilter === "regional") {
+          matchesScope = !lead.isOverseas;
+        }
+
         return (
           matchesSector &&
           matchesRegion &&
           matchesStatus &&
           matchesCadence &&
+          matchesMailbox &&
+          matchesScope &&
           matchesSearch
         );
       })
@@ -196,9 +236,34 @@ export default function OutreachStudioSuite({
     regionFilter,
     statusFilter,
     cadenceFilter,
+    mailboxFilter,
+    scopeFilter,
     searchQuery,
     sortBy,
   ]);
+
+  // Active filters count
+  const activeFiltersCount = useMemo(() => {
+    let count = 0;
+    if (sectorFilter !== "all") count++;
+    if (regionFilter !== "all") count++;
+    if (statusFilter !== "all") count++;
+    if (cadenceFilter !== "all") count++;
+    if (mailboxFilter !== "all") count++;
+    if (scopeFilter !== "all") count++;
+    if (searchQuery.trim() !== "") count++;
+    return count;
+  }, [sectorFilter, regionFilter, statusFilter, cadenceFilter, mailboxFilter, scopeFilter, searchQuery]);
+
+  const resetAllFilters = () => {
+    setSectorFilter("all");
+    setRegionFilter("all");
+    setStatusFilter("all");
+    setCadenceFilter("all");
+    setMailboxFilter("all");
+    setScopeFilter("all");
+    setSearchQuery("");
+  };
 
   // Metric Totals
   const metrics = useMemo(() => {
@@ -292,6 +357,65 @@ export default function OutreachStudioSuite({
 
   return (
     <div className="outreach-suite-light">
+      {/* Top Outreach Sub-Mode Navigation */}
+      <div className="suite-sub-nav-bar" style={{ display: "flex", gap: "8px", padding: "10px 14px", borderBottom: "1px solid #e2e8f0", background: "#f8fafc", borderRadius: "10px", marginBottom: "16px", flexWrap: "wrap", alignItems: "center" }}>
+        <button
+          type="button"
+          className={`crm-switch-tab-btn ${subMode === "pool" ? "active" : ""}`}
+          onClick={() => onSelectSubMode("pool")}
+        >
+          <Building2 size={13} />
+          <span>Enterprise Pool ({crmLeadsData.length})</span>
+        </button>
+        <button
+          type="button"
+          className={`crm-switch-tab-btn ${subMode === "cadence" ? "active" : ""}`}
+          onClick={() => onSelectSubMode("cadence")}
+        >
+          <Clock size={13} />
+          <span>4-Day Cadence</span>
+        </button>
+        <button
+          type="button"
+          className={`crm-switch-tab-btn ${subMode === "telemetry" ? "active" : ""}`}
+          onClick={() => onSelectSubMode("telemetry")}
+        >
+          <ShieldCheck size={13} />
+          <span>Quota &amp; Shield (8/hr)</span>
+        </button>
+        <button
+          type="button"
+          className={`crm-switch-tab-btn ${subMode === "analytics" ? "active" : ""}`}
+          onClick={() => onSelectSubMode("analytics")}
+        >
+          <BarChart3 size={13} />
+          <span>Analytics &amp; Reports (12 Charts)</span>
+        </button>
+      </div>
+
+      {/* =========================================================================
+          SUB-VIEW: EMAIL ANALYTICS & 12 CHARTS
+          ========================================================================= */}
+      {subMode === "analytics" && (
+        <div className="suite-view-container">
+          <EmailAnalyticsDashboard
+            onFilterBySender={(sender) => {
+              setMailboxFilter(sender);
+              onSelectSubMode("pool");
+            }}
+            onFilterByScope={(scope) => {
+              setScopeFilter(scope);
+              onSelectSubMode("pool");
+            }}
+            onFilterBySector={(sector) => {
+              setSectorFilter(sector);
+              onSelectSubMode("pool");
+            }}
+            onSelectLeadTab={() => onSelectSubMode("pool")}
+          />
+        </div>
+      )}
+
       {/* =========================================================================
           SUB-VIEW 1: ENTERPRISE DIRECTORY & SECTOR POOL
           ========================================================================= */}
@@ -389,6 +513,27 @@ export default function OutreachStudioSuite({
               </div>
 
               <div className="panel-actions-cluster">
+                {/* Single Clean Filter Button */}
+                <button
+                  type="button"
+                  className={`crm-filter-toggle-btn ${isFilterDrawerOpen ? "is-active-open" : ""}`}
+                  onClick={() => setIsFilterDrawerOpen((prev) => !prev)}
+                  title="Filter leads by sender mailbox, geography scope, sector, cadence..."
+                >
+                  <Filter size={13} />
+                  <span>Filters</span>
+                  {activeFiltersCount > 0 && (
+                    <span className="filter-badge-counter">{activeFiltersCount}</span>
+                  )}
+                  <ChevronDown
+                    size={12}
+                    style={{
+                      transform: isFilterDrawerOpen ? "rotate(180deg)" : "none",
+                      transition: "transform 0.2s ease",
+                    }}
+                  />
+                </button>
+
                 <div className="view-mode-toggle">
                   <button
                     type="button"
@@ -419,6 +564,18 @@ export default function OutreachStudioSuite({
                   <Download size={13} />
                   <span>Export CSV</span>
                 </button>
+
+                {activeFiltersCount > 0 && (
+                  <button
+                    type="button"
+                    className="reset-filters-btn"
+                    onClick={resetAllFilters}
+                    title="Reset all filters"
+                  >
+                    <RotateCcw size={11} />
+                    <span>Reset</span>
+                  </button>
+                )}
               </div>
             </div>
 
@@ -442,89 +599,180 @@ export default function OutreachStudioSuite({
               </div>
             </div>
 
-            {/* Row 3: Dropdown Selectors */}
-            <div className="panel-row-filters">
-              <div className="filter-select-wrap">
-                <label className="filter-label">REGION</label>
-                <select
-                  value={regionFilter}
-                  onChange={(e) => setRegionFilter(e.target.value)}
-                  className="filter-select"
-                >
-                  <option value="all">All Geographies (13 Hubs)</option>
-                  <option value="thane">Thane Central (East &amp; West)</option>
-                  <option value="navi_mumbai">Navi Mumbai (Vashi, Mahape, Turbhe)</option>
-                  <option value="kalyan_dombivli">Kalyan &amp; Dombivli</option>
-                  <option value="ghatkopar_kurla">Ghatkopar &amp; Kurla Hubs</option>
-                  <option value="mumbai_metro">Mumbai Metropolitan Region</option>
-                  <option value="interstate">Interstate Hubs (BLR, HYD, NCR, GUJ, CHN)</option>
-                  <option value="international">Global (Dubai, SG, UK, USA)</option>
-                </select>
-              </div>
+            {/* Collapsible Structured Filter Drawer Panel */}
+            {isFilterDrawerOpen && (
+              <div className="crm-filter-drawer-panel">
+                <div className="filter-drawer-header">
+                  <div className="drawer-title-group">
+                    <Filter size={14} className="text-emerald" />
+                    <span>Structured Filter Criteria &bull; Active Constraints: {activeFiltersCount}</span>
+                  </div>
+                  <div className="drawer-actions-row">
+                    {activeFiltersCount > 0 && (
+                      <button type="button" onClick={resetAllFilters} className="drawer-reset-btn">
+                        <X size={12} />
+                        <span>Clear All</span>
+                      </button>
+                    )}
+                    <button type="button" onClick={() => setIsFilterDrawerOpen(false)} className="drawer-close-btn">
+                      Done
+                    </button>
+                  </div>
+                </div>
 
-              <div className="filter-select-wrap">
-                <label className="filter-label">STATUS</label>
-                <select
-                  value={statusFilter}
-                  onChange={(e) => setStatusFilter(e.target.value)}
-                  className="filter-select"
-                >
-                  <option value="all">All Lifecycle States</option>
-                  <option value="sent">Active Delivered (27)</option>
-                  <option value="queued">Hourly Queue (28)</option>
-                  <option value="bounced">Shielded Inactive (10)</option>
-                </select>
-              </div>
+                <div className="filter-drawer-grid">
+                  {/* Mailbox Sender */}
+                  <div className="filter-drawer-cell">
+                    <label className="filter-cell-label">
+                      <Mail size={11} /> SENDER MAILBOX
+                    </label>
+                    <select
+                      value={mailboxFilter}
+                      onChange={(e) => setMailboxFilter(e.target.value)}
+                      className="filter-cell-select"
+                    >
+                      {mailboxes.map((m) => (
+                        <option key={m.id} value={m.id}>
+                          {m.label}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
 
-              <div className="filter-select-wrap">
-                <label className="filter-label">CADENCE</label>
-                <select
-                  value={cadenceFilter}
-                  onChange={(e) => setCadenceFilter(e.target.value)}
-                  className="filter-select"
-                >
-                  <option value="all">All Cadence Windows</option>
-                  <option value="sept11">Due Sept 11th (Day 5)</option>
-                  <option value="hourly">Hourly Auto-Engine</option>
-                  <option value="shielded">Shielded / Quarantined</option>
-                </select>
-              </div>
+                  {/* Geography Scope */}
+                  <div className="filter-drawer-cell">
+                    <label className="filter-cell-label">
+                      <Globe size={11} /> GEOGRAPHY SCOPE
+                    </label>
+                    <select
+                      value={scopeFilter}
+                      onChange={(e) => setScopeFilter(e.target.value)}
+                      className="filter-cell-select"
+                    >
+                      {scopes.map((s) => (
+                        <option key={s.id} value={s.id}>
+                          {s.label}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
 
-              <div className="filter-select-wrap">
-                <label className="filter-label">SORT</label>
-                <select
-                  value={sortBy}
-                  onChange={(e) => setSortBy(e.target.value)}
-                  className="filter-select"
-                >
-                  <option value="name">Company Name (A-Z)</option>
-                  <option value="status">Outreach Status</option>
-                  <option value="region">Geographic Region</option>
-                  <option value="date">Dispatch Date</option>
-                </select>
-              </div>
+                  {/* Region */}
+                  <div className="filter-drawer-cell">
+                    <label className="filter-cell-label">
+                      <MapPin size={11} /> REGION / HUB
+                    </label>
+                    <select
+                      value={regionFilter}
+                      onChange={(e) => setRegionFilter(e.target.value)}
+                      className="filter-cell-select"
+                    >
+                      <option value="all">All Geographies (13 Hubs)</option>
+                      <option value="thane">Thane Central (East &amp; West)</option>
+                      <option value="navi_mumbai">Navi Mumbai (Vashi, Mahape, Turbhe)</option>
+                      <option value="kalyan_dombivli">Kalyan &amp; Dombivli</option>
+                      <option value="ghatkopar_kurla">Ghatkopar &amp; Kurla Hubs</option>
+                      <option value="mumbai_metro">Mumbai Metropolitan Region</option>
+                      <option value="interstate">Interstate Hubs (BLR, HYD, NCR, GUJ, CHN)</option>
+                      <option value="international">Global (Dubai, SG, UK, USA)</option>
+                    </select>
+                  </div>
 
-              {(searchQuery ||
-                sectorFilter !== "all" ||
-                regionFilter !== "all" ||
-                statusFilter !== "all" ||
-                cadenceFilter !== "all") && (
-                <button
-                  type="button"
-                  className="reset-filters-btn"
-                  onClick={() => {
-                    setSectorFilter("all");
-                    setRegionFilter("all");
-                    setStatusFilter("all");
-                    setCadenceFilter("all");
-                    setSearchQuery("");
-                  }}
-                >
-                  <RotateCcw size={11} />
-                  <span>Reset Filters</span>
-                </button>
-              )}
-            </div>
+                  {/* Status */}
+                  <div className="filter-drawer-cell">
+                    <label className="filter-cell-label">
+                      <ShieldCheck size={11} /> LIFECYCLE STATE
+                    </label>
+                    <select
+                      value={statusFilter}
+                      onChange={(e) => setStatusFilter(e.target.value)}
+                      className="filter-cell-select"
+                    >
+                      <option value="all">All Lifecycle States ({crmLeadsData.length})</option>
+                      <option value="sent">Active Delivered ({metrics.delivered})</option>
+                      <option value="queued">Hourly Queue ({metrics.queued})</option>
+                      <option value="bounced">Shielded Inactive ({metrics.bounced})</option>
+                    </select>
+                  </div>
+
+                  {/* Cadence */}
+                  <div className="filter-drawer-cell">
+                    <label className="filter-cell-label">
+                      <Calendar size={11} /> CADENCE WINDOW
+                    </label>
+                    <select
+                      value={cadenceFilter}
+                      onChange={(e) => setCadenceFilter(e.target.value)}
+                      className="filter-cell-select"
+                    >
+                      <option value="all">All Cadence Windows</option>
+                      <option value="sept11">Due Sept 11th (Day 5)</option>
+                      <option value="hourly">Hourly Auto-Engine</option>
+                      <option value="shielded">Shielded / Quarantined</option>
+                    </select>
+                  </div>
+
+                  {/* Sort */}
+                  <div className="filter-drawer-cell">
+                    <label className="filter-cell-label">
+                      SORT CRITERIA
+                    </label>
+                    <select
+                      value={sortBy}
+                      onChange={(e) => setSortBy(e.target.value)}
+                      className="filter-select"
+                    >
+                      <option value="name">Company Name (A-Z)</option>
+                      <option value="status">Outreach Status</option>
+                      <option value="region">Geographic Region</option>
+                      <option value="date">Dispatch Date</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Active Filter Chips Strip */}
+            {activeFiltersCount > 0 && (
+              <div className="crm-active-chips-strip">
+                {mailboxFilter !== "all" && (
+                  <span className="crm-chip">
+                    Sender: {mailboxFilter.split("@")[0]}@
+                    <X size={10} className="crm-chip-remove" onClick={() => setMailboxFilter("all")} />
+                  </span>
+                )}
+                {scopeFilter !== "all" && (
+                  <span className="crm-chip">
+                    Scope: {scopeFilter === "overseas" ? "🌐 Overseas" : "📍 Regional"}
+                    <X size={10} className="crm-chip-remove" onClick={() => setScopeFilter("all")} />
+                  </span>
+                )}
+                {sectorFilter !== "all" && (
+                  <span className="crm-chip">
+                    Sector: {sectors.find((s) => s.id === sectorFilter)?.label}
+                    <X size={10} className="crm-chip-remove" onClick={() => setSectorFilter("all")} />
+                  </span>
+                )}
+                {regionFilter !== "all" && (
+                  <span className="crm-chip">
+                    Region: {regionFilter}
+                    <X size={10} className="crm-chip-remove" onClick={() => setRegionFilter("all")} />
+                  </span>
+                )}
+                {statusFilter !== "all" && (
+                  <span className="crm-chip">
+                    Status: {statusFilter}
+                    <X size={10} className="crm-chip-remove" onClick={() => setStatusFilter("all")} />
+                  </span>
+                )}
+                {cadenceFilter !== "all" && (
+                  <span className="crm-chip">
+                    Cadence: {cadenceFilter}
+                    <X size={10} className="crm-chip-remove" onClick={() => setCadenceFilter("all")} />
+                  </span>
+                )}
+              </div>
+            )}
           </div>
 
           {/* Results Counter Bar */}
@@ -667,7 +915,14 @@ export default function OutreachStudioSuite({
                 >
                   <div className="card-top-header">
                     <div className="card-title-group">
-                      <span className="card-sector-tag">{lead.sector}</span>
+                      <div style={{ display: "flex", gap: "6px", alignItems: "center", marginBottom: "4px" }}>
+                        <span className="card-sector-tag">{lead.sector}</span>
+                        {lead.isOverseas && (
+                          <span style={{ fontSize: "10px", padding: "1px 6px", borderRadius: "4px", background: "#ecfdf5", color: "#047857", fontWeight: 700, border: "1px solid #a7f3d0" }}>
+                            🌐 {lead.country}
+                          </span>
+                        )}
+                      </div>
                       <h4 className="card-company-name">{lead.company}</h4>
                     </div>
                     {getStatusBadge(lead.status)}
@@ -684,7 +939,9 @@ export default function OutreachStudioSuite({
                     </div>
                     <div className="meta-item">
                       <Mail size={12} className="meta-icon" />
-                      <span className="text-mono">{lead.email}</span>
+                      <span>
+                        Sender: <strong style={{ color: "#059669" }}>{lead.assignedMailbox ? lead.assignedMailbox.split("@")[0] + "@" : "contact@"}</strong> &bull; <span className="text-mono">{lead.email}</span>
+                      </span>
                     </div>
                     <div className="meta-item">
                       <MapPin size={12} className="meta-icon" />

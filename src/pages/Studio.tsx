@@ -33,6 +33,7 @@ import {
 } from "lucide-react";
 import { Eyebrow, Logo } from "../components/Site";
 import OutreachStudioSuite from "../components/studio/OutreachStudioSuite";
+import { crmLeadsData } from "../data/crmLeads";
 
 type StudioMode =
   | "pipeline"
@@ -40,6 +41,7 @@ type StudioMode =
   | "outreach-pool"
   | "outreach-cadence"
   | "outreach-telemetry"
+  | "outreach-analytics"
   | "invoice"
   | "letter"
   | "document";
@@ -710,7 +712,7 @@ Mumbai HQ · +91 96998 31323`,
             >
               <Building2 size={13} />
               <span>Enterprise Pool</span>
-              <span className="nav-count-badge">65</span>
+              <span className="nav-count-badge">{crmLeadsData.length}</span>
             </button>
 
             {/* Sub-item 2 */}
@@ -735,6 +737,18 @@ Mumbai HQ · +91 96998 31323`,
               <ShieldCheck size={13} />
               <span>Quota &amp; Shield</span>
               <span className="nav-pill-live">8/hr</span>
+            </button>
+
+            {/* Sub-item 4: Reports & Analytics */}
+            <button
+              role="tab"
+              aria-selected={mode === "outreach-analytics"}
+              className={`studio-tool-tab sub-tab ${mode === "outreach-analytics" ? "active" : ""}`}
+              onClick={() => setMode("outreach-analytics")}
+            >
+              <BarChart3 size={13} />
+              <span>Outreach Reports</span>
+              <span className="nav-sub-pill">12 Charts</span>
             </button>
           </div>
 
@@ -820,7 +834,8 @@ Mumbai HQ · +91 96998 31323`,
               </div>
             ) : mode === "outreach-pool" ||
               mode === "outreach-cadence" ||
-              mode === "outreach-telemetry" ? (
+              mode === "outreach-telemetry" ||
+              mode === "outreach-analytics" ? (
               <div className="outreach-top-actions">
                 <span className="outreach-badge badge-delivered">
                   <span className="badge-dot dot-delivered"></span>
@@ -1248,16 +1263,19 @@ Mumbai HQ · +91 96998 31323`,
           </div>
         )}
 
-        {/* LIVE SOVEREIGN EMAIL OUTREACH SUITE (3 SUB-VIEWS) */}
+        {/* LIVE SOVEREIGN EMAIL OUTREACH SUITE (4 SUB-VIEWS) */}
         {(mode === "outreach-pool" ||
           mode === "outreach-cadence" ||
-          mode === "outreach-telemetry") && (
+          mode === "outreach-telemetry" ||
+          mode === "outreach-analytics") && (
           <OutreachStudioSuite
             subMode={
               mode === "outreach-cadence"
                 ? "cadence"
                 : mode === "outreach-telemetry"
                 ? "telemetry"
+                : mode === "outreach-analytics"
+                ? "analytics"
                 : "pool"
             }
             onSelectSubMode={(tab) => setMode(`outreach-${tab}` as StudioMode)}

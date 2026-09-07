@@ -27,9 +27,12 @@ import {
   Briefcase,
   Layers,
   ChevronRight,
+  ChevronDown,
+  BarChart3,
 } from "lucide-react";
 import { crmLeadsData, CRMLead } from "../data/crmLeads";
 import { PageFrame, Logo, Eyebrow } from "../components/Site";
+import EmailAnalyticsDashboard from "../components/studio/EmailAnalyticsDashboard";
 
 export default function CRM() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -44,6 +47,8 @@ export default function CRM() {
   const [activeModalLead, setActiveModalLead] = useState<CRMLead | null>(null);
   const [modalTab, setModalTab] = useState<"dossier" | "email">("dossier");
   const [copiedId, setCopiedId] = useState<string | null>(null);
+  const [heroTab, setHeroTab] = useState<"matrix" | "analytics">("matrix");
+  const [isFilterDrawerOpen, setIsFilterDrawerOpen] = useState(false);
 
   // Mailbox Definitions
   const mailboxes = [
@@ -197,6 +202,19 @@ export default function CRM() {
     document.body.removeChild(link);
   };
 
+  // Active Filters Count
+  const activeFiltersCount = useMemo(() => {
+    let count = 0;
+    if (selectedSector !== "all") count++;
+    if (selectedRegion !== "all") count++;
+    if (selectedStatus !== "all") count++;
+    if (selectedCadence !== "all") count++;
+    if (selectedMailbox !== "all") count++;
+    if (selectedScope !== "all") count++;
+    if (searchQuery.trim() !== "") count++;
+    return count;
+  }, [selectedSector, selectedRegion, selectedStatus, selectedCadence, selectedMailbox, selectedScope, searchQuery]);
+
   // Reset Filters
   const resetFilters = () => {
     setSearchQuery("");
@@ -204,15 +222,12 @@ export default function CRM() {
     setSelectedRegion("all");
     setSelectedStatus("all");
     setSelectedCadence("all");
+    setSelectedMailbox("all");
+    setSelectedScope("all");
     setSortBy("company");
   };
 
-  const hasActiveFilters =
-    searchQuery !== "" ||
-    selectedSector !== "all" ||
-    selectedRegion !== "all" ||
-    selectedStatus !== "all" ||
-    selectedCadence !== "all";
+  const hasActiveFilters = activeFiltersCount > 0;
 
   return (
     <PageFrame>
@@ -231,13 +246,33 @@ export default function CRM() {
               </div>
             </div>
 
-            <div className="crm-hero-main">
-              <h1 className="crm-title">
-                Global Enterprise Operations <span className="text-gradient">&amp; Outreach CRM</span>
-              </h1>
-              <p className="crm-subtitle">
-                Centralized telemetry command for multi-state and international enterprise client pipelines, rate-limited hourly dispatch queues, and automated 4-day follow-up cadences.
-              </p>
+            <div className="crm-hero-main" style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "flex-end", gap: "20px" }}>
+              <div style={{ maxWidth: "700px" }}>
+                <h1 className="crm-title">
+                  Global Enterprise Operations <span className="text-gradient">&amp; Outreach CRM</span>
+                </h1>
+                <p className="crm-subtitle">
+                  Centralized telemetry command for multi-state and international enterprise client pipelines, rate-limited hourly dispatch queues, and automated 4-day follow-up cadences.
+                </p>
+              </div>
+
+              {/* VIEW SWITCHER: DIRECTORY MATRIX VS 12-REPORT DASHBOARD */}
+              <div className="crm-view-switch-tabs">
+                <button
+                  className={`crm-switch-tab-btn ${heroTab === "matrix" ? "active" : ""}`}
+                  onClick={() => setHeroTab("matrix")}
+                >
+                  <Building2 size={14} />
+                  <span>Accounts Directory ({crmLeadsData.length})</span>
+                </button>
+                <button
+                  className={`crm-switch-tab-btn ${heroTab === "analytics" ? "active" : ""}`}
+                  onClick={() => setHeroTab("analytics")}
+                >
+                  <BarChart3 size={14} />
+                  <span>Outreach Reports (12 Charts)</span>
+                </button>
+              </div>
             </div>
 
             {/* KPI METRIC STRIP */}
@@ -303,178 +338,270 @@ export default function CRM() {
         {/* MAIN PIPELINE CONTROLS & VIEWER */}
         <section className="crm-viewer-section">
           <div className="container">
-            
-            {/* SECTOR PILLS BAR */}
-            <div className="crm-sector-tabs-wrap">
-              <div className="crm-sector-tabs-rail">
-                {sectors.map((sec) => {
-                  const Icon = sec.icon;
-                  const count =
-                    sec.id === "all"
-                      ? crmLeadsData.length
-                      : crmLeadsData.filter((l) => l.sector === sec.id).length;
-                  const isActive = selectedSector === sec.id;
-                  return (
+            {heroTab === "analytics" ? (
+              <EmailAnalyticsDashboard
+                onFilterBySender={(sender) => {
+                  setSelectedMailbox(sender);
+                  setHeroTab("matrix");
+                }}
+                onFilterByScope={(scope) => {
+                  setSelectedScope(scope);
+                  setHeroTab("matrix");
+                }}
+                onFilterBySector={(sector) => {
+                  setSelectedSector(sector);
+                  setHeroTab("matrix");
+                }}
+                onSelectLeadTab={() => setHeroTab("matrix")}
+              />
+            ) : (
+              <>
+                {/* SECTOR PILLS BAR */}
+                <div className="crm-sector-tabs-wrap">
+                  <div className="crm-sector-tabs-rail">
+                    {sectors.map((sec) => {
+                      const Icon = sec.icon;
+                      const count =
+                        sec.id === "all"
+                          ? crmLeadsData.length
+                          : crmLeadsData.filter((l) => l.sector === sec.id).length;
+                      const isActive = selectedSector === sec.id;
+                      return (
+                        <button
+                          key={sec.id}
+                          onClick={() => setSelectedSector(sec.id)}
+                          className={`crm-sector-tab ${isActive ? "active" : ""}`}
+                        >
+                          <Icon size={14} className="sector-icon" />
+                          <span>{sec.label}</span>
+                          <span className="sector-count-pill">{count}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* CLEAN CRM FILTER COMMAND BAR */}
+                <div className="crm-filter-bar">
+                  <div className="crm-search-box">
+                    <Search size={16} className="search-icon" />
+                    <input
+                      type="text"
+                      placeholder="Search company, contact person, city, state, or email..."
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      className="crm-search-input"
+                    />
+                    {searchQuery && (
+                      <button onClick={() => setSearchQuery("")} className="clear-search-btn">
+                        <X size={14} />
+                      </button>
+                    )}
+                  </div>
+
+                  <div className="crm-filter-dropdowns">
+                    {/* Clean Filters Button with Counter Badge */}
                     <button
-                      key={sec.id}
-                      onClick={() => setSelectedSector(sec.id)}
-                      className={`crm-sector-tab ${isActive ? "active" : ""}`}
+                      type="button"
+                      onClick={() => setIsFilterDrawerOpen((prev) => !prev)}
+                      className={`crm-filter-toggle-btn ${isFilterDrawerOpen ? "is-active-open" : ""}`}
+                      title="Filter leads by sender mailbox, geography scope, sector, cadence..."
                     >
-                      <Icon size={14} className="sector-icon" />
-                      <span>{sec.label}</span>
-                      <span className="sector-count-pill">{count}</span>
+                      <Filter size={14} />
+                      <span>Filters</span>
+                      {activeFiltersCount > 0 && (
+                        <span className="filter-badge-counter">{activeFiltersCount}</span>
+                      )}
+                      <ChevronDown
+                        size={13}
+                        style={{
+                          transform: isFilterDrawerOpen ? "rotate(180deg)" : "none",
+                          transition: "transform 0.2s ease",
+                        }}
+                      />
                     </button>
-                  );
-                })}
-              </div>
-            </div>
 
-            {/* ADVANCED FILTER COMMAND BAR */}
-            <div className="crm-filter-bar">
-              <div className="crm-search-box">
-                <Search size={16} className="search-icon" />
-                <input
-                  type="text"
-                  placeholder="Search company, contact person, city, state, or email..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="crm-search-input"
-                />
-                {searchQuery && (
-                  <button onClick={() => setSearchQuery("")} className="clear-search-btn">
-                    <X size={14} />
-                  </button>
+                    {/* View Mode Toggle */}
+                    <div className="crm-view-mode-toggle">
+                      <button
+                        onClick={() => setViewMode("table")}
+                        className={`toggle-btn ${viewMode === "table" ? "active" : ""}`}
+                        title="Table View"
+                      >
+                        <List size={15} />
+                      </button>
+                      <button
+                        onClick={() => setViewMode("grid")}
+                        className={`toggle-btn ${viewMode === "grid" ? "active" : ""}`}
+                        title="Card Grid View"
+                      >
+                        <LayoutGrid size={15} />
+                      </button>
+                    </div>
+
+                    {/* Export Button */}
+                    <button onClick={handleExportCSV} className="crm-export-btn" title="Export Filtered Results to CSV">
+                      <Download size={14} />
+                      <span>Export CSV</span>
+                    </button>
+
+                    {/* Reset Filters */}
+                    {hasActiveFilters && (
+                      <button onClick={resetFilters} className="crm-reset-filters-btn">
+                        <X size={13} />
+                        <span>Reset</span>
+                      </button>
+                    )}
+                  </div>
+                </div>
+
+                {/* COLLAPSIBLE STRUCTURED FILTER DRAWER PANEL */}
+                {isFilterDrawerOpen && (
+                  <div className="crm-filter-drawer-panel">
+                    <div className="filter-drawer-header">
+                      <div className="drawer-title-group">
+                        <Filter size={15} className="text-emerald" />
+                        <span>Structured Filter Criteria &bull; Active Constraints: {activeFiltersCount}</span>
+                      </div>
+                      <div className="drawer-actions-row">
+                        {hasActiveFilters && (
+                          <button onClick={resetFilters} className="drawer-reset-btn">
+                            <X size={12} />
+                            <span>Clear All</span>
+                          </button>
+                        )}
+                        <button onClick={() => setIsFilterDrawerOpen(false)} className="drawer-close-btn">
+                          Done
+                        </button>
+                      </div>
+                    </div>
+
+                    <div className="filter-drawer-grid">
+                      {/* Mailbox Sender */}
+                      <div className="filter-drawer-cell">
+                        <label className="filter-cell-label">
+                          <Mail size={11} /> SENDER MAILBOX
+                        </label>
+                        <select
+                          value={selectedMailbox}
+                          onChange={(e) => setSelectedMailbox(e.target.value)}
+                          className="filter-cell-select"
+                        >
+                          {mailboxes.map((m) => (
+                            <option key={m.id} value={m.id}>
+                              {m.label}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+
+                      {/* Target Scope */}
+                      <div className="filter-drawer-cell">
+                        <label className="filter-cell-label">
+                          <Globe size={11} /> GEOGRAPHY SCOPE
+                        </label>
+                        <select
+                          value={selectedScope}
+                          onChange={(e) => setSelectedScope(e.target.value)}
+                          className="filter-cell-select"
+                        >
+                          {scopes.map((s) => (
+                            <option key={s.id} value={s.id}>
+                              {s.label}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+
+                      {/* Industry Sector */}
+                      <div className="filter-drawer-cell">
+                        <label className="filter-cell-label">
+                          <Layers size={11} /> INDUSTRY SECTOR
+                        </label>
+                        <select
+                          value={selectedSector}
+                          onChange={(e) => setSelectedSector(e.target.value)}
+                          className="filter-cell-select"
+                        >
+                          {sectors.map((s) => (
+                            <option key={s.id} value={s.id}>
+                              {s.label}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+
+                      {/* Geographic Region */}
+                      <div className="filter-drawer-cell">
+                        <label className="filter-cell-label">
+                          <MapPin size={11} /> REGIONAL HUB
+                        </label>
+                        <select
+                          value={selectedRegion}
+                          onChange={(e) => setSelectedRegion(e.target.value)}
+                          className="filter-cell-select"
+                        >
+                          {regions.map((r) => (
+                            <option key={r.id} value={r.id}>
+                              {r.label}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+
+                      {/* Lifecycle State */}
+                      <div className="filter-drawer-cell">
+                        <label className="filter-cell-label">
+                          <ShieldCheck size={11} /> DELIVERY STATUS
+                        </label>
+                        <select
+                          value={selectedStatus}
+                          onChange={(e) => setSelectedStatus(e.target.value)}
+                          className="filter-cell-select"
+                        >
+                          <option value="all">All Delivery States ({crmLeadsData.length})</option>
+                          <option value="SENT">Delivered &bull; Active Cadence ({stats.sent})</option>
+                          <option value="QUEUED">Queued for Hourly Engine ({stats.queued})</option>
+                          <option value="BOUNCED">Shielded &bull; Quarantined ({stats.bounced})</option>
+                        </select>
+                      </div>
+
+                      {/* Follow-up Cadence */}
+                      <div className="filter-drawer-cell">
+                        <label className="filter-cell-label">
+                          <Calendar size={11} /> 4-DAY UPDATE COHORT
+                        </label>
+                        <select
+                          value={selectedCadence}
+                          onChange={(e) => setSelectedCadence(e.target.value)}
+                          className="filter-cell-select"
+                        >
+                          <option value="all">All Follow-Up Windows</option>
+                          <option value="due_11th">Due 11th Sept (Round 1 &bull; Day 5)</option>
+                          <option value="due_15th">Due 15th Sept (Round 2 &bull; Day 9)</option>
+                          <option value="bounced">Shielded / Excluded</option>
+                        </select>
+                      </div>
+
+                      {/* Sort Order */}
+                      <div className="filter-drawer-cell">
+                        <label className="filter-cell-label">
+                          <ArrowUpDown size={11} /> SORT ORDER
+                        </label>
+                        <select
+                          value={sortBy}
+                          onChange={(e) => setSortBy(e.target.value as any)}
+                          className="filter-cell-select"
+                        >
+                          <option value="company">Company Name (A-Z)</option>
+                          <option value="status">Delivery Status</option>
+                          <option value="region">Geographic Region</option>
+                          <option value="followUpDate">Next Follow-Up Date</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
                 )}
-              </div>
-
-              <div className="crm-filter-dropdowns">
-                {/* Region Selector */}
-                <div className="crm-select-wrap">
-                  <Globe size={13} className="select-icon" />
-                  <select
-                    value={selectedRegion}
-                    onChange={(e) => setSelectedRegion(e.target.value)}
-                    className="crm-select"
-                  >
-                    {regions.map((r) => (
-                      <option key={r.id} value={r.id}>
-                        {r.label}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                {/* Delivery Status Selector */}
-                <div className="crm-select-wrap">
-                  <Filter size={13} className="select-icon" />
-                  <select
-                    value={selectedStatus}
-                    onChange={(e) => setSelectedStatus(e.target.value)}
-                    className="crm-select"
-                  >
-                    <option value="all">All Delivery Statuses</option>
-                    <option value="SENT">Delivered (Active Cadence)</option>
-                    <option value="QUEUED">Queued for Hourly Dispatch</option>
-                    <option value="FAILED">Throttled (Auto-Retry)</option>
-                    <option value="BOUNCED">Bounced &amp; Shielded</option>
-                  </select>
-                </div>
-
-                {/* Assigned Sender Mailbox Selector */}
-                <div className="crm-select-wrap">
-                  <Mail size={13} className="select-icon" />
-                  <select
-                    value={selectedMailbox}
-                    onChange={(e) => setSelectedMailbox(e.target.value)}
-                    className="crm-select"
-                  >
-                    {mailboxes.map((m) => (
-                      <option key={m.id} value={m.id}>
-                        {m.label}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                {/* Target Scope Selector */}
-                <div className="crm-select-wrap">
-                  <Globe size={13} className="select-icon" />
-                  <select
-                    value={selectedScope}
-                    onChange={(e) => setSelectedScope(e.target.value)}
-                    className="crm-select"
-                  >
-                    {scopes.map((s) => (
-                      <option key={s.id} value={s.id}>
-                        {s.label}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                {/* Cadence Selector */}
-                <div className="crm-select-wrap">
-                  <Calendar size={13} className="select-icon" />
-                  <select
-                    value={selectedCadence}
-                    onChange={(e) => setSelectedCadence(e.target.value)}
-                    className="crm-select"
-                  >
-                    <option value="all">All Follow-Up Dates</option>
-                    <option value="due_11th">Due on 11th Sept (Round 1)</option>
-                    <option value="due_15th">Due on 15th Sept (Round 2)</option>
-                    <option value="bounced">Excluded (Bounced)</option>
-                  </select>
-                </div>
-
-                {/* Sort Order */}
-                <div className="crm-select-wrap">
-                  <ArrowUpDown size={13} className="select-icon" />
-                  <select
-                    value={sortBy}
-                    onChange={(e) => setSortBy(e.target.value as any)}
-                    className="crm-select"
-                  >
-                    <option value="company">Sort by Company (A-Z)</option>
-                    <option value="status">Sort by Status</option>
-                    <option value="region">Sort by Region</option>
-                    <option value="followUpDate">Sort by Follow-Up Date</option>
-                  </select>
-                </div>
-
-                {/* View Mode Toggle */}
-                <div className="crm-view-mode-toggle">
-                  <button
-                    onClick={() => setViewMode("table")}
-                    className={`toggle-btn ${viewMode === "table" ? "active" : ""}`}
-                    title="Table View"
-                  >
-                    <List size={15} />
-                  </button>
-                  <button
-                    onClick={() => setViewMode("grid")}
-                    className={`toggle-btn ${viewMode === "grid" ? "active" : ""}`}
-                    title="Card Grid View"
-                  >
-                    <LayoutGrid size={15} />
-                  </button>
-                </div>
-
-                {/* Export Button */}
-                <button onClick={handleExportCSV} className="crm-export-btn" title="Export Filtered Results to CSV">
-                  <Download size={14} />
-                  <span>Export CSV</span>
-                </button>
-
-                {/* Reset Filters */}
-                {hasActiveFilters && (
-                  <button onClick={resetFilters} className="crm-reset-filters-btn">
-                    <X size={13} />
-                    <span>Reset</span>
-                  </button>
-                )}
-              </div>
-            </div>
 
             {/* RESULTS COUNT STRIP */}
             <div className="crm-results-summary-strip">
@@ -737,45 +864,47 @@ export default function CRM() {
                 })}
               </div>
             )}
+          </>
+        )}
+      </div>
+    </section>
+
+    {/* AUTOMATION & SCHEDULER TELEMETRY STRIP */}
+    <section className="crm-telemetry-section">
+      <div className="container">
+        <div className="crm-telemetry-panel">
+          <div className="telemetry-col-info">
+            <div className="telemetry-badge">
+              <span className="live-pulse-dot" />
+              <span>WINDOWS TASK SCHEDULER &bull; ACTIVE 24/7</span>
+            </div>
+            <h3 className="telemetry-title">Autonomous Hourly Outreach Engine</h3>
+            <p className="telemetry-sub">
+              Triggering every 60 minutes via <code>StormVeins_Hourly_Outreach_Engine</code>. Pre-flight probes ensure Hostinger rate limits (60 envelopes/hr) are mathematically respected, guaranteeing 100% domain reputation integrity.
+            </p>
           </div>
-        </section>
 
-        {/* AUTOMATION & SCHEDULER TELEMETRY STRIP */}
-        <section className="crm-telemetry-section">
-          <div className="container">
-            <div className="crm-telemetry-panel">
-              <div className="telemetry-col-info">
-                <div className="telemetry-badge">
-                  <span className="live-pulse-dot" />
-                  <span>WINDOWS TASK SCHEDULER &bull; ACTIVE 24/7</span>
-                </div>
-                <h3 className="telemetry-title">Autonomous Hourly Outreach Engine</h3>
-                <p className="telemetry-sub">
-                  Triggering every 60 minutes via <code>StormVeins_Hourly_Outreach_Engine</code>. Pre-flight probes ensure Hostinger rate limits (60 envelopes/hr) are mathematically respected, guaranteeing 100% domain reputation integrity.
-                </p>
-              </div>
-
-              <div className="telemetry-col-metrics">
-                <div className="telemetry-stat">
-                  <span className="label">Hourly Target Quota</span>
-                  <strong className="val text-emerald">8 Companies / Run</strong>
-                </div>
-                <div className="telemetry-stat">
-                  <span className="label">Daily Scaled Capacity</span>
-                  <strong className="val text-gradient">192 Inboxes / Day</strong>
-                </div>
-                <div className="telemetry-stat">
-                  <span className="label">Daily IDE Auto-Launch</span>
-                  <strong className="val text-emerald">11:30 AM Daily</strong>
-                </div>
-                <div className="telemetry-stat">
-                  <span className="label">Follow-Up Cadence</span>
-                  <strong className="val text-blue">Every 4th Day (1st, 5th, 9th)</strong>
-                </div>
-              </div>
+          <div className="telemetry-col-metrics">
+            <div className="telemetry-stat">
+              <span className="label">Hourly Target Quota</span>
+              <strong className="val text-emerald">8 Companies / Run</strong>
+            </div>
+            <div className="telemetry-stat">
+              <span className="label">Daily Scaled Capacity</span>
+              <strong className="val text-gradient">192 Inboxes / Day</strong>
+            </div>
+            <div className="telemetry-stat">
+              <span className="label">Daily IDE Auto-Launch</span>
+              <strong className="val text-emerald">11:30 AM Daily</strong>
+            </div>
+            <div className="telemetry-stat">
+              <span className="label">Follow-Up Cadence</span>
+              <strong className="val text-blue">Every 4th Day (1st, 5th, 9th)</strong>
             </div>
           </div>
-        </section>
+        </div>
+      </div>
+    </section>
 
         {/* DETAILED COMPANY INSPECTION & LIVE EMAIL PREVIEW MODAL */}
         {activeModalLead && (
