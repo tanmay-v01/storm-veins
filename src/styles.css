@@ -18309,18 +18309,48 @@ html, body, #root, .page-frame, .site-main {
 .sv-chat-cat-tab {
   background: transparent !important;
   border: none !important;
-  font-size: 9.5px !important;
-  font-weight: 600 !important;
+  font-size: 10px !important;
+  font-weight: 500 !important;
   color: #64748b !important;
   padding-bottom: 6px !important;
   cursor: pointer !important;
   border-bottom: 2px solid transparent !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
   transition: all 0.15s ease !important;
 }
 
+.sv-chat-cat-tab:hover {
+  color: #0f172a !important;
+}
+
 .sv-chat-cat-tab.active {
+  color: #0f172a !important;
+  font-weight: 600 !important;
+  border-bottom-color: #0f172a !important;
+}
+
+.sv-tab-status-pill {
+  font-size: 8px !important;
+  font-family: monospace !important;
+  padding: 1px 4px !important;
+  border-radius: 3px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.3px !important;
+  font-weight: 600 !important;
+}
+
+.sv-tab-status-pill.unlocked {
+  background: rgba(16, 185, 129, 0.1) !important;
   color: #059669 !important;
-  border-bottom-color: #059669 !important;
+  border: 1px solid rgba(16, 185, 129, 0.25) !important;
+}
+
+.sv-tab-status-pill.locked {
+  background: rgba(148, 163, 184, 0.12) !important;
+  color: #64748b !important;
+  border: 1px solid rgba(148, 163, 184, 0.25) !important;
 }
 
 .sv-chat-chips-scroll {
@@ -18338,11 +18368,11 @@ html, body, #root, .page-frame, .site-main {
 .sv-chat-chip-btn {
   font-size: 9.5px !important;
   font-weight: 500 !important;
-  color: #334155 !important;
+  color: #475569 !important;
   background: #ffffff !important;
-  border: 1px solid #cbd5e1 !important;
-  border-radius: 9999px !important;
-  padding: 3px 10px !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 6px !important;
+  padding: 4px 9px !important;
   white-space: nowrap !important;
   cursor: pointer !important;
   transition: all 0.15s ease !important;
@@ -18350,9 +18380,9 @@ html, body, #root, .page-frame, .site-main {
 }
 
 .sv-chat-chip-btn:hover {
-  background: #ecfdf5 !important;
-  border-color: #6ee7b7 !important;
-  color: #065f46 !important;
+  background: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
 }
 
 /* Messages Scroll Container */
@@ -18379,7 +18409,7 @@ html, body, #root, .page-frame, .site-main {
 .sv-chat-msg-avatar {
   width: 26px !important;
   height: 26px !important;
-  border-radius: 50% !important;
+  border-radius: 6px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -18387,21 +18417,21 @@ html, body, #root, .page-frame, .site-main {
 }
 
 .sv-chat-msg-avatar.bot {
-  background: #d1fae5 !important;
-  color: #065f46 !important;
-  border: 1px solid #a7f3d0 !important;
+  background: #0f172a !important;
+  color: #10b981 !important;
+  border: 1px solid rgba(16, 185, 129, 0.3) !important;
 }
 
 .sv-chat-msg-avatar.user {
-  background: linear-gradient(135deg, #059669 0%, #047857 100%) !important;
+  background: #0f172a !important;
   color: #ffffff !important;
-  box-shadow: 0 2px 6px rgba(5, 150, 105, 0.35) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
 }
 
 .sv-chat-msg-bubble {
   max-width: 84% !important;
   padding: 10px 14px !important;
-  border-radius: 14px !important;
+  border-radius: 10px !important;
   font-size: 11px !important;
   line-height: 1.55 !important;
   position: relative !important;
@@ -18410,10 +18440,10 @@ html, body, #root, .page-frame, .site-main {
 
 .sv-chat-msg-bubble.bot {
   background: #ffffff !important;
-  color: #1e293b !important;
+  color: #0f172a !important;
   border: 1px solid #e2e8f0 !important;
   border-top-left-radius: 2px !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03) !important;
 }
 
 .sv-chat-msg-bubble.bot p {
@@ -18421,11 +18451,11 @@ html, body, #root, .page-frame, .site-main {
 }
 
 .sv-chat-msg-bubble.user {
-  background: linear-gradient(135deg, #064e3b 0%, #062f26 100%) !important;
-  color: #f0fdf4 !important;
-  border: 1px solid rgba(52, 211, 153, 0.45) !important;
+  background: #0f172a !important;
+  color: #f8fafc !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
   border-top-right-radius: 2px !important;
-  box-shadow: 0 4px 14px rgba(6, 78, 59, 0.25) !important;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.15) !important;
 }
 
 .sv-chat-msg-bubble.user,
@@ -18433,12 +18463,12 @@ html, body, #root, .page-frame, .site-main {
 .sv-chat-msg-bubble.user p,
 .sv-chat-msg-bubble.user div,
 .sv-chat-msg-bubble.user span {
-  color: #f0fdf4 !important;
+  color: #f8fafc !important;
 }
 
 .sv-chat-msg-bubble.user .sv-chat-msg-time {
-  color: #6ee7b7 !important;
-  opacity: 0.9 !important;
+  color: #94a3b8 !important;
+  opacity: 0.8 !important;
 }
 
 .sv-chat-copy-btn {
