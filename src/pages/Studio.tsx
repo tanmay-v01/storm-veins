@@ -1,4 +1,5 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, useState, useEffect } from "react";
+import AIChatBot from "../components/studio/AIChatBot";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -31,10 +32,12 @@ import {
   UserCheck,
   Users,
   Wand2,
+  Zap,
 } from "lucide-react";
 import { Eyebrow, Logo } from "../components/Site";
 import OutreachStudioSuite from "../components/studio/OutreachStudioSuite";
 import { crmLeadsData } from "../data/crmLeads";
+import { getBridgeBaseUrl } from "../config/bridgeConfig";
 
 type StudioMode =
   | "pipeline"
@@ -44,6 +47,7 @@ type StudioMode =
   | "outreach-telemetry"
   | "outreach-analytics"
   | "outreach-inbound"
+  | "outreach-workflow"
   | "invoice"
   | "letter"
   | "document";
@@ -94,6 +98,15 @@ function StudioGate({ onUnlock }: { onUnlock: () => void }) {
     const expected = import.meta.env.VITE_STUDIO_PASSWORD || "storm-ops";
     if (password === expected) {
       sessionStorage.setItem("sv-studio-unlocked", "true");
+      // AUTOSTART ANTIGRAVITY CRM DAEMON ON UNLOCK (Local or Remote Tunnel)
+      try {
+        const baseUrl = getBridgeBaseUrl();
+        fetch(`${baseUrl}/api/autostart`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ source: "studio-unlock" }),
+        }).catch(() => {});
+      } catch {}
       onUnlock();
     } else {
       setError(true);
@@ -336,6 +349,28 @@ function StudioWorkspace({ onLock }: { onLock: () => void }) {
   const [domainFilter, setDomainFilter] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [showNewDealModal, setShowNewDealModal] = useState(false);
+  const [isChatOpen, setIsChatOpen] = useState(false);
+  const [isDaemonConnected, setIsDaemonConnected] = useState(false);
+
+  // Ping Daemon Bridge on mount & periodically
+  useEffect(() => {
+    const pingDaemon = async () => {
+      try {
+        const baseUrl = getBridgeBaseUrl();
+        const res = await fetch(`${baseUrl}/api/autostart`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ source: "studio-mount" }),
+        });
+        setIsDaemonConnected(res.ok);
+      } catch {
+        setIsDaemonConnected(false);
+      }
+    };
+    pingDaemon();
+    const interval = setInterval(pingDaemon, 15000);
+    return () => clearInterval(interval);
+  }, []);
 
   // Invoicing & Scope states
   const [invoiceNumber, setInvoiceNumber] = useState("SV-INV-2026-084");
@@ -764,6 +799,18 @@ Mumbai HQ · +91 96998 31323`,
               <span>Inbound Replies</span>
               <span className="nav-sub-pill pulse-emerald">10 New</span>
             </button>
+
+            {/* Sub-item 6: Autonomous Workflow Engine */}
+            <button
+              role="tab"
+              aria-selected={mode === "outreach-workflow"}
+              className={`studio-tool-tab sub-tab ${mode === "outreach-workflow" ? "active" : ""}`}
+              onClick={() => setMode("outreach-workflow")}
+            >
+              <Zap size={13} className="text-amber-500" />
+              <span>Autonomous Engine</span>
+              <span className="nav-sub-pill pulse-emerald">5 Nodes</span>
+            </button>
           </div>
 
           <div className="nav-category-group">
@@ -853,12 +900,27 @@ Mumbai HQ · +91 96998 31323`,
             ) : mode === "outreach-pool" ||
               mode === "outreach-cadence" ||
               mode === "outreach-telemetry" ||
-              mode === "outreach-analytics" ? (
-              <div className="outreach-top-actions">
-                <span className="outreach-badge badge-delivered">
-                  <span className="badge-dot dot-delivered"></span>
-                  Daemon Engine: 8 sends/hr
+              mode === "outreach-analytics" ||
+              mode === "outreach-inbound" ? (
+              <div className="outreach-top-actions" style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                <span
+                  className={`outreach-badge ${isDaemonConnected ? "badge-delivered" : "badge-bounced"}`}
+                  style={{ display: "inline-flex", alignItems: "center", gap: "6px" }}
+                >
+                  <span className={`badge-dot ${isDaemonConnected ? "dot-delivered" : "dot-bounced"}`}></span>
+                  {isDaemonConnected ? "Antigravity Bridge: 5050 Active" : "Daemon Offline"}
                 </span>
+
+                <button
+                  type="button"
+                  onClick={() => setIsChatOpen(true)}
+                  className="studio-action-btn primary"
+                  style={{ display: "inline-flex", alignItems: "center", gap: "6px", padding: "6px 12px" }}
+                >
+                  <Bot size={13} />
+                  <span>AI Agent Chat</span>
+                  <Sparkles size={11} className="text-emerald-300" />
+                </button>
               </div>
             ) : (
               <button
@@ -1016,25 +1078,7 @@ Mumbai HQ · +91 96998 31323`,
           </div>
         )}
 
-        {/* SOVEREIGN EMAIL OUTREACH SUITE (PRIVATE, LIGHT THEME, 3 SUB-VIEWS) */}
-        {(mode === "outreach-pool" ||
-          mode === "outreach-cadence" ||
-          mode === "outreach-telemetry") && (
-          <OutreachStudioSuite
-            subMode={
-              mode === "outreach-cadence"
-                ? "cadence"
-                : mode === "outreach-telemetry"
-                ? "telemetry"
-                : "pool"
-            }
-            onSelectSubMode={(sub) => {
-              if (sub === "cadence") setMode("outreach-cadence");
-              else if (sub === "telemetry") setMode("outreach-telemetry");
-              else setMode("outreach-pool");
-            }}
-          />
-        )}
+
 
         {/* MODE 2: COMMERCIAL OUTREACH AGENT (REFINED EXECUTIVE LUXURY) */}
         {mode === "outreach" && (
@@ -1281,12 +1325,13 @@ Mumbai HQ · +91 96998 31323`,
           </div>
         )}
 
-        {/* LIVE SOVEREIGN EMAIL OUTREACH SUITE (5 SUB-VIEWS) */}
+        {/* LIVE SOVEREIGN EMAIL OUTREACH SUITE (6 SUB-VIEWS) */}
         {(mode === "outreach-pool" ||
           mode === "outreach-cadence" ||
           mode === "outreach-telemetry" ||
           mode === "outreach-analytics" ||
-          mode === "outreach-inbound") && (
+          mode === "outreach-inbound" ||
+          mode === "outreach-workflow") && (
           <OutreachStudioSuite
             subMode={
               mode === "outreach-cadence"
@@ -1297,9 +1342,12 @@ Mumbai HQ · +91 96998 31323`,
                 ? "analytics"
                 : mode === "outreach-inbound"
                 ? "inbound"
+                : mode === "outreach-workflow"
+                ? "workflow"
                 : "pool"
             }
             onSelectSubMode={(tab) => setMode(`outreach-${tab}` as StudioMode)}
+            onOpenAgentChat={() => setIsChatOpen(true)}
           />
         )}
         {mode === "invoice" && (
@@ -1783,6 +1831,32 @@ Mumbai HQ · +91 96998 31323`,
             </div>
           </div>
         )}
+        {/* Floating Antigravity Agent Trigger */}
+        <button
+          onClick={() => setIsChatOpen((prev) => !prev)}
+          className="fixed bottom-6 right-6 z-40 flex items-center gap-2 px-3.5 py-2.5 bg-slate-900 hover:bg-emerald-700 text-white rounded-full shadow-xl transition-all duration-200 border border-slate-700 hover:border-emerald-500 hover:scale-105"
+          title="Toggle Antigravity Operations Agent Chat"
+          type="button"
+        >
+          <div className="relative">
+            <Bot size={17} className="text-emerald-400" />
+            <span
+              className={`absolute -top-1 -right-1 w-2 h-2 rounded-full ${
+                isDaemonConnected ? "bg-emerald-400 animate-pulse" : "bg-amber-400"
+              }`}
+            />
+          </div>
+          <span className="text-xs font-semibold tracking-wide font-['Sora',sans-serif]">Antigravity Agent</span>
+        </button>
+
+        {/* Antigravity AI Agent Drawer */}
+        <AIChatBot
+          isOpen={isChatOpen}
+          onClose={() => setIsChatOpen(false)}
+          onLeadModified={() => {
+            // Trigger state refresh if needed
+          }}
+        />
       </main>
     </div>
   );

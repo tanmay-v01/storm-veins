@@ -19,11 +19,13 @@ import {
   Inbox,
   User,
   ExternalLink,
-  ChevronRight,
   Flame,
-  FileText
+  FileText,
+  RefreshCw,
+  Edit3,
 } from "lucide-react";
 import { InboundMessage, inboundMessagesData } from "../../data/inboundMessages";
+import { getBridgeBaseUrl } from "../../config/bridgeConfig";
 
 interface InboundMessagesHubProps {
   theme?: "light" | "dark";
@@ -43,6 +45,10 @@ export default function InboundMessagesHub({
   const [activeMessageId, setActiveMessageId] = useState<string>(inboundMessagesData[0]?.id || "");
   const [copiedDraftId, setCopiedDraftId] = useState<string | null>(null);
   const [messagesList, setMessagesList] = useState<InboundMessage[]>(inboundMessagesData);
+  const [isSendingReply, setIsSendingReply] = useState(false);
+  const [replySuccessMessage, setReplySuccessMessage] = useState<string | null>(null);
+  const [isEditingReply, setIsEditingReply] = useState(false);
+  const [customReplyBody, setCustomReplyBody] = useState("");
 
   // Mailboxes list with counts
   const mailboxes = useMemo(() => [
@@ -515,45 +521,146 @@ export default function InboundMessagesHub({
                 </div>
               )}
 
-              {/* Quick AI-Synthesized Response Blueprint */}
+              {/* Quick AI-Synthesized Response Blueprint & 1-Click SMTP Dispatch */}
               {activeMessage.suggestedReplyDraft && (
-                <div className="viewer-reply-card">
-                  <div className="reply-card-header">
-                    <div className="reply-header-left">
-                      <Sparkles size={14} className="text-emerald" />
-                      <strong>Quick Response Blueprint</strong>
-                      <span className="reply-ready-pill">Ready to Dispatch</span>
+                <div className="viewer-reply-card" style={{ border: "1px solid #cbd5e1", borderRadius: "12px", padding: "16px", background: "#ffffff", marginTop: "16px" }}>
+                  <div className="reply-card-header" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "12px" }}>
+                    <div className="reply-header-left" style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                      <Sparkles size={15} className="text-emerald-600" />
+                      <strong style={{ fontSize: "13px", color: "#0f172a" }}>Autonomous Response Blueprint</strong>
+                      <span className="reply-ready-pill" style={{ fontSize: "10px", padding: "2px 8px", borderRadius: "12px", background: "#ecfdf5", color: "#047857", fontWeight: 600 }}>
+                        Hostinger SMTP Ready
+                      </span>
                     </div>
+                    <div style={{ display: "flex", gap: "6px" }}>
+                      <button
+                        type="button"
+                        className="btn-copy-draft-mini"
+                        style={{ fontSize: "11px", padding: "4px 8px", borderRadius: "6px", border: "1px solid #e2e8f0", background: "#f8fafc", cursor: "pointer", display: "flex", alignItems: "center", gap: "4px" }}
+                        onClick={() => setIsEditingReply((prev) => !prev)}
+                      >
+                        <Edit3 size={11} />
+                        <span>{isEditingReply ? "Preview" : "Edit Text"}</span>
+                      </button>
+                      <button
+                        type="button"
+                        className="btn-copy-draft-mini"
+                        style={{ fontSize: "11px", padding: "4px 8px", borderRadius: "6px", border: "1px solid #e2e8f0", background: "#f8fafc", cursor: "pointer", display: "flex", alignItems: "center", gap: "4px" }}
+                        onClick={() =>
+                          handleCopyDraft(customReplyBody || activeMessage.suggestedReplyDraft!.body, activeMessage.id)
+                        }
+                      >
+                        {copiedDraftId === activeMessage.id ? (
+                          <>
+                            <Check size={12} className="text-emerald-600" />
+                            <span>Copied</span>
+                          </>
+                        ) : (
+                          <>
+                            <Copy size={12} />
+                            <span>Copy</span>
+                          </>
+                        )}
+                      </button>
+                    </div>
+                  </div>
+
+                  <div className="reply-subject-preview" style={{ fontSize: "12px", marginBottom: "10px", color: "#475569" }}>
+                    <span className="r-lbl" style={{ fontWeight: 600, marginRight: "6px" }}>Subject:</span>
+                    <code style={{ background: "#f1f5f9", padding: "2px 6px", borderRadius: "4px", fontSize: "11px" }}>
+                      {activeMessage.suggestedReplyDraft.subject}
+                    </code>
+                  </div>
+
+                  {isEditingReply ? (
+                    <textarea
+                      rows={6}
+                      value={customReplyBody || activeMessage.suggestedReplyDraft.body}
+                      onChange={(e) => setCustomReplyBody(e.target.value)}
+                      style={{ width: "100%", fontSize: "12px", padding: "10px", borderRadius: "8px", border: "1px solid #94a3b8", fontFamily: "inherit", marginBottom: "12px" }}
+                    />
+                  ) : (
+                    <div className="reply-body-preview" style={{ fontSize: "12px", color: "#334155", lineHeight: 1.6, background: "#f8fafc", padding: "12px", borderRadius: "8px", marginBottom: "14px", border: "1px solid #e2e8f0" }}>
+                      {(customReplyBody || activeMessage.suggestedReplyDraft.body).split("\n\n").map((para: string, idx: number) => (
+                        <p key={idx} style={{ margin: "6px 0" }}>{para}</p>
+                      ))}
+                    </div>
+                  )}
+
+                  {replySuccessMessage && (
+                    <div style={{ padding: "8px 12px", marginBottom: "10px", borderRadius: "6px", background: "#ecfdf5", color: "#065f46", fontSize: "11px", fontWeight: 500, display: "flex", alignItems: "center", gap: "6px" }}>
+                      <CheckCircle2 size={13} />
+                      <span>{replySuccessMessage}</span>
+                    </div>
+                  )}
+
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", paddingTop: "8px", borderTop: "1px solid #f1f5f9" }}>
+                    <span style={{ fontSize: "11px", color: "#64748b" }}>
+                      Sender Mailbox: <strong style={{ color: "#0f172a" }}>{activeMessage.recipientMailbox}</strong>
+                    </span>
+
                     <button
                       type="button"
-                      className="btn-copy-draft-mini"
-                      onClick={() =>
-                        handleCopyDraft(activeMessage.suggestedReplyDraft!.body, activeMessage.id)
-                      }
+                      disabled={isSendingReply}
+                      onClick={async () => {
+                        setIsSendingReply(true);
+                        setReplySuccessMessage(null);
+                        try {
+                          const baseUrl = getBridgeBaseUrl();
+                          const res = await fetch(`${baseUrl}/api/inbound/reply`, {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify({
+                              recipientMailbox: activeMessage.recipientMailbox,
+                              senderEmail: activeMessage.senderEmail,
+                              subject: activeMessage.suggestedReplyDraft!.subject,
+                              body: customReplyBody || activeMessage.suggestedReplyDraft!.body,
+                              leadId: activeMessage.leadId
+                            }),
+                          });
+                          const data = await res.json();
+                          if (data.success) {
+                            setReplySuccessMessage(`✅ Reply sent via ${activeMessage.recipientMailbox}! Saved to INBOX.Sent.`);
+                            setMessagesList((prev) =>
+                              prev.map((m) => (m.id === activeMessage.id ? { ...m, status: "replied" } : m))
+                            );
+                          } else {
+                            setReplySuccessMessage(`⚠️ Error: ${data.error}`);
+                          }
+                        } catch {
+                          setReplySuccessMessage("⚠️ Daemon bridge unreachable. Verify port 5050.");
+                        } finally {
+                          setIsSendingReply(false);
+                          setTimeout(() => setReplySuccessMessage(null), 6000);
+                        }
+                      }}
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "6px",
+                        padding: "7px 14px",
+                        borderRadius: "8px",
+                        fontSize: "12px",
+                        fontWeight: 600,
+                        background: "#0f172a",
+                        color: "#ffffff",
+                        border: "none",
+                        cursor: isSendingReply ? "not-allowed" : "pointer",
+                        boxShadow: "0 1px 2px rgba(0,0,0,0.1)",
+                      }}
                     >
-                      {copiedDraftId === activeMessage.id ? (
+                      {isSendingReply ? (
                         <>
-                          <Check size={12} />
-                          <span>Copied</span>
+                          <RefreshCw size={12} className="animate-spin" />
+                          <span>Dispatching SMTP...</span>
                         </>
                       ) : (
                         <>
-                          <Copy size={12} />
-                          <span>Copy Reply</span>
+                          <Send size={12} className="text-emerald-400" />
+                          <span>⚡ Dispatch Reply via {activeMessage.recipientMailbox.split("@")[0]}</span>
                         </>
                       )}
                     </button>
-                  </div>
-
-                  <div className="reply-subject-preview">
-                    <span className="r-lbl">Subject:</span>
-                    <code>{activeMessage.suggestedReplyDraft.subject}</code>
-                  </div>
-
-                  <div className="reply-body-preview">
-                    {activeMessage.suggestedReplyDraft.body.split("\n\n").map((para: string, idx: number) => (
-                      <p key={idx}>{para}</p>
-                    ))}
                   </div>
                 </div>
               )}

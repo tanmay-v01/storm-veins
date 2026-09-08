@@ -32,21 +32,31 @@ import {
   ChevronDown,
   Globe,
   Inbox,
+  Bot,
+  RefreshCw,
+  Upload,
+  Zap,
+  Share2,
 } from "lucide-react";
 import { CRMLead, crmLeadsData } from "../../data/crmLeads";
 import EmailAnalyticsDashboard from "./EmailAnalyticsDashboard";
 import InboundMessagesHub from "./InboundMessagesHub";
+import LeadImportModal from "./LeadImportModal";
+import AutonomousWorkflowGraph from "./AutonomousWorkflowGraph";
+import { getBridgeBaseUrl } from "../../config/bridgeConfig";
 
-export type OutreachSubTab = "pool" | "cadence" | "telemetry" | "analytics" | "inbound";
+export type OutreachSubTab = "pool" | "cadence" | "telemetry" | "analytics" | "inbound" | "workflow";
 
 interface OutreachStudioSuiteProps {
   subMode: OutreachSubTab;
   onSelectSubMode: (tab: OutreachSubTab) => void;
+  onOpenAgentChat?: () => void;
 }
 
 export default function OutreachStudioSuite({
   subMode,
   onSelectSubMode,
+  onOpenAgentChat,
 }: OutreachStudioSuiteProps) {
   // State for Directory & Pool View
   const [sectorFilter, setSectorFilter] = useState<string>("all");
@@ -65,6 +75,46 @@ export default function OutreachStudioSuite({
   const [modalTab, setModalTab] = useState<"dossier" | "email" | "cadence">("dossier");
   const [copiedSubject, setCopiedSubject] = useState(false);
   const [copiedBody, setCopiedBody] = useState(false);
+
+  // Antigravity Bridge Daemon State
+  const [isDaemonOnline, setIsDaemonOnline] = useState(false);
+  const [isSyncingInbox, setIsSyncingInbox] = useState(false);
+  const [syncToast, setSyncToast] = useState<string | null>(null);
+  const [isLeadImportOpen, setIsLeadImportOpen] = useState(false);
+  const [copiedLinkedIn, setCopiedLinkedIn] = useState(false);
+
+  useEffect(() => {
+    const checkBridge = async () => {
+      try {
+        const res = await fetch("http://localhost:5050/api/status");
+        setIsDaemonOnline(res.ok);
+      } catch {
+        setIsDaemonOnline(false);
+      }
+    };
+    checkBridge();
+    const interval = setInterval(checkBridge, 15000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const handleSyncInboxNow = async () => {
+    setIsSyncingInbox(true);
+    setSyncToast("Syncing 5 Hostinger mailboxes & detecting bounces via Antigravity...");
+    try {
+      const res = await fetch("http://localhost:5050/api/sync-inbox", { method: "POST" });
+      const data = await res.json();
+      if (data.success) {
+        setSyncToast("✅ Inboxes & Bounces Synchronized! SQLite & CSV are up to date.");
+      } else {
+        setSyncToast("⚠️ Sync issue: " + (data.error || "Unknown error"));
+      }
+    } catch {
+      setSyncToast("⚠️ Antigravity Daemon is offline. Run 'outreach/run_crm_bridge.bat'");
+    } finally {
+      setIsSyncingInbox(false);
+      setTimeout(() => setSyncToast(null), 5000);
+    }
+  };
 
   // Keyboard shortcut: Escape to close inspection modal (Emil Kowalski craft)
   useEffect(() => {
@@ -360,49 +410,191 @@ export default function OutreachStudioSuite({
   return (
     <div className="outreach-suite-light">
       {/* Top Outreach Sub-Mode Navigation */}
-      <div className="suite-sub-nav-bar" style={{ display: "flex", gap: "8px", padding: "10px 14px", borderBottom: "1px solid #e2e8f0", background: "#f8fafc", borderRadius: "10px", marginBottom: "16px", flexWrap: "wrap", alignItems: "center" }}>
-        <button
-          type="button"
-          className={`crm-switch-tab-btn ${subMode === "pool" ? "active" : ""}`}
-          onClick={() => onSelectSubMode("pool")}
-        >
-          <Building2 size={13} />
-          <span>Enterprise Pool ({crmLeadsData.length})</span>
-        </button>
-        <button
-          type="button"
-          className={`crm-switch-tab-btn ${subMode === "cadence" ? "active" : ""}`}
-          onClick={() => onSelectSubMode("cadence")}
-        >
-          <Clock size={13} />
-          <span>4-Day Cadence</span>
-        </button>
-        <button
-          type="button"
-          className={`crm-switch-tab-btn ${subMode === "telemetry" ? "active" : ""}`}
-          onClick={() => onSelectSubMode("telemetry")}
-        >
-          <ShieldCheck size={13} />
-          <span>Quota &amp; Shield (8/hr)</span>
-        </button>
-        <button
-          type="button"
-          className={`crm-switch-tab-btn ${subMode === "analytics" ? "active" : ""}`}
-          onClick={() => onSelectSubMode("analytics")}
-        >
-          <BarChart3 size={13} />
-          <span>Analytics &amp; Reports (12 Charts)</span>
-        </button>
-        <button
-          type="button"
-          className={`crm-switch-tab-btn ${subMode === "inbound" ? "active" : ""}`}
-          onClick={() => onSelectSubMode("inbound")}
-        >
-          <Inbox size={13} />
-          <span>Inbound &amp; Replies</span>
-          <span className="nav-sub-pill pulse-emerald" style={{ marginLeft: "4px" }}>10 New</span>
-        </button>
+      <div className="suite-sub-nav-bar" style={{ display: "flex", gap: "8px", padding: "10px 14px", borderBottom: "1px solid #e2e8f0", background: "#f8fafc", borderRadius: "10px", marginBottom: "16px", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between" }}>
+        <div style={{ display: "flex", gap: "8px", flexWrap: "wrap", alignItems: "center" }}>
+          <button
+            type="button"
+            className={`crm-switch-tab-btn ${subMode === "pool" ? "active" : ""}`}
+            onClick={() => onSelectSubMode("pool")}
+          >
+            <Building2 size={13} />
+            <span>Enterprise Pool ({crmLeadsData.length})</span>
+          </button>
+          <button
+            type="button"
+            className={`crm-switch-tab-btn ${subMode === "cadence" ? "active" : ""}`}
+            onClick={() => onSelectSubMode("cadence")}
+          >
+            <Clock size={13} />
+            <span>4-Day Cadence</span>
+          </button>
+          <button
+            type="button"
+            className={`crm-switch-tab-btn ${subMode === "telemetry" ? "active" : ""}`}
+            onClick={() => onSelectSubMode("telemetry")}
+          >
+            <ShieldCheck size={13} />
+            <span>Quota &amp; Shield (8/hr)</span>
+          </button>
+          <button
+            type="button"
+            className={`crm-switch-tab-btn ${subMode === "analytics" ? "active" : ""}`}
+            onClick={() => onSelectSubMode("analytics")}
+          >
+            <BarChart3 size={13} />
+            <span>Analytics &amp; Reports (12 Charts)</span>
+          </button>
+          <button
+            type="button"
+            className={`crm-switch-tab-btn ${subMode === "inbound" ? "active" : ""}`}
+            onClick={() => onSelectSubMode("inbound")}
+          >
+            <Inbox size={13} />
+            <span>Inbound &amp; Replies</span>
+            <span className="nav-sub-pill pulse-emerald" style={{ marginLeft: "4px" }}>10 New</span>
+          </button>
+          <button
+            type="button"
+            className={`crm-switch-tab-btn ${subMode === "workflow" ? "active" : ""}`}
+            onClick={() => onSelectSubMode("workflow")}
+          >
+            <Zap size={13} className="text-amber-500" />
+            <span>Autonomous Engine</span>
+            <span className="nav-sub-pill pulse-emerald" style={{ marginLeft: "4px" }}>5 Nodes</span>
+          </button>
+        </div>
+
+        {/* Live Antigravity Daemon Control Pill & Quick Actions */}
+        <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
+          <button
+            type="button"
+            onClick={() => setIsLeadImportOpen(true)}
+            title="Import leads from CSV file"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "6px",
+              padding: "5px 10px",
+              borderRadius: "6px",
+              fontSize: "11px",
+              fontWeight: 500,
+              background: "#ffffff",
+              color: "#334155",
+              border: "1px solid #cbd5e1",
+              cursor: "pointer",
+            }}
+          >
+            <Upload size={12} className="text-indigo-600" />
+            <span>Import CSV</span>
+          </button>
+          <span
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "6px",
+              padding: "4px 8px",
+              borderRadius: "6px",
+              fontSize: "11px",
+              fontWeight: 500,
+              background: isDaemonOnline ? "#ecfdf5" : "#fffbeb",
+              color: isDaemonOnline ? "#047857" : "#b45309",
+              border: `1px solid ${isDaemonOnline ? "#a7f3d0" : "#fde68a"}`,
+            }}
+          >
+            <span
+              style={{
+                width: "6px",
+                height: "6px",
+                borderRadius: "50%",
+                background: isDaemonOnline ? "#10b981" : "#f59e0b",
+              }}
+            />
+            {isDaemonOnline ? "SQLite & Bridge: 5050 Active" : "Bridge: Offline"}
+          </span>
+
+          <button
+            type="button"
+            onClick={handleSyncInboxNow}
+            disabled={isSyncingInbox}
+            title="Scan 5 Hostinger mailboxes for bounces & incoming replies"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "6px",
+              padding: "5px 10px",
+              borderRadius: "6px",
+              fontSize: "11px",
+              fontWeight: 500,
+              background: "#ffffff",
+              color: "#334155",
+              border: "1px solid #cbd5e1",
+              cursor: isSyncingInbox ? "not-allowed" : "pointer",
+            }}
+          >
+            <RefreshCw size={12} className={isSyncingInbox ? "animate-spin text-emerald-600" : ""} />
+            <span>{isSyncingInbox ? "Syncing..." : "Sync Inboxes"}</span>
+          </button>
+
+          {onOpenAgentChat && (
+            <button
+              type="button"
+              onClick={onOpenAgentChat}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "6px",
+                padding: "5px 12px",
+                borderRadius: "6px",
+                fontSize: "11px",
+                fontWeight: 600,
+                background: "#0f172a",
+                color: "#ffffff",
+                border: "1px solid #0f172a",
+                cursor: "pointer",
+                boxShadow: "0 1px 2px rgba(0,0,0,0.05)",
+              }}
+            >
+              <Bot size={13} className="text-emerald-400" />
+              <span>Agent Chat</span>
+              <Sparkles size={11} className="text-emerald-300" />
+            </button>
+          )}
+        </div>
       </div>
+
+      {syncToast && (
+        <div
+          style={{
+            padding: "8px 14px",
+            marginBottom: "12px",
+            borderRadius: "8px",
+            fontSize: "12px",
+            background: "#0f172a",
+            color: "#ffffff",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            animation: "fadeIn 0.2s ease-in-out",
+          }}
+        >
+          <span>{syncToast}</span>
+          <button
+            onClick={() => setSyncToast(null)}
+            style={{ background: "none", border: "none", color: "#94a3b8", cursor: "pointer" }}
+          >
+            <X size={13} />
+          </button>
+        </div>
+      )}
+
+      {/* =========================================================================
+          SUB-VIEW: AUTONOMOUS WORKFLOW GRAPH ("BREAK N8N")
+          ========================================================================= */}
+      {subMode === "workflow" && (
+        <div className="suite-view-container" style={{ padding: "8px 0" }}>
+          <AutonomousWorkflowGraph />
+        </div>
+      )}
 
       {/* =========================================================================
           SUB-VIEW: INBOUND MESSAGES & EXECUTIVE MAILBOX FEED
@@ -1504,6 +1696,61 @@ export default function OutreachStudioSuite({
                     </div>
                   </div>
 
+                  {/* Omni-Channel Quick Actions Strip */}
+                  <div style={{ display: "flex", gap: "8px", margin: "14px 0", flexWrap: "wrap" }}>
+                    <a
+                      href={`https://wa.me/?text=${encodeURIComponent(
+                        `Hi ${selectedLead.recipientName}, Marcus Vance here from Storm Veins Media House. We recently reviewed ${selectedLead.company}'s operations regarding ${selectedLead.operationalFocus}. Open to a quick 2-minute architectural teardown?`
+                      )}`}
+                      target="_blank"
+                      rel="noreferrer"
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "6px",
+                        padding: "6px 12px",
+                        borderRadius: "6px",
+                        fontSize: "11px",
+                        fontWeight: 600,
+                        background: "#25d366",
+                        color: "#ffffff",
+                        textDecoration: "none",
+                        boxShadow: "0 1px 2px rgba(0,0,0,0.08)",
+                      }}
+                    >
+                      <Share2 size={12} />
+                      <span>WhatsApp Direct Starter</span>
+                    </a>
+
+                    <button
+                      type="button"
+                      onClick={() => {
+                        navigator.clipboard.writeText(
+                          `Hi ${selectedLead.recipientName} — Impressed by ${selectedLead.company}'s footprint in ${selectedLead.locality}. Noticed a key bottleneck around ${selectedLead.operationalFocus} that might be slowing down field productivity. We recently completed a private systems blueprint for this exact challenge — open to a quick 2-minute review?`
+                        );
+                        setCopiedLinkedIn(true);
+                        setTimeout(() => setCopiedLinkedIn(false), 3000);
+                      }}
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "6px",
+                        padding: "6px 12px",
+                        borderRadius: "6px",
+                        fontSize: "11px",
+                        fontWeight: 600,
+                        background: "#0a66c2",
+                        color: "#ffffff",
+                        border: "none",
+                        cursor: "pointer",
+                        boxShadow: "0 1px 2px rgba(0,0,0,0.08)",
+                      }}
+                    >
+                      <Check size={12} className={copiedLinkedIn ? "text-white" : "opacity-0"} />
+                      <span>{copiedLinkedIn ? "InMail Copied!" : "Copy LinkedIn InMail"}</span>
+                    </button>
+                  </div>
+
                   <div className="dossier-section-box">
                     <span className="section-title">
                       PROPOSED VALUE PILLARS &amp; ARCHITECTURAL SOLUTIONS
@@ -1767,6 +2014,16 @@ export default function OutreachStudioSuite({
           </div>
         </div>
       )}
+      {/* Lead Import Modal */}
+      <LeadImportModal
+        isOpen={isLeadImportOpen}
+        onClose={() => setIsLeadImportOpen(false)}
+        onImportSuccess={() => {
+          setIsLeadImportOpen(false);
+          setSyncToast("✅ Leads successfully imported and balanced across the 5 mailboxes in SQLite!");
+          setTimeout(() => setSyncToast(null), 5000);
+        }}
+      />
     </div>
   );
 }
