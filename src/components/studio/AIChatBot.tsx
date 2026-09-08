@@ -32,7 +32,10 @@ import {
   Mail,
   Activity,
   PhoneCall,
-  MessageSquare
+  MessageSquare,
+  KeyRound,
+  Terminal,
+  FileCode
 } from "lucide-react";
 import { getBridgeBaseUrl } from "../../config/bridgeConfig";
 
@@ -105,7 +108,16 @@ export default function AIChatBot({ isOpen, onClose, onLeadModified }: AIChatBot
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isDaemonOnline, setIsDaemonOnline] = useState(false);
-  const [activeCategory, setActiveCategory] = useState<"pipeline" | "telemetry" | "leads">("pipeline");
+  const [activeCategory, setActiveCategory] = useState<"pipeline" | "telemetry" | "leads" | "antichat">("pipeline");
+  const [isAntiChatUnlocked, setIsAntiChatUnlocked] = useState<boolean>(() => {
+    return sessionStorage.getItem("sv_antichat_unlocked") === "true";
+  });
+  const [antiChatPasscode, setAntiChatPasscode] = useState<string>(() => {
+    return sessionStorage.getItem("sv_antichat_passcode") || "anti-ops";
+  });
+  const [passcodeInput, setPasscodeInput] = useState("");
+  const [passcodeError, setPasscodeError] = useState("");
+  const [isVerifyingPasscode, setIsVerifyingPasscode] = useState(false);
   const [soundEnabled, setSoundEnabled] = useState(() => localStorage.getItem("sv_chat_sound") !== "false");
   const [isExpanded, setIsExpanded] = useState(false);
   const [isListening, setIsListening] = useState(false);
@@ -235,6 +247,54 @@ export default function AIChatBot({ isOpen, onClose, onLeadModified }: AIChatBot
     setTimeout(() => setCopiedMessageId(null), 2000);
   };
 
+  const handleUnlockAntiChat = async (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
+    const code = passcodeInput.trim();
+    if (!code) {
+      setPasscodeError("Please enter executive passcode");
+      return;
+    }
+    setIsVerifyingPasscode(true);
+    setPasscodeError("");
+    try {
+      const res = await fetch(`${getBridgeBaseUrl()}/api/agent/antichat/verify`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ passcode: code }),
+      });
+      if (res.ok) {
+        sessionStorage.setItem("sv_antichat_unlocked", "true");
+        sessionStorage.setItem("sv_antichat_passcode", code);
+        setAntiChatPasscode(code);
+        setIsAntiChatUnlocked(true);
+        setPasscodeInput("");
+        if (soundEnabled) playNotificationSound("receive");
+      } else {
+        const data = await res.json().catch(() => ({}));
+        setPasscodeError(data.error || "Invalid passcode. Access denied.");
+      }
+    } catch {
+      // Local fallback verification
+      if (code === "anti-ops" || code === "storm-ops") {
+        sessionStorage.setItem("sv_antichat_unlocked", "true");
+        sessionStorage.setItem("sv_antichat_passcode", code);
+        setAntiChatPasscode(code);
+        setIsAntiChatUnlocked(true);
+        setPasscodeInput("");
+      } else {
+        setPasscodeError("Invalid passcode or bridge unreachable.");
+      }
+    } finally {
+      setIsVerifyingPasscode(false);
+    }
+  };
+
+  const handleRelockAntiChat = () => {
+    sessionStorage.removeItem("sv_antichat_unlocked");
+    sessionStorage.removeItem("sv_antichat_passcode");
+    setIsAntiChatUnlocked(false);
+  };
+
   const handleSend = async (textToSend?: string) => {
     const text = (textToSend || input).trim();
     if (!text || isLoading) return;
@@ -252,12 +312,22 @@ export default function AIChatBot({ isOpen, onClose, onLeadModified }: AIChatBot
     if (!textToSend) setInput("");
     setIsLoading(true);
 
+    const isAntiChat = activeCategory === "antichat";
+    const endpoint = isAntiChat ? `${getBridgeBaseUrl()}/api/agent/antichat` : `${getBridgeBaseUrl()}/api/agent/chat`;
+    const payload = isAntiChat ? { message: text, passcode: antiChatPasscode } : { message: text };
+
     try {
-      const response = await fetch(`${getBridgeBaseUrl()}/api/agent/chat`, {
+      const response = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: text }),
+        body: JSON.stringify(payload),
       });
+
+      if (response.status === 401 && isAntiChat) {
+        setIsAntiChatUnlocked(false);
+        sessionStorage.removeItem("sv_antichat_unlocked");
+        throw new Error("Unauthorized. Please re-enter executive passcode to unlock Anti Chat.");
+      }
 
       if (!response.ok) {
         throw new Error(`Bridge returned HTTP ${response.status}`);
@@ -317,20 +387,41 @@ export default function AIChatBot({ isOpen, onClose, onLeadModified }: AIChatBot
       { label: "🔍 Search Lead", text: "Show status for FlameGuard" },
       { label: "✅ Mark Replied", text: "Mark Acme Industrial as replied" },
     ],
+    antichat: [
+      { label: "💻 Git Status", text: "git status" },
+      { label: "📁 Read Package", text: "read package.json" },
+      { label: "🛠️ Edit Code Syntax", text: "edit file: src/components/Hero.tsx | target: ... | replacement: ..." },
+      { label: "⚡ Build Check", text: "run npm run build" },
+      { label: "📂 Project Tree", text: "list files" },
+    ],
   };
 
   // Markdown Formatter with Clean Typography (3-4px smaller, minimal, Sora font)
   // Enhanced Markdown Formatter with Clean Typography (3-4px smaller, minimal, Sora font)
   const formatSimpleMarkdown = (text: string, baseKey: number) => {
     const lines = text.split("\n");
-    return lines.map((line, idx) => {
+    return lines.map((rawLine, idx) => {
       const key = `${baseKey}-${idx}`;
+      const trimmed = rawLine.trim();
+
+      // Skip empty spacer lines or orphan dots
+      if (!trimmed || trimmed === "." || trimmed === "•" || trimmed === "▪") {
+        return <div key={key} style={{ height: "4px" }} />;
+      }
+
+      if (rawLine.startsWith("---")) {
+        return <hr key={key} style={{ margin: "8px 0", borderColor: "rgba(226, 232, 240, 0.8)" }} />;
+      }
+
+      const isBullet = /^(\s*[-*•▪]\s+)/.test(rawLine);
+      const line = isBullet ? rawLine.replace(/^(\s*[-*•▪]\s+)/, "") : rawLine;
+
       // Bold **text** and `code`
       const parts = line.split(/(\*\*.*?\*\*|`.*?`)/g);
       const renderedParts = parts.map((part, pIdx) => {
         if (part.startsWith("**") && part.endsWith("**")) {
           return (
-            <strong key={pIdx} className="font-semibold text-slate-900">
+            <strong key={pIdx} style={{ fontWeight: 600, color: "#0f172a" }}>
               {part.slice(2, -2)}
             </strong>
           );
@@ -339,7 +430,15 @@ export default function AIChatBot({ isOpen, onClose, onLeadModified }: AIChatBot
           return (
             <code
               key={pIdx}
-              className="px-1 py-0.5 bg-slate-100 text-slate-800 rounded text-[9.5px] font-mono border border-slate-200"
+              style={{
+                padding: "1px 4px",
+                background: "#f1f5f9",
+                color: "#1e293b",
+                borderRadius: "4px",
+                fontSize: "9.5px",
+                fontFamily: "monospace",
+                border: "1px solid #e2e8f0",
+              }}
             >
               {part.slice(1, -1)}
             </code>
@@ -348,52 +447,55 @@ export default function AIChatBot({ isOpen, onClose, onLeadModified }: AIChatBot
         return part;
       });
 
-      if (line.startsWith("# ")) {
+      if (rawLine.startsWith("# ")) {
         return (
-          <h3 key={key} className="font-semibold text-slate-900 text-xs mt-2.5 mb-1 tracking-tight">
+          <h3 key={key} style={{ fontSize: "12px", fontWeight: 600, color: "#0f172a", margin: "10px 0 4px" }}>
             {renderedParts}
           </h3>
         );
       }
-      if (line.startsWith("## ")) {
+      if (rawLine.startsWith("## ")) {
         return (
-          <h4 key={key} className="font-semibold text-slate-900 text-[11.5px] mt-2 mb-1 tracking-tight">
+          <h4 key={key} style={{ fontSize: "11.5px", fontWeight: 600, color: "#0f172a", margin: "8px 0 4px" }}>
             {renderedParts}
           </h4>
         );
       }
-      if (line.startsWith("### ")) {
+      if (rawLine.startsWith("### ")) {
         return (
-          <h5 key={key} className="font-semibold text-slate-900 text-[11px] mt-1.5 mb-0.5 tracking-tight">
+          <h5 key={key} style={{ fontSize: "11px", fontWeight: 600, color: "#0f172a", margin: "6px 0 2px" }}>
             {renderedParts}
           </h5>
         );
       }
-      if (line.startsWith("---")) {
-        return <hr key={key} className="my-2 border-slate-200/80" />;
-      }
-      if (/^\d+\.\s/.test(line)) {
-        const numMatch = line.match(/^(\d+)\.\s(.*)$/);
+
+      if (/^\d+\.\s/.test(rawLine)) {
+        const numMatch = rawLine.match(/^(\d+)\.\s(.*)$/);
+        const numContent = numMatch ? numMatch[2] : rawLine;
+        const numParts = numContent.split(/(\*\*.*?\*\*|`.*?`)/g).map((part, pIdx) => {
+          if (part.startsWith("**") && part.endsWith("**")) return <strong key={pIdx} style={{ fontWeight: 600, color: "#0f172a" }}>{part.slice(2, -2)}</strong>;
+          if (part.startsWith("`") && part.endsWith("`")) return <code key={pIdx} style={{ padding: "1px 4px", background: "#f1f5f9", color: "#1e293b", borderRadius: "4px", fontSize: "9.5px", fontFamily: "monospace", border: "1px solid #e2e8f0" }}>{part.slice(1, -1)}</code>;
+          return part;
+        });
         return (
-          <div key={key} className="flex items-start gap-1.5 ml-1 my-0.5 text-[11px] text-slate-700">
-            <span className="font-mono text-[10px] text-emerald-600 font-semibold">{numMatch ? numMatch[1] : "1"}.</span>
-            <div className="leading-relaxed">{renderedParts}</div>
+          <div key={key} className="sv-chat-num-item">
+            <span className="sv-chat-num-label">{numMatch ? numMatch[1] : "1"}.</span>
+            <div className="sv-chat-bullet-text">{numParts}</div>
           </div>
         );
       }
-      if (line.startsWith("- ") || line.startsWith("* ")) {
+
+      if (isBullet) {
         return (
-          <div key={key} className="flex items-start gap-1.5 ml-1 my-0.5 text-[11px] text-slate-700">
-            <span className="text-emerald-500 font-bold leading-tight">•</span>
-            <div className="leading-relaxed">{renderedParts}</div>
+          <div key={key} className="sv-chat-bullet-item">
+            <span className="sv-chat-bullet-dot">•</span>
+            <div className="sv-chat-bullet-text">{renderedParts}</div>
           </div>
         );
       }
-      if (!line.trim()) {
-        return <div key={key} className="h-1.5" />;
-      }
+
       return (
-        <p key={key} className="text-[11px] text-slate-700 leading-relaxed my-0.5">
+        <p key={key} style={{ fontSize: "11px", color: "#334155", lineHeight: 1.55, margin: "2px 0" }}>
           {renderedParts}
         </p>
       );
@@ -544,6 +646,13 @@ export default function AIChatBot({ isOpen, onClose, onLeadModified }: AIChatBot
           >
             🎯 Lead Ops
           </button>
+          <button
+            type="button"
+            onClick={() => setActiveCategory("antichat")}
+            className={`sv-chat-cat-tab ${activeCategory === "antichat" ? "active" : ""}`}
+          >
+            🪐 Anti Chat {isAntiChatUnlocked ? "🟢" : "🔒"}
+          </button>
         </div>
 
         <div className="sv-chat-chips-scroll">
@@ -562,7 +671,71 @@ export default function AIChatBot({ isOpen, onClose, onLeadModified }: AIChatBot
 
       {/* Messages Thread Container */}
       <div className="sv-chat-messages-scroll">
-        {messages.map((msg) => {
+        {activeCategory === "antichat" && !isAntiChatUnlocked ? (
+          <div className="sv-antichat-gate">
+            <div className="sv-antichat-gate-icon-wrap">
+              <KeyRound size={20} />
+            </div>
+            <h4 className="sv-antichat-gate-title">Antigravity Workstation Access</h4>
+            <p className="sv-antichat-gate-desc">
+              Direct access to inspect &amp; edit source code, execute git workflows, and run terminal commands on your workstation. Enter executive passcode to unlock.
+            </p>
+            <form onSubmit={handleUnlockAntiChat} className="sv-antichat-gate-form">
+              <div className="sv-antichat-input-row">
+                <ShieldCheck size={14} color="#10b981" />
+                <input
+                  type="password"
+                  value={passcodeInput}
+                  onChange={(e) => {
+                    setPasscodeInput(e.target.value);
+                    setPasscodeError("");
+                  }}
+                  placeholder="Enter passcode (e.g. anti-ops)"
+                  autoFocus
+                />
+              </div>
+              <button
+                type="submit"
+                disabled={isVerifyingPasscode}
+                className="sv-antichat-unlock-btn"
+              >
+                {isVerifyingPasscode ? (
+                  <>
+                    <RefreshCw size={12} className="animate-spin" />
+                    <span>Verifying...</span>
+                  </>
+                ) : (
+                  <>
+                    <KeyRound size={12} />
+                    <span>Unlock Workstation Console</span>
+                  </>
+                )}
+              </button>
+              {passcodeError && (
+                <span className="sv-antichat-gate-error">{passcodeError}</span>
+              )}
+            </form>
+          </div>
+        ) : (
+          <>
+            {activeCategory === "antichat" && isAntiChatUnlocked && (
+              <div className="sv-antichat-unlocked-banner">
+                <div className="sv-antichat-badge-active">
+                  <ShieldCheck size={12} />
+                  <span>Workstation Active (Read-Write Mode)</span>
+                </div>
+                <button
+                  type="button"
+                  onClick={handleRelockAntiChat}
+                  className="sv-antichat-relock-btn"
+                  title="Lock workstation console"
+                >
+                  <KeyRound size={10} />
+                  <span>Lock</span>
+                </button>
+              </div>
+            )}
+            {messages.map((msg) => {
           const isUser = msg.role === "user";
           return (
             <div
@@ -605,25 +778,26 @@ export default function AIChatBot({ isOpen, onClose, onLeadModified }: AIChatBot
           );
         })}
 
-        {isLoading && (
-          <div className="sv-chat-msg-row bot">
-            <div className="sv-chat-msg-avatar bot">
-              <Bot size={13} />
-            </div>
-            <div
-              className="sv-chat-msg-bubble bot"
-              style={{ display: "flex", alignItems: "center", gap: "8px", color: "#64748b" }}
-            >
-              <RefreshCw size={12} className="animate-spin" color="#059669" />
-              <span>Antigravity reasoning &amp; querying SQLite...</span>
-            </div>
-          </div>
-        )}
+            {isLoading && (
+              <div className="sv-chat-msg-row bot">
+                <div className="sv-chat-msg-avatar bot">
+                  <Bot size={13} />
+                </div>
+                <div className="sv-chat-msg-bubble bot">
+                  <div style={{ display: "flex", alignItems: "center", gap: "6px", color: "#64748b", fontSize: "10.5px" }}>
+                    <RefreshCw size={11} className="animate-spin" />
+                    <span>{activeCategory === "antichat" ? "Antigravity workstation executing..." : "Processing sovereign instruction..."}</span>
+                  </div>
+                </div>
+              </div>
+            )}
 
-        <div ref={messagesEndRef} />
+            <div ref={messagesEndRef} />
+          </>
+        )}
       </div>
 
-      {/* Input Area */}
+      {/* Input Area Form */}
       <div className="sv-chat-input-area">
         <form
           onSubmit={(e) => {
@@ -648,8 +822,13 @@ export default function AIChatBot({ isOpen, onClose, onLeadModified }: AIChatBot
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
+              disabled={activeCategory === "antichat" && !isAntiChatUnlocked}
               placeholder={
-                isListening
+                activeCategory === "antichat" && !isAntiChatUnlocked
+                  ? "Console locked. Enter passcode above to unlock..."
+                  : activeCategory === "antichat"
+                  ? "Ask Antigravity: e.g. 'read src/...', 'edit file: ...', 'git status'..."
+                  : isListening
                   ? "Listening to voice command..."
                   : isDaemonOnline
                   ? "Type a command (e.g. 'Show telemetry', 'Add lead')..."

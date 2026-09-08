@@ -18937,3 +18937,194 @@ html, body, #root, .page-frame, .site-main {
 .workflow-exec-item:hover {
   background: #f8fafc !important;
 }
+
+/* ==========================================================================
+   Antigravity Workstation Anti Chat & Typography Polish
+   ========================================================================== */
+
+.sv-antichat-gate {
+  padding: 24px 16px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  min-height: 280px !important;
+  background: radial-gradient(circle at 50% 20%, rgba(16, 185, 129, 0.04), transparent 70%), #ffffff !important;
+  border-radius: 12px !important;
+  border: 1px solid #e2e8f0 !important;
+  margin: 12px 0 !important;
+}
+
+.sv-antichat-gate-icon-wrap {
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 50% !important;
+  background: #0f172a !important;
+  color: #10b981 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-bottom: 12px !important;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15) !important;
+}
+
+.sv-antichat-gate-title {
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  color: #0f172a !important;
+  margin: 0 0 6px 0 !important;
+  letter-spacing: -0.01em !important;
+}
+
+.sv-antichat-gate-desc {
+  font-size: 10.5px !important;
+  color: #64748b !important;
+  max-width: 320px !important;
+  margin: 0 0 16px 0 !important;
+  line-height: 1.5 !important;
+}
+
+.sv-antichat-gate-form {
+  width: 100% !important;
+  max-width: 300px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+}
+
+.sv-antichat-input-row {
+  display: flex !important;
+  align-items: center !important;
+  background: #f8fafc !important;
+  border: 1px solid #cbd5e1 !important;
+  border-radius: 8px !important;
+  padding: 3px 6px !important;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease !important;
+}
+
+.sv-antichat-input-row:focus-within {
+  border-color: #10b981 !important;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.15) !important;
+}
+
+.sv-antichat-input-row input {
+  flex: 1 !important;
+  border: none !important;
+  background: transparent !important;
+  padding: 6px 8px !important;
+  font-size: 11px !important;
+  font-family: monospace !important;
+  color: #0f172a !important;
+  outline: none !important;
+}
+
+.sv-antichat-unlock-btn {
+  background: #0f172a !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 6px !important;
+  padding: 7px 12px !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  transition: all 0.15s ease !important;
+}
+
+.sv-antichat-unlock-btn:hover {
+  background: #047857 !important;
+}
+
+.sv-antichat-gate-error {
+  font-size: 10px !important;
+  color: #ef4444 !important;
+  margin-top: 4px !important;
+  font-weight: 500 !important;
+}
+
+.sv-antichat-unlocked-banner {
+  background: #0f172a !important;
+  color: #e2e8f0 !important;
+  padding: 6px 12px !important;
+  border-radius: 8px !important;
+  margin-bottom: 10px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  font-size: 10px !important;
+  border: 1px solid rgba(16, 185, 129, 0.3) !important;
+}
+
+.sv-antichat-badge-active {
+  display: flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  color: #34d399 !important;
+  font-weight: 600 !important;
+}
+
+.sv-antichat-relock-btn {
+  background: transparent !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: #94a3b8 !important;
+  border-radius: 4px !important;
+  padding: 2px 7px !important;
+  font-size: 9.5px !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  transition: all 0.15s ease !important;
+}
+
+.sv-antichat-relock-btn:hover {
+  color: #ffffff !important;
+  border-color: #ef4444 !important;
+  background: rgba(239, 68, 68, 0.1) !important;
+}
+
+/* Bullet item layout fixes (Clean markdown alignment without Tailwind) */
+.sv-chat-bullet-item {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 6px !important;
+  margin: 3px 0 3px 2px !important;
+  font-size: 11px !important;
+  color: #334155 !important;
+}
+
+.sv-chat-bullet-dot {
+  color: #10b981 !important;
+  font-weight: 700 !important;
+  line-height: 1.4 !important;
+  font-size: 12px !important;
+  flex-shrink: 0 !important;
+}
+
+.sv-chat-bullet-text {
+  line-height: 1.55 !important;
+  flex: 1 !important;
+  margin: 0 !important;
+}
+
+.sv-chat-num-item {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 6px !important;
+  margin: 3px 0 3px 2px !important;
+  font-size: 11px !important;
+  color: #334155 !important;
+}
+
+.sv-chat-num-label {
+  color: #059669 !important;
+  font-weight: 600 !important;
+  font-family: monospace !important;
+  font-size: 10px !important;
+  flex-shrink: 0 !important;
+  margin-top: 1px !important;
+}
