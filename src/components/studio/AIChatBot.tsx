@@ -37,7 +37,7 @@ import {
   Terminal,
   FileCode
 } from "lucide-react";
-import { getBridgeBaseUrl } from "../../config/bridgeConfig";
+import { getBridgeBaseUrl, syncLatestBridgeUrlFromCloud } from "../../config/bridgeConfig";
 
 interface ChatMessage {
   id: string;
@@ -132,6 +132,11 @@ export default function AIChatBot({ isOpen, onClose, onLeadModified }: AIChatBot
   const [isListening, setIsListening] = useState(false);
   const [copiedMessageId, setCopiedMessageId] = useState<string | null>(null);
   const [activeViewMode, setActiveViewMode] = useState<"drawer" | "floating">("drawer");
+  const [showEndpointModal, setShowEndpointModal] = useState(false);
+  const [customEndpointInput, setCustomEndpointInput] = useState(() => {
+    return localStorage.getItem("sv_custom_bridge_url") || "";
+  });
+  const [activeEndpointUrl, setActiveEndpointUrl] = useState<string>(() => getBridgeBaseUrl());
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const recognitionRef = useRef<any>(null);
@@ -142,13 +147,59 @@ export default function AIChatBot({ isOpen, onClose, onLeadModified }: AIChatBot
   }, [messages]);
 
   const resolveActiveBaseUrl = async (): Promise<string> => {
+    // 1. If running locally, check localhost
     try {
       const localCheck = await fetch("http://127.0.0.1:5050/api/status", { method: "GET" }).catch(() => null);
       if (localCheck && localCheck.ok) {
+        setActiveEndpointUrl("http://127.0.0.1:5050");
         return "http://127.0.0.1:5050";
       }
     } catch {}
-    return getBridgeBaseUrl();
+
+    // 2. If user set a custom URL override
+    const custom = localStorage.getItem("sv_custom_bridge_url");
+    if (custom && custom.trim()) {
+      const clean = custom.trim().replace(/\/$/, "");
+      setActiveEndpointUrl(clean);
+      return clean;
+    }
+
+    // 3. Attempt dynamic cloud sync from GitHub raw / public config
+    try {
+      const latestCloud = await syncLatestBridgeUrlFromCloud();
+      if (latestCloud) {
+        setActiveEndpointUrl(latestCloud);
+        return latestCloud;
+      }
+    } catch {}
+
+    const fallback = getBridgeBaseUrl();
+    setActiveEndpointUrl(fallback);
+    return fallback;
+  };
+
+  const handleSaveCustomEndpoint = () => {
+    const val = customEndpointInput.trim().replace(/\/$/, "");
+    if (val) {
+      localStorage.setItem("sv_custom_bridge_url", val);
+      setActiveEndpointUrl(val);
+    } else {
+      localStorage.removeItem("sv_custom_bridge_url");
+    }
+    setShowEndpointModal(false);
+    checkDaemonStatus();
+  };
+
+  const handleAutoSyncEndpoint = async () => {
+    setIsLoading(true);
+    const cloudUrl = await syncLatestBridgeUrlFromCloud();
+    if (cloudUrl) {
+      setCustomEndpointInput(cloudUrl);
+      setActiveEndpointUrl(cloudUrl);
+      localStorage.removeItem("sv_custom_bridge_url");
+    }
+    await checkDaemonStatus();
+    setIsLoading(false);
   };
 
   const checkDaemonStatus = async () => {
@@ -591,12 +642,17 @@ export default function AIChatBot({ isOpen, onClose, onLeadModified }: AIChatBot
           <div className="sv-chat-meta">
             <div className="sv-chat-title-row">
               <h3 className="sv-chat-title">Antigravity Agent</h3>
-              <span className={isDaemonOnline ? "sv-chat-badge-online" : "sv-chat-badge-offline"}>
+              <span
+                onClick={() => setShowEndpointModal((prev) => !prev)}
+                className={isDaemonOnline ? "sv-chat-badge-online" : "sv-chat-badge-offline"}
+                style={{ cursor: "pointer" }}
+                title="Click to view or edit bridge endpoint"
+              >
                 <span
                   className={`sv-chat-status-dot ${isDaemonOnline ? "online" : "offline"}`}
                   style={{ position: "static", width: "5px", height: "5px" }}
                 />
-                {isDaemonOnline ? "Port 5050 Active" : "Bridge Offline"}
+                {isDaemonOnline ? "Port 5050 Active" : "Bridge Offline (Tap to Configure)"}
               </span>
             </div>
             <p className="sv-chat-subtitle">Autonomous CRM &amp; 5-Node Operator</p>
@@ -659,6 +715,75 @@ export default function AIChatBot({ isOpen, onClose, onLeadModified }: AIChatBot
           </button>
         </div>
       </div>
+
+      {/* Endpoint Configuration Bar */}
+      {showEndpointModal && (
+        <div style={{ padding: "8px 12px", background: "#0b1329", borderBottom: "1px solid #1e293b", fontSize: "11px" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "6px" }}>
+            <span style={{ fontWeight: 600, color: "#93c5fd" }}>Bridge Endpoint URL (Mobile Remote Control)</span>
+            <button
+              type="button"
+              onClick={() => setShowEndpointModal(false)}
+              style={{ background: "none", border: "none", color: "#94a3b8", cursor: "pointer", fontSize: "11px" }}
+            >
+              Close
+            </button>
+          </div>
+          <div style={{ display: "flex", gap: "6px", alignItems: "center" }}>
+            <input
+              type="text"
+              value={customEndpointInput}
+              onChange={(e) => setCustomEndpointInput(e.target.value)}
+              placeholder="e.g. https://...lhr.life"
+              style={{
+                flex: 1,
+                padding: "5px 8px",
+                background: "#020617",
+                border: "1px solid #334155",
+                color: "#f8fafc",
+                borderRadius: "4px",
+                fontSize: "11px",
+                fontFamily: "monospace",
+              }}
+            />
+            <button
+              type="button"
+              onClick={handleSaveCustomEndpoint}
+              style={{
+                padding: "5px 12px",
+                background: "#10b981",
+                color: "#020617",
+                fontWeight: 600,
+                borderRadius: "4px",
+                border: "none",
+                cursor: "pointer",
+                fontSize: "11px",
+              }}
+            >
+              Save
+            </button>
+            <button
+              type="button"
+              onClick={handleAutoSyncEndpoint}
+              style={{
+                padding: "5px 10px",
+                background: "#1e293b",
+                color: "#e2e8f0",
+                borderRadius: "4px",
+                border: "1px solid #334155",
+                cursor: "pointer",
+                fontSize: "11px",
+              }}
+              title="Sync latest live tunnel URL from GitHub"
+            >
+              Auto-Sync
+            </button>
+          </div>
+          <div style={{ marginTop: "4px", fontSize: "9.5px", color: "#64748b" }}>
+            Current target: <code style={{ color: "#38bdf8" }}>{activeEndpointUrl}</code>
+          </div>
+        </div>
+      )}
 
       {/* Quick Prompts Category Selector & Chips */}
       <div className="sv-chat-categories-bar">
