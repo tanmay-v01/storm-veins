@@ -1166,6 +1166,33 @@ export const INBOUND_MESSAGES_DATA: InboundMessage[] = [
     }
   },
   {
+    "id": "real-tanmay-6",
+    "leadId": "lead-6",
+    "senderName": "postmaster",
+    "senderEmail": "postmaster@SaudiGermanHospitalsa.onmicrosoft.com",
+    "senderTitle": "Email Gateway / Security Filter",
+    "senderCompany": "Enterprise Gateway",
+    "senderCountry": "India",
+    "countryFlag": "\ud83c\udf10",
+    "isOverseas": false,
+    "recipientMailbox": "tanmay@stormveins.com",
+    "mailboxOwnerName": "Tanmay",
+    "subject": "Undeliverable: {SPAM} Question re: Saudi German Health operations",
+    "receivedTimestamp": "Tue, 8 Sep 2026 11:57:27 +0000",
+    "relativeTime": "Today",
+    "intent": "general",
+    "intentLabel": "General Inbound",
+    "priority": "low",
+    "status": "replied",
+    "snippet": "Delivery has failed to these recipients or groups: mbatterjee@sghgroup.net<mailto:mbatterjee@sghgroup.net> Your message couldn't be delivere...",
+    "body": "Delivery has failed to these recipients or groups:\nmbatterjee@sghgroup.net<mailto:mbatterjee@sghgroup.net>\nYour message couldn't be delivered. Despite repeated attempts to deliver your message connection time outs with the recipient's email server prevented delivery.\nContact the recipient by some other means (by phone, for example) and ask them to tell their email admin that it appears that their email system is timing out when your email system is trying to connect to it. Give them the error details shown below. It's likely that the recipient's email admin is the only one who can fix this problem.\nFor more information and tips to fix this issue see this article: https://go.microsoft.com/fwlink/?LinkId=389361.\nDiagnostic information for administrators:\nGenerating server: DU2PPF5E375E356.EURP250.PROD.OUTLOOK.COM\nReceiving server: DU2PPF5E375E356.EURP250.PROD.OUTLOOK.COM\nmbatterjee@sghgroup.net\n9/8/2026 11:57:27 AM - Server at DU2PPF5E375E356.EURP250.PROD.OUTLOOK.COM returned '550 5.4.315 Message expired, connection timed out(Socket error code 10060)'\n9/8/2026 11:49:13 AM - Server at 212.11.189.46 (212.11.189.46) returned '450 4.4.315 Connection timed out [Message=Socket error code 10060] [LastAttemptedServerName=212.11.189.46] [LastAttemptedIP=212.11.189.46:25] [SmtpSecurity=-2;-2] [AM7PEPF0000004D.eurprd07.prod.outlook.com 2026-09-08T11:49:34.248Z 08DF0B119551E643](Socket error code 10060)'\nOriginal message headers:\nReceived: from DU0P250MB0623.EURP250.PROD.OUTLOOK.COM (2603:10a6:10:32a::12)\nby DU2PPF5E375E356.EURP250.PROD.OUTLOOK.COM (2603:10a6:18:3::b15) with\nMicrosoft SMTP Server (version=TLS1_2,\ncipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.382.15; Tue, 8 Sep\n2026 09:58:12 +0000\nReceived: from PA2P250MB1081.EURP250.PROD.OUTLOOK.COM (2603:10a6:102:40a::20)\nby DU0P250MB0623.EURP250.PROD.OUTLOOK.COM (2603:10a6:10:32a::12) with\nMicrosoft SMTP Server (version=TLS1_2,\ncipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.382.15; Mon, 7 Sep\n2026 22:54:00 +0000\nARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;\nb=vRg/LazdwhulJ/0BVzRyRMCDkPer0dEcjIdrO4i1xOzzZodG1EwzR8Xw/s4O+SRFjwH3gntJMFCV2dFyobPiFjsA97nP2/VpDCJpIkfyoUMEWOk8JdWELMRU3c4r4ANTALNxmU8ar9eczQ0Ijx9jFniSpoRW6lDYXplLnH81RAJJQ2A8NWn1ylCs01KteRuwaLNYPq/mq5iZc55IzpPwORHr/5bMxn1V/atu7UJsyLG6LqpbU5rh9eWLb+vZmGfBqcAanGs3S8LcROWC/wT5ceLCQju3Y4Zl0//k853JRk3Z2S6uKVaLy8U4/Vme+l2mpPqZ8/bKLdpv0ylZKgoq0w==\nARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;\ns=arcselector10001;\nh=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;\nbh=CXfNocKzzJcQMVf+tR0VdBBX5F+tuULRaIZHCZsJESc=;\nb=qQKOp7z8PwmSYUTwNiLtcAMrkixEQWZ1RvZtZc6FzHewjZNHarvVquA83ii0GIdxFw0o7ExkXJ70IB1tSgbibTKcy19YGXCKW5oRMxaRukVYwUYAB02m8Pc6qlqBkJ6QshV2cu+1ana8YEULTrbdCTFxCxS2gyMdcELEt/4qKfKIXfq0wWoErCEV9vbFVtCKmqXfTRLeH636yA4aRlN8eiL76QBI309Yirzz5vgBYmJ8lQWF0fM9RfTrFrjFP3eWb0pRN1V26u3Cb0FYxjV0QkvnhRWY63x/hc+2FGCORR0vy9V8wsdceDjhWJvRn3kmBTQhctxf+GDlgiwxtKCufg==\nARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is",
+    "originalOutboundSnippet": "Interaction sent from tanmay@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "[Internal] Delivery Log: Undeliverable: {SPAM} Question re: Saudi German Health operations",
+      "body": "Internal Note: Deliverability notice logged for postmaster@SaudiGermanHospitalsa.onmicrosoft.com. Recipient firewall details updated in master tracker. No direct outbound reply required."
+    }
+  },
+  {
     "id": "real-sales-2",
     "leadId": "lead-2",
     "senderName": "Mail Delivery System",
