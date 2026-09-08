@@ -120,9 +120,32 @@ export default function AIChatBot({ isOpen, onClose, onLeadModified }: AIChatBot
     localStorage.setItem("sv_chat_history", JSON.stringify(messages.slice(-40)));
   }, [messages]);
 
-  // Check daemon status
+  // Check daemon status & fetch SQLite history
   useEffect(() => {
     checkDaemonStatus();
+    const fetchBackendHistory = async () => {
+      try {
+        const res = await fetch(`${getBridgeBaseUrl()}/api/agent/history`);
+        if (res.ok) {
+          const data = await res.json();
+          if (data.messages && data.messages.length > 0) {
+            const formatted: ChatMessage[] = data.messages.map((m: any) => ({
+              id: `db-msg-${m.id}`,
+              role: m.role,
+              content: m.content,
+              actionTaken: m.action_taken,
+              timestamp: m.created_at
+                ? new Date(m.created_at).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
+                : "Saved",
+            }));
+            setMessages(formatted);
+          }
+        }
+      } catch {
+        // Fallback to localStorage
+      }
+    };
+    fetchBackendHistory();
     const interval = setInterval(checkDaemonStatus, 12000);
     return () => clearInterval(interval);
   }, []);

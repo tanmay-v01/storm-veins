@@ -349,7 +349,7 @@ function StudioWorkspace({ onLock }: { onLock: () => void }) {
   const [domainFilter, setDomainFilter] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [showNewDealModal, setShowNewDealModal] = useState(false);
-  const [isChatOpen, setIsChatOpen] = useState(false);
+  const [isChatOpen, setIsChatOpen] = useState(true);
   const [isDaemonConnected, setIsDaemonConnected] = useState(false);
 
   // Ping Daemon Bridge on mount & periodically
