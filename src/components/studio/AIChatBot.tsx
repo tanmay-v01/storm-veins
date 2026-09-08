@@ -314,7 +314,13 @@ export default function AIChatBot({ isOpen, onClose, onLeadModified }: AIChatBot
 
     const isAntiChat = activeCategory === "antichat";
     const endpoint = isAntiChat ? `${getBridgeBaseUrl()}/api/agent/antichat` : `${getBridgeBaseUrl()}/api/agent/chat`;
-    const payload = isAntiChat ? { message: text, passcode: antiChatPasscode } : { message: text };
+    const payload = isAntiChat
+      ? {
+          message: text,
+          passcode: antiChatPasscode,
+          history: messages.slice(-10).map((m) => ({ role: m.role, content: m.content })),
+        }
+      : { message: text };
 
     try {
       const response = await fetch(endpoint, {
