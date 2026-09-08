@@ -825,6 +825,18 @@ Mumbai HQ · +91 96998 31323`,
               <span>Outreach Copy AI</span>
               <span className="nav-pill-live">GPT</span>
             </button>
+
+            <button
+              type="button"
+              className={`studio-tool-tab ${isChatOpen ? "active" : ""}`}
+              onClick={() => setIsChatOpen((prev) => !prev)}
+            >
+              <Bot size={13} className={isDaemonConnected ? "text-emerald-600" : "text-slate-400"} />
+              <span>Antigravity Agent</span>
+              <span className={`nav-sub-pill ${isDaemonConnected ? "pulse-emerald" : ""}`}>
+                {isDaemonConnected ? "Online" : "Standby"}
+              </span>
+            </button>
           </div>
         </nav>
 
@@ -850,8 +862,12 @@ Mumbai HQ · +91 96998 31323`,
                 ? "SOVEREIGN EMAIL OUTREACH · 4-DAY CADENCE RE-APPROACH"
                 : mode === "outreach-telemetry"
                 ? "SOVEREIGN EMAIL OUTREACH · HOSTINGER SMTP TELEMETRY"
+                : mode === "outreach-analytics"
+                ? "SOVEREIGN EMAIL OUTREACH · REPORTS & TELEMETRY"
                 : mode === "outreach-inbound"
                 ? "SOVEREIGN EMAIL OUTREACH · INBOUND COMMUNICATIONS"
+                : mode === "outreach-workflow"
+                ? "SOVEREIGN EMAIL OUTREACH · AUTONOMOUS WORKFLOW CANVAS"
                 : "COMMERCIAL SUITE"}
             </span>
             <h1 className="studio-page-title">
@@ -865,8 +881,12 @@ Mumbai HQ · +91 96998 31323`,
                 ? "4-Day Cadence & Follow-Up Pipeline"
                 : mode === "outreach-telemetry"
                 ? "Hostinger Quota & Bounce Shield"
+                : mode === "outreach-analytics"
+                ? "Outreach Analytics & Reports"
                 : mode === "outreach-inbound"
                 ? "Inbound Communications & Replies"
+                : mode === "outreach-workflow"
+                ? "Autonomous Engine & Pipeline Canvas"
                 : mode === "invoice"
                 ? "Commercial Invoicing Generator"
                 : mode === "letter"
@@ -901,7 +921,8 @@ Mumbai HQ · +91 96998 31323`,
               mode === "outreach-cadence" ||
               mode === "outreach-telemetry" ||
               mode === "outreach-analytics" ||
-              mode === "outreach-inbound" ? (
+              mode === "outreach-inbound" ||
+              mode === "outreach-workflow" ? (
               <div className="outreach-top-actions" style={{ display: "flex", alignItems: "center", gap: "8px" }}>
                 <span
                   className={`outreach-badge ${isDaemonConnected ? "badge-delivered" : "badge-bounced"}`}
