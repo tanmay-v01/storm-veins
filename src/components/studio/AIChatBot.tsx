@@ -86,12 +86,23 @@ function playNotificationSound(type: "send" | "receive") {
   }
 }
 
+function stripAntiChatPrefix(txt: string): string {
+  if (!txt) return "";
+  return txt.replace(/^\[AntiChat\]\s*/i, "");
+}
+
 export default function AIChatBot({ isOpen, onClose, onLeadModified }: AIChatBotProps) {
   const [messages, setMessages] = useState<ChatMessage[]>(() => {
     const saved = localStorage.getItem("sv_chat_history");
     if (saved) {
       try {
-        return JSON.parse(saved);
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed)) {
+          return parsed.map((m: any) => ({
+            ...m,
+            content: stripAntiChatPrefix(m.content),
+          }));
+        }
       } catch {}
     }
     return [
@@ -144,7 +155,7 @@ export default function AIChatBot({ isOpen, onClose, onLeadModified }: AIChatBot
             const formatted: ChatMessage[] = data.messages.map((m: any) => ({
               id: `db-msg-${m.id}`,
               role: m.role,
-              content: m.content,
+              content: stripAntiChatPrefix(m.content),
               actionTaken: m.action_taken,
               timestamp: m.created_at
                 ? new Date(m.created_at).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
@@ -318,7 +329,7 @@ export default function AIChatBot({ isOpen, onClose, onLeadModified }: AIChatBot
       ? {
           message: text,
           passcode: antiChatPasscode,
-          history: messages.slice(-10).map((m) => ({ role: m.role, content: m.content })),
+          history: messages.slice(-10).map((m) => ({ role: m.role, content: stripAntiChatPrefix(m.content) })),
         }
       : { message: text };
 
@@ -343,7 +354,7 @@ export default function AIChatBot({ isOpen, onClose, onLeadModified }: AIChatBot
       const botMsg: ChatMessage = {
         id: `bot-${Date.now()}`,
         role: "assistant",
-        content: data.reply || "Action processed successfully.",
+        content: stripAntiChatPrefix(data.reply || "Action processed successfully."),
         actionTaken: data.actionTaken,
         timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
       };
@@ -501,7 +512,7 @@ export default function AIChatBot({ isOpen, onClose, onLeadModified }: AIChatBot
       }
 
       return (
-        <p key={key} style={{ fontSize: "11px", color: "#334155", lineHeight: 1.55, margin: "2px 0" }}>
+        <p key={key} style={{ fontSize: "11px", color: "#1e293b", lineHeight: 1.55, margin: "2px 0" }}>
           {renderedParts}
         </p>
       );
@@ -766,9 +777,23 @@ export default function AIChatBot({ isOpen, onClose, onLeadModified }: AIChatBot
                 )}
 
                 {isUser ? (
-                  <p style={{ margin: 0 }}>{msg.content}</p>
+                  <div
+                    className="sv-user-msg-content"
+                    style={{
+                      margin: 0,
+                      color: "#f0fdf4",
+                      fontSize: "11px",
+                      lineHeight: "1.55",
+                      fontWeight: 450,
+                      wordBreak: "break-word",
+                    }}
+                  >
+                    {stripAntiChatPrefix(msg.content)}
+                  </div>
                 ) : (
-                  <div>{formatContent(msg.content)}</div>
+                  <div className="sv-bot-msg-content">
+                    {formatContent(stripAntiChatPrefix(msg.content))}
+                  </div>
                 )}
 
                 {msg.actionTaken && (
