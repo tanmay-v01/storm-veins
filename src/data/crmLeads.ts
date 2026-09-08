@@ -178,12 +178,12 @@ export const crmLeadsData: CRMLead[] = [
     "country": "United Arab Emirates",
     "isOverseas": true,
     "assignedMailbox": "srushti@stormveins.com",
-    "status": "SENT",
+    "status": "BOUNCED",
     "sentTimestamp": "2026-09-07 15:50:43",
     "followUpDate": "2026-09-11",
     "followUpCount": 0,
     "operationalFocus": "Direct broker lead registration, VIP buyer digital onboarding, and automated escrow construction milestone releases",
-    "notes": "Delivered without PDF via srushti@stormveins.com. Next update due 11th Sept."
+    "notes": "Hard bounce isolated via IMAP poller"
   },
   {
     "id": "allcargo-logistics-ltd",
@@ -341,12 +341,12 @@ export const crmLeadsData: CRMLead[] = [
     "country": "United States",
     "isOverseas": true,
     "assignedMailbox": "sales@stormveins.com",
-    "status": "SENT",
+    "status": "BOUNCED",
     "sentTimestamp": "2026-09-07 23:49:43",
     "followUpDate": "2026-09-11",
     "followUpCount": 0,
     "operationalFocus": "LTL cross-dock exception management telemetry, dynamic rate calculators, and supply chain client visibility dashboards",
-    "notes": "Delivered without PDF via sales@stormveins.com. Next update due 11th Sept."
+    "notes": "Hard bounce isolated via IMAP poller"
   },
   {
     "id": "ashoka-buildcon-ltd",
@@ -387,12 +387,12 @@ export const crmLeadsData: CRMLead[] = [
     "country": "United Arab Emirates",
     "isOverseas": true,
     "assignedMailbox": "tanmay@stormveins.com",
-    "status": "SENT",
+    "status": "BOUNCED",
     "sentTimestamp": "2026-09-07 16:46:18",
     "followUpDate": "2026-09-11",
     "followUpCount": 0,
     "operationalFocus": "Multi-hospital bed census telemetry, automated doctor schedule coordination, and statutory healthcare audit vaults",
-    "notes": "Delivered without PDF via tanmay@stormveins.com. Next update due 11th Sept."
+    "notes": "Hard bounce isolated via IMAP poller"
   },
   {
     "id": "aurum-packaging-systems-pvt-ltd",
@@ -803,12 +803,12 @@ export const crmLeadsData: CRMLead[] = [
     "country": "United Kingdom",
     "isOverseas": true,
     "assignedMailbox": "tanmay@stormveins.com",
-    "status": "SENT",
+    "status": "BOUNCED",
     "sentTimestamp": "2026-09-07 17:46:18",
     "followUpDate": "2026-09-11",
     "followUpCount": 0,
     "operationalFocus": "Modular timber frame transport tracking, RICS quantity surveyor measurement sheets, and partner escrow drawdowns",
-    "notes": "Delivered without PDF via tanmay@stormveins.com. Next update due 11th Sept."
+    "notes": "Hard bounce isolated via IMAP poller"
   },
   {
     "id": "crest-nicholson",
@@ -1104,12 +1104,12 @@ export const crmLeadsData: CRMLead[] = [
     "country": "India",
     "isOverseas": false,
     "assignedMailbox": "solutions@stormveins.com",
-    "status": "SENT",
+    "status": "BOUNCED",
     "sentTimestamp": "2026-09-08 00:50:25",
     "followUpDate": "2026-09-11",
     "followUpCount": 0,
     "operationalFocus": "Concessionaire revenue-share calculation mesh, highway toll plaza IoT telemetry, and EPC contractor milestone measurement sheets",
-    "notes": "Delivered without PDF via solutions@stormveins.com. Next update due 11th Sept."
+    "notes": "Hard bounce isolated via IMAP poller"
   },
   {
     "id": "gwc-logistics",
@@ -1957,12 +1957,12 @@ export const crmLeadsData: CRMLead[] = [
     "country": "India",
     "isOverseas": false,
     "assignedMailbox": "srushti@stormveins.com",
-    "status": "SENT",
+    "status": "BOUNCED",
     "sentTimestamp": "2026-09-07 16:47:57",
     "followUpDate": "2026-09-11",
     "followUpCount": 0,
     "operationalFocus": "Multi-divisional ERP data aggregation, supplier quotation automation, factory floor telemetry, and executive consolidated reporting",
-    "notes": "Delivered without PDF via srushti@stormveins.com. Next update due 11th Sept."
+    "notes": "Hard bounce isolated via IMAP poller"
   },
   {
     "id": "nmc-healthcare",
@@ -2371,12 +2371,12 @@ export const crmLeadsData: CRMLead[] = [
     "country": "India",
     "isOverseas": false,
     "assignedMailbox": "solutions@stormveins.com",
-    "status": "SENT",
+    "status": "BOUNCED",
     "sentTimestamp": "2026-09-08 00:47:29",
     "followUpDate": "2026-09-11",
     "followUpCount": 0,
     "operationalFocus": "Arthroplasty surgical kit inventory telemetry, OPD queue orchestration mesh, and automated TPA health insurance claim settlement",
-    "notes": "Delivered without PDF via solutions@stormveins.com. Next update due 11th Sept."
+    "notes": "Hard bounce isolated via IMAP poller"
   },
   {
     "id": "singhealth",
@@ -2486,12 +2486,12 @@ export const crmLeadsData: CRMLead[] = [
     "country": "United Arab Emirates",
     "isOverseas": true,
     "assignedMailbox": "tanmay@stormveins.com",
-    "status": "SENT",
+    "status": "BOUNCED",
     "sentTimestamp": "2026-09-07 17:16:49",
     "followUpDate": "2026-09-11",
     "followUpCount": 0,
     "operationalFocus": "Precast factory production telemetry, luxury villa milestone progress demand engines, and channel partner commission portals",
-    "notes": "Delivered without PDF via tanmay@stormveins.com. Next update due 11th Sept."
+    "notes": "Hard bounce isolated via IMAP poller"
   },
   {
     "id": "sobha-realty-dubai",
@@ -2555,12 +2555,12 @@ export const crmLeadsData: CRMLead[] = [
     "country": "United Kingdom",
     "isOverseas": true,
     "assignedMailbox": "srushti@stormveins.com",
-    "status": "SENT",
+    "status": "BOUNCED",
     "sentTimestamp": "2026-09-07 17:50:39",
     "followUpDate": "2026-09-11",
     "followUpCount": 0,
     "operationalFocus": "Industrial tenant onboarding portals, brownfield environmental remediation telemetry, and leasing commission reconciliations",
-    "notes": "Delivered without PDF via srushti@stormveins.com. Next update due 11th Sept."
+    "notes": "Hard bounce isolated via IMAP poller"
   },
   {
     "id": "standard-greases-and-specialties-pvt-ltd",
@@ -2601,12 +2601,12 @@ export const crmLeadsData: CRMLead[] = [
     "country": "India",
     "isOverseas": false,
     "assignedMailbox": "sales@stormveins.com",
-    "status": "SENT",
+    "status": "BOUNCED",
     "sentTimestamp": "2026-09-08 00:46:55",
     "followUpDate": "2026-09-11",
     "followUpCount": 0,
     "operationalFocus": "Ultra-luxury unit inventory command mesh, channel partner brokerage disbursement vaults, and digital buyer possession handover",
-    "notes": "Delivered without PDF via sales@stormveins.com. Next update due 11th Sept."
+    "notes": "Hard bounce isolated via IMAP poller"
   },
   {
     "id": "tci-(transport-corporation-of-india)",
@@ -2854,12 +2854,12 @@ export const crmLeadsData: CRMLead[] = [
     "country": "India",
     "isOverseas": false,
     "assignedMailbox": "sales@stormveins.com",
-    "status": "SENT",
+    "status": "BOUNCED",
     "sentTimestamp": "2026-09-08 00:49:51",
     "followUpDate": "2026-09-11",
     "followUpCount": 0,
     "operationalFocus": "Hub transshipment sorter telemetry, branch cash collections daily reconciliation, and reverse logistics return authorizations",
-    "notes": "Delivered without PDF via sales@stormveins.com. Next update due 11th Sept."
+    "notes": "Hard bounce isolated via IMAP poller"
   },
   {
     "id": "vertex-biosciences",

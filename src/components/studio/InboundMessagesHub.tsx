@@ -50,6 +50,50 @@ export default function InboundMessagesHub({
   const [isEditingReply, setIsEditingReply] = useState(false);
   const [customReplyBody, setCustomReplyBody] = useState("");
 
+  // Sync live inbounds from Antigravity Bridge & SQLite
+  React.useEffect(() => {
+    const fetchLiveInbounds = async () => {
+      try {
+        const baseUrl = getBridgeBaseUrl();
+        const res = await fetch(`${baseUrl}/api/inbound/messages`);
+        if (res.ok) {
+          const data = await res.json();
+          if (data.messages && data.messages.length > 0) {
+            const formatted: InboundMessage[] = data.messages.map((m: any) => ({
+              id: m.id,
+              leadId: m.lead_id || "",
+              senderName: m.sender_email.split("@")[0],
+              senderEmail: m.sender_email,
+              senderCompany: m.lead_id ? m.lead_id.replace(/-/g, " ") : "Enterprise Prospect",
+              recipientMailbox: m.recipient_email,
+              subject: m.subject,
+              snippet: m.snippet,
+              body: m.body,
+              receivedTimestamp: m.received_at ? new Date(m.received_at).toLocaleDateString("en-US", { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" }) : "Just now",
+              status: m.is_read ? "action_scheduled" : "unread",
+              intent: (m.category || "general").toLowerCase(),
+              intentConfidence: 95,
+              isOverseas: false,
+              sentiment: "positive",
+              suggestedReplyDraft: {
+                subject: m.subject.toLowerCase().startsWith("re:") ? m.subject : `Re: ${m.subject}`,
+                body: `Hi there,\n\nThank you for reaching out regarding Storm Veins. We would be pleased to coordinate an executive briefing this week.\n\nBest regards,\nMarcus Vance\nStorm Veins Media House`
+              }
+            }));
+            setMessagesList((prev) => {
+              const existingIds = new Set(prev.map((p) => p.id));
+              const newOnes = formatted.filter((f) => !existingIds.has(f.id));
+              return [...newOnes, ...prev];
+            });
+          }
+        }
+      } catch {
+        // Fallback to static pool
+      }
+    };
+    fetchLiveInbounds();
+  }, []);
+
   // Mailboxes list with counts
   const mailboxes = useMemo(() => [
     { id: "all", label: "All Mailboxes (Together)", email: "" },
@@ -615,7 +659,9 @@ export default function InboundMessagesHub({
                               senderEmail: activeMessage.senderEmail,
                               subject: activeMessage.suggestedReplyDraft!.subject,
                               body: customReplyBody || activeMessage.suggestedReplyDraft!.body,
-                              leadId: activeMessage.leadId
+                              leadId: activeMessage.leadId,
+                              inReplyTo: activeMessage.id,
+                              references: activeMessage.id
                             }),
                           });
                           const data = await res.json();
