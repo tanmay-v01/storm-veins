@@ -1112,6 +1112,33 @@ export const INBOUND_MESSAGES_DATA: InboundMessage[] = [
     }
   },
   {
+    "id": "real-tanmay-5",
+    "leadId": "lead-5",
+    "senderName": "Mail Delivery System",
+    "senderEmail": "MAILER-DAEMON@mailchannels.net",
+    "senderTitle": "Email Gateway / Security Filter",
+    "senderCompany": "Enterprise Gateway",
+    "senderCountry": "India",
+    "countryFlag": "\ud83c\udf10",
+    "isOverseas": false,
+    "recipientMailbox": "tanmay@stormveins.com",
+    "mailboxOwnerName": "Tanmay",
+    "subject": "Undelivered Mail Returned to Sender",
+    "receivedTimestamp": "Mon, 07 Sep 2026 12:16:31 +0000 (UTC)",
+    "relativeTime": "Today",
+    "intent": "general",
+    "intentLabel": "General Inbound",
+    "priority": "low",
+    "status": "replied",
+    "snippet": "This is the mail system at host relay.mailchannels.net. I'm sorry to have to inform you that your message could not be delivered to one or m...",
+    "body": "This is the mail system at host relay.mailchannels.net.\nI'm sorry to have to inform you that your message could not\nbe delivered to one or more recipients. It's attached below.\nFor further assistance, please send mail to postmaster.\nIf you do so, please include this problem report. You can\ndelete your own text from the attached returned message.\nThe mail system\n<tim.lawlor@countrysidepartnerships.com>: host\ncountrysidepartnerships-com.mail.protection.outlook.com[52.101.89.2] said:\n550 5.4.1 Recipient address rejected: Access denied. For more information\nsee https://aka.ms/EXOSmtpErrors [LO1PEPF000022FE.GBRP265.PROD.OUTLOOK.COM\n2026-09-07T12:16:31.170Z 08DF0B11841EAF79] (in reply to RCPT TO command)\nHi Tim,\nI noticed the scale of Countryside Partnerships's operations across Brentwood, Essex, United Kingdom.\nMost leadership teams in Regeneration & Sustainable Homebuilding we work with are tired of paying compounding per-user SaaS license fees (Salesforce, Zoho, ERP add-ons) while still wrestling with disconnected spreadsheets for field tracking and dispatch.\nWe engineer custom, sovereign operating systems and internal portals tailored to your exact workflows\u2014where you retain 100% intellectual property and source code ownership, hosted securely inside your own cloud tenant (zero recurring per-seat SaaS taxes).\nA few live architecture teardowns are available at https://stormveins.com.\nWould you be open to a 10-minute introductory call this week, or would you prefer I send over a quick 2-page architecture brief first?\nBest regards,\nTanmay V.\nStorm Veins Media House \u2022 Founder & Principal Architect\nDirect: +91 96998 31323 | tanmay@stormveins.com\nWeb: https://stormveins.com",
+    "originalOutboundSnippet": "Interaction sent from tanmay@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "[Internal] Delivery Log: Undelivered Mail Returned to Sender",
+      "body": "Internal Note: Deliverability notice logged for MAILER-DAEMON@mailchannels.net. Recipient firewall details updated in master tracker. No direct outbound reply required."
+    }
+  },
+  {
     "id": "real-sales-2",
     "leadId": "lead-2",
     "senderName": "Mail Delivery System",
@@ -1328,6 +1355,60 @@ export const INBOUND_MESSAGES_DATA: InboundMessage[] = [
     }
   },
   {
+    "id": "real-sales-14",
+    "leadId": "lead-14",
+    "senderName": "Mail Delivery Subsystem",
+    "senderEmail": "MAILER-DAEMON@mx0b-00497a02.pphosted.com",
+    "senderTitle": "Email Gateway / Security Filter",
+    "senderCompany": "Enterprise Gateway",
+    "senderCountry": "India",
+    "countryFlag": "\ud83c\udf10",
+    "isOverseas": false,
+    "recipientMailbox": "sales@stormveins.com",
+    "mailboxOwnerName": "Enterprise Sales Desk",
+    "subject": "Returned mail: see transcript for details",
+    "receivedTimestamp": "Mon, 7 Sep 2026 13:21:48 -0500",
+    "relativeTime": "Today",
+    "intent": "general",
+    "intentLabel": "General Inbound",
+    "priority": "low",
+    "status": "replied",
+    "snippet": "The original message was received at Mon, 7 Sep 2026 13:21:48 -0500 from m0522418.ppops.net [127.0.0.1] ----- The following addresses had pe...",
+    "body": "The original message was received at Mon, 7 Sep 2026 13:21:48 -0500\nfrom m0522418.ppops.net [127.0.0.1]\n----- The following addresses had permanent fatal errors -----\n<jmcreynolds@arcb.com>\n(reason: 550 5.4.1 Recipient address rejected: Access denied. For more information see https://aka.ms/EXOSmtpErrors [BN2PEPF0000A990.namprd04.prod.outlook.com 2026-09-07T18:21:48.847Z 08DF0CFF303EE5B1])\n----- Transcript of session follows -----\n... while talking to arcb-com.mail.protection.outlook.com.:\n>>> DATA\n<<< 550 5.4.1 Recipient address rejected: Access denied. For more information see https://aka.ms/EXOSmtpErrors [BN2PEPF0000A990.namprd04.prod.outlook.com 2026-09-07T18:21:48.847Z 08DF0CFF303EE5B1]\n550 5.1.1 <jmcreynolds@arcb.com>... User unknown\n<<< 503 5.5.2 Need rcpt command [BN2PEPF0000A990.namprd04.prod.outlook.com 2026-09-07T18:21:48.847Z 08DF0CFF303EE5B1]\nHi Judy,\nI noticed the scale of ArcBest Corporation's operations across Fort Smith, Arkansas, United States.\nMost leadership teams in LTL Freight, Expedited Ground & Managed Supply Chain we work with are tired of paying compounding per-user SaaS license fees (Salesforce, Zoho, ERP add-ons) while still wrestling with disconnected spreadsheets for field tracking and dispatch.\nWe engineer custom, sovereign operating systems and internal portals tailored to your exact workflows\u2014where you retain 100% intellectual property and source code ownership, hosted securely inside your own cloud tenant (zero recurring per-seat SaaS taxes).\nA few live architecture teardowns are available at https://urldefense.com/v3/__https://stormveins.com__;!!Dr3GhncQPfxSht1x3jeoTA!IQfFAOZJZGKFWK8W5DpRrPKGvc3PNxZCCPF6rBQN5sZmIdwLmq1Q45hLD_OdtKSBx9YnJ3glqk_e972u$ .\nWould you be open to a 10-minute introductory call this week, or would you prefer I send over a quick 2-page architecture brief first?\nBest regards,\nStorm Veins Enterprise Desk\nStorm Veins Media House \u2022 Enterprise Practice Lead\nDirect: +91 96998 31323 | sales@stormveins.com\nWeb: https://urldefense.com/v3/__https://stormveins.com__;!!Dr3GhncQPfxSht1x3jeoTA!IQfFAOZJZGKFWK8W5DpRrPKGvc3PNxZCCPF6rBQN5sZmIdwLmq1Q45hLD_OdtKSBx9YnJ3glqk_e972u$",
+    "originalOutboundSnippet": "Interaction sent from sales@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "[Internal] Delivery Log: Returned mail: see transcript for details",
+      "body": "Internal Note: Deliverability notice logged for MAILER-DAEMON@mx0b-00497a02.pphosted.com. Recipient firewall details updated in master tracker. No direct outbound reply required."
+    }
+  },
+  {
+    "id": "real-sales-15",
+    "leadId": "lead-15",
+    "senderName": "Mail Delivery System",
+    "senderEmail": "MAILER-DAEMON@mailchannels.net",
+    "senderTitle": "Email Gateway / Security Filter",
+    "senderCompany": "Enterprise Gateway",
+    "senderCountry": "India",
+    "countryFlag": "\ud83c\udf10",
+    "isOverseas": false,
+    "recipientMailbox": "sales@stormveins.com",
+    "mailboxOwnerName": "Enterprise Sales Desk",
+    "subject": "Undelivered Mail Returned to Sender",
+    "receivedTimestamp": "Mon, 07 Sep 2026 19:16:58 +0000 (UTC)",
+    "relativeTime": "Today",
+    "intent": "general",
+    "intentLabel": "General Inbound",
+    "priority": "low",
+    "status": "replied",
+    "snippet": "This is the mail system at host relay.mailchannels.net. I'm sorry to have to inform you that your message could not be delivered to one or m...",
+    "body": "This is the mail system at host relay.mailchannels.net.\nI'm sorry to have to inform you that your message could not\nbe delivered to one or more recipients. It's attached below.\nFor further assistance, please send mail to postmaster.\nIf you do so, please include this problem report. You can\ndelete your own text from the attached returned message.\nThe mail system\n<kamal.khetan@sunteckindia.com>: host\nsunteckindia-com.mail.protection.outlook.com[52.101.145.2] said: 550 5.4.1\nRecipient address rejected: Access denied. For more information see\nhttps://aka.ms/EXOSmtpErrors [PN2PEPF0000018D.INDPRD01.PROD.OUTLOOK.COM\n2026-09-07T19:16:58.189Z 08DF0AF19AEDC45A] (in reply to RCPT TO command)\nHi Kamal,\nI noticed the scale of Sunteck Realty's operations across BKC, Mumbai, Maharashtra.\nMost leadership teams in Luxury Waterfront Real Estate & Commercial Assets we work with are tired of paying compounding per-user SaaS license fees (Salesforce, Zoho, ERP add-ons) while still wrestling with disconnected spreadsheets for field tracking and dispatch.\nWe engineer custom, sovereign operating systems and internal portals tailored to your exact workflows\u2014where you retain 100% intellectual property and source code ownership, hosted securely inside your own cloud tenant (zero recurring per-seat SaaS taxes).\nA few live architecture teardowns are available at https://stormveins.com.\nWould you be open to a 10-minute introductory call this week, or would you prefer I send over a quick 2-page architecture brief first?\nBest regards,\nStorm Veins Enterprise Desk\nStorm Veins Media House \u2022 Enterprise Practice Lead\nDirect: +91 96998 31323 | sales@stormveins.com\nWeb: https://stormveins.com",
+    "originalOutboundSnippet": "Interaction sent from sales@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "[Internal] Delivery Log: Undelivered Mail Returned to Sender",
+      "body": "Internal Note: Deliverability notice logged for MAILER-DAEMON@mailchannels.net. Recipient firewall details updated in master tracker. No direct outbound reply required."
+    }
+  },
+  {
     "id": "real-solutions-4",
     "leadId": "lead-4",
     "senderName": "Mail Delivery System",
@@ -1352,6 +1433,33 @@ export const INBOUND_MESSAGES_DATA: InboundMessage[] = [
     "suggestedReplyDraft": {
       "subject": "[Internal] Delivery Log: Undelivered Mail Returned to Sender",
       "body": "Internal Note: Deliverability notice logged for MAILER-DAEMON@mailchannels.net. Recipient firewall details updated in master tracker. No direct outbound reply required."
+    }
+  },
+  {
+    "id": "real-solutions-11",
+    "leadId": "lead-11",
+    "senderName": "Postmaster",
+    "senderEmail": "postmaster@wincanton.co.uk",
+    "senderTitle": "Email Gateway / Security Filter",
+    "senderCompany": "Enterprise Gateway",
+    "senderCountry": "India",
+    "countryFlag": "\ud83c\udf10",
+    "isOverseas": false,
+    "recipientMailbox": "solutions@stormveins.com",
+    "mailboxOwnerName": "Solutions Architecture Team",
+    "subject": "Your message couldn't be delivered",
+    "receivedTimestamp": "Mon, 07 Sep 2026 13:17:48 +0100",
+    "relativeTime": "Today",
+    "intent": "general",
+    "intentLabel": "General Inbound",
+    "priority": "low",
+    "status": "replied",
+    "snippet": "==================================================== Your message couldn't be delivered ====================================================...",
+    "body": "====================================================\nYour message couldn't be delivered\n====================================================\nThe message you sent to james.wroath@wincanton.co.uk couldn't be delivered due to: Recipient email server rejected the message.\n\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\nFurther Information\n5.4.14 Hop count exceeded - possible mail loop ATTR34 [MI3PEPF00008488.eurprd02.prod.outlook.com 2026-09-07T12:17:46.712Z 08DF0B1B2350569D]\n\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\nIf you sent this message to multiple addresses, you'll receive a notification like this\nfor every one that didn't arrive.\n\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\u2013\nPowered by Mimecast\n\u00a9 2003 - 2026 Mimecast Services Limited and affiliates.",
+    "originalOutboundSnippet": "Interaction sent from solutions@stormveins.com to recipient domain.",
+    "suggestedReplyDraft": {
+      "subject": "[Internal] Delivery Log: Your message couldn't be delivered",
+      "body": "Internal Note: Deliverability notice logged for postmaster@wincanton.co.uk. Recipient firewall details updated in master tracker. No direct outbound reply required."
     }
   },
   {
