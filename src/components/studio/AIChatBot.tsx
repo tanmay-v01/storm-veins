@@ -415,43 +415,38 @@ export default function AIChatBot({ isOpen, onClose, onLeadModified }: AIChatBot
 
   return (
     <div
-      className={`fixed z-50 bg-white border border-slate-200 shadow-2xl flex flex-col font-['Sora',sans-serif] transition-all duration-200 ${
-        activeViewMode === "drawer"
-          ? `inset-y-0 right-0 ${isExpanded ? "w-full sm:w-[580px]" : "w-full sm:w-[420px]"}`
-          : `bottom-6 right-6 ${isExpanded ? "w-[560px] h-[720px]" : "w-[420px] h-[600px]"} rounded-2xl`
+      className={`sv-chat-window ${activeViewMode === "drawer" ? "drawer-mode" : "floating-mode"} ${
+        isExpanded ? "expanded" : ""
       }`}
     >
       {/* Header Bar */}
-      <div className="p-3.5 border-b border-slate-200 bg-slate-50/90 flex items-center justify-between shrink-0">
-        <div className="flex items-center gap-2.5">
-          <div className="w-7 h-7 rounded-lg bg-emerald-600 flex items-center justify-center text-white shadow-xs">
-            <Bot size={15} />
+      <div className="sv-chat-header">
+        <div className="sv-chat-header-brand">
+          <div className="sv-chat-avatar">
+            <Bot size={16} />
           </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <h3 className="text-xs font-semibold text-slate-900 tracking-tight">Antigravity Agent</h3>
-              <span
-                className={`inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full text-[9px] font-semibold ${
-                  isDaemonOnline
-                    ? "bg-emerald-50 text-emerald-700 border border-emerald-200"
-                    : "bg-amber-50 text-amber-700 border border-amber-200"
-                }`}
-              >
-                <span className={`w-1.5 h-1.5 rounded-full ${isDaemonOnline ? "bg-emerald-500 animate-pulse" : "bg-amber-500"}`} />
+          <div className="sv-chat-meta">
+            <div className="sv-chat-title-row">
+              <h3 className="sv-chat-title">Antigravity Agent</h3>
+              <span className={isDaemonOnline ? "sv-chat-badge-online" : "sv-chat-badge-offline"}>
+                <span
+                  className={`sv-chat-status-dot ${isDaemonOnline ? "online" : "offline"}`}
+                  style={{ position: "static", width: "5px", height: "5px" }}
+                />
                 {isDaemonOnline ? "Port 5050 Active" : "Bridge Offline"}
               </span>
             </div>
-            <p className="text-[10px] text-slate-500">Autonomous CRM & 5-Node Operator</p>
+            <p className="sv-chat-subtitle">Autonomous CRM &amp; 5-Node Operator</p>
           </div>
         </div>
 
         {/* Header Controls */}
-        <div className="flex items-center gap-1">
+        <div className="sv-chat-controls">
           <button
             type="button"
             onClick={toggleSound}
             title={soundEnabled ? "Mute sound" : "Enable sound"}
-            className="p-1 text-slate-400 hover:text-slate-700 hover:bg-slate-200/60 rounded-md transition-colors cursor-pointer"
+            className="sv-chat-icon-btn"
           >
             {soundEnabled ? <Volume2 size={13} /> : <VolumeX size={13} />}
           </button>
@@ -460,7 +455,7 @@ export default function AIChatBot({ isOpen, onClose, onLeadModified }: AIChatBot
             type="button"
             onClick={() => setActiveViewMode((prev) => (prev === "drawer" ? "floating" : "drawer"))}
             title={activeViewMode === "drawer" ? "Switch to Floating Deck" : "Dock to Side Drawer"}
-            className="p-1 text-slate-400 hover:text-slate-700 hover:bg-slate-200/60 rounded-md transition-colors cursor-pointer hidden sm:block"
+            className="sv-chat-icon-btn"
           >
             <Layers size={13} />
           </button>
@@ -469,7 +464,7 @@ export default function AIChatBot({ isOpen, onClose, onLeadModified }: AIChatBot
             type="button"
             onClick={() => setIsExpanded((prev) => !prev)}
             title={isExpanded ? "Standard width" : "Expand width"}
-            className="p-1 text-slate-400 hover:text-slate-700 hover:bg-slate-200/60 rounded-md transition-colors cursor-pointer hidden sm:block"
+            className="sv-chat-icon-btn"
           >
             {isExpanded ? <Minimize2 size={13} /> : <Maximize2 size={13} />}
           </button>
@@ -478,7 +473,7 @@ export default function AIChatBot({ isOpen, onClose, onLeadModified }: AIChatBot
             type="button"
             onClick={clearChatHistory}
             title="Clear Chat History"
-            className="p-1 text-slate-400 hover:text-rose-600 hover:bg-slate-200/60 rounded-md transition-colors cursor-pointer"
+            className="sv-chat-icon-btn danger"
           >
             <Trash2 size={13} />
           </button>
@@ -487,7 +482,7 @@ export default function AIChatBot({ isOpen, onClose, onLeadModified }: AIChatBot
             type="button"
             onClick={checkDaemonStatus}
             title="Refresh Daemon Status"
-            className="p-1 text-slate-400 hover:text-slate-700 hover:bg-slate-200/60 rounded-md transition-colors cursor-pointer"
+            className="sv-chat-icon-btn"
           >
             <RefreshCw size={13} className={isLoading ? "animate-spin" : ""} />
           </button>
@@ -495,7 +490,7 @@ export default function AIChatBot({ isOpen, onClose, onLeadModified }: AIChatBot
           <button
             type="button"
             onClick={onClose}
-            className="p-1 text-slate-400 hover:text-slate-800 hover:bg-slate-200/60 rounded-md transition-colors cursor-pointer"
+            className="sv-chat-icon-btn"
           >
             <X size={15} />
           </button>
@@ -503,50 +498,38 @@ export default function AIChatBot({ isOpen, onClose, onLeadModified }: AIChatBot
       </div>
 
       {/* Quick Prompts Category Selector & Chips */}
-      <div className="border-b border-slate-200/80 bg-slate-50/50 shrink-0">
-        <div className="px-3 pt-2 flex items-center gap-3 text-[10px] font-semibold text-slate-500 border-b border-slate-200/60">
+      <div className="sv-chat-categories-bar">
+        <div className="sv-chat-category-tabs">
           <button
             type="button"
             onClick={() => setActiveCategory("pipeline")}
-            className={`pb-1.5 transition-colors cursor-pointer ${
-              activeCategory === "pipeline"
-                ? "text-emerald-700 border-b-2 border-emerald-600"
-                : "hover:text-slate-800"
-            }`}
+            className={`sv-chat-cat-tab ${activeCategory === "pipeline" ? "active" : ""}`}
           >
             ⚡ Pipeline
           </button>
           <button
             type="button"
             onClick={() => setActiveCategory("telemetry")}
-            className={`pb-1.5 transition-colors cursor-pointer ${
-              activeCategory === "telemetry"
-                ? "text-emerald-700 border-b-2 border-emerald-600"
-                : "hover:text-slate-800"
-            }`}
+            className={`sv-chat-cat-tab ${activeCategory === "telemetry" ? "active" : ""}`}
           >
             📊 Telemetry
           </button>
           <button
             type="button"
             onClick={() => setActiveCategory("leads")}
-            className={`pb-1.5 transition-colors cursor-pointer ${
-              activeCategory === "leads"
-                ? "text-emerald-700 border-b-2 border-emerald-600"
-                : "hover:text-slate-800"
-            }`}
+            className={`sv-chat-cat-tab ${activeCategory === "leads" ? "active" : ""}`}
           >
             🎯 Lead Ops
           </button>
         </div>
 
-        <div className="px-3 py-1.5 overflow-x-auto no-scrollbar flex items-center gap-1.5 whitespace-nowrap">
+        <div className="sv-chat-chips-scroll">
           {promptCategories[activeCategory].map((p, idx) => (
             <button
               key={idx}
               type="button"
               onClick={() => handleSend(p.text)}
-              className="text-[10px] font-medium text-slate-700 hover:text-emerald-800 bg-white hover:bg-emerald-50/80 border border-slate-200 hover:border-emerald-300 rounded-full px-2.5 py-0.5 transition-all shadow-2xs shrink-0 cursor-pointer"
+              className="sv-chat-chip-btn"
             >
               {p.label}
             </button>
@@ -555,76 +538,61 @@ export default function AIChatBot({ isOpen, onClose, onLeadModified }: AIChatBot
       </div>
 
       {/* Messages Thread Container */}
-      <div className="flex-1 overflow-y-auto p-4 space-y-3 bg-slate-50/40">
+      <div className="sv-chat-messages-scroll">
         {messages.map((msg) => {
           const isUser = msg.role === "user";
           return (
             <div
               key={msg.id}
-              className={`flex items-start gap-2.5 ${isUser ? "flex-row-reverse" : "flex-row"}`}
+              className={`sv-chat-msg-row ${isUser ? "user" : "bot"}`}
             >
-              <div
-                className={`w-6 h-6 rounded-full flex items-center justify-center shrink-0 text-[10px] font-semibold ${
-                  isUser
-                    ? "bg-slate-900 text-white shadow-2xs"
-                    : "bg-emerald-100 text-emerald-800 border border-emerald-200"
-                }`}
-              >
+              <div className={`sv-chat-msg-avatar ${isUser ? "user" : "bot"}`}>
                 {isUser ? <User size={12} /> : <Bot size={13} />}
               </div>
 
-              <div
-                className={`max-w-[85%] rounded-2xl px-3.5 py-2.5 shadow-2xs text-[11px] relative group ${
-                  isUser
-                    ? "bg-slate-900 text-white rounded-tr-none"
-                    : "bg-white text-slate-800 border border-slate-200/90 rounded-tl-none"
-                }`}
-              >
+              <div className={`sv-chat-msg-bubble ${isUser ? "user" : "bot"}`}>
                 {/* 1-Click Copy on message hover */}
                 {!isUser && (
                   <button
                     type="button"
                     onClick={() => handleCopyMessage(msg.content, msg.id)}
                     title="Copy message content"
-                    className="absolute top-2 right-2 p-1 text-slate-400 hover:text-slate-700 bg-white/80 rounded border border-slate-100 opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer shadow-2xs"
+                    className="sv-chat-copy-btn"
                   >
-                    {copiedMessageId === msg.id ? <Check size={11} className="text-emerald-600" /> : <Copy size={11} />}
+                    {copiedMessageId === msg.id ? <Check size={11} color="#059669" /> : <Copy size={11} />}
                   </button>
                 )}
 
                 {isUser ? (
-                  <p className="leading-relaxed">{msg.content}</p>
+                  <p style={{ margin: 0 }}>{msg.content}</p>
                 ) : (
                   <div>{formatContent(msg.content)}</div>
                 )}
 
                 {msg.actionTaken && (
-                  <div className="mt-2 pt-1.5 border-t border-slate-100 flex items-center gap-1.5 text-[9.5px] text-emerald-600 font-medium font-mono">
-                    <CheckCircle2 size={10} />
+                  <div className="sv-chat-msg-action">
+                    <CheckCircle2 size={11} />
                     <span>Action: {msg.actionTaken}</span>
                   </div>
                 )}
 
-                <span
-                  className={`block text-[9px] mt-1 text-right font-mono ${
-                    isUser ? "text-slate-400" : "text-slate-400"
-                  }`}
-                >
-                  {msg.timestamp}
-                </span>
+                <span className="sv-chat-msg-time">{msg.timestamp}</span>
               </div>
             </div>
           );
         })}
 
         {isLoading && (
-          <div className="flex items-start gap-2.5">
-            <div className="w-6 h-6 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 border border-emerald-200">
+          <div className="sv-chat-msg-row bot">
+            <div className="sv-chat-msg-avatar bot">
               <Bot size={13} />
             </div>
-            <div className="bg-white border border-slate-200 rounded-2xl rounded-tl-none px-3.5 py-2.5 shadow-2xs flex items-center gap-2 text-[11px] text-slate-500">
-              <RefreshCw size={11} className="animate-spin text-emerald-600" />
-              <span>Antigravity reasoning & querying SQLite...</span>
+            <div
+              className="sv-chat-msg-bubble bot"
+              style={{ display: "flex", alignItems: "center", gap: "8px", color: "#64748b" }}
+            >
+              <RefreshCw size={12} className="animate-spin" color="#059669" />
+              <span>Antigravity reasoning &amp; querying SQLite...</span>
             </div>
           </div>
         )}
@@ -633,30 +601,26 @@ export default function AIChatBot({ isOpen, onClose, onLeadModified }: AIChatBot
       </div>
 
       {/* Input Area */}
-      <div className="p-3 border-t border-slate-200 bg-white shrink-0">
+      <div className="sv-chat-input-area">
         <form
           onSubmit={(e) => {
             e.preventDefault();
             handleSend();
           }}
-          className="flex items-center gap-1.5"
+          className="sv-chat-form"
         >
           {recognitionRef.current && (
             <button
               type="button"
               onClick={toggleListening}
               title={isListening ? "Listening... click to stop" : "Speak command via microphone"}
-              className={`p-2 rounded-xl transition-all cursor-pointer ${
-                isListening
-                  ? "bg-rose-500 text-white animate-pulse"
-                  : "bg-slate-100 hover:bg-slate-200 text-slate-600"
-              }`}
+              className={`sv-chat-mic-btn ${isListening ? "active" : ""}`}
             >
-              {isListening ? <MicOff size={13} /> : <Mic size={13} />}
+              {isListening ? <MicOff size={14} /> : <Mic size={14} />}
             </button>
           )}
 
-          <div className="relative flex-1 flex items-center">
+          <div className="sv-chat-input-wrapper">
             <input
               type="text"
               value={input}
@@ -668,13 +632,13 @@ export default function AIChatBot({ isOpen, onClose, onLeadModified }: AIChatBot
                   ? "Type a command (e.g. 'Show telemetry', 'Add lead')..."
                   : "Daemon offline. Run crm_daemon_bridge.py..."
               }
-              className="w-full pl-3 pr-7 py-2 text-[11px] bg-slate-50 border border-slate-200 rounded-xl focus:outline-hidden focus:ring-1.5 focus:ring-emerald-500 focus:border-emerald-500 focus:bg-white text-slate-900 placeholder:text-slate-400 transition-all font-['Sora',sans-serif]"
+              className="sv-chat-text-input"
             />
             {input && (
               <button
                 type="button"
                 onClick={() => setInput("")}
-                className="absolute right-2 text-slate-400 hover:text-slate-600 p-0.5 rounded cursor-pointer"
+                className="sv-chat-clear-input-btn"
                 title="Clear input"
               >
                 <X size={12} />
@@ -685,19 +649,19 @@ export default function AIChatBot({ isOpen, onClose, onLeadModified }: AIChatBot
           <button
             type="submit"
             disabled={isLoading || !input.trim()}
-            className="p-2 rounded-xl bg-slate-900 hover:bg-emerald-700 text-white font-medium disabled:opacity-40 transition-colors shadow-2xs cursor-pointer"
+            className="sv-chat-send-btn"
           >
             <Send size={13} />
           </button>
         </form>
 
-        <div className="mt-2 flex items-center justify-between text-[9px] text-slate-400 px-1 font-mono">
-          <span className="flex items-center gap-1">
-            <Database size={9} className="text-emerald-500" />
+        <div className="sv-chat-footer-meta">
+          <span style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}>
+            <Database size={10} color="#10b981" />
             <span>SQLite Master · 0 Latency</span>
           </span>
-          <span className="flex items-center gap-1">
-            <ShieldCheck size={9} className="text-slate-400" />
+          <span style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}>
+            <ShieldCheck size={10} color="#94a3b8" />
             <span>5-Mailbox Cluster</span>
           </span>
         </div>

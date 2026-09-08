@@ -1855,19 +1855,15 @@ Mumbai HQ · +91 96998 31323`,
         {/* Floating Antigravity Agent Trigger */}
         <button
           onClick={() => setIsChatOpen((prev) => !prev)}
-          className="fixed bottom-6 right-6 z-40 flex items-center gap-2 px-3.5 py-2.5 bg-slate-900 hover:bg-emerald-700 text-white rounded-full shadow-xl transition-all duration-200 border border-slate-700 hover:border-emerald-500 hover:scale-105"
+          className="sv-chat-trigger-btn"
           title="Toggle Antigravity Operations Agent Chat"
           type="button"
         >
-          <div className="relative">
-            <Bot size={17} className="text-emerald-400" />
-            <span
-              className={`absolute -top-1 -right-1 w-2 h-2 rounded-full ${
-                isDaemonConnected ? "bg-emerald-400 animate-pulse" : "bg-amber-400"
-              }`}
-            />
+          <div className="sv-chat-trigger-icon-wrap">
+            <Bot size={16} color="#34d399" />
+            <span className={`sv-chat-status-dot ${isDaemonConnected ? "online" : "offline"}`} />
           </div>
-          <span className="text-xs font-semibold tracking-wide font-['Sora',sans-serif]">Antigravity Agent</span>
+          <span>Antigravity Agent</span>
         </button>
 
         {/* Antigravity AI Agent Drawer */}

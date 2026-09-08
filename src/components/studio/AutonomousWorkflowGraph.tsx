@@ -193,44 +193,42 @@ export default function AutonomousWorkflowGraph() {
   };
 
   return (
-    <div className="space-y-6 font-['Sora',sans-serif]">
+    <div className="workflow-canvas-container">
       {/* Top Banner */}
-      <div className="bg-slate-900 text-white p-5 rounded-2xl shadow-sm border border-slate-800 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-        <div>
-          <div className="flex items-center gap-2 mb-1">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span className="text-[10px] font-bold uppercase tracking-widest text-emerald-400">
-              Autonomous Sovereign Orchestrator
-            </span>
-            <span className="text-[10px] text-slate-400">| Sovereign Architecture ("Break n8n")</span>
+      <div className="workflow-hero-banner">
+        <div className="workflow-hero-left">
+          <div className="workflow-live-badge">
+            <span className="pulse-dot" />
+            <span>Autonomous Sovereign Orchestrator</span>
+            <span style={{ color: "#64748b", fontWeight: 400 }}>| Sovereign Architecture ("Break n8n")</span>
           </div>
-          <h2 className="text-lg font-semibold text-white">
+          <h2 className="workflow-hero-title">
             Storm Veins Autonomous Pipeline Core
           </h2>
-          <p className="text-xs text-slate-400 mt-1 max-w-xl leading-relaxed">
+          <p className="workflow-hero-desc">
             Zero-dependency 24/7 background event loop running on your local workstation. Replaces n8n, Lemlist, and Apollo with a high-throughput 5-node cluster.
           </p>
         </div>
 
-        <div className="flex flex-wrap items-center gap-3">
-          <div className="flex items-center gap-3 bg-slate-800/80 px-3.5 py-2.5 rounded-xl border border-slate-700/60">
-            <div>
-              <span className="text-[9px] text-slate-400 uppercase font-medium">Uptime</span>
-              <strong className="block text-xs text-white font-mono">{uptime}</strong>
+        <div className="workflow-hero-actions">
+          <div className="workflow-stat-capsule">
+            <div className="workflow-stat-item">
+              <span className="workflow-stat-lbl">Uptime</span>
+              <strong className="workflow-stat-val">{uptime}</strong>
             </div>
-            <div className="w-px h-5 bg-slate-700" />
-            <div>
-              <span className="text-[9px] text-slate-400 uppercase font-medium">Nodes</span>
-              <strong className="block text-xs text-emerald-400 font-mono">5 Active</strong>
+            <div className="workflow-stat-divider" />
+            <div className="workflow-stat-item">
+              <span className="workflow-stat-lbl">Nodes</span>
+              <strong className="workflow-stat-val emerald">5 Active</strong>
             </div>
           </div>
 
           <button
             type="button"
             onClick={openHistoryInspector}
-            className="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium rounded-xl transition-colors flex items-center gap-1.5 border border-slate-700 cursor-pointer"
+            className="btn-workflow-action secondary"
           >
-            <History size={13} className="text-slate-400" />
+            <History size={13} />
             <span>Executions</span>
           </button>
 
@@ -238,7 +236,7 @@ export default function AutonomousWorkflowGraph() {
             type="button"
             disabled={isExecutingPipeline}
             onClick={handleRunFullPipeline}
-            className="px-4 py-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-semibold rounded-xl transition-all shadow-sm flex items-center gap-2 disabled:opacity-50 cursor-pointer"
+            className="btn-workflow-action primary"
           >
             {isExecutingPipeline ? (
               <>
@@ -247,7 +245,7 @@ export default function AutonomousWorkflowGraph() {
               </>
             ) : (
               <>
-                <Zap size={13} className="fill-current" />
+                <Zap size={13} />
                 <span>Run Full Pipeline Now</span>
               </>
             )}
@@ -258,126 +256,128 @@ export default function AutonomousWorkflowGraph() {
       {/* Real-time Status Toast */}
       {statusToast && (
         <div
-          className={`p-3 text-xs rounded-xl flex items-center justify-between shadow-sm border transition-all ${
-            statusToast.type === "success"
-              ? "bg-emerald-50 text-emerald-900 border-emerald-200"
-              : statusToast.type === "error"
-              ? "bg-rose-50 text-rose-900 border-rose-200"
-              : "bg-slate-900 text-slate-200 border-slate-800"
-          }`}
+          style={{
+            padding: "10px 14px",
+            fontSize: "11px",
+            borderRadius: "8px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            background: statusToast.type === "success" ? "#ecfdf5" : statusToast.type === "error" ? "#fff1f2" : "#0f172a",
+            color: statusToast.type === "success" ? "#065f46" : statusToast.type === "error" ? "#9f1239" : "#ffffff",
+            border: `1px solid ${statusToast.type === "success" ? "#a7f3d0" : statusToast.type === "error" ? "#fecdd3" : "#334155"}`,
+          }}
         >
-          <span className="flex items-center gap-2 font-medium">
-            <Sparkles size={14} className={statusToast.type === "success" ? "text-emerald-600" : "text-amber-400"} />
+          <span style={{ display: "inline-flex", alignItems: "center", gap: "8px", fontWeight: 500 }}>
+            <Sparkles size={14} color={statusToast.type === "success" ? "#059669" : "#f59e0b"} />
             <span>{statusToast.msg}</span>
           </span>
-          <button onClick={() => setStatusToast(null)} className="text-slate-400 hover:text-slate-600 text-sm ml-4 cursor-pointer">
+          <button onClick={() => setStatusToast(null)} style={{ background: "none", border: "none", cursor: "pointer", color: "inherit" }}>
             ✕
           </button>
         </div>
       )}
 
       {/* Visual Workflow Pipeline Nodes */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5">
+      <div className="workflow-nodes-grid">
         {nodes.map((node, index) => {
           const isTriggering = activeTrigger === node.id || isExecutingPipeline;
           return (
             <div
               key={node.id}
-              className={`bg-white border rounded-xl p-4 shadow-2xs hover:shadow-sm transition-all flex flex-col justify-between ${
-                isTriggering ? "border-emerald-400 ring-2 ring-emerald-400/20" : "border-slate-200"
-              }`}
+              className={`workflow-node-card ${isTriggering ? "active" : ""}`}
             >
               <div>
-                <div className="flex items-center justify-between mb-2.5">
-                  <span className="text-[10px] font-bold text-slate-400 font-mono">
+                <div className="node-card-top">
+                  <span className="node-idx-label">
                     NODE 0{index + 1}
                   </span>
-                  <span className="inline-flex items-center gap-1 text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  <span className="node-status-pill">
+                    <span className="pulse-dot" style={{ width: "4px", height: "4px" }} />
                     {node.status}
                   </span>
                 </div>
 
-                <h4 className="text-xs font-bold text-slate-900 mb-1.5">{node.name}</h4>
-
-                <div className="space-y-1 text-[11px] text-slate-500 mb-3">
-                  <div className="flex items-center gap-1.5">
-                    <Clock size={11} className="text-slate-400 shrink-0" />
-                    <span className="truncate">Interval: {node.interval}</span>
+                <div className="node-card-content">
+                  <div className="node-icon-box">
+                    {index === 0 ? <Inbox size={15} /> : index === 1 ? <Bot size={15} /> : index === 2 ? <Database size={15} /> : index === 3 ? <Bell size={15} /> : <Send size={15} />}
                   </div>
-                  <div className="flex items-center gap-1.5">
-                    <Activity size={11} className="text-slate-400 shrink-0" />
-                    <span className="truncate">Last: {node.lastRun}</span>
+                  <div className="node-title-group">
+                    <h4 className="node-name">{node.name}</h4>
+                    <span className="node-interval">Interval: {node.interval}</span>
                   </div>
                 </div>
 
-                <div className="p-2 bg-slate-50 border border-slate-100 rounded-lg text-[10px] text-slate-600 font-mono leading-tight mb-3.5 min-h-[42px] flex items-center">
+                <div className="node-metrics-box">
                   {node.metrics}
                 </div>
               </div>
 
-              <button
-                type="button"
-                disabled={isTriggering}
-                onClick={() => handleTriggerNode(node.id)}
-                className="w-full py-1.5 px-2 bg-slate-100 hover:bg-slate-900 hover:text-white text-slate-700 text-[11px] font-medium rounded-lg transition-colors flex items-center justify-center gap-1.5 disabled:opacity-50 cursor-pointer"
-              >
-                {isTriggering && activeTrigger === node.id ? (
-                  <>
-                    <RefreshCw size={11} className="animate-spin" />
-                    <span>Executing...</span>
-                  </>
-                ) : (
-                  <>
-                    <Play size={10} />
-                    <span>Test Node</span>
-                  </>
-                )}
-              </button>
+              <div className="node-card-footer">
+                <span className="node-last-run">Last: {node.lastRun}</span>
+                <button
+                  type="button"
+                  disabled={isTriggering}
+                  onClick={() => handleTriggerNode(node.id)}
+                  className="node-test-btn"
+                >
+                  {isTriggering && activeTrigger === node.id ? (
+                    <>
+                      <RefreshCw size={10} className="animate-spin" />
+                      <span>Executing</span>
+                    </>
+                  ) : (
+                    <>
+                      <Play size={9} />
+                      <span>Test Node</span>
+                    </>
+                  )}
+                </button>
+              </div>
             </div>
           );
         })}
       </div>
 
       {/* Autonomous Schedule & Cadence Blueprint Card */}
-      <div className="bg-white border border-slate-200 rounded-2xl p-5 shadow-2xs">
-        <div className="flex items-center justify-between mb-4 border-b border-slate-100 pb-3">
-          <div className="flex items-center gap-2">
-            <Sliders size={16} className="text-emerald-600" />
-            <h3 className="text-sm font-semibold text-slate-900">
+      <div style={{ background: "#ffffff", border: "1px solid #e2e8f0", borderRadius: "12px", padding: "18px" }}>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "14px", borderBottom: "1px solid #f1f5f9", paddingBottom: "10px" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+            <Sliders size={15} color="#059669" />
+            <h3 style={{ fontSize: "12.5px", fontWeight: 600, color: "#0f172a", margin: 0 }}>
               Autonomous Outreach Execution Cadence
             </h3>
           </div>
-          <span className="text-[11px] text-slate-500">Hostinger 100% Rate-Limit Protected</span>
+          <span style={{ fontSize: "10px", color: "#64748b", fontFamily: "monospace" }}>Hostinger 100% Rate-Limit Protected</span>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
-          <div className="p-3 bg-slate-50/70 border border-slate-200/80 rounded-xl space-y-1">
-            <div className="flex items-center gap-2 text-slate-900 font-semibold text-xs">
-              <span className="w-5 h-5 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center text-[10px] font-bold">1</span>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "12px" }}>
+          <div style={{ padding: "12px", background: "#f8fafc", border: "1px solid #e2e8f0", borderRadius: "8px" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "6px", color: "#0f172a", fontWeight: 600, fontSize: "11px", marginBottom: "4px" }}>
+              <span style={{ width: "16px", height: "16px", borderRadius: "50%", background: "#e2e8f0", color: "#334155", display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: "9px" }}>1</span>
               <span>15-Minute · IMAP Polling Pass</span>
             </div>
-            <p className="text-[11px] text-slate-500 leading-relaxed pl-7">
+            <p style={{ fontSize: "10px", color: "#64748b", lineHeight: 1.45, margin: 0 }}>
               Scans all 5 dedicated mailboxes for prospect replies and bounce notices. Synthesizes AI reply drafts and pushes VIP Telegram alerts.
             </p>
           </div>
 
-          <div className="p-3 bg-slate-50/70 border border-slate-200/80 rounded-xl space-y-1">
-            <div className="flex items-center gap-2 text-slate-900 font-semibold text-xs">
-              <span className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center text-[10px] font-bold">2</span>
+          <div style={{ padding: "12px", background: "#f8fafc", border: "1px solid #e2e8f0", borderRadius: "8px" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "6px", color: "#0f172a", fontWeight: 600, fontSize: "11px", marginBottom: "4px" }}>
+              <span style={{ width: "16px", height: "16px", borderRadius: "50%", background: "#d1fae5", color: "#065f46", display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: "9px" }}>2</span>
               <span>11:30 AM · Follow-Up Cadence</span>
             </div>
-            <p className="text-[11px] text-slate-500 leading-relaxed pl-7">
+            <p style={{ fontSize: "10px", color: "#64748b", lineHeight: 1.45, margin: 0 }}>
               Executes the 4-day re-approach sequence (Day 1 ➔ Day 5: Sept 11). Dispatches 1-to-1 without BCC to preserve envelope quota.
             </p>
           </div>
 
-          <div className="p-3 bg-slate-50/70 border border-slate-200/80 rounded-xl space-y-1">
-            <div className="flex items-center gap-2 text-slate-900 font-semibold text-xs">
-              <span className="w-5 h-5 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center text-[10px] font-bold">3</span>
+          <div style={{ padding: "12px", background: "#f8fafc", border: "1px solid #e2e8f0", borderRadius: "8px" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "6px", color: "#0f172a", fontWeight: 600, fontSize: "11px", marginBottom: "4px" }}>
+              <span style={{ width: "16px", height: "16px", borderRadius: "50%", background: "#e2e8f0", color: "#334155", display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: "9px" }}>3</span>
               <span>Rolling Hourly · Paced Drip</span>
             </div>
-            <p className="text-[11px] text-slate-500 leading-relaxed pl-7">
+            <p style={{ fontSize: "10px", color: "#64748b", lineHeight: 1.45, margin: 0 }}>
               Caps sends at max 2/hr per active mailbox (30s delay). Safely scales to 400 leads/day with 0 rate limit violations.
             </p>
           </div>
@@ -386,31 +386,33 @@ export default function AutonomousWorkflowGraph() {
 
       {/* Execution History Inspector Modal ("Break n8n Inspector") */}
       {showHistoryModal && (
-        <div className="fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl border border-slate-200 shadow-2xl max-w-3xl w-full max-h-[85vh] flex flex-col overflow-hidden animate-in fade-in zoom-in-95 duration-150 font-['Sora',sans-serif]">
+        <div className="workflow-modal-backdrop">
+          <div className="workflow-modal-card">
             {/* Modal Header */}
-            <div className="p-4 border-b border-slate-200 flex items-center justify-between bg-slate-900 text-white">
-              <div className="flex items-center gap-2.5">
-                <Terminal size={18} className="text-emerald-400" />
+            <div className="workflow-modal-header">
+              <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                <Terminal size={16} color="#059669" />
                 <div>
-                  <h3 className="text-sm font-semibold">Workflow Execution History</h3>
-                  <p className="text-[11px] text-slate-400">Live telemetry from SQLite (`workflow_executions` table)</p>
+                  <h3 className="workflow-modal-title">Workflow Execution History</h3>
+                  <p style={{ fontSize: "10px", color: "#64748b", margin: 0 }}>Live telemetry from SQLite (`workflow_executions` table)</p>
                 </div>
               </div>
-              <div className="flex items-center gap-2">
+              <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
                 <button
                   type="button"
                   onClick={fetchExecutions}
                   disabled={isLoadingExecutions}
-                  className="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs rounded-lg flex items-center gap-1 cursor-pointer"
+                  className="btn-workflow-action secondary"
+                  style={{ padding: "4px 8px", fontSize: "10px" }}
                 >
-                  <RefreshCw size={11} className={isLoadingExecutions ? "animate-spin" : ""} />
+                  <RefreshCw size={10} className={isLoadingExecutions ? "animate-spin" : ""} />
                   <span>Refresh</span>
                 </button>
                 <button
                   type="button"
                   onClick={() => setShowHistoryModal(false)}
-                  className="w-7 h-7 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white flex items-center justify-center text-sm cursor-pointer"
+                  className="btn-workflow-action secondary"
+                  style={{ padding: "4px 8px", fontSize: "10px" }}
                 >
                   ✕
                 </button>
@@ -418,14 +420,14 @@ export default function AutonomousWorkflowGraph() {
             </div>
 
             {/* Modal Body */}
-            <div className="p-4 overflow-y-auto flex-1 space-y-2.5">
+            <div className="workflow-modal-body">
               {isLoadingExecutions && executions.length === 0 ? (
-                <div className="p-12 text-center text-slate-400 text-xs">
-                  <RefreshCw size={20} className="animate-spin mx-auto mb-2 text-slate-500" />
+                <div style={{ padding: "30px", textAlign: "center", color: "#94a3b8", fontSize: "11px" }}>
+                  <RefreshCw size={18} className="animate-spin" style={{ margin: "0 auto 8px" }} />
                   <span>Loading recent workflow executions...</span>
                 </div>
               ) : executions.length === 0 ? (
-                <div className="p-12 text-center text-slate-400 text-xs">
+                <div style={{ padding: "30px", textAlign: "center", color: "#94a3b8", fontSize: "11px" }}>
                   No workflow executions recorded yet. Click "Run Full Pipeline Now" to execute.
                 </div>
               ) : (
@@ -439,47 +441,48 @@ export default function AutonomousWorkflowGraph() {
                   return (
                     <div
                       key={item.id}
-                      className="border border-slate-200 rounded-xl overflow-hidden hover:border-slate-300 transition-all text-xs"
+                      className="workflow-exec-item"
                     >
                       <div
                         onClick={() => setExpandedExecutionId(isExpanded ? null : item.id)}
-                        className="p-3 bg-slate-50/70 flex items-center justify-between cursor-pointer select-none"
+                        style={{ display: "flex", alignItems: "center", justifyContent: "space-between", userSelect: "none" }}
                       >
-                        <div className="flex items-center gap-3">
-                          <span className="font-mono text-[10px] text-slate-400">#{item.id}</span>
+                        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                          <span style={{ fontFamily: "monospace", fontSize: "9px", color: "#94a3b8" }}>#{item.id}</span>
                           <span
-                            className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
-                              item.status === "SUCCESS"
-                                ? "bg-emerald-100 text-emerald-800"
-                                : item.status === "PARTIAL"
-                                ? "bg-amber-100 text-amber-800"
-                                : "bg-rose-100 text-rose-800"
-                            }`}
+                            style={{
+                              fontSize: "9px",
+                              fontWeight: 700,
+                              padding: "2px 6px",
+                              borderRadius: "4px",
+                              background: item.status === "SUCCESS" ? "#d1fae5" : item.status === "PARTIAL" ? "#fef3c7" : "#fee2e2",
+                              color: item.status === "SUCCESS" ? "#065f46" : item.status === "PARTIAL" ? "#92400e" : "#991b1b",
+                            }}
                           >
                             {item.status}
                           </span>
-                          <strong className="font-semibold text-slate-900 font-mono text-xs">
+                          <strong style={{ fontFamily: "monospace", fontSize: "11px", color: "#0f172a" }}>
                             {item.node_id}
                           </strong>
-                          <span className="text-[10px] text-slate-500 bg-white px-2 py-0.5 rounded border border-slate-200">
+                          <span style={{ fontSize: "9px", color: "#64748b", background: "#f1f5f9", padding: "1px 5px", borderRadius: "3px" }}>
                             {item.trigger_type}
                           </span>
                         </div>
 
-                        <div className="flex items-center gap-4">
-                          <span className="text-[11px] font-mono text-slate-600">
+                        <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                          <span style={{ fontSize: "10px", fontFamily: "monospace", color: "#475569" }}>
                             {item.duration_ms}ms
                           </span>
-                          <span className="text-[10px] text-slate-400 font-mono">
+                          <span style={{ fontSize: "9.5px", fontFamily: "monospace", color: "#94a3b8" }}>
                             {dateFormatted}
                           </span>
-                          {isExpanded ? <ChevronUp size={14} className="text-slate-400" /> : <ChevronDown size={14} className="text-slate-400" />}
+                          {isExpanded ? <ChevronUp size={12} color="#94a3b8" /> : <ChevronDown size={12} color="#94a3b8" />}
                         </div>
                       </div>
 
                       {isExpanded && (
-                        <div className="p-3 bg-white border-t border-slate-200">
-                          <pre className="p-3 bg-slate-900 text-emerald-400 font-mono text-[10px] rounded-lg overflow-x-auto">
+                        <div style={{ marginTop: "8px", paddingTop: "8px", borderTop: "1px solid #f1f5f9" }}>
+                          <pre style={{ margin: 0, padding: "8px 10px", background: "#0f172a", color: "#34d399", fontFamily: "monospace", fontSize: "9.5px", borderRadius: "6px", overflowX: "auto" }}>
                             {JSON.stringify(item.details || item.details_json, null, 2)}
                           </pre>
                         </div>
