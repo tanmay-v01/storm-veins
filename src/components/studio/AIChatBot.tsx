@@ -119,10 +119,8 @@ export default function AIChatBot({ isOpen, onClose, onLeadModified }: AIChatBot
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isDaemonOnline, setIsDaemonOnline] = useState(false);
-  const [activeCategory, setActiveCategory] = useState<"pipeline" | "telemetry" | "leads" | "antichat">("pipeline");
-  const [isAntiChatUnlocked, setIsAntiChatUnlocked] = useState<boolean>(() => {
-    return sessionStorage.getItem("sv_antichat_unlocked") === "true";
-  });
+  const [activeCategory, setActiveCategory] = useState<"pipeline" | "telemetry" | "leads" | "antichat">("antichat");
+  const [isAntiChatUnlocked, setIsAntiChatUnlocked] = useState<boolean>(true);
   const [antiChatPasscode, setAntiChatPasscode] = useState<string>(() => {
     return sessionStorage.getItem("sv_antichat_passcode") || "anti-ops";
   });
@@ -427,11 +425,12 @@ export default function AIChatBot({ isOpen, onClose, onLeadModified }: AIChatBot
       { label: "Mark Replied", text: "Mark Acme Industrial as replied" },
     ],
     antichat: [
+      { label: "Mail Status & Inbounds", text: "where are we on mails? any enquiries we got in past 1 day?" },
+      { label: "Follow-ups Due Sept 11", text: "Show leads due on Sept 11" },
       { label: "Git Status", text: "git status" },
-      { label: "Read Package", text: "read package.json" },
       { label: "Check Build", text: "run npm run build" },
       { label: "Project Tree", text: "list files" },
-      { label: "Edit Styles", text: "view src/styles.css" },
+      { label: "Inspect Styles", text: "read src/styles.css" },
     ],
   };
 
@@ -887,7 +886,7 @@ export default function AIChatBot({ isOpen, onClose, onLeadModified }: AIChatBot
                 activeCategory === "antichat" && !isAntiChatUnlocked
                   ? "Console locked. Enter passcode above to unlock..."
                   : activeCategory === "antichat"
-                  ? "Ask Antigravity: e.g. 'read src/...', 'edit file: ...', 'git status'..."
+                  ? "Ask Antigravity: e.g. 'where are we on mails?', 'git status', 'read src/styles.css'..."
                   : isListening
                   ? "Listening to voice command..."
                   : isDaemonOnline
